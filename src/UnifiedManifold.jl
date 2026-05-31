@@ -2,20 +2,36 @@ module UnifiedManifold
 
 using LinearAlgebra
 
-export UnifiedManifoldWorkspace
+export UnifiedManifoldWorkspace, physical_to_computational
 
+"""
+    UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch; ...)
+
+Constructs a metric-consistent Riemannian geometry using Chebyshev polynomials T_n(ξ)
+as the spectral basis. The physical-to-computational mapping via hyperbolic compactification
+(alpha_stretch parameter) ensures dense nodal concentration near z_0m where CASES-99
+inversions are sharpest.
+
+Note: This is a λ=1/2 ultraspherical basis. For explicit Gegenbauer decomposition
+with different λ, extend to Manifold_Mass_Gegenbauer(..., lambda=...).
+"""
 struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     N::Int
     K_q::Int
     xi_target::Vector{T}
     xi_q::Vector{T}
     J_q::Vector{T}
-    psi_M::Vector{T}; psi_W::Vector{T}; psi_T::Vector{T}
+    psi_M::Vector{T}
+    psi_W::Vector{T}
+    psi_T::Vector{T}
     Manifold_Mass::Matrix{T}
     Mass_Factored::Cholesky{T, Matrix{T}}
     z_atm::Vector{T}
     Dz_atm::Matrix{T}
+    alpha_stretch::T
+    sigma::T
 
+    # Clean Inner Constructor Block
     function UnifiedManifoldWorkspace(N::Int, z_0m::T, z_top::T, alpha_stretch::T; 
                                      n_m=3, n_w=12, delta=1.2, K_q::Int=72) where {T<:AbstractFloat}
         
@@ -27,6 +43,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
         z_atm = [z_0m + sigma * (1.0 + x) / (1.0 - x + alpha_stretch) for x in xi_target]
         inv_J_target = [1.0 / (sigma * (2.0 + alpha_stretch) / (1.0 - x + alpha_stretch)^2) for x in xi_target]
         
+        # Chebyshev Differentiation Matrix Assembly
         D1 = zeros(T, N+1, N+1)
         for i in 1:(N+1), j in 1:(N+1)
             if i == j
@@ -43,6 +60,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
         Dz_atm = zeros(T, N+1, N+1)
         for i in 1:(N+1); Dz_atm[i, :] = inv_J_target[i] .* D1[i, :]; end
 
+        # Consistent Mass Matrix under Physical Metric Weight Cancellation
         Manifold_Mass = zeros(T, N+1, N+1)
         for m in 0:N, n in 0:N
             val = 0.0
@@ -53,6 +71,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
         end
         Mass_Factored = cholesky(Hermitian(Manifold_Mass))
 
+        # Smooth Sub-meso Partitioning Windows
         psi_M = zeros(T, N + 1); psi_W = zeros(T, N + 1); psi_T = zeros(T, N + 1)
         for i in 1:(N+1)
             n = i - 1
@@ -61,8 +80,26 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
             psi_T[i] = 1.0 - psi_M[i] - psi_W[i]
         end
 
-        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm)
+        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, alpha_stretch, sigma)
     end
 end
 
+# --- Robust Outer Method Definition ---
+"""
+    physical_to_computational(ws, z_phys)
+
+Maps physical heights z directly to computational coordinates ξ ∈ [-1, 1]
+by analytically inverting the hyperbolic compactification profile.
+"""
+function physical_to_computational(ws::UnifiedManifoldWorkspace{T}, z_phys::Vector{T}) where {T<:AbstractFloat}
+    z_min = ws.z_atm[1]
+    xi = zeros(T, length(z_phys))
+    for i in eachindex(z_phys)
+        num = (z_phys[i] - z_min) * (1.0 + ws.alpha_stretch) - ws.sigma
+        den = (z_phys[i] - z_min) + ws.sigma
+        xi[i] = den > 1e-12 ? num / den : -1.0
+    end
+    return clamp.(xi, -1.0, 1.0)
 end
+
+end # module
