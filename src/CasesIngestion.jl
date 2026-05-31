@@ -5,14 +5,14 @@ using NCDatasets, LinearAlgebra, UnifiedManifold
 export ingest_and_project_slice!, project_with_svd_truncation
 
 """
-    ingest_and_project_slice!(nc_path, t_idx, ws; tol_frac=1e-10)
+    ingest_and_project_slice!(nc_path, t_idx, ws)
 
-Ingests a pristine 7-point vertical tower profile from the verified NCAR ISFS schema,
-gracefully processes missing values, and computes SVD-truncated coefficients.
+Parses a 7-point vertical tower snapshot from the NetCDF data stream, validates
+sensor bounds, and maps the observed fields into a stable manifold projection layer.
 """
-function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws; tol_frac=1e-10)
+function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws)
     Dataset(nc_path, "r") do ds
-        # Validated main tower instrumentation levels from EOL metadata snapshot
+        # Validated instrumentation heights from EOL tower layout
         z_obs = [1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0]
         M_obs = length(z_obs)
         
@@ -21,56 +21,35 @@ function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws; tol_frac=1e-
         
         try
             for i in 1:M_obs
-                # 1. Resolve string names based on height decimal layout
                 h = z_obs[i]
                 h_str = h == 1.5 ? "1_5m" : string(Int(h)) * "m"
 
-                # 2. Dynamic Temperature Key Allocation with Fallbacks
-                t_key = if haskey(ds, "tc_" * h_str)
-                    "tc_" * h_str
-                elseif haskey(ds, "T_" * h_str)
-                    "T_" * h_str
-                else
-                    error("Temperature tracking lost at height level: $h_str")
-                end
+                t_key = haskey(ds, "tc_" * h_str) ? "tc_" * h_str : (haskey(ds, "T_" * h_str) ? "T_" * h_str : error("Missing T"))
+                u_key = haskey(ds, "u_" * h_str) ? "u_" * h_str : (haskey(ds, "U_" * h_str) ? "U_" * h_str : error("Missing U"))
 
-                # 3. Dynamic Velocity Key Allocation with Fallbacks
-                u_key = if haskey(ds, "u_" * h_str)
-                    "u_" * h_str
-                elseif haskey(ds, "U_" * h_str)
-                    "U_" * h_str
-                else
-                    error("Wind tracking lost at height level: $h_str")
-                end
-
-                # 4. Extract raw data types (which might contain Missing elements)
                 raw_θ = ds[t_key][t_idx]
                 raw_u = ds[u_key][t_idx]
 
-                # 5. Type-safety fence to intercept missing values early
                 if ismissing(raw_θ) || ismissing(raw_u)
-                    error("Missing coordinate payload at height: $h_str")
+                    error("Dropout at $h_str")
                 end
 
                 θ_slice[i] = Float64(raw_θ)
                 u_slice[i] = Float64(raw_u)
             end
         catch e
-            # Silence high-frequency warning noise, but preserve structural logs if needed
-            return nothing, nothing, "Missing Variable/Sensor Drop"
+            return nothing, nothing, "Sensor Dropout Detected"
         end
 
-        # Post-extraction quality gating against NaNs or missing data flags (like -9999.0)
         if any(isnan, θ_slice) || any(isnan, u_slice)
-            return nothing, nothing, "Data Dropout Detected"
+            return nothing, nothing, "NaN Anomaly"
         end
         
-        # Loosened range check to gracefully accept BOTH Celsius and Kelvin
         if any(x -> (x < -50.0 || x > 380.0), θ_slice) || any(x -> (abs(x) > 100.0), u_slice)
             return nothing, nothing, "Data Out of Bounds"
         end
 
-        # Build systemic H-Matrix using the primary mapping coordinates
+        # Synthesize design matrix H (Size: 7 x 33)
         N_poly = ws.N
         H = zeros(Float64, M_obs, N_poly + 1)
         xi_obs = physical_to_computational(ws, z_obs)
@@ -81,9 +60,9 @@ function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws; tol_frac=1e-
             end
         end
         
-        # Deconstruct modes over our verified rank matrix using relaxed tolerance
-        c_theta, rank_θ, κ_θ = project_with_svd_truncation(H, θ_slice, tol_frac=tol_frac)
-        c_u,     rank_u, κ_u = project_with_svd_truncation(H, u_slice, tol_frac=tol_frac)
+        # Deconstruct modes utilizing a fixed precision barrier
+        c_theta, rank_θ, κ_θ = project_with_svd_truncation(H, θ_slice)
+        c_u,     rank_u, κ_u = project_with_svd_truncation(H, u_slice)
 
         status = "Rank=$(rank_θ), Cond=$(round(κ_θ, sigdigits=2))"
         return c_theta, c_u, status
@@ -91,16 +70,15 @@ function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws; tol_frac=1e-
 end
 
 """
-    project_with_svd_truncation(H, A_obs; tol_frac=1e-10)
+    project_with_svd_truncation(H, A_obs)
 
-Solves the least-squares projection problem via Singular Value Decomposition.
-Normalizes columns of H to protect high-order Chebyshev modes from aggressive rank truncation.
+Decomposes and scales the linear design system via economy Singular Value Decomposition.
+Implements a hardcoded floor to utilize all available physical degrees of freedom.
 """
-function project_with_svd_truncation(H::Matrix{T}, A_obs::Vector{T}; tol_frac=1e-10) where {T<:AbstractFloat}
-    # Clone H to avoid mutating the matrix in upstream functions
+function project_with_svd_truncation(H::Matrix{T}, A_obs::Vector{T}) where {T<:AbstractFloat}
     H_scaled = copy(H)
 
-    # 1. Column normalization to stabilize the conditioning of high-order polynomials
+    # 1. Coordinate normalization across high-order columns
     col_norms = [norm(H_scaled[:, j]) for j in 1:size(H_scaled, 2)]
     for j in 1:size(H_scaled, 2)
         if col_norms[j] > 1e-8
@@ -108,29 +86,30 @@ function project_with_svd_truncation(H::Matrix{T}, A_obs::Vector{T}; tol_frac=1e
         end
     end
 
-    # 2. Compute stable SVD components
+    # 2. Economy SVD Execution
     U, S, Vt = svd(H_scaled)
 
-    tol = tol_frac * S[1]
-    rank_eff = count(>(tol), S)
+    # Hard-coded floor forces the projection to unlock up to the 7-level structural limit
+    machine_floor = 1e-12 * S[1]
+    rank_eff = count(>(machine_floor), S)
 
-    # 3. Project observations into the singular data space
+    # 3. Projection to singular space
     beta = U' * A_obs
 
-    # 4. Scale by active inverse singular values
+    # 4. Inverse scaling singular coefficients
     scaled_beta = zeros(T, length(S))
     for i in 1:rank_eff
         scaled_beta[i] = beta[i] / S[i]
     end
 
-    # 5. Build raw scaled coefficients
+    # 5. Mapping back to full polynomial array
     c = zeros(T, size(Vt, 2))
     for i in 1:rank_eff
         v_row = vec(Vt[i, :])
         c .+= scaled_beta[i] .* v_row
     end
 
-    # 6. Unscale the coefficients to return back to real physical units
+    # 6. Physical rescaling
     for j in 1:length(c)
         if col_norms[j] > 1e-8
             c[j] /= col_norms[j]

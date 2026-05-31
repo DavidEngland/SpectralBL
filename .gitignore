@@ -3,7 +3,7 @@ Manifest.toml
 .julia/
 
 # Data safety gates (Bypass binary tracking)
-data/*.nc
+data/**/*.nc
 data/*.nc4
 data/*.csv
 
