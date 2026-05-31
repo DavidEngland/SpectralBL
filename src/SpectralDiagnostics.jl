@@ -14,9 +14,20 @@ struct HighFidelityRecord{T<:AbstractFloat}
     Status::String
 end
 
-function process_timestamp_metrics(time_idx::Int, c_theta::Vector{T}, c_u::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0) where {T<:AbstractFloat}
+function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0) where {T<:AbstractFloat}
     N = ws.N
+    D_manifold = N + 1 # Dynamic manifold length target (33)
     
+    # --- PROJECTION ENHANCEMENT: Zero-pad observational slices to full workspace dimensions ---
+    c_theta = zeros(T, D_manifold)
+    c_u     = zeros(T, D_manifold)
+
+    # Safely copy available coefficients (up to length 7) into full 33-dimensional space
+    len_in = min(length(c_theta_raw), D_manifold)
+    c_theta[1:len_in] .= c_theta_raw[1:len_in]
+    c_u[1:len_in]     .= c_u_raw[1:len_in]
+    # ----------------------------------------------------------------------------------------
+
     c_θ_W = c_theta .* ws.psi_W; c_θ_T = c_theta .* ws.psi_T
     c_u_W = c_u .* ws.psi_W;     c_u_T = c_u .* ws.psi_T
     
