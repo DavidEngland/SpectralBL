@@ -1,0 +1,12 @@
+# Package management artifacts
+Manifest.toml
+.julia/
+
+# Data safety gates (Bypass binary tracking)
+data/*.nc
+data/*.nc4
+data/*.csv
+
+# IDE/OS Garbage
+.DS_Store
+.vscode/
