@@ -37,17 +37,32 @@ function run_diagnostic_pipeline(output_dir::String)
     p1 = plot(ws.xi_target, ws.z_atm, marker=:circle, linewidth=2,
               title="Hyperbolic Mapping (α = $alpha_stretch)",
               xlabel="Computational Coordinate (ξ)", ylabel="Physical Height z (m)",
-              label="Grid Nodes", legend=:topleft)
+              label="Grid Nodes", legend=:topleft,
+              left_margin=16Plots.mm, bottom_margin=8Plots.mm)
 
     p2 = plot(0:ws.N, [ws.psi_M ws.psi_W ws.psi_T], linewidth=2.5,
               title="Spectral Partitioning Windows",
               xlabel="Chebyshev Mode Index (n)", ylabel="Filter Weight (ψ)",
-              label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright)
+              label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright,
+              left_margin=10Plots.mm, bottom_margin=8Plots.mm)
 
-    plot_path = joinpath(output_dir, "manifold_geometry_plots.png")
-    combined_plot = plot(p1, p2, layout=(1, 2), size=(1000, 450))
-    png(combined_plot, plot_path)
-    println("✓ Diagnostic plots saved to: ", plot_path)
+    plot_path_png = joinpath(output_dir, "manifold_geometry_plots.png")
+    plot_path_pdf = joinpath(output_dir, "manifold_geometry_plots.pdf")
+    combined_plot = plot(p1, p2, layout=(1, 2), size=(1240, 520), left_margin=14Plots.mm, bottom_margin=8Plots.mm)
+    savefig(combined_plot, plot_path_png)
+    savefig(combined_plot, plot_path_pdf)
+    println("✓ Diagnostic plots saved to: ", plot_path_png)
+    println("✓ Diagnostic plots saved to: ", plot_path_pdf)
+
+    # Keep manuscript figure assets in sync with latest report output.
+    draft_fig_dir = joinpath("data", "drafts", "figures")
+    mkpath(draft_fig_dir)
+    draft_png = joinpath(draft_fig_dir, "manifold_geometry_plots.png")
+    draft_pdf = joinpath(draft_fig_dir, "manifold_geometry_plots.pdf")
+    savefig(combined_plot, draft_png)
+    savefig(combined_plot, draft_pdf)
+    println("✓ Draft figure assets refreshed: ", draft_png)
+    println("✓ Draft figure assets refreshed: ", draft_pdf)
 
     # --- STEP 3: Generate Expanded Summary Markdown Report ---
     report_path = joinpath(output_dir, "manifold_summary_report.md")

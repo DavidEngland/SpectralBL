@@ -10,3 +10,27 @@ data/*.csv
 # IDE/OS Garbage
 .DS_Store
 .vscode/
+
+# TeX source and LaTeX build artifacts
+*.tex
+*.ltx
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Keep PDFs trackable, including generated manuscript figures
+!*.pdf
