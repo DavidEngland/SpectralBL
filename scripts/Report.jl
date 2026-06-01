@@ -7,6 +7,49 @@ using LinearAlgebra
 include("../src/Cases99.jl")
 using .UnifiedManifold: UnifiedManifoldWorkspace, physical_to_computational
 
+function generate_tier_plots(output_dir::String, draft_fig_dir::String)
+    trajectory_path = joinpath("data", "diagnostic_trajectory.csv")
+    if !isfile(trajectory_path)
+        println("! Skipping tier plot regeneration: missing ", trajectory_path)
+        return
+    end
+
+    traj = CSV.read(trajectory_path, DataFrame)
+    if nrow(traj) == 0
+        println("! Skipping tier plot regeneration: empty trajectory CSV")
+        return
+    end
+
+    # Backward compatibility: older runs store Richardson as Ri_f only.
+    ri_series = hasproperty(traj, :Ri_g) ? traj.Ri_g : traj.Ri_f
+
+    p_energy = scatter(traj.D_eff, traj.F_W,
+        title = "CASES-99 Diagnostics: Energy-Dimension Plane",
+        xlabel = "D_eff", ylabel = "F_W",
+        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
+        legend = false)
+
+    p_curv = scatter(traj.chi_N, ri_series,
+        title = "CASES-99 Diagnostics: Curvature-Stratification Plane",
+        xlabel = "chi_N", ylabel = "Ri_g",
+        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
+        legend = false)
+
+    p_time = plot(traj.TimeIdx, traj.F_W,
+        title = "CASES-99 Temporal Feature Trace",
+        xlabel = "Time Index", ylabel = "F_W",
+        linewidth = 2, legend = false)
+
+    for (name, fig) in (("tier1_plane1", p_energy), ("tier1_plane2", p_curv), ("temporal_trace", p_time))
+        savefig(fig, joinpath(output_dir, name * ".png"))
+        savefig(fig, joinpath(output_dir, name * ".pdf"))
+        savefig(fig, joinpath(draft_fig_dir, name * ".png"))
+        savefig(fig, joinpath(draft_fig_dir, name * ".pdf"))
+    end
+
+    println("✓ Tier diagnostic figures regenerated from: ", trajectory_path)
+end
+
 function run_diagnostic_pipeline(output_dir::String)
     # 1. Ensure the directory exists
     mkpath(output_dir)
@@ -63,6 +106,8 @@ function run_diagnostic_pipeline(output_dir::String)
     savefig(combined_plot, draft_pdf)
     println("✓ Draft figure assets refreshed: ", draft_png)
     println("✓ Draft figure assets refreshed: ", draft_pdf)
+
+    generate_tier_plots(output_dir, draft_fig_dir)
 
     # --- STEP 3: Generate Expanded Summary Markdown Report ---
     report_path = joinpath(output_dir, "manifold_summary_report.md")
