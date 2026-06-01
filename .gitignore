@@ -1,6 +1,6 @@
 # Package management artifacts
 Manifest.toml
-.julia/
+.julia/refs/
 
 # Data safety gates (Bypass binary tracking)
 data/**/*.nc
@@ -11,6 +11,8 @@ data/*.csv
 .DS_Store
 .vscode/
 
+#ref utils
+scripts/
 # TeX source and LaTeX build artifacts
 *.tex
 *.ltx

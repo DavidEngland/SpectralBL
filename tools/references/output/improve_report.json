@@ -1,0 +1,776 @@
+[
+  {
+    "cite_key": "Acevedo2016",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Huang2009",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt1999",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2014",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Poulos2002",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Rousseeuw1987",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Schmid2010",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Sun2015",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Sutherland2010",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Terradellas2001",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2006",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Acevedo2016",
+    "doi": "10.3389/feart.2016.00075",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Acevedo2016",
+        "doi": "10.3389/feart.2016.00075",
+        "field": "title",
+        "local_value": "O.~C. Acevedo et~al. \\newblock {Review of stable boundary layer transitions}. \\newblock \\emph{Frontiers in Earth Science}, 4:75, 2016. \\newblock \\doi{10.3389/feart.2016.00075}",
+        "remote_value": "Off Limits: Sulfate below the Sulfate-Methane Transition",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Barbano2022",
+    "doi": "10.1007/s10546-021-00678-2",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Barbano2022",
+        "doi": "10.1007/s10546-021-00678-2",
+        "field": "title",
+        "local_value": "Francesco Barbano, Luigi Brogno, Francesco Tampieri, and Silvana Di Sabatino. \\newblock {Interaction Between Waves and Turbulence Within the Nocturnal Boundary Layer}. \\newblock \\e",
+        "remote_value": "Interaction Between Waves and Turbulence Within the Nocturnal Boundary Layer",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Dyer1974",
+    "doi": "10.1007/BF00224975",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Dyer1974",
+        "doi": "10.1007/BF00224975",
+        "field": "title",
+        "local_value": "A.~J. Dyer. \\newblock {A review of flux-profile relationships}. \\newblock \\emph{Boundary-Layer Meteorology}, 7(3):363--372, 1974. \\newblock \\doi{10.1007/BF00224975}",
+        "remote_value": "Stratified flow over non-uniform surfaces: Turbulent energy model",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Garanaik2019",
+    "doi": "10.1017/jfm.2019.142",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Halila2019",
+    "doi": "10.1016/j.ast.2019.05.018",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "H\u00f6gstr\u00f6m1988",
+    "doi": "10.1007/BF00119875",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "H\u00f6gstr\u00f6m1988",
+        "doi": "10.1007/BF00119875",
+        "field": "title",
+        "local_value": "U.~H\u00f6gstr\u00f6m. \\newblock {Non-dimensional wind and temperature profiles in the atmospheric surface layer: A re-evaluation}. \\newblock \\emph{Boundary-Layer Meteorology}, 42(1):55--78,",
+        "remote_value": "Non-dimensional wind and temperature profiles in the atmospheric surface layer: A re-evaluation",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Huang2009",
+    "doi": "10.1098/rspa.1998.0193",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Huang2009",
+        "doi": "10.1098/rspa.1998.0193",
+        "field": "year",
+        "local_value": "1971",
+        "remote_value": "1998",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Kaur2023",
+    "doi": "10.1016/j.apnum.2023.02.013",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Lefauve2025",
+    "doi": "10.5802/crphys.196",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Li2016",
+    "doi": "10.1017/jfm.2016.311",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Li2016",
+        "doi": "10.1017/jfm.2016.311",
+        "field": "title",
+        "local_value": "Dan Li, Scott~T. Salesky, and Tirtha Banerjee. \\newblock {Connections between the Ozmidov scale and mean velocity profile in stably stratified atmospheric surface layers}. \\newbloc",
+        "remote_value": "Connections between the Ozmidov scale and mean velocity profile in stably stratified atmospheric surface layers",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Mahrt1999",
+    "doi": "10.1023/A:1001765730198",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2014",
+    "doi": "10.1146/annurev-fluid-010313-141354",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Mahrt2013",
+    "doi": "10.1002/qj.2023",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Obukhov1946",
+    "doi": "10.1007/s10546-007-9159-6",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Paulson1970",
+    "doi": "10.1175/1520-0450(1970)009",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Poulos2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Pellegrino2023",
+    "doi": "10.1016/j.camwa.2023.10.017",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Pellegrino2023",
+        "doi": "10.1016/j.camwa.2023.10.017",
+        "field": "title",
+        "local_value": "Sabrina~F. Pellegrino. \\newblock {A filtered Chebyshev spectral method for conservation laws on network}. \\newblock \\emph{Computers \\& Mathematics with Applications}, 151:418--433,",
+        "remote_value": "A filtered Chebyshev spectral method for conservation laws on network",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Rousseeuw1987",
+    "doi": "10.1016/0377-0427(87)90125-7",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Schmid2010",
+    "doi": "10.1017/s0022112010001217",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Sun2015",
+    "doi": "10.1002/2015RG000487",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Sun2015",
+        "doi": "10.1002/2015RG000487",
+        "field": "title",
+        "local_value": "Jielun Sun, Carmen~J. Nappo, Larry Mahrt, Danijel Belu\\v{s}i\\'{c}, Branko Grisogono, David~R. Stauffer, Manuel Pulido, Chantal Staquet, Qingfang Jiang, Annick Pouquet, Carlos Yag\\\"",
+        "remote_value": "Review of wave\u2010turbulence interactions in the stable atmospheric boundary layer",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Terradellas2001",
+    "doi": "10.1016/S0377-0265(01)00071-X",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Uttal2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2006",
+    "doi": "10.1256/qj.05.21",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Acevedo2016",
+    "doi": "10.3389/feart.2016.00075",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Acevedo2016",
+        "doi": "10.3389/feart.2016.00075",
+        "field": "title",
+        "local_value": "O.~C. Acevedo et~al. \\newblock {Review of stable boundary layer transitions}. \\newblock \\emph{Frontiers in Earth Science}, 4:75, 2016. \\newblock \\doi{10.3389/feart.2016.00075}.",
+        "remote_value": "Off Limits: Sulfate below the Sulfate-Methane Transition",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Barbano2022",
+    "doi": "10.1007/s10546-021-00678-2",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Barbano2022",
+        "doi": "10.1007/s10546-021-00678-2",
+        "field": "title",
+        "local_value": "Francesco Barbano, Luigi Brogno, Francesco Tampieri, and Silvana Di Sabatino. \\newblock {Interaction Between Waves and Turbulence Within the Nocturnal Boundary Layer}. \\newblock \\e",
+        "remote_value": "Interaction Between Waves and Turbulence Within the Nocturnal Boundary Layer",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Dyer1974",
+    "doi": "10.1007/BF00224974",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Dyer1974",
+        "doi": "10.1007/BF00224974",
+        "field": "title",
+        "local_value": "A.~J. Dyer. \\newblock {A review of flux-profile relationships}. \\newblock \\emph{Boundary-Layer Meteorology}, 7(3):363--372, 1974. \\newblock \\doi{10.1007/BF00224974}.",
+        "remote_value": "Three-dimensional numerical study of the height and mean structure of a heated planetary boundary layer",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Garanaik2019",
+    "doi": "10.1017/jfm.2019.142",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Halila2019",
+    "doi": "10.1016/j.ast.2019.05.018",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "H\u00f6gstr\u00f6m1988",
+    "doi": "10.1007/BF00119875",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "H\u00f6gstr\u00f6m1988",
+        "doi": "10.1007/BF00119875",
+        "field": "title",
+        "local_value": "U.~H\u00f6gstr\u00f6m. \\newblock {Non-dimensional wind and temperature profiles in the atmospheric surface layer: A re-evaluation}. \\newblock \\emph{Boundary-Layer Meteorology}, 42(1):55--78,",
+        "remote_value": "Non-dimensional wind and temperature profiles in the atmospheric surface layer: A re-evaluation",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Huang2009",
+    "doi": "10.1098/rspa.1998.0193",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Huang2009",
+        "doi": "10.1098/rspa.1998.0193",
+        "field": "year",
+        "local_value": "1971",
+        "remote_value": "1998",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Kaur2023",
+    "doi": "10.1016/j.apnum.2023.02.013",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Lefauve2025",
+    "doi": "10.5802/crphys.196",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Li2016",
+    "doi": "10.1017/jfm.2016.311",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Li2016",
+        "doi": "10.1017/jfm.2016.311",
+        "field": "title",
+        "local_value": "Dan Li, Scott~T. Salesky, and Tirtha Banerjee. \\newblock {Connections between the Ozmidov scale and mean velocity profile in stably stratified atmospheric surface layers}. \\newbloc",
+        "remote_value": "Connections between the Ozmidov scale and mean velocity profile in stably stratified atmospheric surface layers",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Mahrt1999",
+    "doi": "10.1023/A:1001765730198",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2014",
+    "doi": "10.1146/annurev-fluid-010313-141354",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Mahrt2013",
+    "doi": "10.1002/qj.2023",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2023",
+        "field": "year",
+        "local_value": "2013",
+        "remote_value": "2012",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Obukhov1946",
+    "doi": "10.1007/s10546-007-9159-6",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Paulson1970",
+    "doi": "10.1175/1520-0450(1970)009",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Poulos2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Pellegrino2023",
+    "doi": "10.1016/j.camwa.2023.10.017",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Pellegrino2023",
+        "doi": "10.1016/j.camwa.2023.10.017",
+        "field": "title",
+        "local_value": "Sabrina~F. Pellegrino. \\newblock {A filtered Chebyshev spectral method for conservation laws on network}. \\newblock \\emph{Computers \\& Mathematics with Applications}, 151:418--433,",
+        "remote_value": "A filtered Chebyshev spectral method for conservation laws on network",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Rousseeuw1987",
+    "doi": "10.1016/0377-0427(87)90125-7",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Schmid2010",
+    "doi": "10.1017/s0022112010001217",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": [
+      "title",
+      "journal",
+      "author",
+      "volume",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Sun2015",
+    "doi": "10.1002/2015RG000487",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Sun2015",
+        "doi": "10.1002/2015RG000487",
+        "field": "title",
+        "local_value": "Jielun Sun, Carmen~J. Nappo, Larry Mahrt, Danijel Belu\\v{s}i\\'{c}, Branko Grisogono, David~R. Stauffer, Manuel Pulido, Chantal Staquet, Qingfang Jiang, Annick Pouquet, Carlos Yag\\\"",
+        "remote_value": "Review of wave\u2010turbulence interactions in the stable atmospheric boundary layer",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": [
+      "journal",
+      "author",
+      "volume",
+      "number",
+      "pages",
+      "publisher"
+    ]
+  },
+  {
+    "cite_key": "Terradellas2001",
+    "doi": "10.1016/S0377-0265(01)00071-X",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Uttal2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2006",
+    "doi": "10.1256/qj.05.21",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  }
+]
