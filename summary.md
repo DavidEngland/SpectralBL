@@ -68,3 +68,4 @@ To prevent the SVD solver from aggressively truncating these modes down to an un
 * **Ingestion Pipeline:** Operational and production-ready. Successfully isolates valid data from NaN drops across the complete 42-day campaign sub-directory.
 * **Data Artifacts:** Generates `data/diagnostic_trajectory.csv` tracking fluid states, advection tendencies, and turbulence signatures over the timeline.
 * **Reporting Layer:** Integrated into the project `Makefile`. Executing `make report` handles loop automation, outputs localized image graphs to `reports/plots/`, and outputs a ready-to-share file at `reports/CASES99_Campaign_Report.md`.
+* **Synthetic Sponge Validation:** Added `scripts/test_wave_reflection.jl` with `make wave_test` for controlled gravity-wave reflection suppression testing using `psi_T` modal damping. Outputs: `data/wave_reflection_test.png` and `data/wave_reflection_metrics.csv`.
