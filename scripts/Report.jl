@@ -34,94 +34,58 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
         return
     end
 
-    # If processing a bulk run, filter rows matching the active campaign day target
+    # Format the date for human readable display (e.g., "_991024" -> "1999-10-24")
+    raw_date = replace(day_suffix, "_" => "")
+    display_date = length(raw_date) == 6 ? "19$(raw_date[1:2])-$(raw_date[3:4])-$(raw_date[5:6])" : "CASES-99 Run"
+
     if !isempty(day_suffix) && hasproperty(traj, :FileDate)
-        target_day = replace(day_suffix, "_" => "")
-        traj = filter(row -> string(row.FileDate) == target_day, traj)
+        traj = filter(row -> string(row.FileDate) == raw_date, traj)
         if nrow(traj) == 0
-            println("! No trajectory records match day $target_day. Skipping tier plots.")
+            println("! No trajectory records match day $raw_date. Skipping tier plots.")
             return
         end
     end
 
-    # Backward compatibility: older runs store Richardson as Ri_f only.
     ri_series = hasproperty(traj, :Ri_g) ? traj.Ri_g : traj.Ri_f
 
-    # --- UPGRADE 1: Universal Unicode Labels (Guarantees Greek display across all OS formats) ---
+    # --- INDIVIDUAL PLOTS WITH EXPLICIT DATES ---
     p_energy = scatter(traj.D_eff, traj.F_W,
-        title = "CASES-99 Diagnostics: Energy-Dimension Plane",
+        title = "Energy-Dimension Plane\n[$display_date]",
         xlabel = "Effective Modal Dimension (D_eff)",
         ylabel = "Wave Energy Fraction (F_W)",
-        yformatter = clean_decimal_formatter, # Eliminates raw scientific formatting clogs
-        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
-        legend = false)
+        yformatter = clean_decimal_formatter,
+        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85, legend = false)
 
     p_curv = scatter(traj.chi_N, ri_series,
-        title = "CASES-99 Diagnostics: Curvature-Stratification Plane",
+        title = "Curvature-Stratification Plane\n[$display_date]",
         xlabel = "Spectral Curvature (χ_N)",
         ylabel = "Gradient Richardson Number (Ri_g)",
-        xformatter = clean_decimal_formatter,
-        yformatter = clean_decimal_formatter,
-        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
-        legend = false)
+        xformatter = clean_decimal_formatter, yformatter = clean_decimal_formatter,
+        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85, legend = false)
 
     p_time = plot(traj.TimeIdx, traj.F_W,
-        title = "CASES-99 Temporal Feature Trace ($day_suffix)",
-        xlabel = "Time Index",
-        ylabel = "Wave Energy Fraction (F_W)",
-        yformatter = clean_decimal_formatter,
-        linewidth = 2, legend = false)
+        title = "Temporal Feature Trace\n[$display_date]",
+        xlabel = "Time Index", ylabel = "Wave Energy Fraction (F_W)",
+        yformatter = clean_decimal_formatter, linewidth = 2, legend = false)
 
-    extra_plots = Tuple{String, Any}[]
-    if hasproperty(traj, :E_wave) && hasproperty(traj, :E_total)
-        # --- UPGRADE 2: Logarithmic Y-Axis to expose hidden wave energy trends ---
-        p_energy_components = plot(
-            traj.TimeIdx,
-            [traj.E_wave traj.E_total],
-            title = "CASES-99 Energy Components ($day_suffix)",
-            xlabel = "Time Index",
-            ylabel = "Spectral Energy Density",
-            yscale = :log10,  # Switched to log scale: lets E_wave and E_total coexist dynamically
-            linewidth = 2,
-            label = ["E_wave (ℰ_wave)" "E_total (ℰ_total)"],
-            legend = :topright,
-        )
-        push!(extra_plots, ("energy_components", p_energy_components))
-    end
+    # --- NEW: COMBINED SIDE-BY-SIDE PUBLICATION ASSETS ---
+    # Fig A: State-Space Analysis (Energy-Dimension alongside Curvature-Stratification)
+    p_combined_states = plot(p_energy, p_curv,
+        layout = (1, 2),
+        size = (1200, 500),
+        left_margin = 12Plots.mm, bottom_margin = 8Plots.mm)
 
-    if hasproperty(traj, :peak_in_wave_window)
-        peak_flags = Int.(traj.peak_in_wave_window)
-        p_wave_window = plot(
-            traj.TimeIdx,
-            peak_flags,
-            title = "Wave Window Coverage QA ($day_suffix)",
-            xlabel = "Time Index",
-            ylabel = "Peak In Wave Window",
-            linewidth = 2,
-            ylims = (-0.1, 1.1),
-            yticks = ([0, 1], ["No (0)", "Yes (1)"]),
-            legend = false,
-        )
-        push!(extra_plots, ("wave_window_coverage", p_wave_window))
-    end
-
-    # Save loops for core diagnostics
+    # Save the standalone plots
     for (name, fig) in (("tier1_plane1", p_energy), ("tier1_plane2", p_curv), ("temporal_trace", p_time))
-        savefig(fig, joinpath(output_dir, name * day_suffix * ".png"))
         savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
-        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".png"))
         savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".pdf"))
     end
 
-    # Save loops for validation extensions
-    for (name, fig) in extra_plots
-        savefig(fig, joinpath(output_dir, name * day_suffix * ".png"))
-        savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
-        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".png"))
-        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".pdf"))
-    end
+    # Save the combined side-by-side publication assets
+    savefig(p_combined_states, joinpath(output_dir, "manuscript_states_combined" * day_suffix * ".pdf"))
+    savefig(p_combined_states, joinpath(draft_fig_dir, "manuscript_states_combined" * day_suffix * ".pdf"))
 
-    println("✓ Tier diagnostic figures regenerated with suffix '$day_suffix' from: ", trajectory_path)
+    println("✓ Clean publication layout and side-by-side figures saved for $display_date.")
 end
 
 function run_diagnostic_pipeline(output_dir::String)
