@@ -7,7 +7,7 @@ INPUT_NC     = reports/ncar_eol_dee0099881/cases.991031.nc
 REPORT_DIR   = reports/ncar_eol_dee0099881
 SCHEMA_DEF   = data/cases99_netcdf_schema.txt
 
-.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup
+.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test
 
 # Default target orchestrates the entire localized lifecycle
 all: setup validate run report
@@ -43,6 +43,11 @@ universal_wave_test: setup
 # 4. CI/CD Sandbox: Rapid regression test against your primary campaign payload
 quicktest: setup
 	julia --project="." -e 'include("src/Cases99.jl"); println("✓ Sub-meso Manifold Stack Validated Safely.")'
+
+# 4b. Standard unit/integration test execution
+test:
+	julia --project="." -e 'using Pkg; Pkg.instantiate()'
+	julia --project="." test/runtests.jl
 
 # 5. Idempotency Maintenance: SAFE CLEAN
 # Avoids 'rm -rf reports/' so your raw .nc data and hand-copied diagnostics aren't deleted!
