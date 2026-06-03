@@ -16,7 +16,20 @@ endif
 # Find ALL netcdf day files available in your folder for bulk runs
 ALL_NC_FILES := $(wildcard $(REPORT_DIR)/cases.9910*.nc)
 
-.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test
+# Extract only the 6-digit date string from every available .nc file
+CAMPAIGN_DAYS := $(patsubst $(REPORT_DIR)/cases.%.nc,%,$(wildcard $(REPORT_DIR)/cases.99*.nc))
+
+.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel $(CAMPAIGN_DAYS)
+
+# 1. Main orchestration hook for multi-core scaling
+# Run with 'make run-all-parallel -j4' to use 4 CPU cores simultaneously!
+run-all-parallel: $(CAMPAIGN_DAYS)
+	@echo "✓ All available campaign days processed in parallel clusters."
+
+# 2. Dynamic metaprogramming rule mapping each day to an isolated runtime pipeline
+$(CAMPAIGN_DAYS): setup
+	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$$@ ---"
+	julia --project="." scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
 
 # Default target orchestrates the entire localized lifecycle
 all: setup validate run report
@@ -33,9 +46,9 @@ setup:
 validate: setup
 	julia --project="." scripts/validate_netcdf_schema.jl $(INPUT_NC) $(SCHEMA_DEF)
 
-# 2. Production Execution Layer: Runs the pipeline
+# 2. Production Execution Layer: Runs the pipeline (FIXED: Passes INPUT_NC dynamically)
 run: setup
-	julia --project="." scripts/RunCampaignPipeline.jl
+	julia --project="." scripts/RunCampaignPipeline.jl $(INPUT_NC)
 
 # 3. Diagnostics Layer: Executes your new reporting logic, targeting the EOL directory
 report: setup
@@ -59,7 +72,6 @@ test:
 	julia --project="." test/runtests.jl
 
 # 5. Idempotency Maintenance: SAFE CLEAN
-# Avoids 'rm -rf reports/' so your raw .nc data and hand-copied diagnostics aren't deleted!
 clean:
 	rm -f data/*_trajectory.csv
 	rm -f $(SCHEMA_DEF)
