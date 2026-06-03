@@ -1,4 +1,3 @@
-
 # Comprehensive Manifold Diagnostic & Campaign Report
 **Target Directory:** `reports/ncar_eol_dee0099881`
 **Campaign Context:** NCAR EOL DEE0099881 (CASES-99 Stable Boundary Layer Lifecycle)

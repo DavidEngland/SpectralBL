@@ -36,19 +36,19 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
 
     p_energy = scatter(traj.D_eff, traj.F_W,
         title = "CASES-99 Diagnostics: Energy-Dimension Plane",
-        xlabel = "D_eff", ylabel = "F_W",
+        xlabel = "Effective Dimension (D_eff)", ylabel = "Wave Energy Fraction (F_W)",
         markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
         legend = false)
 
     p_curv = scatter(traj.chi_N, ri_series,
         title = "CASES-99 Diagnostics: Curvature-Stratification Plane",
-        xlabel = "chi_N", ylabel = "Ri_g",
+        xlabel = "Spectral Curvature (χ_N)", ylabel = "Gradient Richardson (Ri_g)",
         markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
         legend = false)
 
     p_time = plot(traj.TimeIdx, traj.F_W,
         title = "CASES-99 Temporal Feature Trace ($day_suffix)",
-        xlabel = "Time Index", ylabel = "F_W",
+        xlabel = "Time Index", ylabel = "Wave Energy Fraction (F_W)",
         linewidth = 2, legend = false)
 
     extra_plots = Tuple{String, Any}[]
@@ -73,7 +73,7 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
             peak_flags,
             title = "Wave Window Coverage QA ($day_suffix)",
             xlabel = "Time Index",
-            ylabel = "Peak In psi_W",
+            ylabel = "Peak In Wave Window (1=Yes, 0=No)",
             linewidth = 2,
             ylims = (-0.05, 1.05),
             yticks = ([0, 1], ["No", "Yes"]),
