@@ -1,11 +1,20 @@
 # ==============================================================================
-# CASES-99 Pipeline Orchestration Engine
+# CASES-99 Pipeline Orchestration Engine (Dynamic Data Ingestion)
 # ==============================================================================
 
-# Context Variables
-INPUT_NC     = reports/ncar_eol_dee0099881/cases.991031.nc
-REPORT_DIR   = reports/ncar_eol_dee0099881
+# Core Paths - FIXED: Point to your actual data directory
+REPORT_DIR   = data/ncar_eol_dee0099881
 SCHEMA_DEF   = data/cases99_netcdf_schema.txt
+
+# --- DYNAMIC TARGET LOGIC ---
+ifdef DAY
+    INPUT_NC := $(REPORT_DIR)/cases.$(DAY).nc
+else
+    INPUT_NC := $(REPORT_DIR)/cases.991031.nc
+endif
+
+# Find ALL netcdf day files available in your folder for bulk runs
+ALL_NC_FILES := $(wildcard $(REPORT_DIR)/cases.9910*.nc)
 
 .PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test
 
