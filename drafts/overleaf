@@ -135,7 +135,7 @@ The framework is validated on CASES-99, confirming that the three predicted regi
 \section{Data: CASES-99 Stable Window}
 \label{sec:data}
 
-The Cooperative Atmosphere-Surface Exchange Study--1999 (CASES-99) took place over a 6-week period centered on the southern Great Plains of Oklahoma (near Purcell, OK; $36.9^\circ$N, $97.5^\circ$W) from 30 September to 10 November 1999 \citep{Poulos2002}. The terrain is gently rolling grassland with sparse trees; displacement height $d \approx \SI{0.1}{\meter}$, aerodynamic roughness $z_0 \approx \SI{0.01}{\meter}$.
+The Cooperative Atmosphere-Surface Exchange Study--1999 (CASES-99) field observational program took place from 1 October to 31 October 1999 centered near Leon, Kansas ($37.69^\circ\text{N}$, $97.64^\circ\text{W}$) \citep{Poulos2002}. The terrain at the Leon site consists of gently rolling grassland with sparse trees, a displacement height $d \approx \SI{0.1}{\meter}$, and an aerodynamic roughness length $z_0 \approx \SI{0.01}{\meter}$.
 
 \subsection{Main Tower Array}
 
