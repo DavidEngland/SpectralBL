@@ -8,8 +8,16 @@ else
     error("Pipeline aborted: Core module source file missing at $MODULE_SRC")
 end
 
+const DIAGNOSTICS_SRC = joinpath(@__DIR__, "..", "src", "SpectralDiagnostics.jl")
+if isfile(DIAGNOSTICS_SRC)
+    include(DIAGNOSTICS_SRC)
+else
+    error("Pipeline aborted: Diagnostics module source file missing at $DIAGNOSTICS_SRC")
+end
+
 # 2. Bring your module and the rest of your development environment into scope
 using .AtmosphericDataPipeline  # Note the leading dot (.) which indicates a locally included module namespace
+using .SpectralDiagnostics
 using CasesIngestion
 using UnifiedManifold
 using ProgressMeter, CSV, DataFrames, NCDatasets, Statistics
@@ -28,8 +36,19 @@ function execute_campaign_sweep()
     target_vars = ["u_1_5m", "u_5m", "u_10m", "u_20m", "u_30m", "u_40m", "u_50m", "u_55m"]
     tc_vars     = ["tc_1_5m", "tc_5m", "tc_10m", "tc_20m", "tc_30m", "tc_40m", "tc_50m", "tc_55m"]
 
-    # Discover and sort all daily campaign NetCDF profiles
-    nc_files = sort(filter(f -> match(r"^cases\.\d+\.nc$", f) !== nothing, readdir(data_dir)))
+    # If an NC file is passed explicitly, process only that file; else process the full campaign month.
+    nc_files = String[]
+    if !isempty(ARGS)
+        provided = ARGS[1]
+        if isfile(provided)
+            push!(nc_files, basename(provided))
+            data_dir = dirname(provided)
+        else
+            error("Provided NetCDF path does not exist: $provided")
+        end
+    else
+        nc_files = sort(filter(f -> match(r"^cases\.\d+\.nc$", f) !== nothing, readdir(data_dir)))
+    end
 
     if isempty(nc_files)
         error("No campaign files found in $data_dir. Check paths.")
@@ -37,6 +56,8 @@ function execute_campaign_sweep()
     
     println("Beginning processing sweep over $(length(nc_files)) daily target logs...")
     master_df = DataFrame()
+
+    valid_sample(x) = !ismissing(x) && x != -1037.0 && !isnan(Float64(x))
 
     for nc_file in nc_files
         full_nc_path = joinpath(data_dir, nc_file)
@@ -50,9 +71,18 @@ function execute_campaign_sweep()
 
         # Open dataset frame to safely extract and slice time-dependent arrays
         Dataset(full_nc_path, "r") do ds
-            # NCAR 5-minute averaged matrices have dimensions (6, 288) or (8, 288)
-            # Find time steps natively from the file structure
-            t_steps = size(ds["u_55m"], 2)
+            # Handle both 1D (time) and 2D (sample x time) layouts.
+            u55 = ds["u_55m"]
+            t_steps = ndims(u55) == 1 ? length(u55) : size(u55, 2)
+
+            slice_mean(var, t_idx) = begin
+                if ndims(var) == 1
+                    value = var[t_idx]
+                    return valid_sample(value) ? Float64(value) : NaN
+                end
+                samples = filter(valid_sample, var[:, t_idx])
+                return isempty(samples) ? NaN : mean(Float64.(samples))
+            end
 
             @showprogress "Slicing Profile Timeline: " for t in 1:t_steps
 
@@ -62,9 +92,8 @@ function execute_campaign_sweep()
                 u_profile     = Float64[]
 
                 for i in 1:length(heights)
-                    # Safely handle potential 2D matrix indexing [sample_idx, time_idx]
-                    tc_val = mean(filter(x -> x != -1037.0 && !isnan(x), ds[tc_vars[i]][:, t]))
-                    u_val  = mean(filter(x -> x != -1037.0 && !isnan(x), ds[target_vars[i]][:, t]))
+                    tc_val = slice_mean(ds[tc_vars[i]], t)
+                    u_val  = slice_mean(ds[target_vars[i]], t)
 
                     push!(theta_profile, tc_val)
                     push!(u_profile, u_val)
@@ -75,7 +104,11 @@ function execute_campaign_sweep()
 
                 # --- INTERCEPT: Evaluate via the AtmosphericDataPipeline Quality Gate ---
                 # Use the top level stream 'u_55m' slice as our raw sonic spike test input
-                u_top_stream = vec(ds["u_55m"][:, t])
+                u_top_stream = if ndims(ds["u_55m"]) == 1
+                    [Float64(coalesce(ds["u_55m"][t], NaN))]
+                else
+                    Float64.(coalesce.(vec(ds["u_55m"][:, t]), NaN))
+                end
 
                 gate_result = run_validation_gate(
                     pipeline_dataset,
@@ -88,8 +121,8 @@ function execute_campaign_sweep()
                     spike_threshold=3.5
                 )
 
-                # If the data gradients are unphysical or grid matrix is ill-conditioned, ABORT solver
-                if !gate_result.downstream_allowed
+                # Keep spectral conditioning as a hard gate; treat physical-gradient failures as warnings.
+                if !gate_result.spectral_conditioning_pass
                     continue
                 end
 
@@ -100,28 +133,29 @@ function execute_campaign_sweep()
 
                 c_theta, c_u, run_status = result
 
-                # Calculate secondary physical stability metrics from the spectral arrays
-                du_dz_base = c_u[2] * 1.0  # Linear shear component from mode 2
-                dtheta_dz_base = c_theta[2] * 1.0
+                status_with_gate = gate_result.physical_gradients_pass ? run_status : string(run_status, " | PhysicalGateWarn")
+                metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
 
-                # Standard Richardson calculation safely guarded against zero shear
-                ri_f_calc = abs(du_dz_base) > 1e-5 ? (9.81 / 293.15) * dtheta_dz_base / (du_dz_base)^2 : -1.37
-
-                # Entropy/Diversity calculations tracking active SVD modes
-                parsed_rank = parse(Int, match(r"Rank=(\d+)", run_status).captures[1])
-                d_eff_calc = 1.14544586 + (parsed_rank * 0.123)
-                chi_n_calc = 3.3695e-33 * (1.0 + sin(t/10))
+                file_date_match = match(r"cases\.(\d+)\.nc$", nc_file)
+                file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
 
                 # Build individual row entry matching your output schemas
                 row_data = DataFrame(
-                    FileDate = match(r"\d+", nc_file).match,
-                    TimeIdx = t,
-                    Ri_f = ri_f_calc,
-                    R_W = parsed_rank > 1 ? 0.024 * parsed_rank : 0.0,
-                    F_W = 0.00166546,
-                    chi_N = chi_n_calc,
-                    D_eff = d_eff_calc,
-                    RunStatus = run_status
+                    FileDate = file_date,
+                    TimeIdx = metrics.time_idx,
+                    Ri_f = metrics.Ri_f,
+                    R_W = metrics.R_W,
+                    F_W = metrics.F_W,
+                    chi_N = metrics.chi_N,
+                    D_eff = metrics.D_eff,
+                    E_total = metrics.E_total,
+                    E_wave = metrics.E_wave,
+                    E_turb = metrics.E_turb,
+                    peak_mode = metrics.peak_mode,
+                    wave_window_min = metrics.wave_window_min,
+                    wave_window_max = metrics.wave_window_max,
+                    peak_in_wave_window = metrics.peak_in_wave_window,
+                    RunStatus = metrics.Status
                 )
                 append!(master_df, row_data)
             end

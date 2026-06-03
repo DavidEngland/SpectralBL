@@ -72,7 +72,8 @@ function clean_by_ncar_quality_flags(ds, target_variable::String, raw_data::Vect
             # Ensure quality bits match flattened data layout length
             diag_bits = vec(ds[diag_var][:])
             if length(diag_bits) == length(raw_data)
-                raw_data[diag_bits .!= 0] .= NaN
+                bad_mask = map(x -> !ismissing(x) && x != 0, diag_bits)
+                raw_data[bad_mask] .= NaN
             end
         end
     # ATI Logic Pass (Levels 10m, 20m, 40m, 55m)
@@ -82,7 +83,8 @@ function clean_by_ncar_quality_flags(ds, target_variable::String, raw_data::Vect
             # Ensure sample sub-counts match flattened data layout length
             samples_count = vec(ds[u_samp_var][:] )
             if length(samples_count) == length(raw_data)
-                raw_data[samples_count .< 10] .= NaN
+                bad_mask = map(x -> !ismissing(x) && x < 10, samples_count)
+                raw_data[bad_mask] .= NaN
             end
         end
     end
@@ -106,13 +108,14 @@ function summarize_conditions(dataset::NetCDFDataset, target_variable::String)::
         end
 
         # FIXED: Enforce safe vector flattening (converts 2D high-rate matrices to clean 1D vectors)
-        raw_data = vec(ds[target_variable][:])
+        # Convert missings to NaN so downstream QC can run on a uniform Float64 array.
+        raw_data = Float64.(coalesce.(vec(ds[target_variable][:]), NaN))
 
         # FIXED: Dynamically clean arrays via NCAR hardware status flags BEFORE processing bounds
         raw_data = clean_by_ncar_quality_flags(ds, target_variable, raw_data)
 
         # NCAR ISFF conventions use -1037.0 to flag missing observations.
-        const NCAR_MISSING_FLAG = -1037.0
+        NCAR_MISSING_FLAG = -1037.0
         is_missing(x) = (x == NCAR_MISSING_FLAG || isnan(x) || ismissing(x))
 
         total_elements = length(raw_data)

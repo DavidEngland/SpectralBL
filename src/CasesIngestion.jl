@@ -1,6 +1,6 @@
 module CasesIngestion
 
-using NCDatasets, LinearAlgebra, UnifiedManifold
+using NCDatasets, LinearAlgebra, Statistics, UnifiedManifold
 
 export ingest_and_project_slice!, project_with_svd_truncation
 
@@ -13,7 +13,7 @@ sensor bounds, and maps the observed fields into a stable manifold projection la
 function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws)
     Dataset(nc_path, "r") do ds
         # Validated instrumentation heights from EOL tower layout
-        z_obs = [1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0]
+        z_obs = [1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 55.0]
         M_obs = length(z_obs)
         
         θ_slice = zeros(Float64, M_obs)
@@ -27,15 +27,31 @@ function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws)
                 t_key = haskey(ds, "tc_" * h_str) ? "tc_" * h_str : (haskey(ds, "T_" * h_str) ? "T_" * h_str : error("Missing T"))
                 u_key = haskey(ds, "u_" * h_str) ? "u_" * h_str : (haskey(ds, "U_" * h_str) ? "U_" * h_str : error("Missing U"))
 
-                raw_θ = ds[t_key][t_idx]
-                raw_u = ds[u_key][t_idx]
+                t_var = ds[t_key]
+                u_var = ds[u_key]
 
-                if ismissing(raw_θ) || ismissing(raw_u)
-                    error("Dropout at $h_str")
+                if ndims(t_var) == 1
+                    raw_θ = t_var[t_idx]
+                    raw_u = u_var[t_idx]
+                    if ismissing(raw_θ) || ismissing(raw_u)
+                        error("Dropout at $h_str")
+                    end
+                    θ_slice[i] = Float64(raw_θ)
+                    u_slice[i] = Float64(raw_u)
+                else
+                    θ_col = t_var[:, t_idx]
+                    u_col = u_var[:, t_idx]
+
+                    valid_θ = filter(x -> !ismissing(x) && x != -1037.0 && !isnan(Float64(x)), θ_col)
+                    valid_u = filter(x -> !ismissing(x) && x != -1037.0 && !isnan(Float64(x)), u_col)
+
+                    if isempty(valid_θ) || isempty(valid_u)
+                        error("Dropout at $h_str")
+                    end
+
+                    θ_slice[i] = mean(Float64.(valid_θ))
+                    u_slice[i] = mean(Float64.(valid_u))
                 end
-
-                θ_slice[i] = Float64(raw_θ)
-                u_slice[i] = Float64(raw_u)
             end
         catch e
             return nothing, nothing, "Sensor Dropout Detected"

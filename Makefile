@@ -15,14 +15,8 @@ endif
 
 # Find ALL netcdf day files available in your folder for bulk runs
 ALL_NC_FILES := $(wildcard $(REPORT_DIR)/cases.9910*.nc)
+CAMPAIGN_DAYS := $(patsubst $(REPORT_DIR)/cases.%.nc,%,$(ALL_NC_FILES))
 
-
-# 2. Dynamic metaprogramming rule mapping each day to an isolated runtime pipeline
-$(CAMPAIGN_DAYS): setup
-	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$$@ ---"
-	JULIA_LOAD_PATH="src:@:@v#.#" julia --project="." scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
-	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$$@ ---"
-	julia --project="." scripts/Report.jl $@
 
 .PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel $(CAMPAIGN_DAYS)
 
@@ -34,7 +28,9 @@ run-all-parallel: $(CAMPAIGN_DAYS)
 # 2. Dynamic metaprogramming rule mapping each day to an isolated runtime pipeline
 $(CAMPAIGN_DAYS): setup
 	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$$@ ---"
-	julia --project="." scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
+	JULIA_LOAD_PATH="src:@:@v#.#" julia --project="." scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
+	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$$@ ---"
+	julia --project="." scripts/Report.jl $@
 
 # Default target orchestrates the entire localized lifecycle
 all: setup validate run report
@@ -53,7 +49,7 @@ validate: setup
 
 # 2. Production Execution Layer: Runs the pipeline (FIXED: Passes INPUT_NC dynamically)
 run: setup
-	julia --project="." scripts/RunCampaignPipeline.jl $(INPUT_NC)
+	JULIA_LOAD_PATH="src:@:@v#.#" julia --project="." scripts/RunCampaignPipeline.jl $(INPUT_NC)
 
 # 3. Diagnostics Layer: Executes your new reporting logic, targeting the EOL directory
 report: setup

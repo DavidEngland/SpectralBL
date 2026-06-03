@@ -11,10 +11,17 @@ struct HighFidelityRecord{T<:AbstractFloat}
     F_W::T
     chi_N::T
     D_eff::T
+    E_total::T
+    E_wave::T
+    E_turb::T
+    peak_mode::Int
+    wave_window_min::Int
+    wave_window_max::Int
+    peak_in_wave_window::Bool
     Status::String
 end
 
-function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0) where {T<:AbstractFloat}
+function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0, wave_threshold = 0.1) where {T<:AbstractFloat}
     N = ws.N
     D_manifold = N + 1 # Dynamic manifold length target (33)
     
@@ -55,6 +62,15 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     end
     D_eff = exp(entropy)
 
+    # Wave-window coverage QA: verify dominant modal energy falls in active psi_W support.
+    modal_energy = c_theta.^2 .+ c_u.^2
+    peak_mode = argmax(modal_energy) - 1
+    active_modes = findall(x -> x >= wave_threshold, ws.psi_W)
+    wave_window_min = isempty(active_modes) ? -1 : minimum(active_modes) - 1
+    wave_window_max = isempty(active_modes) ? -1 : maximum(active_modes) - 1
+    peak_in_wave_window = !isempty(active_modes) && (peak_mode >= wave_window_min) && (peak_mode <= wave_window_max)
+    status_out = peak_in_wave_window ? status_str : string(status_str, " | PeakOutsidePsiW")
+
     c_θ_loc = c_theta .- c_θ_W
     c_u_loc = c_u .- c_u_W
     
@@ -74,7 +90,22 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     shear_sq = du_dz_profile[end]^2
     Ri_f = shear_sq > 1e-6 ? (g / theta_ref) * dtheta_dz_profile[end] / shear_sq : 0.5
 
-    return HighFidelityRecord{T}(time_idx, Ri_f, R_W, F_W, chi_N, D_eff, status_str)
+    return HighFidelityRecord{T}(
+        time_idx,
+        Ri_f,
+        R_W,
+        F_W,
+        chi_N,
+        D_eff,
+        E_tot,
+        E_W,
+        E_T,
+        peak_mode,
+        wave_window_min,
+        wave_window_max,
+        peak_in_wave_window,
+        status_out,
+    )
 end
 
 end

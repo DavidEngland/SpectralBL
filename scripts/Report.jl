@@ -51,7 +51,45 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
         xlabel = "Time Index", ylabel = "F_W",
         linewidth = 2, legend = false)
 
+    extra_plots = Tuple{String, Any}[]
+    if hasproperty(traj, :E_wave) && hasproperty(traj, :E_total)
+        p_energy_components = plot(
+            traj.TimeIdx,
+            [traj.E_wave traj.E_total],
+            title = "CASES-99 Energy Components ($day_suffix)",
+            xlabel = "Time Index",
+            ylabel = "Energy",
+            linewidth = 2,
+            label = ["E_wave" "E_total"],
+            legend = :topright,
+        )
+        push!(extra_plots, ("energy_components", p_energy_components))
+    end
+
+    if hasproperty(traj, :peak_in_wave_window)
+        peak_flags = Int.(traj.peak_in_wave_window)
+        p_wave_window = plot(
+            traj.TimeIdx,
+            peak_flags,
+            title = "Wave Window Coverage QA ($day_suffix)",
+            xlabel = "Time Index",
+            ylabel = "Peak In psi_W",
+            linewidth = 2,
+            ylims = (-0.05, 1.05),
+            yticks = ([0, 1], ["No", "Yes"]),
+            legend = false,
+        )
+        push!(extra_plots, ("wave_window_coverage", p_wave_window))
+    end
+
     for (name, fig) in (("tier1_plane1", p_energy), ("tier1_plane2", p_curv), ("temporal_trace", p_time))
+        savefig(fig, joinpath(output_dir, name * day_suffix * ".png"))
+        savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
+        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".png"))
+        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".pdf"))
+    end
+
+    for (name, fig) in extra_plots
         savefig(fig, joinpath(output_dir, name * day_suffix * ".png"))
         savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
         savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".png"))
@@ -73,7 +111,7 @@ function run_diagnostic_pipeline(output_dir::String)
     # 2. Instantiate the Workspace with the corrected alpha_stretch (0.05)
     N = 32
     z_0m = 1.5
-    z_top = 50.0
+    z_top = 55.0
     alpha_stretch = 0.05
 
     ws = UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch)
