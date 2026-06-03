@@ -2,6 +2,7 @@ using DataFrames
 using CSV
 using Plots
 using LinearAlgebra
+using LaTeXStrings  # Required for rendering clean italicized math notation on plots
 
 # 1. Include and use your source module from src/
 include("../src/Cases99.jl")
@@ -34,21 +35,25 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
     # Backward compatibility: older runs store Richardson as Ri_f only.
     ri_series = hasproperty(traj, :Ri_g) ? traj.Ri_g : traj.Ri_f
 
+    # --- UPDATED: Publication-grade axes labels using LaTeXStrings (L"...") ---
     p_energy = scatter(traj.D_eff, traj.F_W,
         title = "CASES-99 Diagnostics: Energy-Dimension Plane",
-        xlabel = "Effective Dimension (D_eff)", ylabel = "Wave Energy Fraction (F_W)",
+        xlabel = L"Effective Modal Dimension ($D_{\mathrm{eff}}$)",
+        ylabel = L"Wave Energy Fraction ($F_W$)",
         markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
         legend = false)
 
     p_curv = scatter(traj.chi_N, ri_series,
         title = "CASES-99 Diagnostics: Curvature-Stratification Plane",
-        xlabel = "Spectral Curvature (χ_N)", ylabel = "Gradient Richardson (Ri_g)",
+        xlabel = L"Spectral Curvature ($\chi_N$)",
+        ylabel = L"Gradient Richardson Number ($\mathrm{Ri}_g$)",
         markersize = 4, markerstrokewidth = 0.7, alpha = 0.85,
         legend = false)
 
     p_time = plot(traj.TimeIdx, traj.F_W,
         title = "CASES-99 Temporal Feature Trace ($day_suffix)",
-        xlabel = "Time Index", ylabel = "Wave Energy Fraction (F_W)",
+        xlabel = "Time Index",
+        ylabel = L"Wave Energy Fraction ($F_W$)",
         linewidth = 2, legend = false)
 
     extra_plots = Tuple{String, Any}[]
@@ -58,9 +63,9 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suff
             [traj.E_wave traj.E_total],
             title = "CASES-99 Energy Components ($day_suffix)",
             xlabel = "Time Index",
-            ylabel = "Energy",
+            ylabel = "Spectral Energy Density",
             linewidth = 2,
-            label = ["E_wave" "E_total"],
+            label = [L"$\mathcal{E}_{\mathrm{wave}}$" L"$\mathcal{E}_{\mathrm{total}}$"], # Beautiful curly calligraphic E
             legend = :topright,
         )
         push!(extra_plots, ("energy_components", p_energy_components))
@@ -105,7 +110,6 @@ function run_diagnostic_pipeline(output_dir::String)
     println("Target directory verified: ", output_dir)
 
     # --- DYNAMIC ARGS CAPTURE: Detect campaign day from Makefile line ---
-    # Example: If 'make' passes '991024', day_suffix becomes '_991024'
     day_suffix = length(ARGS) >= 1 ? "_" * ARGS[1] : ""
 
     # 2. Instantiate the Workspace with the corrected alpha_stretch (0.05)
@@ -129,17 +133,18 @@ function run_diagnostic_pipeline(output_dir::String)
     CSV.write(csv_path, df)
     println("✓ Diagnostics CSV saved to: ", csv_path)
 
-    # --- STEP 2: Generate Plots ---
+    # --- STEP 2: Generate Geometry and Filter Partition Plots ---
+    # Using L"..." for math coordination across the subplots
     p1 = plot(ws.xi_target, ws.z_atm, marker=:circle, linewidth=2,
-              title="Hyperbolic Mapping (α = $alpha_stretch)",
-              xlabel="Computational Coordinate (ξ)", ylabel="Physical Height z (m)",
+              title=L"Hyperbolic Mapping ($\alpha = 0.05$)",
+              xlabel=L"Computational Coordinate ($\xi$)", ylabel="Physical Height z (m)",
               label="Grid Nodes", legend=:topleft,
               left_margin=16Plots.mm, bottom_margin=8Plots.mm)
 
     p2 = plot(0:ws.N, [ws.psi_M ws.psi_W ws.psi_T], linewidth=2.5,
               title="Spectral Partitioning Windows",
-              xlabel="Chebyshev Mode Index (n)", ylabel="Filter Weight (ψ)",
-              label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright,
+              xlabel="Chebyshev Mode Index (n)", ylabel=L"Filter Weight ($\psi$)",
+              label=[L"Meso ($\psi_M$)" L"Wave ($\psi_W$)" L"Turb ($\psi_T$)"], legend=:topright,
               left_margin=10Plots.mm, bottom_margin=8Plots.mm)
 
     plot_path_png = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).png")
@@ -171,7 +176,6 @@ function run_diagnostic_pipeline(output_dir::String)
     min_dz = minimum(dz_vector)
     max_dz = maximum(dz_vector)
 
-    # Injecting computed metrics safely using string concatenation around raw blocks
     report_content = raw"""# Comprehensive Manifold Diagnostic & Campaign Report
 **Target Directory:** `""" * output_dir * raw"""`
 **Campaign Context:** NCAR EOL DEE0099881 (CASES-99 Stable Boundary Layer Lifecycle)
