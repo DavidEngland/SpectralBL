@@ -7,7 +7,7 @@ using LinearAlgebra
 include("../src/Cases99.jl")
 using .UnifiedManifold: UnifiedManifoldWorkspace, physical_to_computational
 
-function generate_tier_plots(output_dir::String, draft_fig_dir::String)
+function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suffix::String)
     trajectory_path = joinpath("data", "diagnostic_trajectory.csv")
     if !isfile(trajectory_path)
         println("! Skipping tier plot regeneration: missing ", trajectory_path)
@@ -18,6 +18,17 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String)
     if nrow(traj) == 0
         println("! Skipping tier plot regeneration: empty trajectory CSV")
         return
+    end
+
+    # If processing a bulk run, filter rows matching the active campaign day target
+    if !isempty(day_suffix) && hasproperty(traj, :FileDate)
+        # Match string or integer representation depending on how it was stored
+        target_day = replace(day_suffix, "_" => "")
+        traj = filter(row -> string(row.FileDate) == target_day, traj)
+        if nrow(traj) == 0
+            println("! No trajectory records match day $target_day. Skipping tier plots.")
+            return
+        end
     end
 
     # Backward compatibility: older runs store Richardson as Ri_f only.
@@ -36,24 +47,28 @@ function generate_tier_plots(output_dir::String, draft_fig_dir::String)
         legend = false)
 
     p_time = plot(traj.TimeIdx, traj.F_W,
-        title = "CASES-99 Temporal Feature Trace",
+        title = "CASES-99 Temporal Feature Trace ($day_suffix)",
         xlabel = "Time Index", ylabel = "F_W",
         linewidth = 2, legend = false)
 
     for (name, fig) in (("tier1_plane1", p_energy), ("tier1_plane2", p_curv), ("temporal_trace", p_time))
-        savefig(fig, joinpath(output_dir, name * ".png"))
-        savefig(fig, joinpath(output_dir, name * ".pdf"))
-        savefig(fig, joinpath(draft_fig_dir, name * ".png"))
-        savefig(fig, joinpath(draft_fig_dir, name * ".pdf"))
+        savefig(fig, joinpath(output_dir, name * day_suffix * ".png"))
+        savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
+        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".png"))
+        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".pdf"))
     end
 
-    println("✓ Tier diagnostic figures regenerated from: ", trajectory_path)
+    println("✓ Tier diagnostic figures regenerated with suffix '$day_suffix' from: ", trajectory_path)
 end
 
 function run_diagnostic_pipeline(output_dir::String)
-    # 1. Ensure the directory exists
+    # 1. Ensure the target directory exists
     mkpath(output_dir)
     println("Target directory verified: ", output_dir)
+
+    # --- DYNAMIC ARGS CAPTURE: Detect campaign day from Makefile line ---
+    # Example: If 'make' passes '991024', day_suffix becomes '_991024'
+    day_suffix = length(ARGS) >= 1 ? "_" * ARGS[1] : ""
 
     # 2. Instantiate the Workspace with the corrected alpha_stretch (0.05)
     N = 32
@@ -64,7 +79,7 @@ function run_diagnostic_pipeline(output_dir::String)
     ws = UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch)
 
     # --- STEP 1: Generate Diagnostics CSV ---
-    csv_path = joinpath(output_dir, "manifold_diagnostics.csv")
+    csv_path = joinpath(output_dir, "manifold_diagnostics$(day_suffix).csv")
     df = DataFrame(
         Node_Index = 0:ws.N,
         Grid_Z_m = ws.z_atm,
@@ -89,8 +104,8 @@ function run_diagnostic_pipeline(output_dir::String)
               label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright,
               left_margin=10Plots.mm, bottom_margin=8Plots.mm)
 
-    plot_path_png = joinpath(output_dir, "manifold_geometry_plots.png")
-    plot_path_pdf = joinpath(output_dir, "manifold_geometry_plots.pdf")
+    plot_path_png = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).png")
+    plot_path_pdf = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).pdf")
     combined_plot = plot(p1, p2, layout=(1, 2), size=(1240, 520), left_margin=14Plots.mm, bottom_margin=8Plots.mm)
     savefig(combined_plot, plot_path_png)
     savefig(combined_plot, plot_path_pdf)
@@ -100,21 +115,21 @@ function run_diagnostic_pipeline(output_dir::String)
     # Keep manuscript figure assets in sync with latest report output.
     draft_fig_dir = joinpath("data", "drafts", "figures")
     mkpath(draft_fig_dir)
-    draft_png = joinpath(draft_fig_dir, "manifold_geometry_plots.png")
-    draft_pdf = joinpath(draft_fig_dir, "manifold_geometry_plots.pdf")
+    draft_png = joinpath(draft_fig_dir, "manifold_geometry_plots$(day_suffix).png")
+    draft_pdf = joinpath(draft_fig_dir, "manifold_geometry_plots$(day_suffix).pdf")
     savefig(combined_plot, draft_png)
     savefig(combined_plot, draft_pdf)
     println("✓ Draft figure assets refreshed: ", draft_png)
     println("✓ Draft figure assets refreshed: ", draft_pdf)
 
-    generate_tier_plots(output_dir, draft_fig_dir)
+    generate_tier_plots(output_dir, draft_fig_dir, day_suffix)
 
     # --- STEP 3: Generate Expanded Summary Markdown Report ---
-    report_path = joinpath(output_dir, "manifold_summary_report.md")
+    report_path = joinpath(output_dir, "manifold_summary_report$(day_suffix).md")
 
     # Dynamic Metric Calculations
     cond_number = cond(ws.Manifold_Mass)
-    dz_vector = [ws.z_atm[i] - ws.z_atm[i+1] for i in 1:ws.N] # Nodes ordered from z_top down to z_0m
+    dz_vector = [ws.z_atm[i] - ws.z_atm[i+1] for i in 1:ws.N]
     min_dz = minimum(dz_vector)
     max_dz = maximum(dz_vector)
 
@@ -122,12 +137,13 @@ function run_diagnostic_pipeline(output_dir::String)
     report_content = raw"""# Comprehensive Manifold Diagnostic & Campaign Report
 **Target Directory:** `""" * output_dir * raw"""`
 **Campaign Context:** NCAR EOL DEE0099881 (CASES-99 Stable Boundary Layer Lifecycle)
+**Campaign Day Identifier:** 19""" * replace(day_suffix, "_" => "") * raw"""
 **Numerical Framework:** Non-uniform Riemannian Pseudospectral Mapping ($T_n(\xi)$)
 
 ---
 
 ## 1. What This Data Is
-This report analyzes the spatial and spectral initialization of the `UnifiedManifoldWorkspace` tailored for the Cooperative Atmosphere-Surface Exchange Study-1999 (CASES-99). The companion file `manifold_diagnostics.csv` contains the discrete node locations ($z$) and the partition-of-unity spectral filter weights ($\psi$) for $N = 32$ modes.
+This report analyzes the spatial and spectral initialization of the `UnifiedManifoldWorkspace` tailored for the Cooperative Atmosphere-Surface Exchange Study-1999 (CASES-99). The companion file `manifold_diagnostics""" * day_suffix * raw""".csv` contains the discrete node locations ($z$) and the partition-of-unity spectral filter weights ($\psi$) for $N = 32$ modes.
 
 The physical domain maps an instrumented tower layout starting at **$z_{0m} = 1.5\text{ m}$** (surface flux layer) up to **$z_{top} = 50.0\text{ m}$** (top of the micro-meteorological tower).
 
@@ -185,5 +201,5 @@ Currently, the system uses standard Chebyshev polynomials ($\lambda = 1/2$). Mov
     println("✓ Summary Markdown report written to: ", report_path)
 end
 
-# Execute the pipeline for your specific directory
+# Execute the pipeline and point directly to your primary campaign destination folder
 run_diagnostic_pipeline("reports/ncar_eol_dee0099881")

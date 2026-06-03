@@ -16,8 +16,13 @@ endif
 # Find ALL netcdf day files available in your folder for bulk runs
 ALL_NC_FILES := $(wildcard $(REPORT_DIR)/cases.9910*.nc)
 
-# Extract only the 6-digit date string from every available .nc file
-CAMPAIGN_DAYS := $(patsubst $(REPORT_DIR)/cases.%.nc,%,$(wildcard $(REPORT_DIR)/cases.99*.nc))
+
+# 2. Dynamic metaprogramming rule mapping each day to an isolated runtime pipeline
+$(CAMPAIGN_DAYS): setup
+	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$$@ ---"
+	JULIA_LOAD_PATH="src:@:@v#.#" julia --project="." scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
+	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$$@ ---"
+	julia --project="." scripts/Report.jl $@
 
 .PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel $(CAMPAIGN_DAYS)
 
@@ -77,6 +82,6 @@ clean:
 	rm -f $(SCHEMA_DEF)
 	rm -f data/wave_reflection_test.png
 	rm -f data/wave_reflection_metrics.csv
-	rm -f $(REPORT_DIR)/manifold_geometry_plots.png
-	rm -f $(REPORT_DIR)/manifold_summary_report.md
-	@echo "✓ Transient artifacts cleared. Raw field data preserved."
+	rm -f $(REPORT_DIR)/manifold_geometry_plots*.png
+	rm -f $(REPORT_DIR)/manifold_summary_report*.md
+	@echo "✓ All transient artifacts cleared. Raw field data preserved."

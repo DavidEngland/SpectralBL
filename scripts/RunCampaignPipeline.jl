@@ -1,7 +1,15 @@
-# Tell Julia to look inside the local src/ folder for development modules
-push!(LOAD_PATH, joinpath(@__DIR__, "..", "src"))
+# scripts/RunCampaignPipeline.jl
 
-using AtmosphericDataPipeline  # Your newly engineered quality-gate module
+# 1. Force-load the module source file explicitly before bringing the namespace into scope
+const MODULE_SRC = joinpath(@__DIR__, "..", "src", "Summary.jl")
+if isfile(MODULE_SRC)
+    include(MODULE_SRC)
+else
+    error("Pipeline aborted: Core module source file missing at $MODULE_SRC")
+end
+
+# 2. Bring your module and the rest of your development environment into scope
+using .AtmosphericDataPipeline  # Note the leading dot (.) which indicates a locally included module namespace
 using CasesIngestion
 using UnifiedManifold
 using ProgressMeter, CSV, DataFrames, NCDatasets, Statistics
