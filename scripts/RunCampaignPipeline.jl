@@ -27,7 +27,7 @@ const CAMPAIGN_WORKSPACE = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05)
 
 function execute_campaign_sweep()
     data_dir = "data/ncar_eol_dee0099881"
-    output_csv = "data/diagnostic_trajectory.csv"
+    output_csv = ""
 
     # Define the exact physical height array mapping to your NetCDF sonic names
     heights = [1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 55.0]
@@ -51,6 +51,17 @@ function execute_campaign_sweep()
     if isempty(nc_files)
         error("No campaign files found in $data_dir. Check paths.")
     end
+
+    # Resolve output shard path from the explicit file argument when present.
+    # This avoids cross-process collisions during parallel Makefile execution.
+    function resolve_output_csv_path(nc_files::Vector{String})
+        date_source = !isempty(ARGS) ? basename(ARGS[1]) : basename(nc_files[1])
+        file_date_match = match(r"cases\.(\d+)\.nc$", date_source)
+        file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
+        return joinpath(@__DIR__, "..", "data", "trajectory_$(file_date).csv")
+    end
+
+    output_csv = resolve_output_csv_path(nc_files)
     
     println("Beginning processing sweep over $(length(nc_files)) daily target logs...")
     master_df = DataFrame()
@@ -111,8 +122,13 @@ function execute_campaign_sweep()
                     push!(u_profile, u_val)
                 end
 
-                # Skip slice entirely if the raw vector profiling contains corrupted NaN fields
-                if any(isnan, theta_profile) || any(isnan, u_profile); continue; end
+                # Preserve row-wise usable levels: keep valid heights and only skip if too few remain.
+                valid_level_mask = .!isnan.(theta_profile) .& .!isnan.(u_profile)
+                if count(valid_level_mask) < 3
+                    continue
+                end
+                heights_valid = heights[valid_level_mask]
+                theta_profile_valid = theta_profile[valid_level_mask]
 
                 # --- INTERCEPT: Evaluate via the AtmosphericDataPipeline Quality Gate ---
                 # Check for alternative available upper boundary channels if u_55m is entirely missing
@@ -132,16 +148,17 @@ function execute_campaign_sweep()
                 gate_result = run_validation_gate(
                     pipeline_dataset,
                     top_stream_var_name,
-                    heights,
-                    theta_profile;
+                    heights_valid,
+                    theta_profile_valid;
                     signal=u_top_stream,
                     N=32,
                     α_stretch=0.05,
                     spike_threshold=3.5
                 )
 
-                # Keep spectral conditioning as a hard gate; treat physical-gradient failures as warnings.
-                if !gate_result.spectral_conditioning_pass
+                # Preserve PhysicalGateWarn rows for synoptic analysis even when spectral conditioning is weak.
+                # Only drop rows when spectral conditioning fails without a physical-gradient warning.
+                if !gate_result.spectral_conditioning_pass && gate_result.physical_gradients_pass
                     continue
                 end
 
@@ -155,15 +172,18 @@ function execute_campaign_sweep()
                 metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
 
                 # --- ADAPTIVE INTERCEPT HOOK ---
-                f_w_adaptive, peak_m, n_min_eff, in_window, run_log = calculate_adaptive_wave_fraction(
+                f_w_adaptive, peak_m, n_min_eff, in_window, _run_log = calculate_adaptive_wave_fraction(
                     CAMPAIGN_WORKSPACE,
                     c_u,
                     metrics.D_eff;
                     alpha_floor=1.5
                 )
 
-                # Merge the quality gate warning flags back into the updated adaptive status string
-                final_status = gate_result.physical_gradients_pass ? run_log : string(run_log, " | PhysicalGateWarn")
+                # Preserve projection rank/conditioning status and append adaptive window diagnostics.
+                final_status = status_with_gate
+                if !in_window && !occursin("PeakOutsidePsiW", final_status)
+                    final_status = string(final_status, " | PeakOutsidePsiW")
+                end
 
                 file_date_match = match(r"cases\.(\d+)\.nc$", nc_file)
                 file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
@@ -191,14 +211,6 @@ function execute_campaign_sweep()
         end
     end
     
-    # Save clean, non-stationary continuous profiles to your CSV artifact
-    # Extract the file prefix directly from the loop-level 'nc_file' string
-    file_date_match = match(r"cases\.(\d+)\.nc$", basename(nc_files[1]))
-    file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
-
-    # Force a unique output CSV name per day so parallel tasks never overlap
-    output_csv = joinpath("data", "trajectory_$(file_date).csv")
-
     # Save clean daily profiles to its own unique shard
     CSV.write(output_csv, master_df)
     println("\n✓ Successfully finalized trajectory tracking. Data compiled in: $output_csv")

@@ -19,13 +19,9 @@ else
 endif
 
 # Find ALL NetCDF day files available in your folder for bulk runs
-# Change to a relative wildcard path context to ensure robust shell evaluation
-ALL_NC_FILES := $(wildcard data/ncar_eol_dee0099881/cases.9910*.nc)
-$(CAMPAIGN_DAYS):
-	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$@ ---"
-	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunCampaignPipeline.jl $(DATA_DIR)/ncar_eol_dee0099881/cases.$@.nc
-	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$@ ---"
-	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/Report.jl $@
+# Use absolute-rooted paths and derive day IDs from filenames
+ALL_NC_FILES := $(wildcard $(DATA_DIR)/ncar_eol_dee0099881/cases.9910*.nc)
+CAMPAIGN_DAYS := $(sort $(patsubst $(DATA_DIR)/ncar_eol_dee0099881/cases.%.nc,%,$(ALL_NC_FILES)))
 
 # Declare all symbolic, execution-only macro endpoints safely
 .PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel $(CAMPAIGN_DAYS)
@@ -51,7 +47,7 @@ run-all-parallel: setup
 # FIXED: Removed the direct dependency on 'setup' to prevent parallel directory creation races.
 $(CAMPAIGN_DAYS):
 	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$@ ---"
-	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunCampaignPipeline.jl $(REPORT_DIR)/cases.$@.nc
+	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunCampaignPipeline.jl $(DATA_DIR)/ncar_eol_dee0099881/cases.$@.nc
 	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$@ ---"
 	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/Report.jl $@
 
@@ -96,13 +92,19 @@ test:
 
 # 5. Idempotency Maintenance: SAFE CLEAN
 clean:
-	rm -f $(DATA_DIR)/*_trajectory.csv
+	rm -f $(DATA_DIR)/trajectory_*.csv
+	rm -f $(DATA_DIR)/diagnostic_trajectory.csv
 	rm -f $(SCHEMA_DEF)
 	rm -f $(DATA_DIR)/wave_reflection_test.png
+	rm -f $(DATA_DIR)/wave_reflection_test.pdf
 	rm -f $(DATA_DIR)/wave_reflection_metrics.csv
+	rm -f $(DATA_DIR)/synoptic_run.log
 	rm -f $(REPORT_DIR)/manifold_geometry_plots*.png
 	rm -f $(REPORT_DIR)/manifold_geometry_plots*.pdf
 	rm -f $(REPORT_DIR)/manifold_summary_report*.md
+	rm -f $(REPORT_DIR)/campaign_synoptic_evolution*.png
+	rm -f $(REPORT_DIR)/campaign_synoptic_evolution*.pdf
+	rm -f $(REPORT_DIR)/synoptic_campaign_audit*.md
 	rm -f $(DATA_DIR)/drafts/figures/manifold_geometry_plots*.png
 	rm -f $(DATA_DIR)/drafts/figures/manifold_geometry_plots*.pdf
 	@echo "✓ All transient artifacts cleared. Raw field data preserved."

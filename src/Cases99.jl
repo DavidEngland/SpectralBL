@@ -92,7 +92,9 @@ Maps physical heights z directly to computational coordinates ξ ∈ [-1, 1]
 by analytically inverting the hyperbolic compactification profile.
 """
 function physical_to_computational(ws::UnifiedManifoldWorkspace{T}, z_phys::Vector{T}) where {T<:AbstractFloat}
-    z_min = ws.z_atm[1]
+    # z_atm is stored in Chebyshev-node order (descending in physical z);
+    # use the true minimum physical height for stable inverse mapping.
+    z_min = minimum(ws.z_atm)
     xi = zeros(T, length(z_phys))
     for i in eachindex(z_phys)
         num = (z_phys[i] - z_min) * (1.0 + ws.alpha_stretch) - ws.sigma
