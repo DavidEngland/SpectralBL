@@ -1,1 +1,0 @@
-# Comprehensive Manifold Diagnostic Report

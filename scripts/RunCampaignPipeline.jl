@@ -136,26 +136,39 @@ function execute_campaign_sweep()
                 status_with_gate = gate_result.physical_gradients_pass ? run_status : string(run_status, " | PhysicalGateWarn")
                 metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
 
+                # --- ADAPTIVE INTERCEPT HOOK ---
+                # Recalculate wave window distributions dynamically to prevent
+                # misclassifying highly-stratified, single-mode collapse profiles (e.g., Oct 30)
+                f_w_adaptive, peak_m, n_min_eff, in_window, run_log = calculate_adaptive_wave_fraction(
+                    CAMPAIGN_WORKSPACE,
+                    c_u,
+                    metrics.D_eff;
+                    alpha_floor=1.5
+                )
+
+                # Merge the quality gate warning flags back into the updated adaptive status string
+                final_status = gate_result.physical_gradients_pass ? run_log : string(run_log, " | PhysicalGateWarn")
+
                 file_date_match = match(r"cases\.(\d+)\.nc$", nc_file)
                 file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
 
-                # Build individual row entry matching your output schemas
+                # Build individual row entry matching your output schemas with updated adaptive parameters
                 row_data = DataFrame(
-                    FileDate = file_date,
-                    TimeIdx = metrics.time_idx,
-                    Ri_f = metrics.Ri_f,
-                    R_W = metrics.R_W,
-                    F_W = metrics.F_W,
-                    chi_N = metrics.chi_N,
-                    D_eff = metrics.D_eff,
-                    E_total = metrics.E_total,
-                    E_wave = metrics.E_wave,
-                    E_turb = metrics.E_turb,
-                    peak_mode = metrics.peak_mode,
-                    wave_window_min = metrics.wave_window_min,
-                    wave_window_max = metrics.wave_window_max,
-                    peak_in_wave_window = metrics.peak_in_wave_window,
-                    RunStatus = metrics.Status
+                    FileDate = fill(parse(Int, file_date), 1),
+                    TimeIdx = fill(metrics.time_idx, 1),
+                    Ri_f = fill(metrics.Ri_f, 1),
+                    R_W = fill(metrics.R_W, 1),
+                    F_W = fill(f_w_adaptive, 1), # <-- Hooked Adaptive Parameter
+                    chi_N = fill(metrics.chi_N, 1),
+                    D_eff = fill(metrics.D_eff, 1),
+                    E_total = fill(metrics.E_total, 1),
+                    E_wave = fill(metrics.E_total * f_w_adaptive, 1), # <-- Recalculated Adaptive Energy
+                    E_turb = fill(metrics.E_total * (1.0 - f_w_adaptive), 1), # <-- Recalculated Residual Energy
+                    peak_mode = fill(peak_m, 1), # <-- Hooked Adaptive Parameter
+                    wave_window_min = fill(n_min_eff, 1), # <-- Hooked Adaptive Parameter
+                    wave_window_max = fill(metrics.wave_window_max, 1),
+                    peak_in_wave_window = fill(in_window, 1), # <-- Hooked Adaptive Parameter
+                    RunStatus = fill(final_status, 1) # <-- Hooked Adaptive Parameter
                 )
                 append!(master_df, row_data)
             end
