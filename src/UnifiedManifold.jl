@@ -115,6 +115,9 @@ function calculate_adaptive_wave_fraction(ws::UnifiedManifoldWorkspace{T}, c_coe
     c_squared = c_coefficients.^2
     total_energy = sum(c_squared)
 
+    # Identify how many projection modes actually exist in this slice
+    n_modes_available = length(c_coefficients)
+
     # 0-based conversion for peak modal trace identification
     peak_mode = argmax(c_squared) - 1
 
@@ -122,15 +125,13 @@ function calculate_adaptive_wave_fraction(ws::UnifiedManifoldWorkspace{T}, c_coe
     effective_n_min = 2
 
     # --- PHYSICAL SAFETY VALVE REGULATION ---
-    # Under extreme stratification collapse, Mode 1 functions as a monochromatic
-    # internal gravity wave guide rather than baseline regional background shear.
     if d_eff < alpha_floor && peak_mode == 1
         effective_n_min = 1
     end
 
-    # Generate the dynamic partition weights on the fly
+    # Generate the dynamic partition weights safely using available mode limits
     wave_energy = 0.0
-    for i in 1:(ws.N + 1)
+    for i in 1:n_modes_available
         n = i - 1
         # Re-evaluate the smooth partition of unity under the dynamic lower boundary condition
         psi_w_adaptive = 0.5 * (1.0 + tanh((n - effective_n_min) / delta)) * 0.5 * (1.0 - tanh((n - n_w) / delta))

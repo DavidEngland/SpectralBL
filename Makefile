@@ -2,24 +2,30 @@
 # CASES-99 Pipeline Orchestration Engine (Dynamic Data Ingestion)
 # ==============================================================================
 
-# Core Paths - Force absolute path resolution using native GNU Make variable overrides
+# Core Paths - FIXED: Point to data/ for ingestion, and reports/ for diagnostics
 ROOT_DIR     := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-REPORT_DIR   := $(ROOT_DIR)/reports/ncar_eol_dee0099881
 DATA_DIR     := $(ROOT_DIR)/data
+REPORT_DIR   := $(ROOT_DIR)/reports/ncar_eol_dee0099881
 SCHEMA_DEF   := $(DATA_DIR)/cases99_netcdf_schema.txt
 
 # --- DYNAMIC TARGET LOGIC ---
+# FIXED: Change input tracking from REPORT_DIR to DATA_DIR where the raw data lives!
 ifdef DAY
-    INPUT_NC := $(REPORT_DIR)/cases.$(DAY).nc
+    INPUT_NC := $(DATA_DIR)/ncar_eol_dee0099881/cases.$(DAY).nc
     DAY_SUFFIX := $(DAY)
 else
-    INPUT_NC := $(REPORT_DIR)/cases.991031.nc
+    INPUT_NC := $(DATA_DIR)/ncar_eol_dee0099881/cases.991031.nc
     DAY_SUFFIX := 991031
 endif
 
 # Find ALL NetCDF day files available in your folder for bulk runs
-ALL_NC_FILES := $(wildcard $(REPORT_DIR)/cases.9910*.nc)
-CAMPAIGN_DAYS := $(patsubst $(REPORT_DIR)/cases.%.nc,%,$(ALL_NC_FILES))
+# Change to a relative wildcard path context to ensure robust shell evaluation
+ALL_NC_FILES := $(wildcard data/ncar_eol_dee0099881/cases.9910*.nc)
+$(CAMPAIGN_DAYS):
+	@echo "--- [BATCH RUN] Launching Pipeline for Campaign Day: 19$@ ---"
+	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunCampaignPipeline.jl $(DATA_DIR)/ncar_eol_dee0099881/cases.$@.nc
+	@echo "--- [BATCH REPORT] Generating Diagnostics for Campaign Day: 19$@ ---"
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/Report.jl $@
 
 # Declare all symbolic, execution-only macro endpoints safely
 .PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel $(CAMPAIGN_DAYS)

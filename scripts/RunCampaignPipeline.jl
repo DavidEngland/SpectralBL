@@ -23,8 +23,6 @@ using UnifiedManifold
 using ProgressMeter, CSV, DataFrames, NCDatasets, Statistics
 
 # --- FIXED: SBL Compactification Workspace Geometry ---
-# 1. Fixed z_max from 50.0 to 55.0 to align exactly with your top 'u_55m' sonic metadata
-# 2. Hardcoded your paper's exact tuning choice (alpha_stretch = 0.05)
 const CAMPAIGN_WORKSPACE = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05)
 
 function execute_campaign_sweep()
@@ -71,9 +69,23 @@ function execute_campaign_sweep()
 
         # Open dataset frame to safely extract and slice time-dependent arrays
         Dataset(full_nc_path, "r") do ds
-            # Handle both 1D (time) and 2D (sample x time) layouts.
-            u55 = ds["u_55m"]
-            t_steps = ndims(u55) == 1 ? length(u55) : size(u55, 2)
+
+            # --- HARDENED SCHEMA EXTRACTION VALVE ---
+            # Dynamically look for the highest available sonic variable to determine the time step ceiling
+            reference_var = nothing
+            for var_name in reverse(target_vars)
+                if haskey(ds, var_name)
+                    reference_var = ds[var_name]
+                    break
+                end
+            end
+
+            if reference_var === nothing
+                println("⚠️ Warning: No valid target velocity variables found in $nc_file. Skipping file.")
+                return
+            end
+
+            t_steps = ndims(reference_var) == 1 ? length(reference_var) : size(reference_var, 2)
 
             slice_mean(var, t_idx) = begin
                 if ndims(var) == 1
@@ -87,13 +99,13 @@ function execute_campaign_sweep()
             @showprogress "Slicing Profile Timeline: " for t in 1:t_steps
 
                 # --- FIXED: Dynamically build the vertical profiles for this time slice (t) ---
-                # NCAR missing values (-1037.0) are handled safely here via filtering
                 theta_profile = Float64[]
                 u_profile     = Float64[]
 
                 for i in 1:length(heights)
-                    tc_val = slice_mean(ds[tc_vars[i]], t)
-                    u_val  = slice_mean(ds[target_vars[i]], t)
+                    # If the variable exists, extract its slice mean; otherwise assign NaN safely
+                    tc_val = haskey(ds, tc_vars[i])     ? slice_mean(ds[tc_vars[i]], t)     : NaN
+                    u_val  = haskey(ds, target_vars[i]) ? slice_mean(ds[target_vars[i]], t) : NaN
 
                     push!(theta_profile, tc_val)
                     push!(u_profile, u_val)
@@ -103,16 +115,23 @@ function execute_campaign_sweep()
                 if any(isnan, theta_profile) || any(isnan, u_profile); continue; end
 
                 # --- INTERCEPT: Evaluate via the AtmosphericDataPipeline Quality Gate ---
-                # Use the top level stream 'u_55m' slice as our raw sonic spike test input
-                u_top_stream = if ndims(ds["u_55m"]) == 1
-                    [Float64(coalesce(ds["u_55m"][t], NaN))]
+                # Check for alternative available upper boundary channels if u_55m is entirely missing
+                top_stream_var_name = haskey(ds, "u_55m") ? "u_55m" : (haskey(ds, "u_50m") ? "u_50m" : (haskey(ds, "u_30m") ? "u_30m" : nothing))
+
+                if top_stream_var_name === nothing
+                    continue # No functional top anemometer available to test signal quality
+                end
+
+                top_stream_var = ds[top_stream_var_name]
+                u_top_stream = if ndims(top_stream_var) == 1
+                    [Float64(coalesce(top_stream_var[t], NaN))]
                 else
-                    Float64.(coalesce.(vec(ds["u_55m"][:, t]), NaN))
+                    Float64.(coalesce.(vec(top_stream_var[:, t]), NaN))
                 end
 
                 gate_result = run_validation_gate(
                     pipeline_dataset,
-                    "u_55m",
+                    top_stream_var_name,
                     heights,
                     theta_profile;
                     signal=u_top_stream,
@@ -127,7 +146,6 @@ function execute_campaign_sweep()
                 end
 
                 # --- MANIFOLD PROJECTION ---
-                # Invoke your fixed ingestion function passing the valid workspace type
                 result = ingest_and_project_slice!(full_nc_path, t, CAMPAIGN_WORKSPACE)
                 if result === nothing || result[1] === nothing; continue; end
 
@@ -137,8 +155,6 @@ function execute_campaign_sweep()
                 metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
 
                 # --- ADAPTIVE INTERCEPT HOOK ---
-                # Recalculate wave window distributions dynamically to prevent
-                # misclassifying highly-stratified, single-mode collapse profiles (e.g., Oct 30)
                 f_w_adaptive, peak_m, n_min_eff, in_window, run_log = calculate_adaptive_wave_fraction(
                     CAMPAIGN_WORKSPACE,
                     c_u,
@@ -158,17 +174,17 @@ function execute_campaign_sweep()
                     TimeIdx = fill(metrics.time_idx, 1),
                     Ri_f = fill(metrics.Ri_f, 1),
                     R_W = fill(metrics.R_W, 1),
-                    F_W = fill(f_w_adaptive, 1), # <-- Hooked Adaptive Parameter
+                    F_W = fill(f_w_adaptive, 1),
                     chi_N = fill(metrics.chi_N, 1),
                     D_eff = fill(metrics.D_eff, 1),
                     E_total = fill(metrics.E_total, 1),
-                    E_wave = fill(metrics.E_total * f_w_adaptive, 1), # <-- Recalculated Adaptive Energy
-                    E_turb = fill(metrics.E_total * (1.0 - f_w_adaptive), 1), # <-- Recalculated Residual Energy
-                    peak_mode = fill(peak_m, 1), # <-- Hooked Adaptive Parameter
-                    wave_window_min = fill(n_min_eff, 1), # <-- Hooked Adaptive Parameter
+                    E_wave = fill(metrics.E_total * f_w_adaptive, 1),
+                    E_turb = fill(metrics.E_total * (1.0 - f_w_adaptive), 1),
+                    peak_mode = fill(peak_m, 1),
+                    wave_window_min = fill(n_min_eff, 1),
                     wave_window_max = fill(metrics.wave_window_max, 1),
-                    peak_in_wave_window = fill(in_window, 1), # <-- Hooked Adaptive Parameter
-                    RunStatus = fill(final_status, 1) # <-- Hooked Adaptive Parameter
+                    peak_in_wave_window = fill(in_window, 1),
+                    RunStatus = fill(final_status, 1)
                 )
                 append!(master_df, row_data)
             end
@@ -176,6 +192,14 @@ function execute_campaign_sweep()
     end
     
     # Save clean, non-stationary continuous profiles to your CSV artifact
+    # Extract the file prefix directly from the loop-level 'nc_file' string
+    file_date_match = match(r"cases\.(\d+)\.nc$", basename(nc_files[1]))
+    file_date = file_date_match === nothing ? "unknown" : file_date_match.captures[1]
+
+    # Force a unique output CSV name per day so parallel tasks never overlap
+    output_csv = joinpath("data", "trajectory_$(file_date).csv")
+
+    # Save clean daily profiles to its own unique shard
     CSV.write(output_csv, master_df)
     println("\n✓ Successfully finalized trajectory tracking. Data compiled in: $output_csv")
 end
