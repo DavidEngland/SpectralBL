@@ -26,6 +26,12 @@ end
 struct LinearMap <: CoordinateMap
     zmin::Float64
     zmax::Float64
+
+    function LinearMap(zmin::Float64, zmax::Float64)
+        zmin >= zmax && throw(DomainError((zmin, zmax), "LinearMap: zmin must be < zmax"))
+        zmin < 0.0 && throw(DomainError(zmin, "LinearMap: zmin must be ≥ 0"))
+        new(zmin, zmax)
+    end
 end
 forward(m::LinearMap, z)   = 2.0 * (z - m.zmin) / (m.zmax - m.zmin) - 1.0
 inverse(m::LinearMap, ξ)   = m.zmin + (ξ + 1.0) * (m.zmax - m.zmin) / 2.0
@@ -37,22 +43,39 @@ struct HyperbolicMap <: CoordinateMap
     zmin::Float64
     zmax::Float64
     alpha::Float64
+
+    function HyperbolicMap(zmin::Float64, zmax::Float64, alpha::Float64)
+        zmin >= zmax && throw(DomainError((zmin, zmax), "HyperbolicMap: zmin must be < zmax"))
+        zmin < 0.0 && throw(DomainError(zmin, "HyperbolicMap: zmin must be ≥ 0"))
+        alpha <= 0.0 && throw(DomainError(alpha, "HyperbolicMap: α must be > 0"))
+        new(zmin, zmax, alpha)
+    end
 end
+
 function forward(m::HyperbolicMap, z)
     L = m.zmax - m.zmin
-    return ((2.0 + m.alpha) * (z - m.zmin)) / (L + m.alpha * (z - m.zmin)) - 1.0
+    num = 2.0 * (2.0 + m.alpha) * (z - m.zmin)
+    den = 2.0 * L + m.alpha * (z - m.zmin)
+    return (num / den) - 1.0
 end
+
 function inverse(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    return m.zmin + (L * (ξ + 1.0)) / (2.0 + m.alpha * (1.0 - ξ))
+    num = 2.0 * L * (ξ + 1.0)
+    den = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
+    return m.zmin + num / den
 end
+
 function dzdξ(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    return (2.0 * L * (2.0 + m.alpha)) / ((2.0 + m.alpha * (1.0 - ξ))^2)
+    term = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
+    return (4.0 * L * (2.0 + m.alpha)) / (term^2)
 end
+
 function d2zdξ2(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    return (4.0 * L * m.alpha * (2.0 + m.alpha)) / ((2.0 + m.alpha * (1.0 - ξ))^3)
+    term = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
+    return (8.0 * L * m.alpha * (2.0 + m.alpha)) / (term^3)
 end
 
 # ===== 3. LOGARITHMIC MAP =====
@@ -84,6 +107,13 @@ struct TanhMap <: CoordinateMap
     zmin::Float64
     zmax::Float64
     α::Float64
+
+    function TanhMap(zmin::Float64, zmax::Float64, α::Float64)
+        zmin >= zmax && throw(DomainError((zmin, zmax), "TanhMap: zmin must be < zmax"))
+        zmin < 0.0 && throw(DomainError(zmin, "TanhMap: zmin must be ≥ 0"))
+        α <= 0.0 && throw(DomainError(α, "TanhMap: α must be > 0"))
+        new(zmin, zmax, α)
+    end
 end
 function forward(m::TanhMap, z)
     L = m.zmax - m.zmin
@@ -109,14 +139,35 @@ end
 struct CfdWallMap <: CoordinateMap
     ztop::Float64
     δ::Float64
+
+    # Direct validation upon object instantiation
+    function CfdWallMap(ztop::Float64, δ::Float64)
+        if ztop <= 0.0
+            throw(DomainError(ztop, "CfdWallMap: ztop must be > 0"))
+        end
+        if δ <= 0.0
+            throw(DomainError(δ, "CfdWallMap: δ must be > 0"))
+        end
+        new(ztop, δ)
+    end
 end
+
 function forward(m::CfdWallMap, z)
     arg = clamp((1.0 - z / m.ztop) * tanh(m.δ), -0.9999999999999, 0.9999999999999)
-    return 1.0 - (1.0 / m.δ) * atanh(arg)
+    return 1.0 - (2.0 / m.δ) * atanh(arg)
 end
-inverse(m::CfdWallMap, ξ) = m.ztop * (1.0 - tanh(m.δ * (1.0 - ξ)) / tanh(m.δ))
-dzdξ(m::CfdWallMap, ξ)    = m.ztop * (m.δ / tanh(m.δ)) * (sech(m.δ * (1.0 - ξ)))^2
-d2zdξ2(m::CfdWallMap, ξ)  = -2.0 * m.ztop * (m.δ^2 / tanh(m.δ)) * (sech(m.δ * (1.0 - ξ)))^2 * tanh(m.δ * (1.0 - ξ))
+
+function inverse(m::CfdWallMap, ξ)
+    return m.ztop * (1.0 - tanh(0.5 * m.δ * (1.0 - ξ)) / tanh(m.δ))
+end
+
+function dzdξ(m::CfdWallMap, ξ)
+    return m.ztop * (0.5 * m.δ / tanh(m.δ)) * (sech(0.5 * m.δ * (1.0 - ξ)))^2
+end
+
+function d2zdξ2(m::CfdWallMap, ξ)
+    return -m.ztop * (0.5 * m.δ^2 / tanh(m.δ)) * (sech(0.5 * m.δ * (1.0 - ξ)))^2 * tanh(0.5 * m.δ * (1.0 - ξ))
+end
 
 # ===== 6. CUSTOM MAP =====
 struct CustomMap{F, G, H, K} <: CoordinateMap
@@ -131,37 +182,8 @@ dzdξ(m::CustomMap, ξ)      = m.dzdξ_fn(ξ)
 d2zdξ2(m::CustomMap, ξ)    = m.d2zdξ2_fn(ξ)
 
 # ===== VALIDATION & ERROR HANDLING =====
-function is_valid(m::LinearMap)
-    m.zmin >= m.zmax && throw(DomainError((m.zmin, m.zmax), "LinearMap: zmin must be < zmax"))
-    m.zmin < 0 && throw(DomainError(m.zmin, "LinearMap: zmin must be ≥ 0"))
-    return true
-end
-
-function is_valid(m::HyperbolicMap)
-    is_valid(LinearMap(m.zmin, m.zmax))
-    m.alpha <= 0 && throw(DomainError(m.alpha, "HyperbolicMap: α must be > 0"))
-    return true
-end
-
-function is_valid(m::LogarithmicMap)
-    is_valid(LinearMap(m.zmin, m.zmax))
-    m.zmin <= 0 && throw(DomainError(m.zmin, "LogarithmicMap: zmin must be > 0"))
-    return true
-end
-
-function is_valid(m::TanhMap)
-    is_valid(LinearMap(m.zmin, m.zmax))
-    m.α <= 0 && throw(DomainError(m.α, "TanhMap: α must be > 0"))
-    return true
-end
-
-function is_valid(m::CfdWallMap)
-    m.ztop <= 0 && throw(DomainError(m.ztop, "CfdWallMap: ztop must be > 0"))
-    m.δ <= 0 && throw(DomainError(m.δ, "CfdWallMap: δ must be > 0"))
-    return true
-end
-
-is_valid(m::CustomMap) = true
+# Fallback checks hook cleanly into type constructors where possible
+is_valid(m::CoordinateMap) = true
 
 # ===== UTILITY FUNCTIONS & STACK COMPOSITION =====
 function profile_transform(m::CoordinateMap, z_profile::Vector{Float64})
@@ -181,7 +203,7 @@ struct JacobianStack
     end
 end
 
-function evaluate_jacobian_stack(stack::JacobianStack, z::Float64)
+function evaluate_jacobian_stack(stack::JacobianStack; z::Float64)
     coords = Vector{Float64}(undef, length(stack.maps) + 1)
     coords[1] = z
     for i in 1:length(stack.maps)
