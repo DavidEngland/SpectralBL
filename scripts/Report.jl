@@ -100,7 +100,8 @@ function run_diagnostic_pipeline(output_dir::String)
     z_top = 55.0
     alpha_stretch = 0.05
 
-    ws = UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch)
+    # Inside your test/production execution script:
+    ws = UnifiedManifoldWorkspace(32, 1.5, 1071.5, 2.5; n_m=10, n_w=20, delta=1.2)
 
     # --- STEP 1: Generate Diagnostics CSV ---
     csv_path = joinpath(output_dir, "manifold_diagnostics$(day_suffix).csv")

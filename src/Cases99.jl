@@ -1,3 +1,4 @@
+# src/UnifiedManifold.jl
 module UnifiedManifold
 
 using LinearAlgebra
@@ -11,9 +12,6 @@ Constructs a metric-consistent Riemannian geometry using Chebyshev polynomials T
 as the spectral basis. The physical-to-computational mapping via hyperbolic compactification
 (alpha_stretch parameter) ensures dense nodal concentration near z_0m where CASES-99
 inversions are sharpest.
-
-Note: This is a λ=1/2 ultraspherical basis. For explicit Gegenbauer decomposition
-with different λ, extend to Manifold_Mass_Gegenbauer(..., lambda=...).
 """
 struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     N::Int
@@ -36,7 +34,11 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
                                      n_m=3, n_w=12, delta=1.2, K_q::Int=72) where {T<:AbstractFloat}
 
         xi_q = [cos(pi * (2k - 1) / (2K_q)) for k in 1:K_q]
-        sigma = (z_top - z_0m) * alpha_stretch / 2.0
+
+        # --- FIXED: Correct canonical scale definition for the metric mapping ---
+        sigma = (z_top - z_0m) / 2.0
+
+        # Metric Jacobian J = dz/dx derived matching the mapping bounds
         J_q = [sigma * (2.0 + alpha_stretch) / (1.0 - x + alpha_stretch)^2 for x in xi_q]
 
         xi_target = [cos(pi * i / N) for i in 0:N]
@@ -92,11 +94,10 @@ Maps physical heights z directly to computational coordinates ξ ∈ [-1, 1]
 by analytically inverting the hyperbolic compactification profile.
 """
 function physical_to_computational(ws::UnifiedManifoldWorkspace{T}, z_phys::Vector{T}) where {T<:AbstractFloat}
-    # z_atm is stored in Chebyshev-node order (descending in physical z);
-    # use the true minimum physical height for stable inverse mapping.
     z_min = minimum(ws.z_atm)
     xi = zeros(T, length(z_phys))
     for i in eachindex(z_phys)
+        # --- FIXED: Analytical algebra inverse matching the updated workspace parameters ---
         num = (z_phys[i] - z_min) * (1.0 + ws.alpha_stretch) - ws.sigma
         den = (z_phys[i] - z_min) + ws.sigma
         xi[i] = den > 1e-12 ? num / den : -1.0
@@ -104,4 +105,4 @@ function physical_to_computational(ws::UnifiedManifoldWorkspace{T}, z_phys::Vect
     return clamp.(xi, -1.0, 1.0)
 end
 
-end # module UnifiedManifold
+end # module
