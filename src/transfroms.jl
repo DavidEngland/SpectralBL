@@ -294,6 +294,17 @@ J1_mid = dzdξ(m, 0.0)         # Metric at ξ=0
 struct LogarithmicMap <: CoordinateMap
     zmin::Float64
     zmax::Float64
+
+    # Inner constructor enforcing physical safety bounds for the SBL ground interface
+    function LogarithmicMap(zmin::Float64, zmax::Float64)
+        if zmin <= 0.0
+            throw(DomainError(zmin, "zmin must be strictly greater than 0 for Logarithmic Mappings."))
+        end
+        if zmax <= zmin
+            throw(ArgumentError("zmax must be greater than zmin."))
+        end
+        new(zmin, zmax)
+    end
 end
 
 function forward(m::LogarithmicMap, z)
