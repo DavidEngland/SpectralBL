@@ -48,37 +48,50 @@ d2zdξ2(m::LinearMap, ξ)    = 0.0
 
 
 # ===== 2. HYPERBOLIC MAP =====
-
 struct HyperbolicMap <: CoordinateMap
     zmin::Float64
     zmax::Float64
     alpha::Float64
+
+    # Correct Julia inner constructor for type-safe validation
+    function HyperbolicMap(zmin::Float64, zmax::Float64, alpha::Float64)
+        if zmin >= zmax
+            throw(DomainError((zmin, zmax), "HyperbolicMap: zmin must be < zmax"))
+        end
+        if zmin < 0.0
+            throw(DomainError(zmin, "HyperbolicMap: zmin must be ≥ 0"))
+        end
+        if alpha <= 0.0
+            throw(DomainError(alpha, "HyperbolicMap: α must be > 0"))
+        end
+        new(zmin, zmax, alpha)
+    end
 end
 
 function forward(m::HyperbolicMap, z)
     L = m.zmax - m.zmin
-    num = (2.0 + m.alpha) * (z - m.zmin)
-    den = L + m.alpha * (z - m.zmin)
+    num = 2.0 * (2.0 + m.alpha) * (z - m.zmin)
+    den = 2.0 * L + m.alpha * (z - m.zmin)
     return (num / den) - 1.0
 end
 
 function inverse(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    num = L * (ξ + 1.0)
-    den = 2.0 + m.alpha * (1.0 - ξ)
+    num = 2.0 * L * (ξ + 1.0)
+    den = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
     return m.zmin + num / den
 end
 
 function dzdξ(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    den = 2.0 + m.alpha * (1.0 - ξ)
-    return (2.0 * L * (2.0 + m.alpha)) / (den^2)
+    term = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
+    return (4.0 * L * (2.0 + m.alpha)) / (term^2)
 end
 
 function d2zdξ2(m::HyperbolicMap, ξ)
     L = m.zmax - m.zmin
-    den = 2.0 + m.alpha * (1.0 - ξ)
-    return (4.0 * L * m.alpha * (2.0 + m.alpha)) / (den^3)
+    term = 2.0 * (2.0 + m.alpha) - m.alpha * (ξ + 1.0)
+    return (8.0 * L * m.alpha * (2.0 + m.alpha)) / (term^3)
 end
 
 
