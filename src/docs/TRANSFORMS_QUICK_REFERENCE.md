@@ -151,6 +151,26 @@ z = 150.0
 ξ, J1, J2 = evaluate_jacobian_stack(stack, z)
 ```
 
+## 13. UnifiedManifold Integration (Current Pipeline)
+
+The active pipeline module (`src/Cases99.jl`) now accepts a custom map directly.
+
+```julia
+include("src/Cases99.jl")
+using .UnifiedManifold
+
+# Default behavior (unchanged): HyperbolicMap from (zmin, zmax, alpha)
+ws_default = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05)
+
+# Custom map path using the same Transforms types re-exported by UnifiedManifold
+ws_tanh = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05; map=TanhMap(1.5, 55.0, 2.0))
+
+# Map arbitrary physical heights to computational coordinates
+xi = physical_to_computational(ws_tanh, [1.5, 30.0, 55.0])
+```
+
+Note: avoid loading a second independent copy of `transforms.jl` in the same session when building `map` objects for `UnifiedManifoldWorkspace`; use the re-exported map constructors from `UnifiedManifold`.
+
 -----
 
 ## Function Signatures

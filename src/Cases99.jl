@@ -2,8 +2,11 @@
 module UnifiedManifold
 
 using LinearAlgebra
+include("transforms.jl")
+using .Transforms
 
 export UnifiedManifoldWorkspace, physical_to_computational
+export CoordinateMap, LinearMap, HyperbolicMap, LogarithmicMap, TanhMap, CfdWallMap, CustomMap
 
 """
     UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch; ...)
@@ -26,24 +29,26 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     Mass_Factored::Cholesky{T, Matrix{T}}
     z_atm::Vector{T}
     Dz_atm::Matrix{T}
+    map::Transforms.CoordinateMap
     alpha_stretch::T
     sigma::T
 
     # Clean Inner Constructor Block
     function UnifiedManifoldWorkspace(N::Int, z_0m::T, z_top::T, alpha_stretch::T;
-                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72) where {T<:AbstractFloat}
+                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72,
+                                     map::Transforms.CoordinateMap=HyperbolicMap(Float64(z_0m), Float64(z_top), Float64(alpha_stretch))) where {T<:AbstractFloat}
 
         xi_q = [cos(pi * (2k - 1) / (2K_q)) for k in 1:K_q]
 
-        # --- FIXED: Correct canonical scale definition for the metric mapping ---
+        # Canonical scale retained for compatibility with legacy diagnostics.
         sigma = (z_top - z_0m) / 2.0
 
-        # Metric Jacobian J = dz/dx derived matching the mapping bounds
-        J_q = [sigma * (2.0 + alpha_stretch) / (1.0 - x + alpha_stretch)^2 for x in xi_q]
+        # Use the selected map object as the source of truth for metric Jacobians.
+        J_q = T[dzdξ(map, x) for x in xi_q]
 
         xi_target = [cos(pi * i / N) for i in 0:N]
-        z_atm = [z_0m + sigma * (1.0 + x) / (1.0 - x + alpha_stretch) for x in xi_target]
-        inv_J_target = [1.0 / (sigma * (2.0 + alpha_stretch) / (1.0 - x + alpha_stretch)^2) for x in xi_target]
+        z_atm = T[inverse(map, x) for x in xi_target]
+        inv_J_target = T[dξdz(map, z) for z in z_atm]
 
         # Chebyshev Differentiation Matrix Assembly
         D1 = zeros(T, N+1, N+1)
@@ -82,7 +87,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
             psi_T[i] = 1.0 - psi_M[i] - psi_W[i]
         end
 
-        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, alpha_stretch, sigma)
+        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, map, alpha_stretch, sigma)
     end
 end
 
@@ -94,15 +99,8 @@ Maps physical heights z directly to computational coordinates ξ ∈ [-1, 1]
 by analytically inverting the hyperbolic compactification profile.
 """
 function physical_to_computational(ws::UnifiedManifoldWorkspace{T}, z_phys::Vector{T}) where {T<:AbstractFloat}
-    z_min = minimum(ws.z_atm)
-    xi = zeros(T, length(z_phys))
-    for i in eachindex(z_phys)
-        # --- FIXED: Analytical algebra inverse matching the updated workspace parameters ---
-        num = (z_phys[i] - z_min) * (1.0 + ws.alpha_stretch) - ws.sigma
-        den = (z_phys[i] - z_min) + ws.sigma
-        xi[i] = den > 1e-12 ? num / den : -1.0
-    end
-    return clamp.(xi, -1.0, 1.0)
+    xi = T[forward(ws.map, z) for z in z_phys]
+    return clamp.(xi, T(-1.0), T(1.0))
 end
 
 end # module
