@@ -11,6 +11,7 @@ SCHEMA_DEF   := $(DATA_DIR)/cases99_netcdf_schema.txt
 # Manuscript Paths
 DRAFT_DIR    := $(ROOT_DIR)/drafts
 FIG_DIR      := $(DRAFT_DIR)/figures
+GENERATED_DIR := $(DRAFT_DIR)/sections/generated
 DOC          := main
 
 # --- DYNAMIC TARGET LOGIC ---
@@ -61,6 +62,7 @@ setup:
 	@mkdir -p $(REPORT_DIR)
 	@mkdir -p $(DATA_DIR)
 	@mkdir -p $(FIG_DIR)
+	@mkdir -p $(GENERATED_DIR)
 
 validate:
 	@echo "🔍 Validating schema for target file: $(notdir $(INPUT_NC))"
@@ -73,6 +75,9 @@ run:
 report:
 	@echo "📊 Compiling diagnostic summaries for window identifier: $(DAY_SUFFIX)"
 	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/Report.jl $(DAY_SUFFIX)
+	@echo "🧾 Exporting generated TeX snippet overlays from synoptic analysis..."
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/run_synoptic_analysis.jl
+	@echo "✅ Generated TeX snippets refreshed under $(GENERATED_DIR)"
 
 wave_test:
 	@echo "🧪 Running numerical sponge layer reflection verification tests..."
@@ -130,4 +135,5 @@ clean: clear_ms_artifacts
 	rm -f $(FIG_DIR)/manifold_geometry_plots*.pdf
 	rm -f $(DRAFT_DIR)/$(DOC).pdf
 	rm -f $(FIG_DIR)/$(DOC).pdf
+	rm -f $(GENERATED_DIR)/*.tex
 	@echo "✓ All transient data structures and manuscript outputs cleared. Raw field payloads preserved."

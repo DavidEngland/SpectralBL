@@ -30,7 +30,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     z_center::T
 
     function UnifiedManifoldWorkspace(N::Int, z_min::T, z_max::T, alpha_stretch::T;
-                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72) where {T<:AbstractFloat}
+                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72, invert_windows::Bool=false) where {T<:AbstractFloat}
 
         L_domain = z_max - z_min
         z_center = (z_max + z_min) / 2.0
@@ -81,13 +81,25 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
         end
         Mass_Factored = cholesky(Hermitian(Manifold_Mass))
 
-        # Smooth Sub-meso Partitioning Windows
+        # Smooth sub-meso partitioning windows in mode space.
+        # Optional inversion swaps low/high windows so turbulence can occupy
+        # lower-order manifold support when requested by pipeline configuration.
         psi_M = zeros(T, N + 1); psi_W = zeros(T, N + 1); psi_T = zeros(T, N + 1)
         for i in 1:(N+1)
             n = i - 1
-            psi_M[i] = 0.5 * (1.0 - tanh((n - n_m) / delta))
-            psi_W[i] = 0.5 * (1.0 + tanh((n - n_m) / delta)) * 0.5 * (1.0 - tanh((n - n_w) / delta))
-            psi_T[i] = 1.0 - psi_M[i] - psi_W[i]
+            psi_low  = 0.5 * (1.0 - tanh((n - n_m) / delta))
+            psi_band = 0.5 * (1.0 + tanh((n - n_m) / delta)) * 0.5 * (1.0 - tanh((n - n_w) / delta))
+            psi_high = 1.0 - psi_low - psi_band
+
+            if invert_windows
+                psi_M[i] = psi_high
+                psi_W[i] = psi_band
+                psi_T[i] = psi_low
+            else
+                psi_M[i] = psi_low
+                psi_W[i] = psi_band
+                psi_T[i] = psi_high
+            end
         end
 
         new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, alpha_stretch, L_domain, z_center)

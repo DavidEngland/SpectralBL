@@ -8,6 +8,8 @@ using Printf
 # 1. Include and use your source module from src/
 include("../src/Cases99.jl")
 using .UnifiedManifold: UnifiedManifoldWorkspace, physical_to_computational
+include("TexExporter.jl")
+using .TexExporter
 
 # Helper: Custom tick formatter to eliminate raw scientific notation
 function clean_decimal_formatter(x)
@@ -198,7 +200,7 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
         ylabel = "Gradient Richardson Number (Ri_g)",
         xformatter = clean_decimal_formatter,
         yformatter = clean_decimal_formatter,
-        legend = :topright,
+        legend = :bottomleft,
         left_margin = 14Plots.mm, bottom_margin = 10Plots.mm
     )
     for r in 1:3
@@ -282,6 +284,10 @@ function run_diagnostic_pipeline(output_dir::String)
 
     # Instantiate workspace explicitly aligned to physical tower boundaries
     ws = UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch; n_m=3, n_w=12, delta=1.2)
+
+    # Export manuscript parameter macros as reusable TeX snippet overlays.
+    generated_dir = joinpath("drafts", "sections", "generated")
+    export_parameters(ws, joinpath(generated_dir, "params.tex"))
 
     # --- STEP 1: Generate Diagnostics CSV ---
     csv_path = joinpath(output_dir, "manifold_diagnostics$(day_suffix).csv")

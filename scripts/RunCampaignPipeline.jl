@@ -23,7 +23,7 @@ using UnifiedManifold
 using ProgressMeter, CSV, DataFrames, NCDatasets, Statistics
 
 # --- FIXED: SBL Compactification Workspace Geometry ---
-const CAMPAIGN_WORKSPACE = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05)
+const CAMPAIGN_WORKSPACE = UnifiedManifoldWorkspace(32, 1.5, 55.0, 0.05; invert_windows=true)
 
 function execute_campaign_sweep()
     data_dir = "data/ncar_eol_dee0099881"

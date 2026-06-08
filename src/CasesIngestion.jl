@@ -4,6 +4,15 @@ using NCDatasets, LinearAlgebra, Statistics, UnifiedManifold
 
 export ingest_and_project_slice!, project_with_svd_truncation
 
+function highest_active_mode(c::AbstractVector{<:AbstractFloat}; rel_threshold::Float64=1e-3)
+    max_amp = maximum(abs.(c))
+    if max_amp <= eps(Float64)
+        return 0
+    end
+    active = findall(x -> abs(x) >= rel_threshold * max_amp, c)
+    return isempty(active) ? 0 : (maximum(active) - 1)
+end
+
 """
     ingest_and_project_slice!(nc_path, t_idx, ws)
 
@@ -80,7 +89,8 @@ function ingest_and_project_slice!(nc_path::String, t_idx::Int, ws)
         c_theta, rank_θ, κ_θ = project_with_svd_truncation(H, θ_slice)
         c_u,     rank_u, κ_u = project_with_svd_truncation(H, u_slice)
 
-        status = "Rank=$(rank_θ), Cond=$(round(κ_θ, sigdigits=2))"
+        n_active = highest_active_mode(c_theta)
+        status = "Rank=$(rank_θ), Cond=$(round(κ_θ, sigdigits=2)), ActiveMode=$(n_active)"
         return c_theta, c_u, status
     end
 end
@@ -88,8 +98,9 @@ end
 """
     project_with_svd_truncation(H, A_obs)
 
-Decomposes and scales the linear design system via economy Singular Value Decomposition.
-Implements a hardcoded floor to utilize all available physical degrees of freedom.
+Performs a stabilized inversion using column-normalized least squares with
+ridge and high-mode smoothness regularization to reduce artificial low-order
+mode locking when observations are sparse.
 """
 function project_with_svd_truncation(H::Matrix{T}, A_obs::Vector{T}) where {T<:AbstractFloat}
     H_scaled = copy(H)
@@ -105,34 +116,43 @@ function project_with_svd_truncation(H::Matrix{T}, A_obs::Vector{T}) where {T<:A
     # 2. Economy SVD Execution
     U, S, Vt = svd(H_scaled)
 
-    # Hard-coded floor forces the projection to unlock up to the 7-level structural limit
-    machine_floor = 1e-12 * S[1]
-    rank_eff = count(>(machine_floor), S)
-
-    # 3. Projection to singular space
+    # Dynamically select active modes from both singular decay and projected data energy.
+    # This avoids a static rank mask when the forcing profile is weak in higher singular vectors.
+    tol_s = max(T(1e-4) * S[1], T(eps(Float64)))
     beta = U' * A_obs
-
-    # 4. Inverse scaling singular coefficients
-    scaled_beta = zeros(T, length(S))
-    for i in 1:rank_eff
-        scaled_beta[i] = beta[i] / S[i]
+    beta_max = maximum(abs.(beta))
+    tol_beta = max(T(1e-3) * beta_max, T(eps(Float64)))
+    active_idx = findall(i -> (S[i] > tol_s) && (abs(beta[i]) > tol_beta), eachindex(S))
+    if isempty(active_idx)
+        active_idx = [1]
     end
+    rank_eff = length(active_idx)
 
-    # 5. Mapping back to full polynomial array
-    c = zeros(T, size(Vt, 2))
-    for i in 1:rank_eff
-        v_row = vec(Vt[i, :])
-        c .+= scaled_beta[i] .* v_row
-    end
+    # 3. Solve stabilized normal equations with smoothness prior in mode space.
+    n_modes = size(H_scaled, 2)
+    mode_idx = collect(0:(n_modes - 1))
+    smooth_diag = T.(mode_idx .^ 4)
+    smooth_diag[1] = zero(T) # Do not penalize mean mode.
 
-    # 6. Physical rescaling
+    rank_scale = T(length(S) / rank_eff)
+    λ_ridge = T(1e-5 * S[1]^2) * rank_scale
+    λ_smooth = T(1e-8 * S[1]^2) * rank_scale
+
+    A = (H_scaled' * H_scaled) .+
+        λ_ridge .* Matrix{T}(I, n_modes, n_modes) .+
+        λ_smooth .* Diagonal(smooth_diag)
+    b = H_scaled' * A_obs
+    c_scaled = A \ b
+
+    # 4. Physical rescaling back to the original column space.
+    c = copy(c_scaled)
     for j in 1:length(c)
         if col_norms[j] > 1e-8
             c[j] /= col_norms[j]
         end
     end
 
-    kappa_eff = S[1] / S[rank_eff]
+    kappa_eff = S[1] / max(S[active_idx[end]], T(eps(Float64)))
     return c, rank_eff, kappa_eff
 end
 
