@@ -3,7 +3,7 @@ using DataFrames
 using CSV
 using Plots
 using LinearAlgebra
-using Printf  # Added for clean numerical axis formatting
+using Printf
 
 # 1. Include and use your source module from src/
 include("../src/Cases99.jl")
@@ -14,79 +14,257 @@ function clean_decimal_formatter(x)
     if x == 0
         return "0.0"
     elseif abs(x) >= 1000 || abs(x) < 0.01
-        # Fallback to standard clean scientific notation formatting if numbers are extreme
         return @sprintf("%.1e", x)
     else
-        # Force readable decimal representations for standard boundary-layer metric values
         return @sprintf("%.3f", x)
     end
 end
 
-function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suffix::String)
-    trajectory_path = joinpath("data", "diagnostic_trajectory.csv")
-    if !isfile(trajectory_path)
-        println("! Skipping tier plot regeneration: missing ", trajectory_path)
-        return
+function to_float(x)
+    if ismissing(x)
+        return missing
+    elseif x isa Number
+        return Float64(x)
+    end
+    sx = strip(string(x))
+    if isempty(sx)
+        return missing
+    end
+    try
+        return parse(Float64, sx)
+    catch
+        return missing
+    end
+end
+
+function infer_regime(d_eff, f_w)
+    if ismissing(d_eff) || ismissing(f_w)
+        return missing
+    elseif d_eff >= 10.0 && f_w < 0.25
+        return 1
+    elseif d_eff <= 8.0 && f_w >= 0.30
+        return 2
+    else
+        return 3
+    end
+end
+
+function parse_regime_value(x, d_eff, f_w)
+    if ismissing(x)
+        return infer_regime(d_eff, f_w)
+    elseif x isa Number
+        r = Int(round(x))
+        return r in 1:3 ? r : infer_regime(d_eff, f_w)
     end
 
-    traj = CSV.read(trajectory_path, DataFrame)
-    if nrow(traj) == 0
-        println("! Skipping tier plot regeneration: empty trajectory CSV")
-        return
+    sx = lowercase(strip(string(x)))
+    if isempty(sx)
+        return infer_regime(d_eff, f_w)
+    elseif occursin("continuous", sx) || occursin("turbulence", sx) || sx == "1"
+        return 1
+    elseif occursin("wave", sx) || occursin("dominated", sx) || sx == "2"
+        return 2
+    elseif occursin("intermittent", sx) || occursin("shear", sx) || sx == "3"
+        return 3
     end
 
-    # Format the date for human readable display (e.g., "_991024" -> "1999-10-24")
-    raw_date = replace(day_suffix, "_" => "")
-    display_date = length(raw_date) == 6 ? "19$(raw_date[1:2])-$(raw_date[3:4])-$(raw_date[5:6])" : "CASES-99 Run"
+    try
+        r = Int(round(parse(Float64, sx)))
+        return r in 1:3 ? r : infer_regime(d_eff, f_w)
+    catch
+        return infer_regime(d_eff, f_w)
+    end
+end
 
-    if !isempty(day_suffix) && hasproperty(traj, :FileDate)
-        traj = filter(row -> string(row.FileDate) == raw_date, traj)
-        if nrow(traj) == 0
-            println("! No trajectory records match day $raw_date. Skipping tier plots.")
-            return
+function load_trajectory_data()
+    preferred = joinpath("data", "diagnostic_trajectory.csv")
+    if isfile(preferred)
+        try
+            df = CSV.read(preferred, DataFrame)
+            if nrow(df) > 0
+                println("✓ Loaded trajectory data from ", preferred, " (", nrow(df), " rows)")
+                return df
+            end
+            println("! Preferred trajectory file exists but is empty: ", preferred)
+        catch err
+            println("! Failed reading ", preferred, ": ", err)
+        end
+    else
+        println("! Preferred trajectory file missing: ", preferred)
+    end
+
+    shard_paths = filter(p -> isfile(p) && filesize(p) > 0, sort(readdir("data"; join=true)))
+    shard_paths = filter(p -> occursin(r"^trajectory_\d+\.csv$", basename(p)), shard_paths)
+
+    parts = DataFrame[]
+    for p in shard_paths
+        try
+            part = CSV.read(p, DataFrame)
+            if nrow(part) > 0
+                push!(parts, part)
+            else
+                println("! Skipping empty trajectory shard: ", p)
+            end
+        catch err
+            println("! Skipping unreadable trajectory shard ", p, ": ", err)
         end
     end
 
-    ri_series = hasproperty(traj, :Ri_g) ? traj.Ri_g : traj.Ri_f
+    if isempty(parts)
+        println("! No non-empty trajectory shard files found under data/trajectory_*.csv")
+        return DataFrame()
+    end
 
-    # --- INDIVIDUAL PLOTS WITH EXPLICIT DATES ---
-    p_energy = scatter(traj.D_eff, traj.F_W,
-        title = "Energy-Dimension Plane\n[$display_date]",
+    merged = reduce((a, b) -> vcat(a, b; cols=:union), parts)
+    println("✓ Loaded merged trajectory shards (", length(parts), " files, ", nrow(merged), " rows)")
+    return merged
+end
+
+function prepare_plot_data(raw::DataFrame)
+    required = [:D_eff, :F_W, :chi_N, :TimeIdx]
+    missing_cols = [c for c in required if !hasproperty(raw, c)]
+    if !isempty(missing_cols)
+        println("! Missing required trajectory columns: ", join(string.(missing_cols), ", "), ". Skipping tier plots.")
+        return DataFrame()
+    end
+
+    ri_col = hasproperty(raw, :Ri_g) ? :Ri_g : (hasproperty(raw, :Ri_f) ? :Ri_f : nothing)
+    if isnothing(ri_col)
+        println("! Missing both Ri_g and Ri_f columns. Skipping tier plots.")
+        return DataFrame()
+    end
+
+    d_eff = to_float.(raw[!, :D_eff])
+    f_w = to_float.(raw[!, :F_W])
+    chi_n = to_float.(raw[!, :chi_N])
+    ri = to_float.(raw[!, ri_col])
+    time_idx = to_float.(raw[!, :TimeIdx])
+
+    regimes = if hasproperty(raw, :Regime)
+        [parse_regime_value(raw[i, :Regime], d_eff[i], f_w[i]) for i in 1:nrow(raw)]
+    else
+        [infer_regime(d_eff[i], f_w[i]) for i in 1:nrow(raw)]
+    end
+
+    valid = .!ismissing.(d_eff) .& .!ismissing.(f_w) .& .!ismissing.(chi_n) .& .!ismissing.(ri) .& .!ismissing.(time_idx) .& .!ismissing.(regimes)
+
+    if !any(valid)
+        println("! No valid trajectory rows after numeric/regime filtering. Skipping tier plots.")
+        return DataFrame()
+    end
+
+    return DataFrame(
+        D_eff = Float64.(d_eff[valid]),
+        F_W = Float64.(f_w[valid]),
+        chi_N = Float64.(chi_n[valid]),
+        Ri = Float64.(ri[valid]),
+        TimeIdx = Float64.(time_idx[valid]),
+        Regime = Int.(regimes[valid])
+    )
+end
+
+function day_display_label(day_suffix::String)
+    raw_date = replace(day_suffix, "_" => "")
+    return length(raw_date) == 6 ? "19$(raw_date[1:2])-$(raw_date[3:4])-$(raw_date[5:6])" : "CASES-99 Run"
+end
+
+function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::String, suffix::String, title_tag::String)
+    regime_info = Dict(
+        1 => ("Continuous turbulence", :blue),
+        2 => ("Wave-dominated", :red),
+        3 => ("Intermittent shear", :green)
+    )
+
+    p_energy = plot(
+        title = "Energy-Dimension Plane\n[$title_tag]",
         xlabel = "Effective Modal Dimension (D_eff)",
         ylabel = "Wave Energy Fraction (F_W)",
         yformatter = clean_decimal_formatter,
-        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85, legend = false)
+        legend = :topright
+    )
+    for r in 1:3
+        idx = findall(==(r), df.Regime)
+        if !isempty(idx)
+            label, color = regime_info[r]
+            scatter!(p_energy, df.D_eff[idx], df.F_W[idx];
+                label = label, color = color, markersize = 4, markerstrokewidth = 0.7, alpha = 0.85)
+        end
+    end
 
-    p_curv = scatter(traj.chi_N, ri_series,
-        title = "Curvature-Stratification Plane\n[$display_date]",
+    p_curv = plot(
+        title = "Curvature-Stratification Plane\n[$title_tag]",
         xlabel = "Spectral Curvature (χ_N)",
         ylabel = "Gradient Richardson Number (Ri_g)",
-        xformatter = clean_decimal_formatter, yformatter = clean_decimal_formatter,
-        markersize = 4, markerstrokewidth = 0.7, alpha = 0.85, legend = false)
+        xformatter = clean_decimal_formatter,
+        yformatter = clean_decimal_formatter,
+        legend = :topright
+    )
+    for r in 1:3
+        idx = findall(==(r), df.Regime)
+        if !isempty(idx)
+            label, color = regime_info[r]
+            scatter!(p_curv, df.chi_N[idx], df.Ri[idx];
+                label = label, color = color, markersize = 4, markerstrokewidth = 0.7, alpha = 0.85)
+        end
+    end
 
-    p_time = plot(traj.TimeIdx, traj.F_W,
-        title = "Temporal Feature Trace\n[$display_date]",
+    p_time = plot(df.TimeIdx, df.F_W;
+        title = "Temporal Feature Trace\n[$title_tag]",
         xlabel = "Time Index", ylabel = "Wave Energy Fraction (F_W)",
         yformatter = clean_decimal_formatter, linewidth = 2, legend = false)
 
-    # --- NEW: COMBINED SIDE-BY-SIDE PUBLICATION ASSETS ---
-    # Fig A: State-Space Analysis (Energy-Dimension alongside Curvature-Stratification)
-    p_combined_states = plot(p_energy, p_curv,
-        layout = (1, 2),
-        size = (1200, 500),
+    p_combined_states = plot(p_energy, p_curv;
+        layout = (1, 2), size = (1200, 500),
         left_margin = 12Plots.mm, bottom_margin = 8Plots.mm)
 
-    # Save the standalone plots
     for (name, fig) in (("tier1_plane1", p_energy), ("tier1_plane2", p_curv), ("temporal_trace", p_time))
-        savefig(fig, joinpath(output_dir, name * day_suffix * ".pdf"))
-        savefig(fig, joinpath(draft_fig_dir, name * day_suffix * ".pdf"))
+        savefig(fig, joinpath(output_dir, name * suffix * ".pdf"))
+        savefig(fig, joinpath(draft_fig_dir, name * suffix * ".pdf"))
     end
 
-    # Save the combined side-by-side publication assets
-    savefig(p_combined_states, joinpath(output_dir, "manuscript_states_combined" * day_suffix * ".pdf"))
-    savefig(p_combined_states, joinpath(draft_fig_dir, "manuscript_states_combined" * day_suffix * ".pdf"))
+    savefig(p_combined_states, joinpath(output_dir, "manuscript_states_combined" * suffix * ".pdf"))
+    savefig(p_combined_states, joinpath(draft_fig_dir, "manuscript_states_combined" * suffix * ".pdf"))
 
-    println("✓ Clean publication layout and side-by-side figures saved for $display_date.")
+    println("✓ Tier plot set saved: suffix='", suffix, "', rows=", nrow(df), ", tag=", title_tag)
+end
+
+function generate_tier_plots(output_dir::String, draft_fig_dir::String, day_suffix::String)
+    raw = load_trajectory_data()
+    if nrow(raw) == 0
+        println("! Skipping tier plot regeneration: no trajectory rows available.")
+        return
+    end
+
+    full_df = prepare_plot_data(raw)
+    if nrow(full_df) == 0
+        println("! Skipping tier plot regeneration: no valid rows in full campaign data.")
+        return
+    end
+
+    # Always write full campaign (unsuffixed) outputs used by manuscript Figure 3/4.
+    save_tier_plot_set(full_df, output_dir, draft_fig_dir, "", "CASES-99 Campaign")
+
+    # Optionally write day-specific suffixed variants when date metadata is available.
+    if !isempty(day_suffix)
+        if hasproperty(raw, :FileDate)
+            raw_date = replace(day_suffix, "_" => "")
+            day_rows = filter(row -> string(row.FileDate) == raw_date, raw)
+            if nrow(day_rows) == 0
+                println("! No trajectory records match day ", raw_date, ". Day-specific variants skipped.")
+                return
+            end
+
+            day_df = prepare_plot_data(day_rows)
+            if nrow(day_df) == 0
+                println("! Day-specific trajectory rows exist but none are valid after filtering. Day-specific variants skipped.")
+                return
+            end
+
+            save_tier_plot_set(day_df, output_dir, draft_fig_dir, day_suffix, day_display_label(day_suffix))
+        else
+            println("! day_suffix provided but FileDate column missing; day-specific variants skipped.")
+        end
+    end
 end
 
 function run_diagnostic_pipeline(output_dir::String)

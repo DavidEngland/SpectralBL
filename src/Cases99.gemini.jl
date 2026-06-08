@@ -12,9 +12,9 @@ export CoordinateMap, LinearMap, HyperbolicMap, LogarithmicMap, TanhMap, CfdWall
     UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch; ...)
 
 Constructs a metric-consistent Riemannian geometry using Chebyshev polynomials T_n(ξ)
-as the spectral basis. The physical-to-computational mapping via a coordinate-map compactification
-(alpha_stretch parameter) ensures dense nodal concentration near z_0m where CASES-99
-inversions are sharpest.
+as the spectral basis. The physical-to-computational mapping via a coordinate-map
+compactification (alpha_stretch parameter) ensures dense nodal concentration near z_0m
+where CASES-99 inversions are sharpest.
 """
 struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     N::Int
@@ -33,7 +33,7 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     alpha_stretch::T
     sigma::T
 
-    # Clean Inner Constructor Block
+    # Clean Inner Constructor Block - TanhMap Default & Type Stability Enforced
     function UnifiedManifoldWorkspace(N::Int, z_0m::T, z_top::T, alpha_stretch::T;
                                      n_m=3, n_w=12, delta=1.2, K_q::Int=72,
                                      map::Transforms.CoordinateMap=TanhMap(z_0m, z_top, alpha_stretch)) where {T<:AbstractFloat}
