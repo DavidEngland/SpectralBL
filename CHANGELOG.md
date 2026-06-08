@@ -2,6 +2,16 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-06-08
+
+### Changed
+- Updated `README.md` to document first-working-draft rebuild steps after `make clean`.
+- Clarified manuscript-facing figure dependencies and output locations used by `drafts/main.tex`.
+- Clarified wave-validation artifact paths, including PDF outputs and lowercase universal campaign directories.
+
+### Documentation
+- Refreshed project status docs to reference current reporting scripts (`scripts/Report.jl`, `scripts/run_synoptic_analysis.jl`) and current output paths.
+
 ## 2026-06-01
 
 ### Added

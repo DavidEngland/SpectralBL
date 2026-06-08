@@ -21,6 +21,7 @@ Hypothesis: high-frequency modal damping weighted by `psi_T` reduces upper-bound
 
 ### Diagnostics and Artifacts
 - `data/wave_reflection_test.png`
+- `data/wave_reflection_test.pdf`
 - `data/wave_reflection_metrics.csv`
 
 ### Build Integration
@@ -32,7 +33,8 @@ Hypothesis: high-frequency modal damping weighted by `psi_T` reduces upper-bound
 ## Replication Framework
 - Added `scripts/run_universal_sponge_test.jl` to mirror the same sponge verification strategy across campaign geometries.
 - Predefined campaign profiles include CASES_99, FLOSS_II, SHEBA, and BLLAST, with optional custom geometry arguments.
-- Per-campaign outputs are written to `data/universal_sponge/<campaign>/`.
+- Per-campaign outputs are written to `data/universal_sponge/<campaign_lowercase>/`.
+- Per-campaign artifacts include `wave_reflection_metrics.csv`, `wave_reflection_test.png`, `wave_reflection_test.pdf`, and `wave_reflection_summary.md`.
 
 ## Acceptance Criteria
 - Script executes under project environment.

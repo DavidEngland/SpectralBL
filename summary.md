@@ -38,8 +38,8 @@ The pipeline is organized into a modular framework in Julia, divided into ingest
        │             Downstream Processing & Reporting           │
        ├─────────────────────────────────────────────────────────┤
        │  • Secondary Physical Diagnostic Calculations           │
-       │  • Campaign Orchester Sweep (Daily NetCDF Loop)        │
-       │  • Automated Markdown Report & Plots.jl Rendering       │
+       │  • Campaign-Oriented Daily Processing and Aggregation   │
+       │  • Automated Markdown and manuscript figure rendering   │
        └─────────────────────────────────────────────────────────┘
 
 ```
@@ -48,7 +48,8 @@ The pipeline is organized into a modular framework in Julia, divided into ingest
 
 * **Data Ingestion Layer (`CasesIngestion.jl`):** Dynamically tracks and maps EOL instrument heights ($z = [1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0]\text{ m}$) across varying NetCDF variable conventions. Intercepts missing payload values and filters out non-physical sensor dropouts.
 * **Spectral Projection Layer (`project_with_svd_truncation`):** Maps discrete physical elevations into a continuous spectral space using high-degree Chebyshev polynomials ($N = 32$). It scales columns to prevent Vandermonde-style conditioning degradation, applies an economy Singular Value Decomposition, and scales coefficients back into matching physical units.
-* **Orchestration & Reporting Script (`GenerateCampaignReport.jl`):** Sweeps through the sequential daily campaign files (`cases.990919.nc` to `cases.991031.nc`), calculates daily boundary layer profile variances, and compiles an automated Markdown executive summary with embedded contour plots.
+* **Reporting Layer (`scripts/Report.jl`):** Generates diagnostic geometry assets, state-space planes, temporal traces, and manuscript-facing figures from the trajectory outputs.
+* **Synoptic Layer (`scripts/run_synoptic_analysis.jl`):** Aggregates campaign windows and writes timeline diagnostics including `campaign_synoptic_evolution.pdf` and synoptic audit outputs.
 
 ---
 
@@ -67,5 +68,7 @@ To prevent the SVD solver from aggressively truncating these modes down to an un
 
 * **Ingestion Pipeline:** Operational and production-ready. Successfully isolates valid data from NaN drops across the complete 42-day campaign sub-directory.
 * **Data Artifacts:** Generates `data/diagnostic_trajectory.csv` tracking fluid states, advection tendencies, and turbulence signatures over the timeline.
-* **Reporting Layer:** Integrated into the project `Makefile`. Executing `make report` handles loop automation, outputs localized image graphs to `reports/plots/`, and outputs a ready-to-share file at `reports/CASES99_Campaign_Report.md`.
-* **Synthetic Sponge Validation:** Added `scripts/test_wave_reflection.jl` with `make wave_test` for controlled gravity-wave reflection suppression testing using `psi_T` modal damping. Outputs: `data/wave_reflection_test.png` and `data/wave_reflection_metrics.csv`.
+* **Reporting Layer:** Integrated into the project `Makefile`. Executing `make report` writes diagnostics under `reports/ncar_eol_dee0099881/`, and manuscript-ready figure copies under `data/drafts/figures/`.
+* **Synoptic Diagnostics:** `scripts/run_synoptic_analysis.jl` writes `campaign_synoptic_evolution.pdf` to both report and manuscript-figure directories.
+* **Synthetic Sponge Validation:** `scripts/test_wave_reflection.jl` writes `data/wave_reflection_test.png`, `data/wave_reflection_test.pdf`, and `data/wave_reflection_metrics.csv`.
+* **Universal Sponge Replication:** `scripts/run_universal_sponge_test.jl` writes per-campaign artifacts under `data/universal_sponge/<campaign_lowercase>/`.
