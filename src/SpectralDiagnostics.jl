@@ -2,7 +2,7 @@ module SpectralDiagnostics
 
 using LinearAlgebra
 
-export HighFidelityRecord, process_timestamp_metrics
+export HighFidelityRecord, process_timestamp_metrics, calculate_adaptive_wave_fraction
 
 struct HighFidelityRecord{T<:AbstractFloat}
     time_idx::Int
@@ -106,6 +106,37 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
         peak_in_wave_window,
         status_out,
     )
+end
+
+function calculate_adaptive_wave_fraction(ws, c_u::AbstractVector, d_eff; alpha_floor::Real = 1.5, wave_threshold::Real = 0.1)
+    n_modes = min(length(c_u), length(ws.psi_W))
+    if n_modes == 0
+        return (0.0, 0, -1, false, "NoModes")
+    end
+
+    modal_energy = abs2.(c_u[1:n_modes])
+    e_total = sum(modal_energy)
+    if e_total <= eps(Float64)
+        return (0.0, 0, -1, false, "ZeroEnergy")
+    end
+
+    peak_mode = argmax(modal_energy) - 1
+
+    psi_w = ws.psi_W[1:n_modes]
+    active_modes = findall(x -> x >= wave_threshold, psi_w)
+    n_min_eff = isempty(active_modes) ? -1 : minimum(active_modes) - 1
+    n_max_eff = isempty(active_modes) ? -1 : maximum(active_modes) - 1
+    in_window = !isempty(active_modes) && (peak_mode >= n_min_eff) && (peak_mode <= n_max_eff)
+
+    weighted_wave_energy = sum(modal_energy .* psi_w)
+    f_w_adaptive = clamp(weighted_wave_energy / (e_total + eps(Float64)), 0.0, 1.0)
+
+    # Keep a minimal adaptive floor for highly compressed modal states.
+    if d_eff < alpha_floor
+        f_w_adaptive = max(f_w_adaptive, 0.30)
+    end
+
+    return (f_w_adaptive, peak_mode, n_min_eff, in_window, "AdaptiveWaveFractionOK")
 end
 
 end
