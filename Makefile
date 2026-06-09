@@ -32,7 +32,7 @@ ALL_NC_FILES := $(wildcard $(DATA_DIR)/ncar_eol_dee0099881/cases.9910*.nc)
 CAMPAIGN_DAYS := $(sort $(patsubst $(DATA_DIR)/ncar_eol_dee0099881/cases.%.nc,%,$(ALL_NC_FILES)))
 
 # Declare all symbolic, execution-only macro endpoints safely
-.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts purge-generated verify-manuscript $(CAMPAIGN_DAYS)
+.PHONY: all full validate run report transform-report wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts purge-generated verify-manuscript $(CAMPAIGN_DAYS)
 
 # Default target orchestrates the entire localized lifecycle with forced sequencing
 all: setup
@@ -82,6 +82,12 @@ report:
 	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/run_synoptic_analysis.jl
 	@echo "✅ Generated TeX snippets refreshed under $(GENERATED_DIR)"
 
+transform-report:
+	@echo "🧭 Exporting transform and diagnostic snippets for window identifier: $(DAY_SUFFIX)"
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/Report.jl $(DAY_SUFFIX)
+	@echo "🧾 Refreshing synoptic diagnostics macros when trajectory data is available..."
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/run_synoptic_analysis.jl
+
 wave_test:
 	@echo "🧪 Running numerical sponge layer reflection verification tests..."
 	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/test_wave_reflection.jl
@@ -130,8 +136,7 @@ clear_ms_artifacts:
 # ==============================================================================
 clean: clear_ms_artifacts
 	@echo "🧹 Sweeping transient diagnostic logs, metrics, and report figures..."
-	rm -f $(DATA_DIR)/trajectory_*.csv
-	rm -f $(DATA_DIR)/diagnostic_trajectory.csv
+	@echo "ℹ Preserving trajectory shards and merged trajectory cache to keep manuscript diagnostics reproducible."
 	rm -f $(SCHEMA_DEF)
 	rm -f $(DATA_DIR)/wave_reflection_test.png
 	rm -f $(DATA_DIR)/wave_reflection_test.pdf

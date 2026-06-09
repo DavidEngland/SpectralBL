@@ -8,7 +8,7 @@
 ## 1. Quantitative Evaluation: Analytical Window Statistics
 This table tracks the structural degradation of cluster separability ($\bar{S}$) across the month, contrasting the shear-dominated conditions of early October against the intensely stratified Intensive Observational Period (IOP).
 
-| Period Matrix Block | $\bar{S}$ Score | Continuous Turb. (%) | Intermittent (%) | Wave-Dominated (%) | Physical Boundary Layer State |
+| Analysis Period Matrix Block | Mean Separability ($\bar{S}$) | Continuous Share (%) | Intermittent Share (%) | Wave-Dominated Share (%) | Physical Boundary Layer State |
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **Early Window (Oct 02 - 10)** | 0.438 | 27.2% | 68.9% | 3.8% | Weak inversion; surface layer fully mixed |
 | **Transitional (Oct 11 - 21)** | 0.466 | 26.4% | 63.0% | 10.6% | Intermittent radiative decoupling events |
@@ -19,7 +19,7 @@ This table tracks the structural degradation of cluster separability ($\bar{S}$)
 ## 2. Structural Invariance: Effective Rank Profile by Regime
 This table evaluates the mean and standard deviation of the **Effective Modal Dimension ($D_{\mathrm{eff}}$)**. It verifies that the low-rank compression property ($D_{\mathrm{eff}} \sim 4-5$) is an intrinsic structural property of the Wave-Dominated state, remaining invariant across the entire campaign timeline.
 
-| Campaign Epoch | Regime 1: Continuous Turbulence | Regime 2: Wave-Dominated | Regime 3: Intermittent Bursts |
+| Campaign Epoch Window | Regime 1: Continuous Turbulence | Regime 2: Wave-Dominated | Regime 3: Intermittent Bursts |
 | :--- | :---: | :---: | :---: |
 | **Oct 02 - Oct 10** | 1.33 $\pm$ 0.21 | 1.46 $\pm$ 0.51 | 1.12 $\pm$ 0.23 |
 | **Oct 11 - Oct 21** | 1.63 $\pm$ 0.41 | 1.39 $\pm$ 0.12 | 1.18 $\pm$ 0.29 |
@@ -30,11 +30,11 @@ This table evaluates the mean and standard deviation of the **Effective Modal Di
 ## 3. Reconstruction Quality Diagnostics
 These diagnostics summarize coefficient recovery quality from sparse tower observations based on per-timestamp `RunStatus` fields.
 
-| Diagnostic | Median [Min, Max] |
+| Mathematical Diagnostic Target Parameter | Recovered Empirical Value (Median [Min, Max]) |
 | :--- | :---: |
-| Effective reconstruction rank | 8.0 [7, 8] |
-| SVD conditioning estimate | 1.60e+00 [1.60e+00, 1.60e+00] |
-| Highest active spectral mode | 25.0 [24, 30] |
+| Effective reconstruction operational matrix rank | 8.0 [7, 8] |
+| Pseudospectral SVD matrix conditioning estimate | 1.60e+00 [1.60e+00, 1.60e+00] |
+| Highest active spectral coefficient mode index | 25.0 [24, 30] |
 
 ---
 
