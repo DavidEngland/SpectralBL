@@ -11,6 +11,81 @@ using .UnifiedManifold: UnifiedManifoldWorkspace, physical_to_computational
 include("TexExporter.jl")
 using .TexExporter
 
+function sanitize_macro_suffix(s::AbstractString)
+    out = replace(s,
+        "α" => "alpha",
+        "β" => "beta",
+        "γ" => "gamma",
+        "δ" => "delta",
+        "ξ" => "xi",
+        "θ" => "theta",
+        "κ" => "kappa",
+        "ψ" => "psi")
+    out = replace(out, r"[^A-Za-z0-9]+" => "_")
+    out = replace(out, r"^_+|_+$" => "")
+    return isempty(out) ? "Value" : out
+end
+
+function export_transform_reporting(ws, output_dir::String, generated_dir::String, run_suffix::String="")
+    md = UnifiedManifold.Transforms.describe_map(ws.map)
+    map_type = md.map_type
+    param_pairs = md.parameters
+
+    transform_df = DataFrame(
+        Parameter = ["map_type"; [p.first for p in param_pairs]],
+        Value = [map_type; [p.second for p in param_pairs]]
+    )
+
+    csv_path = joinpath(output_dir, "transform_metadata.csv")
+    CSV.write(csv_path, transform_df)
+    if !isempty(run_suffix)
+        CSV.write(joinpath(output_dir, "transform_metadata$(run_suffix).csv"), transform_df)
+    end
+
+    md_path = joinpath(output_dir, "transform_metadata.md")
+    open(md_path, "w") do io
+        println(io, "# Transform Configuration")
+        println(io, "")
+        println(io, "- Map Type: `", map_type, "`")
+        println(io, "")
+        println(io, "| Parameter | Value |")
+        println(io, "|---|---|")
+        for row in eachrow(transform_df)
+            println(io, "| ", row.Parameter, " | ", row.Value, " |")
+        end
+    end
+    if !isempty(run_suffix)
+        cp(md_path, joinpath(output_dir, "transform_metadata$(run_suffix).md"); force=true)
+    end
+
+    macro_map = Dict{String,String}(
+        "TransformMapType" => map_type,
+        "TransformParameterCount" => string(length(param_pairs))
+    )
+    for p in param_pairs
+        macro_key = "TransformParam" * sanitize_macro_suffix(p.first)
+        if occursin(r"^[A-Za-z0-9._+\-eE]+$", p.second)
+            macro_map[macro_key] = p.second
+        end
+    end
+    export_macros(joinpath(generated_dir, "transform_macros.tex"), macro_map)
+    if !isempty(run_suffix)
+        export_macros(joinpath(generated_dir, "transform_macros$(run_suffix).tex"), macro_map)
+    end
+
+    export_table(transform_df, joinpath(generated_dir, "table_transform_config.tex");
+        caption="Coordinate transform configuration used for this run.",
+        label="tab:transform_config", align="l l", digits=4)
+    if !isempty(run_suffix)
+        export_table(transform_df, joinpath(generated_dir, "table_transform_config$(run_suffix).tex");
+            caption="Coordinate transform configuration used for this run.",
+            label="tab:transform_config$(run_suffix)", align="l l", digits=4)
+    end
+
+    println("✓ Transform metadata exported: ", csv_path)
+    println("✓ Transform TeX snippets exported under: ", generated_dir)
+end
+
 # Helper: Custom tick formatter to eliminate raw scientific notation
 function clean_decimal_formatter(x)
     if x == 0
@@ -292,6 +367,7 @@ function run_diagnostic_pipeline(output_dir::String)
         spectral_order=N,
         svd_tolerance_floor=max(8, N + 1) * eps(Float64),
         energy_floor_threshold=1e-4)
+    export_transform_reporting(ws, output_dir, generated_dir, day_suffix)
 
     # --- STEP 1: Generate Diagnostics CSV ---
     csv_path = joinpath(output_dir, "manifold_diagnostics$(day_suffix).csv")
@@ -299,9 +375,12 @@ function run_diagnostic_pipeline(output_dir::String)
         Node_Index = 0:ws.N,
         Grid_Z_m = ws.z_atm,
         Coord_Xi = ws.xi_target,
-        Psi_M_Meso = ws.psi_M,
-        Psi_W_Wave = ws.psi_W,
-        Psi_T_Turb = ws.psi_T
+        Psi_M_Modal = ws.psi_M,
+        Psi_W_Modal = ws.psi_W,
+        Psi_T_Modal = ws.psi_T,
+        Psi_M_Height = ws.psi_M_z,
+        Psi_W_Height = ws.psi_W_z,
+        Psi_T_Height = ws.psi_T_z
     )
     CSV.write(csv_path, df)
     println("✓ Diagnostics CSV saved to: ", csv_path)
@@ -314,17 +393,30 @@ function run_diagnostic_pipeline(output_dir::String)
               left_margin=16Plots.mm, bottom_margin=10Plots.mm)
 
     p2 = plot(0:ws.N, [ws.psi_M ws.psi_W ws.psi_T], linewidth=2.5,
-              title="Spectral Partitioning Windows",
+              title="Modal Partitioning Windows",
               xlabel="Chebyshev Mode Index (n)", ylabel="Filter Weight (ψ)",
               label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright,
               left_margin=14Plots.mm, bottom_margin=10Plots.mm)
 
+    p3 = plot(ws.z_atm, [ws.psi_M_z ws.psi_W_z ws.psi_T_z], linewidth=2.5,
+              title="Coordinate Partitioning Windows",
+              xlabel="Physical Height z (m)", ylabel="Filter Weight (ψ)",
+              label=["Meso (ψ_M(z))" "Wave (ψ_W(z))" "Turb (ψ_T(z))"], legend=:topright,
+              left_margin=14Plots.mm, bottom_margin=10Plots.mm)
+
     plot_path_png = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).png")
     plot_path_pdf = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).pdf")
-    combined_plot = plot(p1, p2, layout=(1, 2), size=(1240, 520), left_margin=14Plots.mm, bottom_margin=10Plots.mm)
+    combined_plot = plot(p1, p2, p3, layout=(1, 3), size=(1760, 520), left_margin=14Plots.mm, bottom_margin=10Plots.mm)
     savefig(combined_plot, plot_path_png)
     savefig(combined_plot, plot_path_pdf)
     println("✓ Diagnostic geometry assets confirmed.")
+
+    i_surface = argmin(ws.z_atm)
+    i_top = argmax(ws.z_atm)
+    i_wave_peak = argmax(ws.psi_W_z)
+    println("✓ Coordinate-window checks: ψ_T(z_min)=", @sprintf("%.3f", ws.psi_T_z[i_surface]),
+        ", ψ_M(z_max)=", @sprintf("%.3f", ws.psi_M_z[i_top]),
+        ", ψ_W peak at z=", @sprintf("%.2f", ws.z_atm[i_wave_peak]), " m")
 
     draft_fig_dir = joinpath("data", "drafts", "figures")
     mkpath(draft_fig_dir)

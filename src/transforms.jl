@@ -1,10 +1,12 @@
+# src/transforms.jl
 module Transforms
 
 using LinearAlgebra
 
 export CoordinateMap, LinearMap, HyperbolicMap, LogarithmicMap, TanhMap, CfdWallMap, CustomMap,
        forward, inverse, dzdξ, d2zdξ2, dξdz, d2ξdz2, is_valid,
-       profile_transform, JacobianStack, evaluate_jacobian_stack
+    profile_transform, JacobianStack, evaluate_jacobian_stack,
+    map_name, map_parameter_pairs, describe_map
 
 abstract type CoordinateMap end
 
@@ -184,6 +186,27 @@ d2zdξ2(m::CustomMap, ξ)    = m.d2zdξ2_fn(ξ)
 # ===== VALIDATION & ERROR HANDLING =====
 # Fallback checks hook cleanly into type constructors where possible
 is_valid(m::CoordinateMap) = true
+
+function map_name(m::CoordinateMap)
+    return string(nameof(typeof(m)))
+end
+
+function map_parameter_pairs(m::CoordinateMap)
+    pairs = Vector{Pair{String,String}}()
+    for field in fieldnames(typeof(m))
+        value = getfield(m, field)
+        value_str = value isa AbstractFloat ? string(round(value, sigdigits=8)) : string(value)
+        push!(pairs, string(field) => value_str)
+    end
+    return pairs
+end
+
+function describe_map(m::CoordinateMap)
+    return (
+        map_type = map_name(m),
+        parameters = map_parameter_pairs(m),
+    )
+end
 
 # ===== UTILITY FUNCTIONS & STACK COMPOSITION =====
 function profile_transform(m::CoordinateMap, z_profile::Vector{Float64})

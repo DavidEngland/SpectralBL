@@ -18,6 +18,42 @@ struct UnifiedManifoldWorkspace
     ψ_M::Vector{Float64}
     ψ_W::Vector{Float64}
     ψ_T::Vector{Float64}
+    ψ_M_z::Vector{Float64}
+    ψ_W_z::Vector{Float64}
+    ψ_T_z::Vector{Float64}
+end
+
+function compute_coordinate_windows(z_nodes::Vector{Float64}, z_surf::Float64, z_top_anchor::Float64, delta_z::Float64)
+    z_lo, z_hi = minimum(z_nodes), maximum(z_nodes)
+    z_s = clamp(z_surf, z_lo, z_hi)
+    z_t = clamp(z_top_anchor, z_lo, z_hi)
+    if z_s > z_t
+        z_s, z_t = z_t, z_s
+    end
+    δz = max(abs(delta_z), sqrt(eps(Float64)))
+
+    ψ_M_z = zeros(length(z_nodes))
+    ψ_W_z = zeros(length(z_nodes))
+    ψ_T_z = zeros(length(z_nodes))
+    for i in eachindex(z_nodes)
+        z = z_nodes[i]
+        ψ_T_z[i] = 0.5 * (1.0 - tanh((z - z_s) / δz))
+        ψ_M_z[i] = 0.5 * (1.0 + tanh((z - z_t) / δz))
+        ψ_W_z[i] = 1.0 - ψ_M_z[i] - ψ_T_z[i]
+    end
+
+    @assert maximum(abs.(ψ_M_z .+ ψ_W_z .+ ψ_T_z .- 1.0)) < 1e-8 "Coordinate windows violate partition of unity"
+    @assert minimum(vcat(ψ_M_z, ψ_W_z, ψ_T_z)) > -1e-8 "Coordinate windows contain negative values"
+
+    i_surface = argmin(z_nodes)
+    i_top = argmax(z_nodes)
+    @assert ψ_T_z[i_surface] >= ψ_M_z[i_surface] && ψ_T_z[i_surface] >= ψ_W_z[i_surface] "Expected turbulence dominance near surface not satisfied"
+    @assert ψ_M_z[i_top] >= ψ_T_z[i_top] && ψ_M_z[i_top] >= ψ_W_z[i_top] "Expected synoptic dominance aloft not satisfied"
+
+    i_peak_w = argmax(ψ_W_z)
+    @assert i_peak_w != i_surface && i_peak_w != i_top "Wave window peak should be interior, not at boundaries"
+
+    return ψ_M_z, ψ_W_z, ψ_T_z
 end
 
 function setup_workspace(M_heights::Vector{Float64}, N::Int, α_stretch::Float64)
@@ -67,7 +103,9 @@ function setup_workspace(M_heights::Vector{Float64}, N::Int, α_stretch::Float64
     ψ_W = @. 0.5 * (1.0 + tanh((n_range - n_M) / Δ)) * 0.5 * (1.0 - tanh((n_range - n_W) / Δ))
     ψ_T = @. 1.0 - ψ_M - ψ_W
 
-    return UnifiedManifoldWorkspace(N, M_heights, M, H_svd, ψ_M, ψ_W, ψ_T)
+    ψ_M_z, ψ_W_z, ψ_T_z = compute_coordinate_windows(M_heights, 10.0, 40.0, 5.0)
+
+    return UnifiedManifoldWorkspace(N, M_heights, M, H_svd, ψ_M, ψ_W, ψ_T, ψ_M_z, ψ_W_z, ψ_T_z)
 end
 
 function svd_project(ws::UnifiedManifoldWorkspace, profile::Vector{Float64})

@@ -21,6 +21,9 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     psi_M::Vector{T}
     psi_W::Vector{T}
     psi_T::Vector{T}
+    psi_M_z::Vector{T}
+    psi_W_z::Vector{T}
+    psi_T_z::Vector{T}
     Manifold_Mass::Matrix{T}
     Mass_Factored::Cholesky{T, Matrix{T}}
     z_atm::Vector{T}
@@ -30,7 +33,8 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
     z_center::T
 
     function UnifiedManifoldWorkspace(N::Int, z_min::T, z_max::T, alpha_stretch::T;
-                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72, invert_windows::Bool=false) where {T<:AbstractFloat}
+                                     n_m=3, n_w=12, delta=1.2, K_q::Int=72, invert_windows::Bool=false,
+                                     z_surf::T=T(10.0), z_top_anchor::T=T(40.0), delta_z::T=T(5.0)) where {T<:AbstractFloat}
 
         L_domain = z_max - z_min
         z_center = (z_max + z_min) / 2.0
@@ -102,8 +106,43 @@ struct UnifiedManifoldWorkspace{T<:AbstractFloat}
             end
         end
 
-        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, alpha_stretch, L_domain, z_center)
+        psi_M_z, psi_W_z, psi_T_z = compute_coordinate_windows(z_atm, z_surf, z_top_anchor, delta_z)
+
+        new{T}(N, K_q, xi_target, xi_q, J_q, psi_M, psi_W, psi_T, psi_M_z, psi_W_z, psi_T_z, Manifold_Mass, Mass_Factored, z_atm, Dz_atm, alpha_stretch, L_domain, z_center)
     end
+end
+
+function compute_coordinate_windows(z_nodes::Vector{T}, z_surf::T, z_top_anchor::T, delta_z::T) where {T<:AbstractFloat}
+    z_lo, z_hi = minimum(z_nodes), maximum(z_nodes)
+    z_s = clamp(z_surf, z_lo, z_hi)
+    z_t = clamp(z_top_anchor, z_lo, z_hi)
+    if z_s > z_t
+        z_s, z_t = z_t, z_s
+    end
+    δz = max(abs(delta_z), sqrt(eps(T)))
+
+    psi_M_z = zeros(T, length(z_nodes))
+    psi_W_z = zeros(T, length(z_nodes))
+    psi_T_z = zeros(T, length(z_nodes))
+    for i in eachindex(z_nodes)
+        z = z_nodes[i]
+        psi_T_z[i] = 0.5 * (1.0 - tanh((z - z_s) / δz))
+        psi_M_z[i] = 0.5 * (1.0 + tanh((z - z_t) / δz))
+        psi_W_z[i] = 1.0 - psi_M_z[i] - psi_T_z[i]
+    end
+
+    @assert maximum(abs.(psi_M_z .+ psi_W_z .+ psi_T_z .- 1.0)) < 1e-8 "Coordinate windows violate partition of unity"
+    @assert minimum(vcat(psi_M_z, psi_W_z, psi_T_z)) > -1e-8 "Coordinate windows contain negative values"
+
+    i_surface = argmin(z_nodes)
+    i_top = argmax(z_nodes)
+    @assert psi_T_z[i_surface] >= psi_M_z[i_surface] && psi_T_z[i_surface] >= psi_W_z[i_surface] "Expected turbulence dominance near surface not satisfied"
+    @assert psi_M_z[i_top] >= psi_T_z[i_top] && psi_M_z[i_top] >= psi_W_z[i_top] "Expected synoptic dominance aloft not satisfied"
+
+    i_peak_w = argmax(psi_W_z)
+    @assert i_peak_w != i_surface && i_peak_w != i_top "Wave window peak should be interior, not at boundaries"
+
+    return psi_M_z, psi_W_z, psi_T_z
 end
 
 # --- Reconciled Forward Transformation ---
