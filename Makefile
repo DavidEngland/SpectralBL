@@ -24,12 +24,15 @@ else
     DAY_SUFFIX := 991031
 endif
 
+# Versioned manuscript export filename, e.g. SpectralBL_manuscript_CASES99_v991031
+EXPORT_NAME := SpectralBL_manuscript_CASES99_v$(DAY_SUFFIX)
+
 # Find ALL NetCDF day files available in your folder for bulk runs
 ALL_NC_FILES := $(wildcard $(DATA_DIR)/ncar_eol_dee0099881/cases.9910*.nc)
 CAMPAIGN_DAYS := $(sort $(patsubst $(DATA_DIR)/ncar_eol_dee0099881/cases.%.nc,%,$(ALL_NC_FILES)))
 
 # Declare all symbolic, execution-only macro endpoints safely
-.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts $(CAMPAIGN_DAYS)
+.PHONY: all full validate run report wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts purge-generated verify-manuscript $(CAMPAIGN_DAYS)
 
 # Default target orchestrates the entire localized lifecycle with forced sequencing
 all: setup
@@ -105,9 +108,18 @@ ms: setup
 	cd $(DRAFT_DIR) && pdflatex -interaction=nonstopmode $(DOC).tex
 	@echo "🔏 Finalizing document state tracking (Pass 3)..."
 	cd $(DRAFT_DIR) && pdflatex -interaction=nonstopmode $(DOC).tex
-	@echo "💾 Mirroring compiled layout output to target asset folder..."
+	@echo "💾 Exporting compiled manuscript with versioned tag..."
+	cp $(DRAFT_DIR)/$(DOC).pdf $(DRAFT_DIR)/$(EXPORT_NAME).pdf
 	cp $(DRAFT_DIR)/$(DOC).pdf $(FIG_DIR)/
-	@echo "✓ Manuscript successfully compiled and preserved in $(FIG_DIR)/$(DOC).pdf"
+	@echo "✓ Manuscript successfully compiled and preserved as $(DRAFT_DIR)/$(EXPORT_NAME).pdf"
+
+purge-generated: setup
+	@echo "🧹 Purging generated manuscript fragments in $(GENERATED_DIR)..."
+	rm -f $(GENERATED_DIR)/*.tex
+	@echo "✓ Generated fragment directory reset."
+
+verify-manuscript: purge-generated report ms
+	@echo "🔍 Verification complete: generated fragments refreshed and manuscript compiled."
 
 clear_ms_artifacts:
 	@echo "🧹 Purging transient auxiliary files inside $(DRAFT_DIR)/..."
@@ -135,5 +147,6 @@ clean: clear_ms_artifacts
 	rm -f $(FIG_DIR)/manifold_geometry_plots*.pdf
 	rm -f $(DRAFT_DIR)/$(DOC).pdf
 	rm -f $(FIG_DIR)/$(DOC).pdf
+	rm -f $(DRAFT_DIR)/SpectralBL_manuscript_*.pdf
 	rm -f $(GENERATED_DIR)/*.tex
 	@echo "✓ All transient data structures and manuscript outputs cleared. Raw field payloads preserved."

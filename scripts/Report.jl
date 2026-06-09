@@ -287,7 +287,11 @@ function run_diagnostic_pipeline(output_dir::String)
 
     # Export manuscript parameter macros as reusable TeX snippet overlays.
     generated_dir = joinpath("drafts", "sections", "generated")
-    export_parameters(ws, joinpath(generated_dir, "params.tex"))
+    export_parameters(ws, joinpath(generated_dir, "params.tex");
+        tower_observation_levels=8,
+        spectral_order=N,
+        svd_tolerance_floor=max(8, N + 1) * eps(Float64),
+        energy_floor_threshold=1e-4)
 
     # --- STEP 1: Generate Diagnostics CSV ---
     csv_path = joinpath(output_dir, "manifold_diagnostics$(day_suffix).csv")
