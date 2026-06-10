@@ -4,6 +4,7 @@ using CSV
 using Plots
 using LinearAlgebra
 using Printf
+using LaTeXStrings
 
 # 1. Include and use your source module from src/
 include("../src/Cases99.jl")
@@ -254,8 +255,8 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
 
     p_energy = plot(
         title = "Energy-Dimension Plane\n[$title_tag]",
-        xlabel = "Effective Modal Dimension (D_eff)",
-        ylabel = "Wave Energy Fraction (F_W)",
+        xlabel = L"D_{\mathrm{eff}}",
+        ylabel = L"F_W",
         yformatter = clean_decimal_formatter,
         legend = :topright,
         left_margin = 14Plots.mm, bottom_margin = 10Plots.mm
@@ -271,8 +272,8 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
 
     p_curv = plot(
         title = "Curvature-Stratification Plane\n[$title_tag]",
-        xlabel = "Spectral Curvature (χ_N)",
-        ylabel = "Gradient Richardson Number (Ri_g)",
+        xlabel = L"\chi_N",
+        ylabel = L"\mathrm{Ri}_g",
         xformatter = clean_decimal_formatter,
         yformatter = clean_decimal_formatter,
         legend = :bottomleft,
@@ -289,7 +290,7 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
 
     p_time = plot(df.TimeIdx, df.F_W;
         title = "Temporal Feature Trace\n[$title_tag]",
-        xlabel = "Time Index", ylabel = "Wave Energy Fraction (F_W)",
+        xlabel = "Time Index", ylabel = L"F_W",
         yformatter = clean_decimal_formatter, linewidth = 2, legend = false,
         left_margin = 14Plots.mm, bottom_margin = 10Plots.mm)
 
@@ -388,20 +389,20 @@ function run_diagnostic_pipeline(output_dir::String)
     # --- STEP 2: Unified Static Geometry Plots ---
     p1 = plot(ws.xi_target, ws.z_atm, marker=:circle, linewidth=2,
               title="Hyperbolic Tangent Mapping (α = 2.50)",
-              xlabel="Computational Coordinate (ξ)", ylabel="Physical Height z (m)",
+              xlabel=L"\xi", ylabel=L"z\,(\mathrm{m})",
               label="Grid Nodes", legend=:topleft,
               left_margin=16Plots.mm, bottom_margin=10Plots.mm)
 
     p2 = plot(0:ws.N, [ws.psi_M ws.psi_W ws.psi_T], linewidth=2.5,
               title="Modal Partitioning Windows",
-              xlabel="Chebyshev Mode Index (n)", ylabel="Filter Weight (ψ)",
-              label=["Meso (ψ_M)" "Wave (ψ_W)" "Turb (ψ_T)"], legend=:topright,
+              xlabel=L"n", ylabel=L"\psi",
+              label=[L"\psi_M" L"\psi_W" L"\psi_T"], legend=:topright,
               left_margin=14Plots.mm, bottom_margin=10Plots.mm)
 
     p3 = plot(ws.z_atm, [ws.psi_M_z ws.psi_W_z ws.psi_T_z], linewidth=2.5,
               title="Coordinate Partitioning Windows",
-              xlabel="Physical Height z (m)", ylabel="Filter Weight (ψ)",
-              label=["Meso (ψ_M(z))" "Wave (ψ_W(z))" "Turb (ψ_T(z))"], legend=:topright,
+              xlabel=L"z\,(\mathrm{m})", ylabel=L"\psi",
+              label=[L"\psi_M(z)" L"\psi_W(z)" L"\psi_T(z)"], legend=:topright,
               left_margin=14Plots.mm, bottom_margin=10Plots.mm)
 
     plot_path_png = joinpath(output_dir, "manifold_geometry_plots$(day_suffix).png")
