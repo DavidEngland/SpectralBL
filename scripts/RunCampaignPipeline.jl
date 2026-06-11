@@ -201,6 +201,8 @@ function execute_campaign_sweep()
                     E_total = fill(metrics.E_total, 1),
                     E_wave = fill(metrics.E_total * f_w_adaptive, 1),
                     E_turb = fill(metrics.E_total * (1.0 - f_w_adaptive), 1),
+                    E_meso = fill(metrics.E_meso, 1),
+                    E_interaction = fill(metrics.E_interaction, 1),
                     compression_factor = fill(compression_factor, 1),
                     peak_mode = fill(peak_m, 1),
                     wave_window_min = fill(n_min_eff, 1),

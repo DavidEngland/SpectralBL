@@ -114,6 +114,8 @@ test:
 # 3. Manuscript Compilation & Assembly Layer (AMS ametsoc2015 Sequence)
 # ==============================================================================
 ms: setup
+	@echo "♻️ Regenerating synoptic diagnostics tables/macros for manuscript consistency..."
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/run_synoptic_analysis.jl
 	@echo "♻️ Regenerating D_eff diagnostics macros for manuscript consistency..."
 	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/regenerate_tex_exports.jl
 	@echo "📝 Compiling text manuscript: $(DRAFT_DIR)/$(DOC).tex"

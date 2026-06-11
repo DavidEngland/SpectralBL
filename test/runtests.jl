@@ -1,8 +1,11 @@
 using Test
 using NCDatasets
+using DataFrames
 
 include("../src/Summary.jl")
+include("../scripts/DiagnosticsBaseline.jl")
 using .AtmosphericDataPipeline
+using .DiagnosticsBaseline
 
 function create_dummy_netcdf(values::Vector{Float64}, varname::String)
     path = tempname() * ".nc"
@@ -96,4 +99,30 @@ end
     @test !fail_result.downstream_allowed
 
     rm(nc_path; force=true)
+end
+
+@testset "diagnostics baseline cleaning and summaries" begin
+    raw = DataFrame(
+        D_eff = ["1.0", "2.0", "bad", 4.0],
+        F_W = [0.1, 0.2, 0.3, "0.4"],
+        chi_N = [0.01, 0.02, 0.03, 0.04],
+        Ri_g = [0.5, "0.6", 0.7, NaN],
+        TimeIdx = [1, 2, 3, 4]
+    )
+
+    clean, ri_name, dropped, missing_cols = clean_diagnostics_frame(raw)
+    @test isempty(missing_cols)
+    @test ri_name == "Ri_g"
+    @test dropped == 2
+    @test nrow(clean) == 2
+    @test clean.D_eff == [1.0, 2.0]
+
+    dsum = d_eff_summary(clean.D_eff; early_count=1)
+    @test isapprox(dsum.mean, 1.5; atol=1e-12)
+    @test isapprox(dsum.early, 1.0; atol=1e-12)
+    @test isapprox(dsum.late, 2.0; atol=1e-12)
+
+    macros = diagnostics_summary_macros(clean; early_count=1)
+    @test macros["DefEffMean"] == "1.50"
+    @test macros["DiagnosticsFormulaVersion"] == BASELINE_VERSION
 end

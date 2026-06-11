@@ -15,8 +15,10 @@ struct HighFidelityRecord{T<:AbstractFloat}
     chi_N::T
     D_eff::T
     E_total::T
+    E_meso::T
     E_wave::T
     E_turb::T
+    E_interaction::T
     peak_mode::Int
     wave_window_min::Int
     wave_window_max::Int
@@ -24,7 +26,9 @@ struct HighFidelityRecord{T<:AbstractFloat}
     Status::String
 end
 
-function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0, wave_threshold = 0.1) where {T<:AbstractFloat}
+function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String;
+    g = 9.81, theta_ref = 265.0, wave_threshold = 0.1,
+    entropy_prob_floor = 1e-9, active_mode_floor = 1e-8) where {T<:AbstractFloat}
     N = ws.N
     D_manifold = N + 1 # Dynamic manifold length target (33)
 
@@ -35,24 +39,27 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     # Verify spectral partition of unity: psi_M + psi_W + psi_T = 1 for all modes.
     @assert maximum(abs.(ws.psi_M .+ ws.psi_W .+ ws.psi_T .- 1)) < 1e-10 "Spectral windows violate partition of unity"
 
-    # --- PROJECTION ENHANCEMENT: Zero-pad observational slices to full workspace dimensions ---
+    # Embed available coefficients into the full manifold dimension.
+    # If upstream inversion returns fewer modes than D_manifold, remaining modes are
+    # physically unresolved for this timestamp and represented as zeros.
     c_theta = zeros(T, D_manifold)
     c_u     = zeros(T, D_manifold)
 
-    # Safely copy available coefficients (up to length 7) into full 33-dimensional space
-    len_in = min(length(c_theta_raw), D_manifold)
-    c_theta[1:len_in] .= c_theta_raw[1:len_in]
-    c_u[1:len_in]     .= c_u_raw[1:len_in]
-    # ----------------------------------------------------------------------------------------
+    len_theta = min(length(c_theta_raw), D_manifold)
+    len_u = min(length(c_u_raw), D_manifold)
+    c_theta[1:len_theta] .= c_theta_raw[1:len_theta]
+    c_u[1:len_u]         .= c_u_raw[1:len_u]
 
-    c_θ_W = c_theta .* ws.psi_W; c_θ_T = c_theta .* ws.psi_T
-    c_u_W = c_u .* ws.psi_W;     c_u_T = c_u .* ws.psi_T
+    c_θ_M = c_theta .* ws.psi_M; c_θ_W = c_theta .* ws.psi_W; c_θ_T = c_theta .* ws.psi_T
+    c_u_M = c_u .* ws.psi_M;     c_u_W = c_u .* ws.psi_W;     c_u_T = c_u .* ws.psi_T
 
-    # Note: E_W + E_T ≤ E_tot — the mesoscale window (psi_M) is excluded from the
-    # wave/turbulence decomposition by design; partition of unity is still satisfied.
+    # Window energies under a non-diagonal mass metric are not strictly additive;
+    # interaction terms are captured explicitly in E_int.
     E_tot = dot(c_theta, ws.Manifold_Mass * c_theta) + dot(c_u, ws.Manifold_Mass * c_u)
+    E_M   = dot(c_θ_M, ws.Manifold_Mass * c_θ_M) + dot(c_u_M, ws.Manifold_Mass * c_u_M)
     E_W   = dot(c_θ_W, ws.Manifold_Mass * c_θ_W) + dot(c_u_W, ws.Manifold_Mass * c_u_W)
     E_T   = dot(c_θ_T, ws.Manifold_Mass * c_θ_T) + dot(c_u_T, ws.Manifold_Mass * c_u_T)
+    E_int = E_tot - (E_M + E_W + E_T)
     
     R_W = E_T > 1e-9 ? E_W / E_T : 0.0
     F_W = E_tot > 1e-9 ? E_W / E_tot : 0.0
@@ -68,11 +75,19 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     end
     chi_N = den_chi > 1e-9 ? num_chi / (Float64(N)^2 * den_chi) : 0.0
 
+    # Shannon entropy over actively resolved modal support only.
     entropy = 0.0
-    sum_c = sum(c_theta.^2)
-    for i in 1:(N+1)
-        p_n = c_theta[i]^2 / (sum_c + 1e-12)
-        if p_n > 1e-9; entropy -= p_n * log(p_n); end
+    sum_c = sum(abs2, c_theta)
+    active_modes = findall(i -> abs2(c_theta[i]) > active_mode_floor, eachindex(c_theta))
+    if isempty(active_modes) || sum_c <= eps(T)
+        entropy = 0.0
+    else
+        for i in active_modes
+            p_n = abs2(c_theta[i]) / (sum_c + 1e-12)
+            if p_n > entropy_prob_floor
+                entropy -= p_n * log(p_n)
+            end
+        end
     end
     D_eff = exp(entropy)
 
@@ -84,6 +99,9 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     wave_window_max = isempty(active_modes) ? -1 : maximum(active_modes) - 1
     peak_in_wave_window = !isempty(active_modes) && (peak_mode >= wave_window_min) && (peak_mode <= wave_window_max)
     status_out = peak_in_wave_window ? status_str : string(status_str, " | PeakOutsidePsiW")
+    if len_theta < D_manifold || len_u < D_manifold
+        status_out = string(status_out, " | TruncatedInput(theta=", len_theta, ",u=", len_u, ")")
+    end
 
     c_θ_loc = c_theta .- c_θ_W
     c_u_loc = c_u .- c_u_W
@@ -130,8 +148,10 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
         chi_N,
         D_eff,
         E_tot,
+        E_M,
         E_W,
         E_T,
+        E_int,
         peak_mode,
         wave_window_min,
         wave_window_max,
