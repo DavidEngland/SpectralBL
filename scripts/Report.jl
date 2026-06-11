@@ -4,6 +4,7 @@ using CSV
 using Plots
 using LinearAlgebra
 using Random
+using Statistics
 using Printf
 using LaTeXStrings
 
