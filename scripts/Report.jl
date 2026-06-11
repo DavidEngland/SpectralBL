@@ -3,6 +3,7 @@ using DataFrames
 using CSV
 using Plots
 using LinearAlgebra
+using Random
 using Printf
 using LaTeXStrings
 
@@ -115,6 +116,14 @@ function to_float(x)
     end
 end
 
+function zscore_features(X::Matrix{Float64})
+    mu = vec(mean(X, dims=1))
+    sigma = vec(std(X, dims=1))
+    sigma[sigma .== 0.0] .= 1.0
+    Xs = (X .- mu') ./ sigma'
+    return Xs, mu, sigma
+end
+
 function infer_regime(d_eff, f_w)
     if ismissing(d_eff) || ismissing(f_w)
         return missing
@@ -125,6 +134,129 @@ function infer_regime(d_eff, f_w)
     else
         return 3
     end
+end
+
+function fit_gmm3_predict(X::Matrix{Float64}; max_iter::Int=200, tol::Float64=1e-6, seed::Int=42)
+    rng = MersenneTwister(seed)
+    n, p = size(X)
+    K = 3
+    reg = 1e-6
+
+    if n < K
+        return [assign_regime_threshold(X[i, 1], X[i, 2]) for i in 1:n]
+    end
+
+    centers_idx = sort(unique(round.(Int, range(1, n, length=K))))
+    if length(centers_idx) < K
+        centers_idx = rand(rng, 1:n, K)
+    end
+
+    μ = hcat([X[i, :] for i in centers_idx]...)  # p x K
+    weights = fill(1.0 / K, K)
+    Σ = [Matrix{Float64}(I, p, p) for _ in 1:K]
+
+    Σ0 = cov(X) + reg * Matrix{Float64}(I, p, p)
+    for k in 1:K
+        Σ[k] .= Σ0
+    end
+
+    R = zeros(n, K)
+    ll_old = -Inf
+
+    for _ in 1:max_iter
+        for i in 1:n
+            logp = zeros(K)
+            x = @view X[i, :]
+            for k in 1:K
+                Σk = Σ[k] + reg * Matrix{Float64}(I, p, p)
+                L = cholesky(Symmetric(Σk))
+                d = x .- μ[:, k]
+                q = dot(d, L \ d)
+                logdetΣ = 2.0 * sum(log.(diag(L.L)))
+                logp[k] = log(max(weights[k], 1e-12)) - 0.5 * (p * log(2 * pi) + logdetΣ + q)
+            end
+            m = maximum(logp)
+            w = exp.(logp .- m)
+            R[i, :] .= w ./ sum(w)
+        end
+
+        Nk = vec(sum(R, dims=1))
+        weights = Nk ./ n
+
+        for k in 1:K
+            if Nk[k] <= 1e-8
+                μ[:, k] .= X[rand(rng, 1:n), :]
+                Σ[k] .= Σ0
+                weights[k] = 1.0 / n
+                continue
+            end
+
+            μ[:, k] .= (R[:, k]' * X)' ./ Nk[k]
+
+            Σk = zeros(p, p)
+            for i in 1:n
+                d = X[i, :] .- μ[:, k]'
+                Σk .+= R[i, k] .* (d' * d)
+            end
+            Σk ./= Nk[k]
+            Σk .+= reg * Matrix{Float64}(I, p, p)
+            Σ[k] .= Σk
+        end
+
+        ll = 0.0
+        for i in 1:n
+            x = @view X[i, :]
+            s = 0.0
+            for k in 1:K
+                Σk = Σ[k] + reg * Matrix{Float64}(I, p, p)
+                L = cholesky(Symmetric(Σk))
+                d = x .- μ[:, k]
+                q = dot(d, L \ d)
+                logdetΣ = 2.0 * sum(log.(diag(L.L)))
+                s += weights[k] * exp(-0.5 * (p * log(2 * pi) + logdetΣ + q))
+            end
+            ll += log(max(s, 1e-300))
+        end
+
+        if abs(ll - ll_old) < tol
+            break
+        end
+        ll_old = ll
+    end
+
+    labels = Vector{Int}(undef, n)
+    for i in 1:n
+        labels[i] = argmax(@view R[i, :])
+    end
+    return labels
+end
+
+function assign_regime_threshold(d_eff::Float64, f_w::Float64)
+    if d_eff >= 10.0 && f_w < 0.25
+        return 1
+    elseif d_eff <= 8.0 && f_w >= 0.30
+        return 2
+    else
+        return 3
+    end
+end
+
+function remap_clusters_to_physical(labels::Vector{Int}, D_eff::Vector{Float64}, F_W::Vector{Float64})
+    clusters = sort(unique(labels))
+    if length(clusters) < 3
+        return [assign_regime_threshold(D_eff[i], F_W[i]) for i in eachindex(labels)]
+    end
+
+    μD = Dict(k => mean(D_eff[labels .== k]) for k in clusters)
+    μF = Dict(k => mean(F_W[labels .== k]) for k in clusters)
+
+    wave_cluster = clusters[argmax([μF[k] for k in clusters])]
+    remaining = filter(k -> k != wave_cluster, clusters)
+    cont_cluster = remaining[argmax([μD[k] for k in remaining])]
+    inter_cluster = only(filter(k -> k != cont_cluster, remaining))
+
+    mapping = Dict(cont_cluster => 1, wave_cluster => 2, inter_cluster => 3)
+    return [mapping[l] for l in labels]
 end
 
 function parse_regime_value(x, d_eff, f_w)
@@ -218,27 +350,26 @@ function prepare_plot_data(raw::DataFrame)
     ri = to_float.(raw[!, ri_col])
     time_idx = to_float.(raw[!, :TimeIdx])
 
-    regimes = if hasproperty(raw, :Regime)
-        [parse_regime_value(raw[i, :Regime], d_eff[i], f_w[i]) for i in 1:nrow(raw)]
-    else
-        [infer_regime(d_eff[i], f_w[i]) for i in 1:nrow(raw)]
-    end
-
-    valid = .!ismissing.(d_eff) .& .!ismissing.(f_w) .& .!ismissing.(chi_n) .& .!ismissing.(ri) .& .!ismissing.(time_idx) .& .!ismissing.(regimes)
+    valid = .!ismissing.(d_eff) .& .!ismissing.(f_w) .& .!ismissing.(chi_n) .& .!ismissing.(ri) .& .!ismissing.(time_idx)
 
     if !any(valid)
         println("! No valid trajectory rows after numeric/regime filtering. Skipping tier plots.")
         return DataFrame()
     end
 
-    return DataFrame(
+    base_df = DataFrame(
         D_eff = Float64.(d_eff[valid]),
         F_W = Float64.(f_w[valid]),
         chi_N = Float64.(chi_n[valid]),
         Ri = Float64.(ri[valid]),
-        TimeIdx = Float64.(time_idx[valid]),
-        Regime = Int.(regimes[valid])
+        TimeIdx = Float64.(time_idx[valid])
     )
+
+    X_raw = Matrix{Float64}(base_df[:, [:D_eff, :F_W, :Ri]])
+    X_scaled, _, _ = zscore_features(X_raw)
+    gmm_labels = fit_gmm3_predict(X_scaled; max_iter=200, tol=1e-6, seed=42)
+    base_df[!, :Regime] = remap_clusters_to_physical(gmm_labels, base_df.D_eff, base_df.F_W)
+    return base_df
 end
 
 function day_display_label(day_suffix::String)

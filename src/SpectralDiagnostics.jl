@@ -27,7 +27,7 @@ struct HighFidelityRecord{T<:AbstractFloat}
 end
 
 function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String;
-    g = 9.81, theta_ref = 265.0, wave_threshold = 0.1,
+    g = 9.81, theta_ref::Union{Nothing,Float64} = nothing, wave_threshold = 0.1,
     entropy_prob_floor = 1e-9, active_mode_floor = 1e-8) where {T<:AbstractFloat}
     N = ws.N
     D_manifold = N + 1 # Dynamic manifold length target (33)
@@ -118,6 +118,8 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     end
     theta_loc_profile = T_eval * c_θ_loc
     u_loc_profile     = T_eval * c_u_loc
+
+    theta_ref_eff = isnothing(theta_ref) ? max(mean(theta_loc_profile), 1.0) : theta_ref
     
     dtheta_dz_profile = ws.Dz_atm * theta_loc_profile
     du_dz_profile     = ws.Dz_atm * u_loc_profile
@@ -127,7 +129,7 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     avg_idx = max(1, N-1):(N+1)
     dtdz_avg  = mean(dtheta_dz_profile[avg_idx])
     shear_avg = mean(abs2, du_dz_profile[avg_idx]) + 1e-8
-    Ri_g = (g / theta_ref) * dtdz_avg / shear_avg
+    Ri_g = (g / theta_ref_eff) * dtdz_avg / shear_avg
 
     # Bulk Ri: finite difference between profile-averaged top and bottom layer means.
     # xi_target[1] = +1 → z_top; xi_target[end] = -1 → z_bottom.
@@ -137,7 +139,7 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     dtheta_bulk = mean(theta_loc_profile[z_top_idx]) - mean(theta_loc_profile[z_bot_idx])
     du_bulk     = mean(u_loc_profile[z_top_idx])     - mean(u_loc_profile[z_bot_idx])
     dz_bulk     = mean(ws.z_atm[z_top_idx])          - mean(ws.z_atm[z_bot_idx])
-    Ri_b = abs(du_bulk) > 1e-3 ? (g / theta_ref) * dtheta_bulk * dz_bulk / du_bulk^2 : 0.5
+    Ri_b = abs(du_bulk) > 1e-3 ? (g / theta_ref_eff) * dtheta_bulk * dz_bulk / du_bulk^2 : 0.5
 
     return HighFidelityRecord{T}(
         time_idx,

@@ -169,7 +169,7 @@ function execute_campaign_sweep()
                 c_theta, c_u, run_status = result
 
                 status_with_gate = gate_result.physical_gradients_pass ? run_status : string(run_status, " | PhysicalGateWarn")
-                metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
+                metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate)
 
                 # --- ADAPTIVE INTERCEPT HOOK ---
                 f_w_adaptive, peak_m, n_min_eff, in_window, _run_log, compression_factor = calculate_adaptive_wave_fraction(
