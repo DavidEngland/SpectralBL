@@ -65,6 +65,16 @@ function execute_campaign_sweep()
     
     println("Beginning processing sweep over $(length(nc_files)) daily target logs...")
     master_df = DataFrame()
+    spike_rows = DataFrame(
+        FileDate = Int64[],
+        TimeIdx = Int64[],
+        D_eff = Float64[],
+        F_W = Float64[],
+        E_total = Float64[],
+        E_interaction = Float64[],
+        Ri_b = Float64[],
+        RunStatus = String[]
+    )
 
     valid_sample(x) = !ismissing(x) && x != -1037.0 && !isnan(Float64(x))
 
@@ -211,12 +221,30 @@ function execute_campaign_sweep()
                     RunStatus = fill(final_status, 1)
                 )
                 append!(master_df, row_data)
+
+                if metrics.E_interaction > 1000.0
+                    push!(spike_rows, (
+                        FileDate = parse(Int, file_date),
+                        TimeIdx = metrics.time_idx,
+                        D_eff = metrics.D_eff,
+                        F_W = f_w_adaptive,
+                        E_total = metrics.E_total,
+                        E_interaction = metrics.E_interaction,
+                        Ri_b = metrics.Ri_b,
+                        RunStatus = final_status
+                    ))
+                end
             end
         end
     end
     
     # Save clean daily profiles to its own unique shard
     CSV.write(output_csv, master_df)
+    if nrow(spike_rows) > 0
+        spike_csv = replace(output_csv, "trajectory_" => "trajectory_spikes_")
+        CSV.write(spike_csv, spike_rows)
+        println("✓ Spike diagnostics written to: ", spike_csv)
+    end
     println("\n✓ Successfully finalized trajectory tracking. Data compiled in: $output_csv")
 end
 

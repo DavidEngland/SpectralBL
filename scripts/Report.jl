@@ -339,9 +339,9 @@ function prepare_plot_data(raw::DataFrame)
         return DataFrame()
     end
 
-    ri_col = hasproperty(raw, :Ri_g) ? :Ri_g : (hasproperty(raw, :Ri_f) ? :Ri_f : nothing)
+    ri_col = hasproperty(raw, :Ri_b) ? :Ri_b : (hasproperty(raw, :Ri_g) ? :Ri_g : (hasproperty(raw, :Ri_f) ? :Ri_f : nothing))
     if isnothing(ri_col)
-        println("! Missing both Ri_g and Ri_f columns. Skipping tier plots.")
+        println("! Missing Ri_b, Ri_g, and Ri_f columns. Skipping tier plots.")
         return DataFrame()
     end
 
@@ -410,13 +410,13 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
         println("! No Ri values within [", @sprintf("%.2f", ri_plot_min), ", ", @sprintf("%.2f", ri_plot_max), "] for '", title_tag, "'. Falling back to full range.")
         df_curv = df
     elseif n_excluded > 0
-        println("ℹ Curvature-Stratification plot filtered to Ri_g ∈ [", @sprintf("%.2f", ri_plot_min), ", ", @sprintf("%.2f", ri_plot_max), "] for '", title_tag, "' (excluded ", n_excluded, " outlier rows).")
+        println("ℹ Curvature-Stratification plot filtered to Ri_b ∈ [", @sprintf("%.2f", ri_plot_min), ", ", @sprintf("%.2f", ri_plot_max), "] for '", title_tag, "' (excluded ", n_excluded, " outlier rows).")
     end
 
     p_curv = plot(
         title = "Curvature-Stratification Plane\n[$title_tag]",
         xlabel = L"\chi_N",
-        ylabel = L"\mathrm{Ri}_g",
+        ylabel = L"\mathrm{Ri}_b",
         xformatter = clean_decimal_formatter,
         yformatter = clean_decimal_formatter,
         ylims = (ri_plot_min, ri_plot_max),

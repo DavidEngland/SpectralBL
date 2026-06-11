@@ -1,0 +1,4683 @@
+/filter Open `drafts/sections/methods.tex` and `drafts/sections/intro.tex`.
+Inject sentences using the Sposini (2018) 'Brownian yet non-Gaussian' paradigm to explain our profile variance distributions.
+Link the non-stationary event detection approaches of Kang et al. (2014a) and Narasimha (1995) to defend why our state estimator targets structural profile deformations ('events') rather than continuous local gradients.
+Cite Sun et al. (2015) and Mahrt (2010) to frame our non-orthogonal Interaction Residual spikes as physical submesoscale wave-turbulence interactions rather than system noise.
+
+Glean and update drafts/**/*.tex files with references as see fit.
+
+Update and standarize drafts/references.bib based upon these BibTex items in "drafts/new refs.txt".
+
+
+@article{greenwade93,
+    author  = "George D. Greenwade",
+    title   = "The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN})",
+    year    = "1993",
+    journal = "TUGBoat",
+    volume  = "14",
+    number  = "3",
+    pages   = "342--351"
+}
+
+@article{Lusch2018Universal,
+   title={Deep learning for universal linear embeddings of nonlinear dynamics},
+   volume={9},
+   number={1},
+   journal={Nature Communications},
+   publisher={Springer Science and Business Media LLC},
+   author={Lusch, Bethany and Kutz, J. Nathan and Brunton, Steven L.},
+   year={2018},
+   month=nov
+}
+
+@inproceedings{
+liu2024physicsinformed,
+title={Physics-Informed Koopman Network for time-series prediction of dynamical systems},
+author={Yuying Liu and Aleksei Sholokhov and Hassan Mansour and Saleh Nabi},
+booktitle={ICLR 2024 Workshop on AI4DifferentialEquations In Science},
+year={2024},
+}
+
+@article{Otto2021annualreviews,
+   author = "Otto, Samuel E. and Rowley, Clarence W.",
+   title = "Koopman Operators for Estimation and Control of Dynamical Systems",
+   journal= "Annual Review of Control, Robotics, and Autonomous Systems",
+   year = "2021",
+   volume = "4",
+   number = "Volume 4, 2021",
+   pages = "59-87",
+   publisher = "Annual Reviews",
+}
+
+@article{Bruton2022ModernKoopman,
+author = {Brunton, Steven L. and Budišić, Marko and Kaiser, Eurika and Kutz, J. Nathan},
+title = {Modern Koopman Theory for Dynamical Systems},
+journal = {SIAM Review},
+volume = {64},
+number = {2},
+pages = {229-340},
+year = {2022},
+}
+
+@inproceedings{
+liu2023koopa,
+title={Koopa: Learning Non-stationary Time Series Dynamics with Koopman Predictors},
+author={Yong Liu and Chenyu Li and Jianmin Wang and Mingsheng Long},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+year={2023},
+}
+
+@article{
+Koopman1931Koopman,
+author = {B. O. Koopman },
+title = {Hamiltonian Systems and Transformation in Hilbert Space},
+journal = {Proceedings of the National Academy of Sciences},
+volume = {17},
+number = {5},
+pages = {315-318},
+year = {1931},
+}
+
+@article{
+Neumann1932ergodic,
+author = {J. v. Neumann },
+title = {Proof of the Quasi-Ergodic Hypothesis},
+journal = {Proceedings of the National Academy of Sciences},
+volume = {18},
+number = {1},
+pages = {70-82},
+year = {1932},
+}
+
+@article{
+Lan2013global,
+title = {Linearization in the large of nonlinear systems and Koopman operator spectrum},
+journal = {Physica D: Nonlinear Phenomena},
+volume = {242},
+number = {1},
+pages = {42-53},
+year = {2013},
+author = {Yueheng Lan and Igor Mezić},
+keywords = {Linearization, Nonlinear dynamics, Hartman–Grobman Theorem, Hyperbolic systems, Koopman operator},
+abstract = {According to the Hartman–Grobman Theorem, a nonlinear system can be linearized in a neighborhood of a hyperbolic stationary point. Here, we extend this linearization around stable (unstable) equilibria or periodic orbits to the whole basin of attraction, for both discrete diffeomorphisms and flows. We discuss the connection of the linearizing transformation to the spectrum of Koopman operator.}
+}
+
+@article{kostic2022rkhs,
+  title={Learning dynamical systems via Koopman operator regression in reproducing kernel Hilbert spaces},
+  author={Kostic, Vladimir and Novelli, Pietro and Maurer, Andreas and Ciliberto, Carlo and Rosasco, Lorenzo and Pontil, Massimiliano},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={4017--4031},
+  year={2022}
+}
+
+@article{wehmeyer2018time,
+  title={Time-lagged autoencoders: Deep learning of slow collective variables for molecular kinetics},
+  author={Wehmeyer, Christoph and No{\'e}, Frank},
+  journal={The Journal of chemical physics},
+  volume={148},
+  number={24},
+  year={2018},
+  publisher={AIP Publishing}
+}
+
+@book{kutz2016dynamic,
+  title={Dynamic mode decomposition: data-driven modeling of complex systems},
+  author={Kutz, J Nathan and Brunton, Steven L and Brunton, Bingni W and Proctor, Joshua L},
+  year={2016},
+  publisher={SIAM}
+}
+
+
+@article{mezic2005spectral,
+  title={Spectral properties of dynamical systems, model reduction and decompositions},
+  author={Mezi{\'c}, Igor},
+  journal={Nonlinear Dynamics},
+  volume={41},
+  pages={309--325},
+  year={2005},
+  publisher={Springer}
+}
+
+@article{hou2024online,
+  title={Nonparametric Sparse Online Learning of the Koopman Operator},
+  author={Hou, Boya and Sanjari, Sina and Dahlin, Nathan and Koppel, Alec and Bose, Subhonmesh},
+  journal={arXiv preprint arXiv:2405.07432},
+  year={2024}
+}
+
+
+@article{mezic2016periodic,
+  title={Koopman mode decomposition for periodic/quasi-periodic time dependence},
+  author={Mezic, Igor and Surana, Amit},
+  journal={IFAC-PapersOnLine},
+  volume={49},
+  number={18},
+  pages={690--697},
+  year={2016},
+  publisher={Elsevier}
+}
+
+@article{vcrnjaric2020SKO,
+  title={Koopman operator spectrum for random dynamical systems},
+  author={{\v{C}}rnjari{\'c}-{\v{Z}}ic, Nelida and Ma{\'c}e{\v{s}}i{\'c}, Senka and Mezi{\'c}, Igor},
+  journal={Journal of Nonlinear Science},
+  volume={30},
+  number={5},
+  pages={2007--2056},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{kostic2023sharp,
+  title={Sharp spectral rates for Koopman operator learning},
+  author={Kostic, Vladimir and Lounici, Karim and Novelli, Pietro and Pontil, Massimiliano},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={32328--32339},
+  year={2023}
+}
+
+
+@article{Kutz2016Multiresolution,
+author = {Kutz, J. Nathan and Fu, Xing and Brunton, Steven L.},
+title = {Multiresolution Dynamic Mode Decomposition},
+journal = {SIAM Journal on Applied Dynamical Systems},
+volume = {15},
+number = {2},
+pages = {713-735},
+year = {2016},
+}
+
+@article{Macevsic2018Nonautonomous,
+author = {Ma\'{c}e\v{s}i\'{c}, Senka and \v{C}rnjari\'{c}-\v{Z}ic, Nelida and Mezi\'{c}, Igor},
+title = {Koopman Operator Family Spectrum for Nonautonomous Systems},
+journal = {SIAM Journal on Applied Dynamical Systems},
+volume = {17},
+number = {4},
+pages = {2478-2515},
+year = {2018},
+}
+
+@article{Zhang2018OnlineDMD,
+author = {Zhang, Hao and Rowley, Clarence W. and Deem, Eric A. and Cattafesta, Louis N.},
+title = {Online Dynamic Mode Decomposition for Time-Varying Systems},
+journal = {SIAM Journal on Applied Dynamical Systems},
+volume = {18},
+number = {3},
+pages = {1586-1609},
+year = {2019},
+}
+
+
+@article{Brunton2016Control,
+   title={Koopman Invariant Subspaces and Finite Linear Representations of Nonlinear Dynamical Systems for Control},
+   volume={11},
+   number={2},
+   journal={PLOS ONE},
+   publisher={Public Library of Science (PLoS)},
+   author={Brunton, Steven L. and Brunton, Bingni W. and Proctor, Joshua L. and Kutz, J. Nathan},
+   editor={Kestler, Hans A},
+   year={2016},
+   month=feb, pages={e0150171} }
+
+@article{Alfatlawi2020OnlineDMD,
+title = {An incremental approach to online dynamic mode decomposition for time-varying systems with applications to EEG data modeling},
+journal = {Journal of Computational Dynamics},
+volume = {7},
+number = {2},
+pages = {209-241},
+year = {2020},
+author = {Mustaffa Alfatlawi and Vaibhav Srivastava},
+}
+
+@misc{sinha2019rRecursiveEDMD,
+      title={Online Learning of Dynamical Systems: An Operator Theoretic Approach},
+      author={Subhrajit Sinha and Sai Pushpak Nandanoori and Enoch Yeung},
+      year={2019},
+      eprint={1909.12520},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+}
+
+@article{sinha2023online,
+  title={Online real-time learning of dynamical systems from noisy streaming data},
+  author={Sinha, Subhrajit and Nandanoori, Sai Pushpak and Barajas-Solano, David A},
+  journal={Scientific Reports},
+  volume={13},
+  number={1},
+  pages={22564},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{Loya2024Online,
+title = {Online learning of Koopman operator using streaming data from different dynamical regimes},
+journal = {IFAC-PapersOnLine},
+volume = {58},
+number = {28},
+pages = {90-95},
+year = {2024},
+note = {The 4th Modeling, Estimation, and Control Conference – 2024},
+author = {Kartik Loya and Phanindra Tallapragada},
+keywords = {Koopman operator, online learning, recursive subspace identification, Grassmannian distance}
+}
+
+@article{Hao2024DKLT,
+title = {Deep Koopman learning of nonlinear time-varying systems},
+journal = {Automatica},
+volume = {159},
+pages = {111372},
+year = {2024},
+author = {Wenjian Hao and Bowen Huang and Wei Pan and Di Wu and Shaoshuai Mou},
+keywords = {Deep neural networks, Koopman operator, Nonlinear time-varying systems},
+abstract = {This paper presents a data-driven approach to approximate the dynamics of a nonlinear time-varying system (NTVS) by a linear time-varying system (LTVS), which results from the Koopman operator and deep neural networks. Analysis of the approximation error between states of the NTVS and the resulting LTVS is presented. Simulations on a representative NTVS show that the proposed method achieves small approximation errors, even when the system changes rapidly. Furthermore, simulations in an example of quadcopters demonstrate the computational efficiency of the proposed approach.}
+}
+
+@article{Rowley2009DMD, title={Spectral analysis of nonlinear flows}, volume={641}, journal={Journal of Fluid Mechanics}, author={Rowley, Clarence W. and Mezic, Igor and Bagheri, Shervin and Schlatter, Philipp and Henningson, Dan S.}, year={2009}, pages={115–127}}
+
+@article{Schmid2008, title={Dynamic mode decomposition of numerical and experimental data}, volume={656}, journal={Journal of Fluid Mechanics}, author={SCHMID, PETER J.}, year={2010}, pages={5–28}}
+
+@article{Williams2015EDMD,
+  title={A data--driven approximation of the koopman operator: Extending dynamic mode decomposition},
+  author={Williams, Matthew O and Kevrekidis, Ioannis G and Rowley, Clarence W},
+  journal={Journal of Nonlinear Science},
+  volume={25},
+  pages={1307--1346},
+  year={2015},
+  publisher={Springer}
+}
+
+@article{Otto2019Autoencoder,
+author = {Otto, Samuel E. and Rowley, Clarence W.},
+title = {Linearly Recurrent Autoencoder Networks for Learning Dynamics},
+journal = {SIAM Journal on Applied Dynamical Systems},
+volume = {18},
+number = {1},
+pages = {558-593},
+year = {2019},
+}
+
+@article{liang2022online,
+  title={Online learning Koopman operator for closed-loop electrical neurostimulation in epilepsy},
+  author={Liang, Zhichao and Luo, Zixiang and Liu, Keyin and Qiu, Jingwei and Liu, Quanying},
+  journal={IEEE Journal of Biomedical and Health Informatics},
+  volume={27},
+  number={1},
+  pages={492--503},
+  year={2022},
+  publisher={IEEE}
+}
+
+
+
+@inproceedings{Angelopoulos2023ConformalPID,
+ author = {Angelopoulos, Anastasios and Candes, Emmanuel and Tibshirani, Ryan J},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {A. Oh and T. Naumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+ pages = {23047--23074},
+ publisher = {Curran Associates, Inc.},
+ title = {Conformal PID Control for Time Series Prediction},
+ volume = {36},
+ year = {2023}
+}
+
+
+@article{Li2017Dictionary,
+    author = {Li, Qianxiao and Dietrich, Felix and Bollt, Erik M. and Kevrekidis, Ioannis G.},
+    title = {Extended dynamic mode decomposition with dictionary learning: A data-driven adaptive spectral decomposition of the Koopman operator},
+    journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
+    volume = {27},
+    number = {10},
+    year = {2017},
+}
+
+@article{Mazouchi2023BatchOnline,
+  author  = {Majid Mazouchi and Subramanya Nageshrao and Hamidreza Modares},
+  title   = {Finite-time Koopman Identifier: A Unified Batch-online Learning Framework for Joint Learning of Koopman Structure and Parameters},
+  journal = {Journal of Machine Learning Research},
+  year    = {2023},
+  volume  = {24},
+  number  = {336},
+  pages   = {1--35},
+}
+
+
+%%%%% Model Predictive Control %%%%%
+
+@article{schmid2010dynamic,
+  title={Dynamic mode decomposition of numerical and experimental data},
+  author={Schmid, Peter J},
+  journal={Journal of fluid mechanics},
+  volume={656},
+  pages={5--28},
+  year={2010},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{yeung2019learning,
+  title={Learning deep neural network representations for Koopman operators of nonlinear dynamical systems},
+  author={Yeung, Enoch and Kundu, Soumya and Hodas, Nathan},
+  booktitle={2019 American Control Conference (ACC)},
+  pages={4832--4839},
+  year={2019},
+  organization={IEEE}
+}
+
+@article{takeishi2017learning,
+  title={Learning Koopman invariant subspaces for dynamic mode decomposition},
+  author={Takeishi, Naoya and Kawahara, Yoshinobu and Yairi, Takehisa},
+  journal={Advances in neural information processing systems},
+  volume={30},
+  year={2017}
+}
+
+@inproceedings{xu2024online,
+title={Online Non-convex Learning in Dynamic Environments},
+author={Zhipan Xu and Lijun Zhang},
+booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+year={2024},
+}
+
+@book{vovk2005algorithmic,
+  title={Algorithmic learning in a random world},
+  author={Vovk, Vladimir and Gammerman, Alexander and Shafer, Glenn},
+  volume={29},
+  year={2005},
+  publisher={Springer}
+}
+
+@article{angelopoulos2021gentle,
+  title={A gentle introduction to conformal prediction and distribution-free uncertainty quantification},
+  author={Angelopoulos, Anastasios N and Bates, Stephen},
+  journal={arXiv preprint arXiv:2107.07511},
+  year={2021}
+}
+
+@article{romano2019conformalized,
+  title={Conformalized quantile regression},
+  author={Romano, Yaniv and Patterson, Evan and Candes, Emmanuel},
+  journal={Advances in neural information processing systems},
+  volume={32},
+  year={2019}
+}
+
+@inproceedings{vovk1999machine,
+  title={Machine-Learning Applications of Algorithmic Randomness},
+  author={Vovk, Volodya and Gammerman, Alexander and Saunders, Craig},
+  booktitle={Proceedings of the Sixteenth International Conference on Machine Learning},
+  pages={444--453},
+  year={1999}
+}
+
+@article{zhang2017BeijingAir,
+author = {Zhang, Shuyi  and Guo, Bin  and Dong, Anlan  and He, Jing  and Xu, Ziping  and Chen, Song Xi },
+title = {Cautionary tales on air-quality improvement in Beijing},
+journal = {Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences},
+volume = {473},
+number = {2205},
+pages = {20170457},
+year = {2017},
+}
+
+@article{Candanedo2017Energy,
+title = {Data driven prediction models of energy use of appliances in a low-energy house},
+journal = {Energy and Buildings},
+volume = {140},
+pages = {81-97},
+year = {2017},
+author = {Luis M. Candanedo and Véronique Feldheim and Dominique Deramaix},
+keywords = {Appliances, Energy, Prediction, Wireless sensor network, Statistical learning models, Data mining, Data sets available}
+}
+
+@inproceedings{zhou2021informer,
+  title={Informer: Beyond efficient transformer for long sequence time-series forecasting},
+  author={Zhou, Haoyi and Zhang, Shanghang and Peng, Jieqi and Zhang, Shuai and Li, Jianxin and Xiong, Hui and Zhang, Wancai},
+  booktitle={Proceedings of the AAAI conference on artificial intelligence},
+  volume={35},
+  pages={11106--11115},
+  year={2021}
+}
+
+@misc{ETDataset,
+  author       = {Haoyi Zhou},
+  title        = {ETDataset: A Dataset for Electricity Transformer Temperature Forecasting},
+  year         = {2021},
+  note         = {Accessed: 2025-05-22}
+}
+
+@ARTICLE{Bruder2021,
+  author={Bruder, Daniel and Fu, Xun and Gillespie, R. Brent and Remy, C. David and Vasudevan, Ram},
+  journal={IEEE Transactions on Robotics},
+  title={Data-Driven Control of Soft Robots Using Koopman Operator Theory},
+  year={2021},
+  volume={37},
+  number={3},
+  pages={948-961},
+}
+
+@article{klus2020kernel,
+  title={Kernel-based approximation of the Koopman generator and Schr{\"o}dinger operator},
+  author={Klus, Stefan and N{\"u}ske, Feliks and Hamzi, Boumediene},
+  journal={Entropy},
+  volume={22},
+  number={7},
+  pages={722},
+  year={2020},
+  publisher={MDPI}
+}
+
+@article{mann2016dynamic,
+  title={Dynamic mode decomposition for financial trading strategies},
+  author={Mann, Jordan and Kutz, J Nathan},
+  journal={Quantitative Finance},
+  volume={16},
+  number={11},
+  pages={1643--1655},
+  year={2016},
+  publisher={Taylor \& Francis}
+}
+
+@article{kaptanoglu2020characterizing,
+  title={Characterizing magnetized plasmas with dynamic mode decomposition},
+  author={Kaptanoglu, Alan A and Morgan, Kyle D and Hansen, Chris J and Brunton, Steven L},
+  journal={Physics of Plasmas},
+  volume={27},
+  number={3},
+  year={2020},
+  publisher={AIP Publishing}
+}
+
+@INPROCEEDINGS{Hasnain2020,
+  author={Hasnain, Aqib and Boddupalli, Nibodh and Balakrishnan, Shara and Yeung, Enoch},
+  booktitle={2020 American Control Conference (ACC)},
+  title={Steady state programming of controlled nonlinear systems via deep dynamic mode decomposition},
+  year={2020},
+  volume={},
+  number={},
+  pages={4245-4251},
+  keywords={Steady-state;Genetics;Control systems;Optimization;Nonlinear dynamical systems;Synthetic biology},
+}
+
+@book{mauroy2020koopman,
+  title={Koopman operator in systems and control},
+  author={Mauroy, Alexandre and Susuki, Y and Mezic, Igor},
+  volume={484},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{budivsic2012applied,
+  title={Applied koopmanism},
+  author={Budi{\v{s}}i{\'c}, Marko and Mohr, Ryan and Mezi{\'c}, Igor},
+  journal={Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  volume={22},
+  number={4},
+  year={2012},
+  publisher={AIP Publishing}
+}
+
+
+
+@InProceedings{pmlr-v202-hou23c,
+  title = 	 {Sparse Learning of Dynamical Systems in {RKHS}: An Operator-Theoretic Approach},
+  author =       {Hou, Boya and Sanjari, Sina and Dahlin, Nathan and Bose, Subhonmesh and Vaidya, Umesh},
+  booktitle = 	 {Proceedings of the 40th International Conference on Machine Learning},
+  pages = 	 {13325--13352},
+  year = 	 {2023},
+  volume = 	 {202},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {23--29 Jul},
+  publisher =    {PMLR},
+}
+
+
+@article{Korda2018,
+title = {Linear predictors for nonlinear dynamical systems: Koopman operator meets model predictive control},
+journal = {Automatica},
+volume = {93},
+pages = {149-160},
+year = {2018},
+author = {Milan Korda and Igor Mezić},
+}
+
+@inproceedings{Gibbs2021,
+ author = {Gibbs, Isaac and Candes, Emmanuel},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {M. Ranzato and A. Beygelzimer and Y. Dauphin and P.S. Liang and J. Wortman Vaughan},
+ pages = {1660--1672},
+ publisher = {Curran Associates, Inc.},
+ title = {Adaptive Conformal Inference Under Distribution Shift},
+ volume = {34},
+ year = {2021}
+}
+
+@inproceedings{xu2021conformal,
+  title={Conformal Prediction for Online Systems},
+  author={Xu, Jin and Mohan, Baranidharan and Xie, Yao},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={28734--28746},
+  year={2021}
+}
+
+@article{Jin2024,
+title = {Extended Dynamic Mode Decomposition with Invertible Dictionary Learning},
+journal = {Neural Networks},
+volume = {173},
+pages = {106177},
+year = {2024},
+author = {Yuhong Jin and Lei Hou and Shun Zhong},
+keywords = {Deep learning, Invertible neural network, Koopman operator, Data-driven modeling},
+}
+
+%%%%% signature koopman %%%%%
+@inproceedings{chretien2025sigkoop,
+  title={Using Signatures and Koopman Operator to Learn Non-linear Dynamics},
+  author={Chr{\'e}tien, St{\'e}phane and Gao, Ben and Patracone, Jordan and Alata, Olivier},
+  booktitle={International Conference on Geometric Science of Information},
+  pages={83--92},
+  year={2025},
+  organization={Springer}
+}
+
+%%%%% real datasets %%%%%
+@ARTICLE{2004EEG_1,
+  author={Schalk, G. and McFarland, D.J. and Hinterberger, T. and Birbaumer, N. and Wolpaw, J.R.},
+  journal={IEEE Transactions on Biomedical Engineering},
+  title={BCI2000: a general-purpose brain-computer interface (BCI) system},
+  year={2004},
+  volume={51},
+  number={6},
+  pages={1034-1043},
+  keywords={Brain computer interfaces;Signal processing;Protocols;Laboratories;Communication system control;Control systems;Signal processing algorithms;Research and development;Biomedical signal processing;Biomedical engineering}
+}
+
+@article{2000EEG_2,
+author = {Ary L. Goldberger  and Luis A. N. Amaral  and Leon Glass  and Jeffrey M. Hausdorff  and Plamen Ch. Ivanov  and Roger G. Mark  and Joseph E. Mietus  and George B. Moody  and Chung-Kang Peng  and H. Eugene Stanley },
+title = {PhysioBank, PhysioToolkit, and PhysioNet  },
+journal = {Circulation},
+volume = {101},
+number = {23},
+pages = {e215-e220},
+year = {2000}
+}
+
+@misc{CASES99,
+  author       = {Earth Observing Laboratory, UCAR},
+  title        = {Cooperative Atmospheric Surface Exchange Study (CASES-99)},
+  year         = {1999},
+  publisher    = {UCAR/NCAR - Earth Observing Laboratory},
+  note         = {Dataset}
+}
+
+%%%%% online non-convex learning %%%%%
+
+@InProceedings{suggala2020online,
+  title = 	 {Online Non-Convex Learning: Following the Perturbed Leader is Optimal},
+  author =       {Suggala, Arun Sai and Netrapalli, Praneeth},
+  booktitle = 	 {Proceedings of the 31st International Conference  on Algorithmic Learning Theory},
+  pages = 	 {845--861},
+  year = 	 {2020},
+  editor = 	 {Kontorovich, Aryeh and Neu, Gergely},
+  volume = 	 {117},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {08 Feb--11 Feb},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v117/suggala20a/suggala20a.pdf}
+}
+
+%%%%% conformal hyperparameter tuning %%%%%
+@inproceedings{bhatnagar2023improved,
+  title={Improved online conformal prediction via strongly adaptive online learning},
+  author={Bhatnagar, Aadyot and Wang, Huan and Xiong, Caiming and Bai, Yu},
+  booktitle={International Conference on Machine Learning},
+  pages={2337--2363},
+  year={2023},
+  organization={PMLR}
+}
+
+@inproceedings{gao2025kooopmanIncremental,
+  author={Gao, Ben and Patracone, Jordan and Alata, Olivier and Chr{\'e}tien, St{\'e}phane},
+  title={Apprentissage incr{\'e}mental de l'op{\'e}rateur de Koopman pour syst{\`e}mes non-autonomes via pr{\'e}diction conforme},
+  booktitle = {GRETSI'25 -- XXXe Colloque Francophone de Traitement du Signal et des Images},
+  year      = {2025}
+}
+
+@inproceedings{chretien2023leveraging,
+  title={Leveraging the Power of Signatures for the Construction of Topological Complexes for the Analysis of Multivariate Complex Dynamics},
+  author={Chr{\'e}tien, St{\'e}phane and Gao, Ben and Th{\'e}bault Guiochon, Astrid and Vaucher, R{\'e}mi},
+  booktitle={International Conference on Complex Networks and Their Applications},
+  pages={283--294},
+  year={2023},
+  organization={Springer}
+}
+
+
+%%%%% yuanchao %%%%%
+@article{xu2025reskoopnet,
+  title={ResKoopNet: Learning Koopman Representations for Complex Dynamics with Spectral Residuals},
+  author={Xu, Yuanchao and Shao, Kaidi and Logothetis, Nikos and Shen, Zhongwei},
+  journal={arXiv preprint arXiv:2501.00701},
+  year={2025}
+}
+
+@article{xu2025sdmd,
+  title={A Data-Driven Framework for Koopman Semigroup Estimation in Stochastic Dynamical Systems},
+  author={Xu, Yuanchao and Shao, Kaidi and Ishikawa, Isao and Hashimoto, Yuka and Logothetis, Nikos and Shen, Zhongwei},
+  journal={arXiv preprint arXiv:2501.13301},
+  year={2025}
+}
+
+
+
+@ARTICLE{sposini_2018,
+author={Sposini, V. and Chechkin, A.V. and Seno, F. and Pagnini, G. and Metzler, R.},
+title={Random diffusivity from stochastic equations: Comparison of two models for Brownian yet non-Gaussian diffusion},
+journal={New J. Phys.},
+year={2018},
+volume={20},
+number={4},
+doi={10.1088/1367-2630/aab696},
+art_number={043044},
+note={DOI: 10.1088/1367-2630/aab696}
+}
+
+
+
+%%%%%%%% Artificial Intelligence et al. %%%%%%%%%%%%
+
+@ARTICLE{roh_2021_ai,
+author={Roh, Y. and Heo, G. and Whang, S.E.},
+title={A Survey on Data Collection for Machine Learning: A Big Data-AI Integration Perspective},
+journal={IEEE Trans. Knowl. Data Eng},
+year={2021},
+volume={33},
+number={4},
+pages={1328-1347},
+doi={10.1109/TKDE.2019.2946162},
+art_number={8862913},
+note={DOI: 10.1109/TKDE.2019.2946162}
+}
+
+@ARTICLE{topol_2019_ai,
+author={Topol, E.J.},
+title={High-performance medicine: the convergence of human and artificial intelligence},
+journal={Nat. Med.},
+year={2019},
+volume={25},
+number={1},
+pages={44-56},
+doi={10.1038/s41591-018-0300-7},
+note={DOI: 10.1038/s41591-018-0300-7}
+}
+
+
+
+
+
+
+
+
+
+
+%%%%%%  LEVY STABLE DISTRIBUTION %%%%%%%%%
+@BOOK{levy_1954,
+author={L\'evy, P.},
+title={Th\'eorie de l'addition des variable al\'eatories},
+year={1954},
+publisher="Gauthier-Villars",
+address="Paris",
+edition={2},
+isbn="978-2-87647-207-5",
+note="ISBN: 978-2-87647-207-5; First published 1937"
+}
+
+@book{gnedenko-kolmogorov_1968,
+author = {Gnedenko, B.V. and Kolmogorov, A.N.},
+publisher = {Addison-Wesley Publishing Co.},
+address={Reading},
+title = {Limit distributions for sums of independent random variables},
+year = {1968},
+note = {Translated from Russian}
+}
+
+%%%%% HURST RESCALING ANALYSIS %%%%%
+@article{hurst_1951,
+author = {Hurst, H.E.},
+title = {Long-Term Storage Capacity of Reservoirs},
+journal = {Trans. Am. Soc. Civil Eng.},
+volume = {116},
+number = {1},
+pages = {770-799},
+year = {1951},
+doi = {10.1061/TACEAT.0006518},
+url = {https://ascelibrary.org/doi/abs/10.1061/TACEAT.0006518},
+note = {DOI: 10.1061/TACEAT.0006518}
+}
+
+%%%%% LEVY WALK %%%%%%%
+@ARTICLE{zaburdaev-klafter_2015_levywalk,
+author={Zaburdaev, V. and Denisov, S. and Klafter, J.},
+title={Lévy walks},
+journal={Rev. Mod. Phys.},
+year={2015},
+volume={87},
+number={2},
+pages={483-530},
+doi={10.1103/RevModPhys.87.483},
+art_number={483},
+note={DOI: 10.1103/RevModPhys.87.483}
+}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%  DIFFUSION ENTROPY %%%%%%%%%%%
+
+@ARTICLE{grigolini_2001_dea,
+author={Grigolini, P. and Palatella, L. and Raffaelli, G.},
+title={Asymmetric anomalous diffusion: an efficient way to detect memory in time series},
+journal={Fractals},
+year={2001},
+volume={9},
+number={4},
+pages={439-449},
+doi={10.1142/S0218348X01000865},
+note={DOI: 10.1142/S0218348X01000865}
+}
+
+@ARTICLE{scafetta_2002_dea,
+author={Scafetta, N. and Grigolini, P.},
+title={Scaling detection in time series: diffusion entropy analysis},
+journal={Phys. Rev. E},
+year={2002},
+volume={66},
+number={3},
+page_count={10},
+doi={10.1103/PhysRevE.66.036130},
+note={DOI: 10.1103/PhysRevE.66.036130}
+}
+
+@ARTICLE{grigolini_2002_dea,
+author={Grigolini, P. and Leddon, D. and Scafetta, N.},
+title={Diffusion entropy and waiting time statistics of hard-x-ray solar flares},
+journal={Phys. Rev. E},
+year={2002},
+volume={65},
+number={4},
+pages={046203/1-046203/12},
+doi={10.1103/PhysRevE.65.046203},
+art_number={046203},
+note={DOI: 10.1103/PhysRevE.65.046203}
+}
+
+@ARTICLE{allegrini_2003_dea,
+author={Allegrini, P. and Benci, V. and Grigolini, P. and Hamilton, P. and Ignaccolo, M. and Menconi, G. and Palatella, L. and Raffaelli, G. and Scafetta, N. and Virgilio, M. and Yang, J.},
+title={Compression and diffusion: A joint approach to detect complexity},
+journal={Chaos Sol. Fract.},
+year={2003},
+volume={15},
+number={3},
+pages={517-535},
+doi={10.1016/S0960-0779(02)00136-4},
+note={DOI: 10.1016/S0960-0779(02)00136-4}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+% STRONG ANOMALOUS DIFFUSION
+
+@ARTICLE{castiglione_1999,
+author={Castiglione, P. and Mazzino, A. and Muratore-Ginanneschi, P. and Vulpiani, A.},
+title={On strong anomalous diffusion},
+journal={Physica D},
+year={1999},
+volume={134},
+number={1},
+pages={75-93},
+doi={10.1016/S0167-2789(99)00031-7},
+note={DOI: 10.1016/S0167-2789(99)00031-7}}
+}
+%journal={Physica D: Nonlinear Phenomena}
+
+@ARTICLE{andersen_2000,
+author={Andersen, K.H. and Castiglione, P. and Mazzino, A. and Vulpiani, A.},
+title={Simple stochastic models showing strong anomalous diffusion},
+journal={Eur. Phys. J. B},
+year={2000},
+volume={18},
+number={3},
+pages={447-452},
+doi={10.1007/s100510070032},
+note={DOI: 10.1007/s100510070032}
+}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%% TEMPORAL NETWORKS %%%%%%%%%%%%
+
+@ARTICLE{holme_2012,
+author={Holme, P. and Saramäki, J.},
+title={Temporal networks},
+journal={Phys. Rep.},
+year={2012},
+volume={519},
+number={3},
+pages={97-125},
+doi={10.1016/j.physrep.2012.03.001},
+note={DOI: 10.1016/j.physrep.2012.03.001}
+}
+
+@BOOK{holme_2019,
+author={Holme, P. and Saramäki, J.},
+title={Temporal network theory},
+year={2019},
+publisher="Springer Nature",
+address="Cham, Switzerland",
+isbn="978-3-030-23494-2",
+issn="2509-9574",
+doi="10.1007/978-3-030-23495-9",
+note="ISBN: 978-3-030-23494-2; ISSN: 2509-9574; DOI: 10.1007/978-3-030-23495-9"
+}
+%%%%% FINE TEMPORAL NETWORKS
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%% COMPLEX SYSTEMS %%%%%%%%%%%
+
+@BOOK{maturana-varela_1980,
+author={Maturana, H. R. and Varela, F. J.},
+title={Autopoiesis and Cognition: The Realization of the Living},
+year={1980},
+publisher="Reidel Publishing Company",
+address="London",
+isbn="90-277-1015-5",
+note="ISBN: 90-277-1015-5 [originally published in Chile, Editorial Universitaria S.A., 1972]."
+}
+
+@BOOK{bateson_1972,
+author={Bateson, G.},
+title={Steps to an ecology of mind},
+year={1972},
+publisher="Chandler Publishing Company",
+address="New York",
+isbn="0-345-27370-2",
+note="ISBN: 0-345-27370-2"
+}
+
+@BOOK{prigogine_1955,
+author={Prigogine, I.},
+title={Introduction to Thermodynamics of Irreversible Processes},
+year={1955},
+publisher="Charles C. Thomas Publisher",
+address="Springfield, Illinois"
+}
+
+%
+%ARTICLE{prigogine_,
+%author={Prigogine I.},
+%title={Exploring complexity},
+%journal={European Journal of Operational Research},
+%year={},
+%volume={30},
+%number={},
+%pages={97-103},
+%doi={10.1016/0377-2217(87)90085-3},
+%note={DOI: 10.1016/0377-2217(87)90085-3}
+%}
+%
+%Ilya Prigogine, Nobel Lecture, December 8,
+%1977, “Time, Structure and Fluctuations”.
+%https://www.nobelprize.org/prizes/chemistry/
+%1977/prigogine/lecture/
+%
+%Order Out of Chaos: Man's New Dialogue with Nature
+%by  Ilya Prigogine and Isabelle Stengers
+%1st edition Bantam New Age Books,
+%Published April 1984 by Bantam Books (first published 1984)
+%ISBN: 0553340824 (ISBN13: 9780553340822)
+%
+
+%BOOK{prigogine_1977,
+@BOOK{nicolis_1977,
+author={Nicolis, G. and Prigogine, I.},
+title={Self-Organization in Nonequilibrium Systems. From Dissipative Structures to Order through Fluctuations},
+year={1977},
+publisher="J. Wiley \& Sons",
+address="New York"
+}
+%isbn="",
+%note="ISBN: "
+
+@ARTICLE{boccaletti_2006,
+author={Boccaletti, S. and Latora, V. and Moreno, Y. and Chavez, M. and Hwang, D.-U.},
+title={Complex networks: Structure and dynamics},
+journal={Phys. Rep.},
+year={2006},
+volume={424},
+number={4-5},
+pages={175-308},
+doi={10.1016/j.physrep.2005.10.009},
+note={DOI: 10.1016/j.physrep.2005.10.009}
+}
+
+@ARTICLE{zanin-boccaletti_2016,
+author={Zanin, M. and Papo, D. and Sousa, P.A. and Menasalvas, E. and Nicchi, A. and Kubik, E. and Boccaletti, S.},
+title={Combining complex networks and data mining: Why and how},
+journal={Phys. Rep.},
+year={2016},
+volume={635},
+pages={1-44},
+doi={10.1016/j.physrep.2016.04.005},
+note={DOI: 10.1016/j.physrep.2016.04.005}
+}
+
+@ARTICLE{mahmoodi-grigolini_2018_temp_complex,
+author={Mahmoodi, K. and West, B.J. and Grigolini, P.},
+title={Self-Organized Temporal Criticality: Bottom-Up Resilience versus Top-Down Vulnerability},
+journal={Complexity},
+year={2018},
+volume={2018},
+doi={10.1155/2018/8139058},
+art_number={8139058},
+note={DOI: 10.1155/2018/8139058}
+}
+
+@ARTICLE{paradisi_fbn2021,
+author={Paradisi, P. and Raglianti, M. and Sebastiani, L.},
+title={Online Communication and Body Language},
+journal={Front. Behav. Neurosci.},
+year={2021},
+volume={15},
+doi={10.3389/fnbeh.2021.709365},
+art_number={709365},
+note={DOI: 10.3389/fnbeh.2021.709365}
+}
+
+@BOOK{buzsaki_2009,
+author={Buzsáki, G.},
+title={Rhythms of the Brain},
+publisher = {Oxford University Press},
+year={2009},
+isbn = {978-0-19-530106-9},
+doi={10.1093/acprof:oso/9780195301069.001.0001},
+note={ISBN: 978-0-19-530106-9, DOI: 10.1093/acprof:oso/9780195301069.001.0001}
+}
+%cited By 3020
+
+@ARTICLE{thomasyeo_2011,
+author={Thomas Yeo, B.T. and Krienen, F.M. and Sepulcre, J. and Sabuncu, M.R. and Lashkari, D. and Hollinshead, M. and Roffman, J.L. and Smoller, J.W. and Zöllei, L. and Polimeni, J.R. and Fisch, B. and Liu, H. and Buckner, R.L.},
+title={The organization of the human cerebral cortex estimated by intrinsic functional connectivity},
+journal={J. Neurophysiol.},
+year={2011},
+volume={106},
+number={3},
+pages={1125-1165},
+doi={10.1152/jn.00338.2011},
+note={DOI: 10.1152/jn.00338.2011}
+}
+% cited By 3203
+
+@ARTICLE{bullmore-sporns_2009,
+author={Bullmore, E. and Sporns, O.},
+title={Complex brain networks: Graph theoretical analysis of structural and functional systems},
+journal={Nat. Rev. Neurosci.},
+year={2009},
+volume={10},
+number={3},
+pages={186-198},
+doi={10.1038/nrn2575},
+note={DOI: 10.1038/nrn2575}
+}
+
+@ARTICLE{fortunato_2010,
+author={Fortunato, S.},
+title={Community detection in graphs},
+journal={Phys. Rep.},
+year={2010},
+volume={486},
+number={3-5},
+pages={75-174},
+doi={10.1016/j.physrep.2009.11.002},
+note={DOI: 10.1016/j.physrep.2009.11.002}
+}
+
+@ARTICLE{misteli_2020,
+author={Misteli, T.},
+title={The Self-Organizing Genome: Principles of Genome Architecture and Function},
+journal={Cell},
+year={2020},
+volume={183},
+number={1},
+pages={28-45},
+doi={10.1016/j.cell.2020.09.014},
+note={DOI: 10.1016/j.cell.2020.09.014},
+}
+
+@ARTICLE{barabasi_2004,
+author={Barabási, A.-L. and Oltvai, Z.N.},
+title={Network biology: Understanding the cell's functional organization},
+journal={Nat. Rev. Genet.},
+year={2004},
+volume={5},
+number={2},
+pages={101-113},
+doi={10.1038/nrg1272},
+note={DOI: 10.1038/nrg1272}
+}
+
+%%% IMPORTANTE
+@ARTICLE{rosvall_2008,
+author={Rosvall, M. and Bergstrom, C.T.},
+title={Maps of random walks on complex networks reveal community structure},
+journal={Proceedings of the National Academy of Sciences of the United States of America},
+year={2008},
+volume={105},
+number={4},
+pages={1118-1123},
+doi={10.1073/pnas.0706851105},
+note={DOI: 10.1073/pnas.0706851105}
+}
+% cited By 2524
+
+@ARTICLE{jeong_2000,
+author={Jeong, H. and Tombor, B. and Albert, R. and Oltval, Z.N. and Barabásl, A.-L.},
+title={The large-scale organization of metabolic networks},
+journal={Nature},
+year={2000},
+volume={407},
+number={6804},
+pages={651-654},
+doi={10.1038/35036627},
+note={DOI: 10.1038/35036627}
+}
+% cited By 3671
+
+@ARTICLE{porter_1998,
+author={Porter, M.E.},
+title={Clusters and the new economics of competition},
+journal={Harv. Bus. Rev.},
+year={1998},
+volume={76},
+number={6},
+pages={77-90}
+}
+% cited By 4492
+
+@ARTICLE{palla_2005,
+author={Palla, G. and Derényi, I. and Farkas, I. and Vicsek, T.},
+title={Uncovering the overlapping community structure of complex networks in nature and society},
+journal={Nature},
+year={2005},
+volume={435},
+number={7043},
+pages={814-818},
+doi={10.1038/nature03607},
+note={DOI: 10.1038/nature03607}
+}
+% cited By 3816
+
+@ARTICLE{duchek_2020,
+author={Duchek, S.},
+title={Organizational resilience: a capability-based conceptualization},
+journal={Business Research},
+year={2020},
+volume={13},
+number={1},
+pages={215-246},
+doi={},
+note={DOI: 10.1007/s40685-019-0085-7},
+}
+
+% MULTISCALING
+@BOOK{ott_2002,
+author={Ott, E.},
+title={Chaos in Dynamical Systems},
+year={2002},
+publisher="Cambridge University Press",
+address="Cambridge",
+isbn="978-0-511-80326-0",
+note="ISBN: 978-0-511-80326-0",
+edition={2nd ed.},
+doi = {10.1017/CBO9780511803260}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Planetary Boundary Layer
+
+@ARTICLE{li_2013,
+author={Li, Q. and Fu, Z.},
+title={The Effects of Non-stationarity on the Clustering Properties of the Boundary-layer Vertical Wind Velocity},
+journal={Bound. Lay. Met.},
+year={2013},
+volume={149},
+number={2},
+pages={219-230},
+doi={10.1007/s10546-013-9840-z},
+note={DOI: 10.1007/s10546-013-9840-z}
+}
+
+@ARTICLE{finnigan_2000,
+author={Finnigan, J.},
+title={Turbulence in plant canopies},
+journal={Ann. Rev. Fluid Mech.},
+year={2000},
+volume={32},
+pages={519–571},
+doi={doi:10.1146/annurev.fluid.32.1.519},
+note = {DOI: doi:10.1146/annurev.fluid.32.1.519}
+}
+
+@book{garratt_1994,
+  title     = "The Atmospheric Boundary Layer",
+  author    = "Garratt, J.R.",
+  year      = 1994,
+  publisher = "Cambridge University Press",
+  address   = "",
+  isbn="0-521-46745-4",
+  note="ISBN: 0-521-46745-4"
+}
+% Cambridge Atmospheric and Space Science Series, ISSN 0959-4760
+% ISBN	0521467454, 9780521467452
+
+
+@book{stull_1997,
+  title     = "An Introduction to Boundary Layer Meteorology",
+  author    = "Stull, Roland B..",
+  year      = 1997,
+  publisher = "Springer, Dordrecht",
+  address   = ""
+}
+% Hardcover ISBN 978-90-277-2768-8
+
+@book{tampieri_2017,
+  title     = "Turbulence and Dispersion in the Planetary Boundary Layer",
+  author    = "Tampieri, F.",
+  year      =  "2017",
+  publisher = "Springer International Publishing Switzerland",
+  address   = ""
+}
+% isbn ISBN 978-3-319-43602-9
+
+@ARTICLE{taylor_1921,
+author={Taylor, G.I.},
+title={Diffusion by continuous movements},
+journal={Proc. London Math. Soc.},
+year={1921},
+volume={s2-20},
+number={1},
+pages={196-212},
+doi={10.1112/plms/s2-20.1.196},
+note={DOI: 10.1112/plms/s2-20.1.196}
+}
+
+@article{prandtl_1904,
+  title={{\"U}ber Flussigkeitsbewegung bei sehr kleiner Reibung},
+  author={Prandtl, Ludwig},
+  journal={Verhandl. III, Internat. Math.-Kong., Heidelberg, Teubner, Leipzig, 1904},
+  pages={484--491},
+  year={1904}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% COHERENT STRUCTURES and INTERMITTENCY
+@ARTICLE{kline_1967,
+author={Kline, S.J. and Reynolds, W.C. and Schraub, F.A. and Runstadler, P.W.},
+title={The structure of turbulent boundary layers},
+journal={J. Fluid Mech.},
+year={1967},
+volume={30},
+number={4},
+pages={741-773},
+doi={10.1017/S0022112067001740},
+document_type={Article},
+source={Scopus},
+}
+
+@ARTICLE{robinson_1991,
+author={Robinson, S.K.},
+title={Coherent motions in the turbulent boundary layer},
+journal={Ann. Rev. Fluid Mech.},
+year={1991},
+volume={23},
+number={1},
+pages={601-639},
+doi={10.1146/annurev.fl.23.010191.003125},
+document_type={Article},
+}
+
+
+@ARTICLE{rogers_1992,
+author={Rogers, M.M. and Moser, R.D.},
+title={The three-dimensional evolution of a plane mixing layer: The Kelvin-Helmholtz rollup},
+journal={J. Fluid Mech.},
+year={1992},
+volume={243},
+pages={183-226},
+doi={10.1017/S0022112092002696},
+document_type={Article},
+}
+
+
+@ARTICLE{lasheras_1988,
+author={Lasheras, J.C. and Choi, H.},
+title={Three-dimensional instability of a plane free shear layer: An experimental study of the formation and evolution of streamwise vortices},
+journal={J. Fluid Mech.},
+year={1988},
+volume={189},
+number={5},
+pages={53-86},
+doi={10.1017/S0022112088000916},
+document_type={Article},
+}
+
+
+@ARTICLE{schoppa_2002,
+author={Schoppa, W. and Hussain, F.},
+title={Coherent structure generation in near-wall turbulence},
+journal={J. Fluid Mech.},
+year={2002},
+volume={453},
+pages={57-108},
+doi={10.1017/S002211200100667X},
+document_type={Article},
+}
+
+
+@ARTICLE{laima_2020,
+author={Laima, S. and Ren, H. and Li, H. and Ou, J.},
+title={Numerical simulation of coherent structures in the turbulent boundary layer under different stability conditions},
+journal={Energies},
+year={2020},
+volume={13},
+number={5},
+doi={10.3390/en13051068},
+art_number={1068},
+document_type={Article},
+}
+
+
+@ARTICLE{watanabe_2019,
+author={Watanabe, T. and Riley, J.J. and Nagata, K. and Matsuda, K. and Onishi, R.},
+title={Hairpin vortices and highly elongated flow structures in a stably stratified shear layer},
+journal={Journal of Fluid Mechanics},
+year={2019},
+volume={878},
+pages={37-61},
+doi={10.1017/jfm.2019.577},
+document_type={Article},
+}
+
+@ARTICLE{khanna_1998,
+author={Khanna, S. and Brasseur, J.G.},
+title={Three-dimensional buoyancy- and shear-induced local structure of the atmospheric boundary layer},
+journal={Journal of the Atmospheric Sciences},
+year={1998},
+volume={55},
+number={5},
+pages={710-743},
+doi={10.1175/1520-0469(1998)055<0710:TDBASI>2.0.CO;2},
+document_type={Article},
+}
+
+
+@ARTICLE{mathis_2009,
+author={Mathis, R. and Hutchins, N. and Marusic, I.},
+title={Large-scale amplitude modulation of the small-scale structures in turbulent boundary layers},
+journal={J. Fluid Mech.},
+year={2009},
+volume={628},
+pages={311-337},
+doi={10.1017/S0022112009006946},
+document_type={Article},
+}
+
+@ARTICLE{metzger_2010,
+author={Metzger, M. and McKeon, B. and Arce-Larreta, E.},
+title={Scaling the characteristic time of the bursting process in the turbulent boundary layer},
+journal={Phys. D: Nonlinear Phenom.},
+year={2010},
+volume={239},
+number={14},
+pages={1296-1304},
+doi={10.1016/j.physd.2009.09.004},
+document_type={Conference Paper},
+}
+
+
+@ARTICLE{mahrt_1989,
+author={Mahrt, L.},
+title={Intermittency of atmospheric turbulence},
+journal={J Atmos Sci;},
+year={1989},
+volume={46},
+number={1},
+pages={79-95},
+doi={10.1175/1520-0469(1989)046<0079:IOAT>2.0.CO;2},
+document_type={Article},
+source={Scopus},
+}
+
+
+@ARTICLE{mahrt_1999,
+author={Mahrt, L.},
+title={Stratified atmospheric boundary layers},
+journal={Bound.-Layer Meteorol.},
+year={1999},
+volume={90},
+number={3},
+pages={375-396},
+doi={10.1023/A:1001765727956},
+document_type={Article},
+}
+
+@ARTICLE{mahrt_2009,
+author={Mahrt, L. and Thomas, C. and Preuger, J.},
+title={ Space-time structure of mesoscale modes in the stable boundary layer},
+journal={Q. J. R. Meteorol. Soc.},
+year={2009},
+volume={135},
+number={},
+pages={67–75},
+doi={},
+document_type={Article},
+}
+
+
+@ARTICLE{mahrt_2010,
+author={Mahrt, L.},
+title={Variability and maintenance of turbulence in the very stable boundary layer},
+journal={Bound.-Layer Meteorol.},
+year={2010},
+volume={135},
+number={1},
+pages={1-18},
+doi={10.1007/s10546-009-9463-6},
+document_type={Article},
+}
+
+
+@ARTICLE{mahrt_2012,
+author={Mahrt, L. and Richardson, S. and Seaman, N. and Stauffer, D.},
+title={Turbulence in the nocturnal boundary layer with light and variable winds},
+journal={Quarterly Journal of the Royal Meteorological Society},
+year={2012},
+volume={138},
+number={667},
+pages={1430-1439},
+doi={10.1002/qj.1884},
+document_type={Article},
+}
+
+@ARTICLE{mahrt_2014,
+author={Mahrt, L.},
+title={Stably stratified atmospheric boundary layers},
+journal={Annu. Rev. Fluid Mech.},
+year={2014},
+volume={46},
+pages={23-45},
+doi={10.1146/annurev-fluid-010313-141354}
+}
+
+
+@ARTICLE{pardyjak_2002,
+author={Pardyjak, E.R. and Monti, P. and Fernando, H.J.S.},
+title={Flux Richardson number measurements in stable atmospheric shear flows},
+journal={J. Fluid Mech.},
+year={2002},
+volume={459},
+pages={307-316},
+doi={10.1017/S0022112002008406},
+document_type={Article},
+}
+
+%%% IMPORTANTE
+@ARTICLE{kit_2017,
+author={Kit, E. and Hocut, C.M. and Liberzon, D. and Fernando, H.J.S.},
+title={Fine-scale turbulent bursts in stable atmospheric boundary layer in complex terrain},
+journal={J. Fluid Mech.},
+year={2017},
+volume={833},
+pages={745-772},
+doi={10.1017/jfm.2017.717},
+document_type={Article},
+source={Scopus},
+}
+
+@ARTICLE{rorai_2014,
+author={Rorai, C. and Mininni, P.D. and Pouquet, A.},
+title={Turbulence comes in bursts in stably stratified flows},
+journal={Phys. Rev. E Stat. Nonlin. Soft Matter Phys},
+year={2014},
+volume={89},
+number={4},
+doi={10.1103/PhysRevE.89.043002},
+art_number={043002}
+}
+
+
+@ARTICLE{sun_2012,
+author={Sun, J. and Mahrt, L. and Banta, R.M. and Pichugina, Y.L.},
+title={Turbulence regimes and turbulence intermittency in the stable boundary layer: During CASES-99},
+journal={J Atmos Sci},
+year={2012},
+volume={69},
+number={1},
+pages={338-351},
+doi={10.1175/JAS-D-11-082.1},
+document_type={Article},
+}
+
+
+@book{tsinober_2009,
+title={An Informal Conceptual Introduction to Turbulence: Second Edition of An Informal Introduction to Turbulence},
+author={Tsinober, A.},
+isbn={9789048131747},
+lccn={2009930633},
+series={Fluid Mech. its Appl.},
+year={2009},
+publisher={Springer Netherlands}
+}
+
+
+@ARTICLE{zeldovich_1988,
+author={Zel’dovich, Ya.B. and Molchanov, S.A. and Ruzmaikin, A.A. and Sokoloff, D.D.},
+title={Intermittency, diffusion and generation in a nonstationary random medium},
+journal={Sov. Sci. Rev.},
+year={1988},
+volume={C7},
+pages={1–110},
+}
+
+@book{tritton_1988,
+  title     = "Physical fluid dynamics",
+  author    = "Tritton, D.J.",
+  publisher    = "Clarendon press",
+  year      = "1988",
+  address   = "Oxford"
+}
+
+
+@ARTICLE{box_1970,
+author={Box, G.E.P. and Pierce, D.A.},
+title={Distribution of residual autocorrelations in autoregressive-integrated moving average time series models},
+journal={J. Am. Stat. Assoc},
+year={1970},
+volume={65},
+number={332},
+pages={1509-1526},
+doi={10.1080/01621459.1970.10481180},
+document_type={Article},
+}
+
+@ARTICLE{belusic_2012,
+author={Belušić, D. and Mahrt, L.},
+title={Is geometry more universal than physics in atmospheric boundary layer flow?},
+journal={J Geophys Res Atmos},
+year={2012},
+volume={117},
+number={9},
+doi={10.1029/2011JD016987},
+art_number={D09115}
+}
+
+@ARTICLE{ansorge_2014,
+author={Ansorge, C. and Mellado, J.P.},
+title={Global Intermittency and Collapsing Turbulence in the Stratified Planetary Boundary Layer},
+journal={Bound.-Layer Meteorol.},
+year={2014},
+volume={153},
+number={1},
+pages={89-116},
+doi={10.1007/s10546-014-9941-3},
+document_type={Article},
+}
+
+
+@ARTICLE{ansorge_2016b,
+author={Ansorge, C. and Mellado, J.P.},
+title={Analyses of external and global intermittency in the logarithmic layer of Ekman flow},
+journal={J. Fluid Mech.},
+year={2016},
+volume={805},
+pages={611-635},
+doi={10.1017/jfm.2016.534},
+document_type={Article},
+source={Scopus},
+}
+
+
+@ARTICLE{li_2011,
+author={Li, D. and Bou-Zeid, E.},
+title={Coherent structures and the dissimilarity of turbulent transport of momentum and scalars in the unstable Atmospheric surface layer},
+journal={Bound.-Layer Meteorol.},
+year={2011},
+volume={140},
+number={2},
+pages={243-262},
+doi={10.1007/s10546-011-9613-5},
+document_type={Article},
+}
+
+
+@ARTICLE{chamecki_2013,
+author={Chamecki, M.},
+title={Persistence of velocity fluctuations in non-Gaussian turbulence within and above plant canopies},
+journal={Phys. Fluids},
+year={2013},
+volume={25},
+number={11},
+doi={10.1063/1.4832955},
+art_number={115110},
+document_type={Article},
+}
+
+
+
+
+
+
+
+
+
+% NOCTURNAL BOUNDARY LAYER e INTERMITTENCY
+
+
+@ARTICLE{sun_2015,
+author={Sun, J. and Nappo, C.J. and Mahrt, L. and Belušic, D. and Grisogono, B. and Stauffer, D.R. and Pulido, M. and Staquet, C. and Jiang, Q. and Pouquet, A. and Yagüe, C. and Galperin, B. and Smith, R.B. and Finnigan, J.J. and Mayor, S.D. and Svensson, G. and Grachev, A.A. and Neff, W.D.},
+title={Review of wave-turbulence interactions in the stable atmospheric boundary layer},
+journal={Rev. Geophys.},
+year={2015},
+volume={53},
+number={3},
+pages={956-993},
+doi={10.1002/2015RG000487},
+document_type={Conference Paper},
+}
+
+
+@ARTICLE{anfossi_2005,
+author={Anfossi, D. and Oettl, D. and Degrazia, G. and Goulart, A.},
+title={An analysis of sonic anemometer observations in low wind speed conditions},
+journal={Boundary-Layer Meteorology},
+year={2005},
+volume={114},
+number={1},
+pages={179-203},
+doi={10.1007/s10546-004-1984-4},
+document_type={Article},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% EVENT DETECTION and EVENT-BASED in TURBULENCE
+
+@ARTICLE{jeffreys_1926,
+author={Jeffreys, H.},
+title={On the dynamics of geostrophic winds},
+journal={Q. J. R. met. Soc.},
+year={1926},
+volume={52},
+number={},
+pages={85-104},
+doi={}
+}
+
+@ARTICLE{corino_1969,
+author={Corino, E.R. and Brodkey, R.S.},
+title={A visual investigation of the wall region in turbulent flow},
+journal={J. Fluid Mech.},
+year={1969},
+volume={37},
+number={1},
+pages={1-30},
+doi={10.1017/S0022112069000395},
+note={DOI: 10.1017/S0022112069000395}
+}
+
+% NARASIMHA
+
+@ARTICLE{narasimha_2007,
+author={Narasimha, R. and Kumar, S.R. and Prabhu, A. and Kailas, S.V.},
+title={Turbulent flux events in a nearly neutral atmospheric boundary layer},
+journal={Phil. Trans. Roy. Soc. A},
+year={2007},
+volume={365},
+number={1852},
+pages={841-858},
+doi={10.1098/rsta.2006.1949},
+note={DOI: 10.1098/rsta.2006.1949}
+}
+
+@ARTICLE{narasimha_1990,
+author={Narasimha, R. and Kailas, S.V.},
+title={Turbulent bursts in the atmosphere},
+journal={Atmos. Environ. A, Gen. Top.},
+year={1990},
+volume={24},
+number={7},
+pages={1635-1645},
+doi={10.1016/0960-1686(90)90497-B},
+note={DOI: 10.1016/0960-1686(90)90497-B}
+}
+
+@ARTICLE{narasimha_1995,
+author={Narasimha, R.},
+title={Turbulence: waves or events?},
+journal={Curr. Sci.},
+year={1995},
+volume={68},
+number={1},
+pages={33-38},
+url={http://www.jstor.org/stable/24096168},
+note={}
+}
+
+
+@incollection{narasihma_1987,
+author="Narasimha, R. and Kailas, S. V.",
+title="Energy events in the atmospheric boundary layer",
+booktitle="Perspectives in turbulence studies",
+editor="H. U. Meier and P. Bradshaw",
+publisher="Springer.",
+address="Berlin",
+year="1987",
+isbn = "978-3-642-82996-3",
+doi={10.1007/978-3-642-82994-9$\mathrm{\_}$8},
+pages="88–222",
+note={DOI: 10.1007/978-3-642-82994-9$\mathrm{\_}$8, ISBN: 978-3-642-82996-3}
+}
+
+@ARTICLE{kailas_1994,
+author={Kailas, S.V. and Narasimha, R.},
+title={Similarity in VITA-detected events in a nearly neutral atmospheric boundary layer},
+journal={Proc. Roy. Soc. London A},
+year={1994},
+volume={447},
+number={1930},
+pages={211-222},
+doi={10.1098/rspa.1994.0136},
+note={DOI: 10.1098/rspa.1994.0136}
+}
+
+%% FINE NARASIMHA
+
+%%% RECENTI su EVENT-BASED in TURBULENCE
+
+@ARTICLE{chowdhuri_jfm2020,
+author={Chowdhuri, S. and Kumar, S. and Banerjee, T.},
+title={Revisiting the role of intermittent heat transport towards Reynolds stress anisotropy in convective turbulence},
+journal={J. Fluid Mech.},
+year={2020},
+doi={10.1017/jfm.2020.471},
+art_number={A26},
+note={DOI: 10.1017/jfm.2020.471}
+}
+
+
+% FINE RECENTI
+
+
+
+
+@ARTICLE{bershadskii_2004,
+author={Bershadskii, A. and Niemela, J.J. and Praskovsky, A. and Sreenivasan, K.R.},
+title={“Clusterization” and intermittency of temperature fluctuations in turbulent convection},
+journal={Phys. Rev. E},
+year={2004},
+volume={69},
+number={5},
+pages={5},
+doi={10.1103/PhysRevE.69.056314},
+document_type={Article},
+}
+
+@ARTICLE{bershadskii_2004b,
+author={Bershadskii, A. and Niemela, J.J. and Sreenivasan, K.R.},
+title={Solar flares and thermal wind reversals: Critical metastable states},
+journal={Phys. Lett. A},
+year={2004},
+volume={331},
+number={1-2},
+pages={15-19},
+doi={10.1016/j.physleta.2004.08.053},
+note={DOI: 10.1016/j.physleta.2004.08.053}
+}
+
+@ARTICLE{sreenivasan_2006,
+author={Sreenivasan, K.R. and Bershadskii, A.},
+title={Clustering properties in turbulent signals},
+journal={J. Stat. Phys.},
+year={2006},
+volume={125},
+number={5-6},
+pages={1141-1153},
+doi={10.1007/s10955-006-9112-0},
+document_type={Article},
+}
+
+@ARTICLE{tubergen_1993,
+author={Tubergen, R.G. and Tiederman, W.G.},
+title={Evaluation of ejection detection schemes in turbulent wall flows},
+journal={Exp. Fluids},
+year={1993},
+volume={15},
+number={4-5},
+pages={255-262},
+doi={10.1007/BF00223403},
+document_type={Article},
+source={Scopus},
+}
+
+@ARTICLE{luchik_1987,
+author={Luchik, T.S.},
+title={Timescale and structure of ejections and bursts in turbulent channel flows},
+journal={J. Fluid Mech.},
+year={1987},
+volume={174},
+pages={529-552},
+doi={10.1017/S0022112087000235},
+document_type={Article},
+source={Scopus},
+}
+
+@ARTICLE{blackwelder_1976,
+author={Blackwelder, R.F. and Kaplan, R.E.},
+title={On the wall structure of the turbulent boundary layer},
+journal={J. Fluid Mech.},
+year={1976},
+volume={76},
+number={1},
+pages={89-112},
+doi={10.1017/S0022112076003145},
+document_type={Article},
+source={Scopus},
+}
+
+@ARTICLE{wallace_1972,
+author={Wallace, J.M. and Eckelmann, H. and Brodkey, R.S.},
+title={The wall region in turbulent shear flow},
+journal={J. Fluid Mech.},
+year={1972},
+volume={54},
+number={1},
+pages={39-48},
+doi={10.1017/S0022112072000515},
+note = {DOI: 10.1017/S0022112072000515}
+}
+
+@ARTICLE{bogard_1986,
+author={Bogard, D.G.},
+title={Burst detection with single-point velocity measurements},
+journal={J. Fluid Mech.},
+year={1986},
+volume={162},
+pages={389-413},
+doi={10.1017/S0022112086002094},
+note = {DOI: 10.1017/S0022112086002094}
+}
+
+
+@ARTICLE{lu_1973,
+author={lu, S.S. and Willmarth, W.W.},
+title={Measurements of the structure of the Reynolds stress in a turbulent boundary layer},
+journal={J. Fluid Mech.},
+year={1973},
+volume={60},
+number={3},
+pages={481-511},
+doi={10.1017/S0022112073000315},
+note = {DOI: 10.1017/S0022112073000315}
+}
+
+
+
+@ARTICLE{chian_2008,
+author={Chian, A.C.-L. and Miranda, R.A. and Koga, D. and Bolzan, M.J.A. and Ramos, F.M. and Rempel, E.L.},
+title={Analysis of phase coherence in fully developed atmospheric turbulence: Amazon forest canopy},
+journal={Nonlinear Processes Geophys.},
+year={2008},
+volume={15},
+number={4},
+pages={567-573},
+doi={10.5194/npg-15-567-2008},
+note = {DOI: 10.5194/npg-15-567-2008}
+}
+
+
+@ARTICLE{provenzale_1992,
+author={Provenzale, A. and Smith, L.A. and Vio, R. and Murante, G.},
+title={Distinguishing between low-dimensional dynamics and randomness in measured time series},
+journal={Phys. D: Nonlinear Phenom.},
+year={1992},
+volume={58},
+number={1-4},
+pages={31-49},
+doi={10.1016/0167-2789(92)90100-2},
+note = {DOI: 10.1016/0167-2789(92)90100-2}
+}
+
+
+% capire se è citato, ma indicato con mahrt_2010-era doppia entry...guardare nel latex
+
+@ARTICLE{mahrt_2010a,
+author={Mahrt, L.},
+title={Common microfronts and other solitary events in the nocturnal boundary layer},
+journal={Q. J. R. Meteorol. Soc.},
+year={2010},
+volume={136},
+number={652},
+pages={1712-1722},
+doi={10.1002/qj.694}
+}
+
+
+@ARTICLE{antonia_1982,
+author={Antonia, R.A. and Chambers, A.J. and Bradley, E.F.},
+title={Relationships between structure functions and temperature ramps in the atmospheric surface layer},
+journal={Bound.-Layer Meteorol.},
+year={1982},
+volume={23},
+number={4},
+pages={395-403},
+doi={10.1007/BF00116268}
+}
+
+
+@ARTICLE{kang_2014a,
+author={Kang, Y. and Belušić, D. and Smith-Miles, K.},
+title={Detecting and classifying events in noisy time series},
+journal={J Atmos Sci},
+year={2014},
+volume={71},
+number={3},
+pages={1090-1104},
+doi={10.1175/JAS-D-13-0182.1},
+}
+
+
+
+@ARTICLE{kang_2015,
+author={Kang, Y. and Belušić, D. and Smith-Miles, K.},
+title={Classes of structures in the stable atmospheric boundary layer},
+journal={Q. J. R. Meteorol. Soc.},
+year={2015},
+volume={141},
+number={691},
+pages={2057-2069},
+doi={10.1002/qj.2501}
+}
+%Belu\v{s}i
+
+@BOOK{banerjee_1993,
+author={Banerjee, A. and Dolado, J.J. and Galbraith, J.W. and Hendry, D.},
+title={Co-Integration, Error-Correction, and the Econometric Analysis of Non-Stationary Data},
+publisher={Oxford University Press},
+year={1993},
+pages={352},
+isbn={9780198288107},
+doi={10.1093/0198288107.001.0001}
+}
+%Print ISBN-13: 9780198288107
+
+
+@ARTICLE{perron_1988,
+author={Perron, P.},
+title={Trends and random walks in macroeconomic time series. Further evidence from a new approach},
+journal={Journal of Economic Dynamics and Control},
+year={1988},
+volume={12},
+number={2-3},
+pages={297-332},
+doi={10.1016/0165-1889(88)90043-7}
+}
+
+
+%%%%%% BEGIN WIND GUSTS %%%%%%%%
+
+@ARTICLE{cheng_2011,
+author={Cheng, X. and Zeng, Q.-C. and Hu, F.},
+title={Characteristics of gusty wind disturbances and turbulent fluctuations in windy atmospheric boundary layer behind cold fronts},
+journal={J Geophys Res Atmos},
+year={2011},
+volume={116},
+number={6},
+doi={10.1029/2010JD015081},
+art_number={D06101}
+}
+
+@ARTICLE{cheng_2012,
+author={Cheng, X. and Wu, L. and Hu, F. and Zeng, Q.-C.},
+title={Parameterizations of some important characteristics of turbulent fluctuations and gusty wind disturbances in the atmospheric boundary layer},
+journal={J Geophys Res Atmos},
+year={2012},
+volume={117},
+number={8},
+doi={10.1029/2011JD017191},
+art_number={D08113}
+}
+
+@ARTICLE{cheng_2014,
+author={Cheng, X. and Hu, F. and Zeng, Q.},
+title={Stochastic method to determine the scale and anomalous diffusion of gusts in a windy atmospheric boundary layer},
+journal={Chin. Sci. Bull.},
+year={2014},
+volume={59},
+number={34},
+pages={4890-4898},
+doi={10.1007/s11434-014-0550-9}
+}
+
+@ARTICLE{babic_2016,
+author={Babić, N. and Večenaj, Ž. and Kozmar, H. and Horvath, K. and De Wekker, S.F.J. and Grisogono, B.},
+title={On Turbulent Fluxes During Strong Winter Bora Wind Events},
+journal={Boundary-Layer Meteorology},
+year={2016},
+volume={158},
+number={2},
+pages={331-350},
+doi={10.1007/s10546-015-0088-7}
+}
+%%%%%% END WIND GUSTS %%%%%%%%
+
+
+
+@ARTICLE{liu_2011,
+author={Liu, L. and Hu, F. and Cheng, X.-L.},
+title={Probability density functions of turbulent velocity and temperature fluctuations in the unstable atmospheric surface layer},
+journal={J Geophys Res Atmos},
+year={2011},
+volume={116},
+number={12},
+doi={10.1029/2010JD015503},
+art_number={D12117}
+}
+
+
+@ARTICLE{liu_2020,
+author={Liu, L. and Hu, F.},
+title={Finescale clusterization intermittency of turbulence in the atmospheric boundary layer},
+journal={J Atmos Sci},
+year={2020},
+volume={77},
+number={7},
+pages={2375-2392},
+doi={10.1175/JAS-D-19-0270.1}
+}
+
+@ARTICLE{katul_1994,
+author={Katul, G.G. and Albertson, J. and Parlange, M. and Chia-Ren Chu and Stricker, H.},
+title={Conditional sampling, bursting, and the intermittent structure of sensible heat flux},
+journal={J. Geophys. Res.},
+year={1994},
+volume={99},
+number={D11},
+pages={22,869-22,876},
+doi={10.1029/94jd01679}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%% TURBULENT STRUCTURES
+
+@BOOK{tardu_2014,
+author={Tardu, S.},
+title={Transport and Coherent Structures in Wall Turbulence},
+publisher={John Wiley $\&$ Sons},
+year={2014},
+isbn={9781848213951},
+doi={10.1002/9781118576663},
+note={DOI: 10.1002/9781118576663}
+}
+
+@ARTICLE{ouellette_2012,
+author={Ouellette, N.T.},
+title={On the dynamical role of coherent structures in turbulence},
+journal={C.R. Phys.},
+year={2012},
+volume={13},
+number={9-10},
+pages={866-877},
+doi={10.1016/j.crhy.2012.09.006},
+note={DOI: 10.1016/j.crhy.2012.09.006}
+}
+%Comptes Rendus Physique
+
+@ARTICLE{zhong_1998,
+author={Zhong, J. and Huang, T.S. and Adrian, R.J.},
+title={Extracting 3D vortices in turbulent fluid flow},
+journal={IEEE Trans. Pattern Anal. Mach. Intell.},
+year={1998},
+volume={20},
+number={2},
+pages={193-199},
+doi={10.1109/34.659938},
+note={DOI: 10.1109/34.659938}
+}
+
+@ARTICLE{alfonsi_2006,
+author={Alfonsi, G.},
+title={Coherent structures of turbulence: Methods of eduction and results},
+journal={Appl. Mech. Rev.},
+year={2006},
+volume={59},
+number={1-6},
+pages={307-323},
+doi={10.1115/1.2345370},
+note={DOI: 10.1115/1.2345370}
+}
+
+@ARTICLE{primavera_2008,
+author={Primavera, L. and Alfonsi, G.},
+title={On identification of vortical structures in turbulent shear flow},
+journal={J. Flow Vis. Image Process.},
+year={2008},
+volume={15},
+number={3},
+pages={201-216},
+doi={10.1615/JFlowVisImageProc.v15.i3.20},
+note={DOI: 10.1615/JFlowVisImageProc.v15.i3.20}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+%% SELF-ORGANIZED CRITICALITY
+
+@book{jensen_1998,
+	title = {Self-Organized Criticality: Emergent Complex Behavior in Physical and Biological Systems},
+	year = {1998},
+	publisher = {Cambridge University Press},
+	author = {Jensen, H.J.},
+isbn={9780511622717},
+doi={10.1017/CBO9780511622717},
+note = {ISBN: 9780511622717, DOI: 10.1017/CBO9780511622717}
+}
+
+@ARTICLE{bak_1987,
+author={Bak, P. and Tang, C. and Wiesenfeld, K.},
+title={Self-organized criticality: An explanation of the 1/f noise},
+journal={Phys. Rev. Lett.},
+year={1987},
+volume={59},
+number={4},
+pages={381-384},
+doi={10.1103/PhysRevLett.59.381},
+note={DOI: 10.1103/PhysRevLett.59.381}
+}
+
+@ARTICLE{bak_1988,
+author={Bak, P. and Tang, C. and Wiesenfeld, K.},
+title={Self-organized criticality},
+journal={Phys. Rev. A},
+year={1988},
+volume={38},
+number={1},
+pages={364-374},
+doi={10.1103/PhysRevA.38.364},
+note={DOI: 10.1103/PhysRevA.38.364}
+}
+
+@ARTICLE{munoz_2018,
+author={Muñoz, M.A.},
+title={Colloquium: Criticality and dynamical scaling in living systems},
+journal={Rev. Mod. Phys.},
+year={2018},
+volume={90},
+number={3},
+doi={10.1103/RevModPhys.90.031001},
+art_number={031001},
+note={DOI: 10.1103/RevModPhys.90.031001}}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% COMPLESSITA, INTERMITTENZA e APPLICAZIONI
+
+@incollection{seuront_2005,
+author="Seuront, L. and Yamazaki, H. and Schmitt, F.G.",
+title="Intermittency",
+booktitle="Marine Turbulence: Theories, Observations, and Models. Results of the CARTUM Project",
+editor="H.Z. Baumert, GH.Z. and Simpson, J. and Sündermann, J.",
+publisher="Cambridge University Press",
+address="Cambridge",
+year="2005",
+isbn = "9780521153720",
+doi="",
+volume="",
+number="",
+pages="66--78",
+month="",
+note="ISBN: 9780521153720"
+}
+
+@ARTICLE{batchelor_1949,
+author={Batchelor, G.K. and Townsend, A.A.},
+title={The nature of turbulent motion at large wave-numbers},
+journal={Proc. R. Soc. Lond. A},
+year={1949},
+volume={199},
+number={},
+pages={238--255},
+doi={10.1098/rspa.1949.0136},
+note={DOI: 10.1098/rspa.1949.0136}
+}
+
+
+
+
+%%%%% SURFACE RENEWAL MODEL %%%%%%%
+@ARTICLE{katul_2006_surf_ren,
+author={Katul, G. and Porporato, A. and Cava, D. and Siqueira, M.},
+title={An analysis of intermittency, scaling, and surface renewal in atmospheric surface layer turbulence},
+journal={Phys. D},
+year={2006},
+volume={215},
+number={2},
+pages={117-126},
+doi={10.1016/j.physd.2006.02.004},
+document_type={Article},
+}
+
+@ARTICLE{higbie_1935_surf_ren,
+author={Higbie, R.},
+title={The rate of absorption of a pure gas into a still liquid
+during short periods of exposure},
+journal={ Trans. Amer. Inst. Chem. Eng.},
+year={1935},
+volume={31},
+pages={365–388},
+doi={}
+}
+
+@ARTICLE{perlmutter_1961_surf_ren,
+author={Perlmutter, D.D.},
+title={Surface-renewal models in mass transfer},
+journal={Chem. Eng. Sci.},
+year={1961},
+volume={16},
+number={3-4},
+pages={287-296},
+doi={10.1016/0009-2509(61)80039-0},
+note={DOI: 10.1016/0009-2509(61)80039-0}
+}
+
+@ARTICLE{luo_2021_surf_ren,
+author={Luo, X. and Wang, M. and Lee, J. and Hendry, J.},
+title={Dynamic modelling based on surface renewal theory, model validation and process analysis of rotating packed bed absorber for carbon capture},
+journal={Applied Energy},
+year={2021},
+volume={301},
+doi={10.1016/j.apenergy.2021.117462},
+art_number={117462},
+note={DOI: 10.1016/j.apenergy.2021.117462}
+}
+
+@ARTICLE{ruckenstein_1963_surf_ren,
+author={Ruckenstein, E.},
+title={Some remarks on renewal models},
+journal={Chem. Eng. Sci.},
+year={1963},
+volume={18},
+number={4},
+pages={233-241},
+doi={10.1016/0009-2509(63)87004-9},
+note={DOI: 10.1016/0009-2509(63)87004-9}
+}
+%%%%%% FINE SURFACE RENEWAL %%%%%%%%
+
+
+
+
+@ARTICLE{chambers_1984,
+author={Chambers, A.J. and Antonia, R.A.},
+title={Atmospheric estimates of power-law exponents $\mathrm{M}$ and $\mathrm{M}_{\theta}$},
+journal={Boundary-Layer Meteorology},
+year={1984},
+volume={28},
+number={3-4},
+pages={343-352},
+doi={10.1007/BF00121313},
+note={DOI: 10.1007/BF00121313}
+}
+
+@ARTICLE{warhaft_2000,
+author={Warhaft, Z.},
+title={Passive scalars in turbulent flows},
+journal={Ann. Rev. Fluid Mech.},
+year={2000},
+volume={32},
+pages={203-240},
+doi={10.1146/annurev.fluid.32.1.203},
+note = {DOI: 10.1146/annurev.fluid.32.1.203}
+}
+
+
+@ARTICLE{katul_1997,
+author={Katul, G. and Hsieh, C.-I. and Sigmon, J.},
+title={Energy-inertial scale interactions for velocity and temperature in the unstable atmospheric surface layer},
+journal={Boundary-Layer Meteorology},
+year={1997},
+volume={82},
+number={1},
+pages={49-80},
+doi={10.1023/a:1000178707511},
+document_type={Article},
+}
+
+
+@ARTICLE{poggi_2009,
+author={Poggi, D. and Katul, G.},
+title={Flume experiments on intermittency and zero-crossing properties of canopy turbulence},
+journal={Phys. Fluids},
+year={2009},
+volume={21},
+number={6},
+doi={10.1063/1.3140032},
+art_number={065103},
+note={DOI: 10.1063/1.3140032}
+}
+
+@ARTICLE{cava_2004,
+author={Cava, D. and Giostra, U. and Siqueira, M. and Katul, G.},
+title={Organised motion and radiative perturbations in the nocturnal canopy sublayer above an even-aged pine forest},
+journal={Bound.-Lay. Met.},
+year={2004},
+volume={112},
+number={1},
+pages={129-157},
+doi={10.1023/B:BOUN.0000020160.28184.a0},
+note={DOI: 10.1023/B:BOUN.0000020160.28184.a0}
+}
+
+@ARTICLE{cava_2008,
+author={Cava, D. and Katul, G.G.},
+title={Spectral short-circuiting and wake production within the canopy trunk space of an alpine hardwood forest},
+journal={Bound.-Layer Meteorol.},
+year={2008},
+volume={126},
+number={3},
+pages={415-431},
+doi={10.1007/s10546-007-9246-x},
+note={DOI: 10.1007/s10546-007-9246-x}
+}
+
+@ARTICLE{cava_2008b,
+author={Cava, D. and Katul, G.G. and Sempreviva, A.M. and Giostra, U. and Scrimieri, A.},
+title={On the anomalous behaviour of scalar flux-variance similarity functions within the canopy sub-layer of a dense alpine forest},
+journal={Bound.-Lay. Met.},
+year={2008},
+volume={128},
+number={1},
+pages={33-57},
+doi={10.1007/s10546-008-9276-z},
+note={DOI: 10.1007/s10546-008-9276-z}
+}
+
+
+@ARTICLE{cava_2009,
+author={Cava, D. and Katul, G.G.},
+title={The effects of thermal stratification on clustering properties of canopy turbulence},
+journal={Bound. Lay. Met.},
+year={2009},
+volume={130},
+number={3},
+pages={307-325},
+doi={10.1007/s10546-008-9342-6},
+document_type={Article},
+}
+
+@ARTICLE{cava_2012,
+author={Cava, D. and Katul, G.G. and Molini, A. and Elefante, C.},
+title={The role of surface characteristics on intermittency and zero-crossing properties of atmospheric turbulence},
+journal={J Geophys Res Atmos},
+year={2012},
+volume={117},
+number={1},
+doi={10.1029/2011JD016167},
+art_number={D01104},
+document_type={Article},
+}
+
+@ARTICLE{cava_2019,
+author={Cava, D. and Mortarini, L. and Giostra, U. and Acevedo, O. and Katul, G.},
+title={Submeso Motions and Intermittent Turbulence Across a Nocturnal Low-Level Jet: A Self-Organized Criticality Analogy},
+journal={Bound.-Lay. Met.},
+year={2019},
+doi={10.1007/s10546-019-00441-8},
+note={DOI: 10.1007/s10546-019-00441-8}
+}
+
+
+@ARTICLE{poggi_2007,
+author={Poggi, D. and Katul, G.},
+title={The ejection-sweep cycle over bare and forested gentle hills: A laboratory experiment},
+journal={Bound.-Layer Meteorol.},
+year={2007},
+volume={122},
+number={3},
+pages={493-515},
+doi={10.1007/s10546-006-9117-x},
+note={DOI: 10.1007/s10546-006-9117-x}
+}
+
+
+
+
+
+%%%% USA Telegraph Approx
+@ARTICLE{chowdhuri_pf2020,
+author={Chowdhuri, S. and Kalmár-Nagy, T. and Banerjee, T.},
+title={Persistence analysis of velocity and temperature fluctuations in convective surface layer turbulence},
+journal={Phys. Fluids},
+year={2020},
+volume={32},
+number={},
+pages={076601},
+doi={10.1063/5.0013911}
+}
+
+
+
+@ARTICLE{huang_2013,
+author={Huang, J. and Katul, G. and Albertson, J.},
+title={The role of coherent turbulent structures in explaining scalar dissimilarity within the canopy sublayer},
+journal={Environ. Fluid Mech.},
+year={2013},
+volume={13},
+number={6},
+pages={571-599},
+doi={10.1007/s10652-013-9280-9}
+}
+
+@ARTICLE{huang_2021,
+author={Huang, K.Y. and Katul, G.G. and Hultmark, M.},
+title={Velocity and Temperature Dissimilarity in the Surface Layer Uncovered by the Telegraph Approximation},
+journal={Bound.-Layer Meteorol.},
+year={2021},
+volume={180},
+number={3},
+pages={385-405},
+doi={10.1007/s10546-021-00632-2},
+note={DOI: 10.1007/s10546-021-00632-2}
+}
+
+@ARTICLE{liu_2014,
+author={Liu, L. and Hu, F. and Cheng, X.-L.},
+title={Extreme fluctuations of vertical velocity in the unstable atmospheric surface layer},
+journal={Nonlinear Processes Geophys.},
+year={2014},
+volume={21},
+number={2},
+pages={463-475},
+doi={10.5194/npg-21-463-2014}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% KOLMOGOROV, RICHARDSON, OBOUKHOV e ALTRI
+
+@article{kolmogorov-1941,
+     author="Kolmogorov, A.N.",
+      title="The local structure of turbulence in incompressible viscous
+      fluid for very large Reynolds numbers",
+    journal="Dokl. Akad. Nauk SSSR",
+       year="1941",
+     volume="30",
+      pages="301--305"
+}
+
+@article{kolmogorov-1941b,
+     author="Kolmogorov, A.N.",
+      title="Dissipation of energy in the locally isotropic turbulence",
+    journal="Dokl. Akad. Nauk SSSR",
+       year="1941",
+     volume="32",
+      pages="16--18"
+}
+
+@article{oboukhov-1941,
+     author="A. M. Oboukhov",
+      title="Energy distribution in the spectrum of turbulent flow",
+    journal="Izv. Akad. Nauk. SSSR Ser.Geogr. Geofiz.",
+       year="1941",
+     volume="5",
+     number="",
+      pages="453--466",
+       note=""
+}
+
+@article{kolmogorov-1962,
+     author="Kolmogorov, A.N.",
+      title="A refinement of previous hypotheses concerning the local structure of turbulence of a viscous incompressible fluid at high {R}eynolds number",
+    journal="J. Fluid Mech.",
+       year="1962",
+     volume="13",
+      pages="82--85"
+}
+
+% QUI Oboukhov verifica K41, ma con coefficiente che cambia
+% Inoltre, introduce il suo intermittency exponent legato al dissipation rate
+
+@ARTICLE{oboukhov_1962,
+author={Oboukhov, A.},
+title={Some specific features of atmospheric turbulence},
+journal={J. Fluid Mech.},
+year={1962},
+volume={13},
+number={1},
+pages={77--81},
+doi={10.1017/S0022112062000506},
+note={DOI: doi:10.1017/S0022112062000506}
+}
+
+% Trovano i momenti superiori a p=12 diversi dalla K62
+
+
+@ARTICLE{anselmet_1984,
+author={Anselmet, F. and Gagne, Y. and Hopfinger, E.J.},
+title={High-order velocity structure functions in turbulent shear flows},
+journal={J. Fluid Mech.},
+year={1984},
+volume={140},
+pages={63-89},
+doi={10.1017/S0022112084000513},
+document_type={Article},
+}
+%note={cited By 816},
+
+
+
+@article{richardson_1920,
+      author="L. F. Richardson",
+      title="Some measurements of atmospheric turbulence",
+      journal="Philos. Trans. Roy. Soc. London A",
+      year="1920",
+      volume="582",
+      number="",
+      pages="1--28",
+      note=""
+}
+
+@book{richardson_1922,
+author="L. F. Richardson",
+title={Weather Prediction by Numerical Processes},
+year={1922},
+publisher="Cambridge University Press",
+address="Cambridge",
+isbn="9780511618291",
+url="https://archive.org/details/weatherpredictio00richrich/mode/2up",
+note="ISBN: 9780511618291"
+}
+
+
+@article{benzi-frish_2010,
+author="Benzi, R. and Frish, U.",
+title="Turbulence",
+journal="Scholarpedia",
+year="2010",
+volume="5",
+number="3",
+pages="3439",
+note="\\ URL: http://www.scholarpedia.org/article/Turbulence"
+}
+%      art_number="",
+%     url="http://www.scholarpedia.org/article/Turbulence",
+
+@BOOK{schlichting_2017,
+author={Schlichting, H. and Gersten, K.},
+title={Boundary-Layer Theory},
+year={2017},
+edition="9th",
+pages={1-799},
+publisher="Springer-Verlag",
+address="Berlin Heidelberg",
+isbn="978-3-662-52917-1",
+doi={10.1007/978-3-662-52919-5},
+note="ISBN: 978-3-662-52917-1"
+}
+
+@BOOK{frisch_1995,
+author={Frisch, U.},
+title={Turbulence, the Legacy of A.N. Kolmogorov},
+year={1995},
+publisher="Cambridge Univ. Press",
+address="Cambridge",
+isbn="0-521-45713-0",
+note="ISBN: 0-521-45713-0"
+}
+
+
+
+@BOOK{kaimal_and_finnigan_1994,
+author={Kaimal, J. C. and Finnigan, J. J.},
+title={Atmospheric boundary layer flows: their structure and measurement},
+year={1994},
+publisher="Oxford University Press",
+address="New York",
+isbn="9780195062397",
+DOI="10.1093/oso/9780195062397.001.0001",
+}
+
+
+@ARTICLE{falkovich_2006,
+author={Falkovich, G. and Sreenivasan, K.R.},
+title={Lessons from hydrodynamic turbulence},
+journal={Phys. Today},
+year={2006},
+volume={59},
+number={4},
+pages={43},
+doi={10.1063/1.2207037},
+note={DOI: 10.1063/1.2207037}
+}
+
+@BOOK{landau_1959,
+author={Landau, L.D. and Lifshitz, E.M.},
+title={Fluid Mechanics},
+year={1959},
+publisher="Pergamon Press",
+address="London",
+isbn=" 978-0-080-09104-4",
+note="ISBN: 978-0-080-09104-4. [As far as we know, the
+first publication in Russian was in 1944, see \cite{frisch_1995}, pag. 93]."
+}
+
+@BOOK{monin_1975,
+author={Monin, A.S. and Yaglom, A.M.},
+title={Statistical Fluid Mechanics: Mechanics of turbulence},
+year={1975},
+publisher="Dover Publications",
+volume="2",
+address="New York",
+isbn="978-0-486-45891-5",
+note="ISBN: 978-0-486-45891-5. $[$First published in Russian by Nauka Press, Moscow, in 1965$]$"
+}
+
+@BOOK{monin_1971,
+author={Monin, A.S. and Yaglom, A.M.},
+title={Statistical Fluid Mechanics: Mechanics of turbulence},
+year={1971},
+publisher="Dover Publications",
+volume="1",
+address="New York",
+isbn="978-0-486-45883-0. $[$First published in Russian by Nauka Press, Moscow, in 1965$]$",
+note=""
+}
+
+
+@ARTICLE{zhou_2021,
+author={Zhou, Y.},
+title={Turbulence theories and statistical closure approaches},
+journal={Phys. Rep.},
+year={2021},
+volume={935},
+pages={1-117},
+doi={10.1016/j.physrep.2021.07.001},
+note={DOI: 10.1016/j.physrep.2021.07.001}
+}
+
+
+
+
+
+@book{batchelor_1953,
+  title={The Theory of Homogeneous Turbulence},
+  author={Batchelor, G.K. and Cambridge University Press},
+  isbn={9780521041171},
+  lccn={a54008864},
+  series={Cambridge Science Classics},
+  url={https://books.google.it/books?id=POG-LSUgYckC},
+  year={1953},
+  publisher={Cambridge University Press}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% KRAICHNAN e ALTRI
+
+@article{kraichnan-prl-1994,
+      author="R. Kraichnan",
+      title="Anomalous scaling of a randomly advected passive scalar",
+      journal="Phys. Rev. Lett.",
+      year="1994",
+      volume="72",
+      number="7",
+      pages="1016--1019"
+}
+
+
+@article{benzi_1984,
+	doi = {10.1088/0305-4470/17/18/021},
+	note = {DOI: 10.1088/0305-4470/17/18/021},
+	year = "1984",
+	volume = {17},
+	number = {18},
+	pages = {3521--3531},
+	author = {Benzi, R. and Paladin, G. and Parisi, G. and Vulpiani, A.},
+	title = {On the multifractal nature of fully developed turbulence and chaotic systems},
+	journal = {J. Phys. A: Gen. Phys.}
+}
+
+
+@ARTICLE{frisch_1978,
+author={Frisch, U. and Sulem, P.-L. and Nelkin, M.},
+title={A simple dynamical model of intermittent fully developed turbulence},
+journal={J. Fluid Mech.},
+year={1978},
+volume={87},
+number={4},
+pages={719-736},
+doi={10.1017/S0022112078001846},
+note={DOI: 10.1017/S0022112078001846}
+}
+
+@ARTICLE{sreenivasan_1997,
+author={Sreenivasan, K.R. and Antonia, R.A.},
+title={The phenomenology of small-scale turbulence},
+journal={Ann. Rev. Fluid Mech.},
+year={1997},
+volume={29},
+pages={435-472},
+doi={10.1146/annurev.fluid.29.1.435},
+note={DOI: 10.1146/annurev.fluid.29.1.435}
+}
+
+@ARTICLE{sreenivasan_1998,
+author={Sreenivasan, K.R. and Dhruva, B.},
+title={Is there scaling in high-reynolds-number turbulence?},
+journal={Prog. Theor. Phys. Suppl},
+year={1998},
+volume={130},
+pages={103-120},
+doi={10.1143/PTPS.130.103},
+note={DOI: 10.1143/PTPS.130.103}
+}
+
+% EXPERIMENT THERMAL CONVECTION
+@ARTICLE{niemela_2003,
+author={Niemela, J.J. and Sreenivasan, K.R.},
+title={Confined turbulent convection},
+journal={J. Fluid Mech.},
+year={2003},
+volume={481},
+number={},
+pages={355--384},
+doi={10.1017/S0022112003004087},
+note={DOI: 10.1017/S0022112003004087}
+}
+
+% Wind tunnel exp. usato da Sreenivasan
+@ARTICLE{pearson_2002,
+author={Pearson, B.R. and Krogstad, P.-A. and van de Water, W.},
+title={Measurements of the turbulent energy dissipation rate},
+journal={Phys. Fluids},
+year={2002},
+volume={14},
+number={},
+pages={1288},
+doi={10.1063/1.1445422}
+}
+
+% Improved model of small-scale intermittency
+@ARTICLE{she-leveque_1994,
+author={She, Z.-S. and Leveque, E.},
+title={Universal scaling laws in fully developed turbulence},
+journal={Phys. Rev. Lett.},
+year={1994},
+volume={72},
+number={3},
+pages={336-339},
+doi={10.1103/PhysRevLett.72.336},
+note={DOI: 10.1103/PhysRevLett.72.336}
+}
+
+@ARTICLE{she_2009,
+author={She, Z.-S. and Zhang, Z.-X.},
+title={Universal hierarchical symmetry for turbulence and general multi-scale fluctuation systems},
+journal={Acta Mech. Sin./Lixue Xuebao},
+year={2009},
+volume={25},
+number={3},
+pages={279-294},
+doi={10.1007/s10409-009-0257-3},
+note={DOI: 10.1007/s10409-009-0257-3}
+}
+
+%R. Renzi, S. Ciliberto, C. Baudet, F. Massaioli, R.
+%Tripiccione, and S. Succi. Extended self-
+%similarity in turbulent flow. Phys. Rev. E,
+%48(29):401–417, 1993.
+
+@ARTICLE{celani_2000,
+author={Celani, A. and Lanotte, A. and Mazzino, A. and Vergassola, M.},
+title={Universality and saturation of intermittency in passive scalar turbulence},
+journal={Phys. Rev. Lett.},
+year={2000},
+volume={84},
+number={11},
+pages={2385-2388},
+doi={10.1103/PhysRevLett.84.2385},
+note={DOI: 10.1103/PhysRevLett.84.2385}
+}
+
+@ARTICLE{frisch_1998,
+author={Frisch, U. and Mazzino, A. and Vergassola, M.},
+title={Intermittency in passive scalar advection},
+journal={Phys. Rev. Lett.},
+year={1998},
+volume={80},
+number={25},
+pages={5532-5535},
+doi={10.1103/PhysRevLett.80.5532},
+note={DOI: 10.1103/PhysRevLett.80.5532}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% METASTABILITY and HETEROCLINIC CHANNELS
+
+@ARTICLE{rabinovich_prl06,
+author={Rabinovich, M.I. and Huerta, R. and Afraimovich, V.},
+title={Dynamics of sequential decision making},
+journal={Phys. Rev. Lett.},
+year={2006},
+volume={97},
+number={18},
+doi={10.1103/PhysRevLett.97.188103},
+art_number={188103},
+document_type={Article},
+}
+
+
+@ARTICLE{rabinovich_pcb08,
+author={Rabinovich, M.I. and Huerta, R. and Varona, P. and Afraimovich, V.S.},
+title={Transient cognitive dynamics, metastability, and decision making},
+journal={PLoS Comput. Biol.},
+year={2008},
+volume={4},
+number={5},
+doi={10.1371/journal.pcbi.1000072},
+art_number={e1000072},
+document_type={Article},
+}
+%note={cited By 219},
+
+
+
+@ARTICLE{rabinovich_plr12,
+author={Rabinovich, M.I. and Afraimovich, V.S. and Bick, C. and Varona, P.},
+title={Information flow dynamics in the brain},
+journal={Phys. Life Rev.},
+year={2012},
+volume={9},
+number={1},
+pages={51-73},
+doi={10.1016/j.plrev.2011.11.002},
+document_type={Review},
+}
+
+
+
+@ARTICLE{afraimovich_2004,
+author={Afraimovich, V.S. and Zhigulin, V.P. and Rabinovich, M.I.},
+title={On the origin of reproducible sequential activity in neural circuits},
+journal={Chaos},
+year={2004},
+volume={14},
+number={4},
+pages={1123-1129},
+doi={10.1063/1.1819625},
+note={DOI: 10.1063/1.1819625}
+}
+
+
+
+
+
+
+
+%%%%% MANNEVILLE - POMEAU
+
+@ARTICLE{pomeau-manneville_1980,
+author={Pomeau, Y. and Manneville, P.},
+title={Intermittent transition to turbulence in dissipative dynamical systems},
+journal={Commun. Math. Phys.},
+year={1980},
+volume={74},
+number={2},
+pages={189--197},
+doi={10.1007/BF01197757},
+note={DOI: 10.1007/BF01197757}
+}
+
+@ARTICLE{manneville_1980,
+author={Manneville, P.},
+title={Intermittency, self-similarity and 1/f spectrum in dissipative dynamical systems},
+journal={J. Phys. (Paris)},
+year={1980},
+volume={41},
+number={11},
+pages={1235--1243},
+doi={10.1051/jphys:0198000410110123500},
+note={DOI: 10.1051/jphys:0198000410110123500}
+}
+
+
+
+
+
+%%% ALLEGRINI MODEL tipo MANNEVILLE
+
+@ARTICLE{allegrini_2003a_model,
+author={Allegrini, P. and Aquino, G. and Grigolini, P. and Palatella, L. and Rosa, A.},
+title={Generalized master equation via aging continuous-time random walks},
+journal={Phys. Rev. E},
+year={2003},
+volume={68},
+number={5 2},
+pages={561231-5612311},
+doi={10.1103/physreve.68.056123},
+art_number={056123},
+note={DOI: 10.1103/physreve.68.056123}
+}
+
+@ARTICLE{allegrini_2003b_model,
+author={Allegrini, P. and Benci, V. and Grigolini, P. and Hamilton, P. and Ignaccolo, M. and Menconi, G. and Palatella, L. and Raffaelli, G. and Scafetta, N. and Virgilio, M. and Yang, J.},
+title={Compression and diffusion: A joint approach to detect complexity},
+journal={Chaos Solitons Fractals},
+year={2003},
+volume={15},
+number={3},
+pages={517-535},
+doi={10.1016/S0960-0779(02)00136-4},
+note={DOI: 10.1016/S0960-0779(02)00136-4}
+}
+
+@ARTICLE{allegrini_2005_model,
+author={Allegrini, P. and Aquino, G. and Grigolini, P. and Palatella, L. and Rosa, A. and West, B.J.},
+title={Correlation function and generalized master equation of arbitrary age},
+journal={Phys. Rev. E},
+year={2005},
+volume={71},
+number={6},
+doi={10.1103/PhysRevE.71.066109},
+art_number={066109},
+note={DOI: 10.1103/PhysRevE.71.066109}
+}
+
+@ARTICLE{allegrini_2006_model,
+author={Allegrini, P. and Barbi, F. and Grigolini, P. and Paradisi, P.},
+title={Renewal, modulation, and superstatistics in times series},
+journal={Phys. Rev. E},
+year={2006},
+volume={73},
+number={4},
+doi={10.1103/PhysRevE.73.046136},
+art_number={046136},
+note={DOI: 10.1103/PhysRevE.73.046136},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%% FRACTIONAL %%%%%%%%%%%%%%%
+
+@ARTICLE{saichev_1997_fract,
+author={Saichev, A.I. and Zaslavsky, G.M.},
+title={Fractional kinetic equations: solutions and applications},
+journal={Chaos},
+year={1997},
+volume={7},
+number={4},
+pages={753-764},
+doi={10.1063/1.166272},
+note={DOI: 10.1063/1.166272}
+}
+
+%%%%%%%  MAINARDI FRACTIONAL  %%%%%%%%
+@ARTICLE{mainardi_1996_fract,
+author={Mainardi, F.},
+title={Fractional relaxation-oscillation and fractional diffusion-wave phenomena},
+journal={Chaos Sol. Fract.},
+year={1996},
+volume={7},
+number={9},
+pages={1461-1477},
+doi={10.1016/0960-0779(95)00125-5},
+note={DOI: 10.1016/0960-0779(95)00125-5}
+}
+
+@ARTICLE{mainardi-pagnini_2003_fract,
+author={Mainardi, F. and Pagnini, G.},
+title={The Wright functions as solutions of the time-fractional diffusion equation},
+journal={Appl. Math. Comput.},
+year={2003},
+volume={141},
+number={1},
+pages={51-62},
+doi={10.1016/S0096-3003(02)00320-X},
+note={DOI: 10.1016/S0096-3003(02)00320-X}
+}
+
+%%%% BOOK MAINARDI
+@BOOK{mainardi_2010_book_fract,
+author={Mainardi, F.},
+title={Fractional calculus and waves in linear viscoelasticity: An introduction to mathematical models},
+publisher = {Imperial College Press},
+address = {},
+year={2010},
+pages={1-314},
+isbn={978-184816330-0},
+doi={10.1142/P614},
+note={ISBN: 978-184816330-0, DOI: 10.1142/P614}
+}
+
+%%%% Fractional Grigolini and/or West
+@ARTICLE{grigolini_1999_fract,
+author={Grigolini, P. and Rocco, A. and West, B.J.},
+title={Fractional calculus as a macroscopic manifestation of randomness},
+journal={Phys. Rev. E},
+year={1999},
+volume={59},
+number={3},
+pages={2603-2613},
+doi={10.1103/PhysRevE.59.2603},
+note={DOI: 10.1103/PhysRevE.59.2603}
+}
+
+%%%%
+@ARTICLE{allegrini-grigolini_1996_fract,
+author={Allegrini, P. and Grigolini, P. and West, B.J.},
+title={Dynamical approach to Lévy processes},
+journal={Phys. Rev. E},
+year={1996},
+volume={54},
+number={5},
+pages={4760-4767},
+doi={10.1103/PhysRevE.54.4760},
+note={DOI: 10.1103/PhysRevE.54.4760}
+}
+
+%%%%
+@ARTICLE{west-grigolini_2015_fract,
+author={West, B.J. and Turalska, M. and Grigolini, P.},
+title={Fractional calculus ties the microscopic and macroscopic scales of complex network dynamics},
+journal={New J. Phys.},
+year={2015},
+volume={17},
+doi={10.1088/1367-2630/17/4/045009},
+art_number={045009},
+note={DOI: 10.1088/1367-2630/17/4/045009}
+}
+
+@BOOK{west-grigolini_2003_book_fract,
+author={West, B.J. and Bologna, M. and Grigolini, P.},
+title={Physics of Fractal Operators},
+year={2003},
+publisher="Springer",
+address="New York",
+isbn="978-1-4419-3054-5",
+doi="10.1007/978-0-387-21746-8",
+note="ISBN: 978-1-4419-3054-5, DOI: 10.1007/978-0-387-21746-8"
+}
+
+%% Questo sia crucial events che fractional
+@ARTICLE{west-grigolini_pr2008_fract_events,
+author={West, B.J. and Geneston, E.L. and Grigolini, P.},
+title={Maximizing information exchange between complex networks},
+journal={Phys. Rep.},
+year={2008},
+volume={468},
+number={1-3},
+pages={1-99},
+doi={10.1016/j.physrep.2008.06.003},
+note={DOI: 10.1016/j.physrep.2008.06.003}
+}
+
+%%% WEST FRACTIONAL
+%%% 2021 Fractional e Machine Learning
+@ARTICLE{niu-west_2021_fract,
+author={Niu, H. and Chen, Y.Q. and West, B.J.},
+title={Why do big data and machine learning entail the fractional dynamics ?},
+journal={Entropy},
+year={2021},
+volume={23},
+number={3},
+pages={1-32},
+doi={10.3390/e23030297},
+art_number={297},
+note={DOI: 10.3390/e23030297}
+}
+
+@ARTICLE{guo-west_2021_fract,
+author={Guo, L. and Chen, Y. and Shi, S. and West, B.J.},
+title={Renormalization group and fractional calculus methods in a complex world: A review},
+journal={Fract. Calc. Appl. An.},
+year={2021},
+volume={24},
+number={1},
+pages={5-53},
+doi={10.1515/fca-2021-0002},
+note={DOI: 10.1515/fca-2021-0002}
+}
+
+@ARTICLE{west_2014_fract,
+author={West, B.J.},
+title={Colloquium: Fractional calculus view of complexity: A tutorial},
+journal={Rev. Mod. Phys.},
+year={2014},
+volume={86},
+number={4},
+doi={10.1103/RevModPhys.86.1169},
+art_number={1169},
+note={DOI: 10.1103/RevModPhys.86.1169}
+}
+
+%% Molto citato sul fractional
+@ARTICLE{west_2010_fract,
+author={West, B.J.},
+title={Fractal physiology and the fractional calculus: A perspective},
+journal={Front. Physio.},
+year={2010},
+volume={1 OCT},
+doi={10.3389/fphys.2010.00012},
+art_number={12},
+note={DOI: 10.3389/fphys.2010.00012}
+}
+
+%%% POCO CITATO
+@incollection{west_2006_fract,
+author={West, B.J.},
+title={Fractal Physiology, Complexity, and the Fractional Calculus},
+year={2006},
+booktitle="Fractals, Diffusion and Relaxation in Disordered Complex Systems: Advances in Chemical Physics",
+editor="S.A. Rice, W.T. Coffey and Y.P. Kalmykov",
+publisher="John Wiley and Sons",
+address="",
+isbn = "",
+doi="10.1002/0470037148.ch6",
+volume="133",
+pages="1--92",
+note="DOI: 10.1002/0470037148.ch6"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%% CTRW and FRACTIONAL %%%%%%%%%%%
+
+%%%%% Metzler, Barkai, etc... %%%%%%
+@article{barkai-cp2002_ctrw_fract,
+author="E. Barkai",
+title="CTRW pathways to the fractional diffusion equation",
+journal="Chem. Phys.",
+year="2002",
+volume="284",
+number="1-2",
+pages="13--27",
+doi={10.1016/S0301-0104(02)00533-5},
+note="DOI: 10.1016/S0301-0104(02)00533-5"
+}
+
+@article{metzler_jpa2004_ctrw_fract,
+author={Metzler, R. and Klafter, J.},
+title="The restaurant at the end of the random walk:  recent developments in fractional dynamics descriptions of anomalous dynamical processes",
+journal="J. Phys. A",
+year="2004",
+volume="37",
+number="31",
+pages="R161--R208",
+doi={10.1088/0305-4470/37/31/R01},
+note="DOI: 10.1088/0305-4470/37/31/R01"
+}
+
+%%%%%% Hilfer e altri %%%%%%%%
+@article{hilfer_1995_ctrw_fract,
+author={Hilfer, R. and Anton, L.},
+title={Fractional master equations and fractal time random walks},
+journal={Phys. Rev. E},
+year={1995},
+volume={51},
+number={2},
+pages={R848-R851},
+doi={10.1103/PhysRevE.51.R848},
+note={DOI: 10.1103/PhysRevE.51.R848}
+}
+
+@ARTICLE{compte_1996_ctrw_fract,
+author={Compte, A.},
+title={Stochastic foundations of fractional dynamics},
+journal={Phys. Rev. E},
+year={1996},
+volume={53},
+number={4},
+pages={4191-4193},
+doi={10.1103/PhysRevE.53.4191},
+note={DOI: 10.1103/PhysRevE.53.4191}
+}
+
+
+
+
+%%%% CTRW and MAINARDI GROUP
+@book{paradisi_1997_laurea,
+title={Analisi di fenomeni diffusivi mediante processi stocastici non-Markoviani (Analysis of diffusive phenomena by non-Markovian stochastic processes)},
+author={Paradisi, P.},
+year={1997},
+publisher={Master Thesis, Bologna University},
+address={}
+}
+
+@ARTICLE{paradisi_caim15_ctrw_fract,
+author={Paradisi, P.},
+title={Fractional calculus in statistical physics: The case of time fractional diffusion equation},
+journal={Commun. Appl. Ind. Math.},
+year={2015},
+volume={6},
+number={2},
+pages={e-530},
+doi={10.1685/journal.caim.530},
+note={DOI: 10.1685/journal.caim.530}
+}
+
+@ARTICLE{scalas_2004_ctrw_fract,
+author={Scalas, E. and Gorenflo, R. and Mainardi, F.},
+title={Uncoupled continuous-time random walks: Solution and limiting behavior of the master equation},
+journal={Phys. Rev. E},
+year={2004},
+volume={69},
+number={1},
+pages={8},
+art_number={011107},
+doi={10.1103/PhysRevE.69.011107},
+note={DOI: 10.1103/PhysRevE.69.011107}
+}
+
+@incollection{sposini_2021_ctrw_fract_hetero,
+author="Sposini, V. and Vitali, S. and Paradisi, P. and Pagnini, G.",
+editor="Beghin, L. and Mainardi, F. and Garrappa, R.",
+title="Fractional Diffusion and Medium Heterogeneity: The Case of the Continuous Time Random Walk",
+booktitle="Nonlocal and Fractional Operators",
+year="2021",
+publisher="Springer International Publishing",
+address="Cham",
+pages="275--286",
+isbn="978-3-030-69236-0",
+doi={10.1007/978-3-030-69236-0$\mathrm{_}$14},
+note = {ISBN: 978-3-030-69236-0}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%% OTHER STOCHASTIC MODELS AND FRACTIONAL %%%%%%%%%
+%%%%% Mainardi, Paradisi, Pagnini et al. %%%%%%%%%%%%
+
+%%%%%% Pagnini, Paradisi et al. %%%%%%%
+@ARTICLE{pagnini_fcaa2016_ggbm_fract,
+author={Pagnini, G. and Paradisi, P.},
+title={A stochastic solution with Gaussian stationary increments of the symmetric space-time fractional diffusion equation},
+journal={Fract. Calc. Appl. Anal.},
+year={2016},
+volume={19},
+number={2},
+pages={408-440},
+doi={10.1515/fca-2016-0022},
+note={DOI: 10.1515/fca-2016-0022}
+}
+
+@ARTICLE{diTullio_2019_hetero_fract,
+author={Di Tullio, F. and Paradisi, P. and Spigler, R. and Pagnini, G.},
+title={Gaussian processes in complex media: New vistas on anomalous diffusion},
+journal={Front. Phys.},
+year={2019},
+volume={7},
+doi={10.3389/fphy.2019.00123},
+art_number={123},
+note={DOI: 10.3389/fphy.2019.00123},
+}
+
+@ARTICLE{vitali_2018_hetero_fract,
+author={Vitali, S. and Sposini, V. and Sliusarenko, O. and
+Paradisi, P. and Castellani, G. and Pagnini, G.},
+title={Langevin equation in complex media and anomalous diffusion},
+journal={J. R. Soc. Interface},
+year={2018},
+volume={15},
+pages={20180282},
+doi={10.1098/rsif.2018.0282},
+note={DOI: 10.1098/rsif.2018.0282}
+}
+
+@ARTICLE{sliusarenko_2019_hetero_fract,
+author={Sliusarenko, O.Y. and Vitali, S. and Sposini, V. and Paradisi, P. and Chechkin, A. and Castellani, G. and Pagnini, G.},
+title={Finite-energy Lévy-type motion through heterogeneous ensemble of Brownian particles},
+journal={J. Phys. A},
+year={2019},
+volume={52},
+number={9},
+doi={10.1088/1751-8121/aafe90},
+art_number={095601},
+note={DOI: 10.1088/1751-8121/aafe90}
+}
+
+@incollection{pagnini_2019_hetero_fract,
+author={Pagnini, G.},
+title={Fractional kinetics in random/complex media},
+editor = {Tarasov, V.E.},
+booktitle={Applications in Physics, Part B},
+publisher = {De Gruyter},
+year={2019},
+pages={183-205},
+isbn={9783110571721},
+doi={10.1515/9783110571721-008},
+note={ISBN: 9783110571721, DOI: 10.1515/9783110571721-008}
+}
+
+@ARTICLE{dovidio_2018_hetero_fract,
+author={D'Ovidio, M. and Vitali, S. and Sposini, V. and Sliusarenko, O. and Paradisi, P. and Castellani, G. and Pagnini, G.},
+title={Centre-of-mass like superposition of Ornstein-Uhlenbeck processes: A pathway to non-autonomous stochastic differential equations and to fractional diffusion},
+journal={Fract. Calc. Appl. An.},
+year={2018},
+volume={21},
+number={5},
+pages={1420-1435},
+doi={10.1515/fca-2018-0074},
+note={DOI: 10.1515/fca-2018-0074}
+}
+
+@ARTICLE{molina-garcia_2016_ggbm_fract,
+author={Molina-García, D. and Pham, T.M. and Paradisi, P. and Manzo, C. and Pagnini, G.},
+title={Fractional kinetics emerging from ergodicity breaking in random media},
+journal={Phys. Rev. E},
+year={2016},
+volume={94},
+number={5},
+doi={10.1103/PhysRevE.94.052147},
+art_number={052147},
+note={DOI: 10.1103/PhysRevE.94.052147}
+}
+
+%%%%% Gorenglo, Mainardi, Paradisi et al. %%%%%%%%%%
+%%%%% fractional random walks %%%%%%%%%
+@ARTICLE{gorenflo_cp2002_fract_rw,
+author={Gorenflo, R. and Mainardi, F. and Moretti, D. and Pagnini, G. and Paradisi, P.},
+title={Discrete random walk models for space-time fractional diffusion},
+journal={Chem. Phys.},
+year={2002},
+volume={284},
+number={1-2},
+pages={521-541},
+doi={10.1016/S0301-0104(02)00714-0},
+document_type={Article},
+}
+
+@ARTICLE{gorenflo_pa2002_fract_rw,
+author={Gorenflo, R. and Mainardi, F. and Moretti, D. and Pagnini, G. and Paradisi, P.},
+title={Fractional diffusion: Probability distributions and random walk models},
+journal={Phys. A: Stat. Mech.},
+year={2002},
+volume={305},
+number={1-2},
+pages={106-112},
+doi={10.1016/S0378-4371(01)00647-1},
+document_type={Conference Paper},
+}
+
+@article{gorenflo_nd2002_fract_rw,
+author="Gorenflo, R. and Mainardi, F. and Moretti, D. and Paradisi, P.",
+title="Time fractional diffusion: {A} discrete random walk approach",
+journal="Nonlin. Dynam.",
+year="2002",
+volume="29",
+number="1-4",
+pages="129-143",
+doi="10.1023/A:1016547232119",
+note="DOI: 10.1023/A:1016547232119"
+}
+
+%%%%% subordination %%%%%%%%
+@ARTICLE{gorenflo_2007_subord_fract,
+author={Gorenflo, R. and Mainardi, F. and Vivoli, A.},
+title={Continuous-time random walk and parametric subordination in fractional diffusion},
+journal={Chaos Sol. Fract.},
+year={2007},
+volume={34},
+number={1},
+pages={87-103},
+doi={10.1016/j.chaos.2007.01.052},
+note={DOI: 10.1016/j.chaos.2007.01.052}
+}
+
+%%%%%%% Pagnini, Mura, etc., gBM e ggBM  %%%%%%%%%
+@ARTICLE{pagnini_2012_fract,
+author={Pagnini, G.},
+title={Erdélyi-kober fractional diffusion},
+journal={Fractional Calculus and Applied Analysis},
+year={2012},
+volume={15},
+number={1},
+pages={117-127},
+doi={10.2478/s13540-012-0008-1},
+note={DOI: 10.2478/s13540-012-0008-1}
+}
+
+@ARTICLE{mura_2009_ggbm_fract,
+author={Mura, A. and Mainardi, F.},
+title={A class of self-similar stochastic processes with stationary increments to model anomalous diffusion in physics},
+journal={Integral Transforms Spec. Funct.},
+year={2009},
+volume={20},
+number={3-4},
+pages={185-198},
+doi={10.1080/10652460802567517},
+note={DOI: 10.1080/10652460802567517}
+}
+
+@ARTICLE{pagnini_2012_ggbm_fract,
+author={Pagnini, G. and Mura, A. and Mainardi, F.},
+title={Generalized fractional master equation for self-similar stochastic processes modelling anomalous diffusion},
+journal={Int. J. Stoch. Anal.},
+year={2012},
+volume={2012},
+doi={10.1155/2012/427383},
+art_number={427383},
+note={DOI: 10.1155/2012/427383}
+}
+
+
+
+
+
+%%%%%% CONTOYIANNIS and DIAKONOS (critical e
+%%%%%% intermittency Manneville)
+
+@article{contoyiannis_2000,
+title = {Criticality and intermittency in the order parameter space},
+journal = {Phys. Lett. A},
+volume = {268},
+number = {4},
+pages = {286-292},
+year = {2000},
+doi = {10.1016/S0375-9601(00)00180-8},
+author = {Contoyiannis, Y.F. and Diakonos, F.K.},
+note={DOI: 10.1016/S0375-9601(00)00180-8}
+}
+
+@article{contoyiannis_2002,
+  title = {Intermittent Dynamics of Critical Fluctuations},
+  author = {Contoyiannis, Y. F. and Diakonos, F. K. and Malakis, A.},
+  journal = {Phys. Rev. Lett.},
+  volume = {89},
+  issue = {3},
+  pages = {035701},
+  year = {2002},
+  doi = {10.1103/PhysRevLett.89.035701},
+  note={DOI: 10.1103/PhysRevLett.89.035701}
+}
+
+
+
+
+
+
+
+
+
+%%%%%% BRAIN CRITICALITY
+
+@article{fraiman_2009_critical_brain,
+  title = {Ising-like dynamics in large-scale functional brain networks},
+  author = {Fraiman, D. and Balenzuela, P. and Foss, J. and Chialvo, D. R.},
+  journal = {Phys. Rev. E},
+  volume = {79},
+  issue = {6},
+  pages = {061922},
+  year = {2009},
+  doi = {10.1103/PhysRevE.79.061922},
+note={DOI: 10.1103/PhysRevE.79.061922}
+}
+
+@ARTICLE{chialvo2010_critical_brain,
+author={Chialvo, D.R.},
+title={Emergent complex neural dynamics},
+journal={Nat. Phys.},
+year={2010},
+volume={6},
+number={10},
+pages={744-750},
+doi={10.1038/nphys1803},
+note={DOI: 10.1038/nphys1803}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%% GRIGOLINI  %%%%%%%%%%%%%
+
+%%%%% GRIGOLINI BOOK CRUCIAL EVENTS
+@BOOK{west-grigolini_2021_book_events,
+author={West, B.J. and Grigolini, P.},
+title={Crucial Events: why are catastrophes never expected?},
+year={2021},
+publisher="World Scientific",
+address="Hackensack, New Jersey",
+isbn="9789811234095",
+note="ISBN: 9789811234095",
+series="Studies of Nonlinear Phenomena in Life Science, vol. 17"
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{bohara-grigolini2018,
+author={Bohara, G. and West, B.J. and Grigolini, P.},
+title={Bridging waves and crucial events in the dynamics of the brain},
+journal={Front. Physio.},
+year={2018},
+volume={9},
+doi={10.3389/fphys.2018.01174},
+art_number={1174},
+note={DOI: 10.3389/fphys.2018.01174}
+}
+
+
+@ARTICLE{piccinini-grigolini_2016,
+author={Piccinini, N. and Lambert, D. and West, B.J. and Bologna, M. and Grigolini, P.},
+title={Nonergodic complexity management},
+journal={Phys. Rev. E},
+year={2016},
+volume={93},
+number={6},
+doi={10.1103/PhysRevE.93.062301},
+art_number={062301},
+note={DOI: 10.1103/PhysRevE.93.062301}
+}
+
+% GRIGOLINI, Modelli numerici di complessita' intermittente
+
+@article{grigolini_pre15_temp_complex,
+author="Beig, M. T. and Svenkeson, A. and Bologna, M. and B. J. West, B. J. and Grigolini, P.",
+title="Critical slowing down in networks generating temporal complexity",
+journal="Phys. Rev. E",
+year="2015",
+volume="91",
+number="",
+pages="012907",
+note=""
+}
+
+@article{turalska-grigolini_pre11_critical,
+author="Turalska, M. and West, B. J. and Grigolini, P.",
+title="Temporal complexity of the order parameter at the phase transition",
+journal="Phys. Rev. E",
+year="2011",
+volume="83",
+number="",
+pages="061142",
+note=""
+}
+
+@ARTICLE{vanni-grigolini_prl2011_critical,
+author={Vanni, F. and Luković, M. and Grigolini, P.},
+title={Criticality and transmission of information in a swarm of cooperative units},
+journal={Phys. Rev. Lett.},
+year={2011},
+volume={107},
+number={7},
+doi={10.1103/PhysRevLett.107.078103},
+art_number={078103},
+note={DOI: 10.1103/PhysRevLett.107.078103}
+}
+
+@ARTICLE{mahmoodi-grigolini_2017,
+author={Mahmoodi, K. and West, B.J. and Grigolini, P.},
+title={Self-organizing complex networks: Individual versus global rules},
+journal={Front. Physio.},
+year={2017},
+volume={8},
+number={JUL},
+doi={10.3389/fphys.2017.00478},
+art_number={478},
+note={DOI: 10.3389/fphys.2017.00478}
+}
+
+
+% GRIGOLINI, Biological Complexity
+
+@article{grigolini_csf15_bio_temp_complex,
+author="P. Grigolini",
+title="Emergence of biological complexity: Criticality, renewal and memory",
+journal="Chaos Solit. Fractals",
+year="2015",
+volume="81",
+number="Part B",
+pages="575-88",
+note=""
+}
+
+
+% Grigolini and Chialvo, Special Issue su Brain Criticality
+
+@book{grigolini_csf13_si,
+author="",
+editor="Grigolini, P. and Chialvo, D.R. (Eds.)",
+title="Emergent Critical Brain Dynamics",
+publisher="Elsevier",
+year="2013",
+volume="",
+number="",
+series="",
+address="Amsterdam",
+edition="",
+month="",
+note="Special Issue - Chaos, Solitons \& Fractals, Vol. 55, Pages 1-120",
+}
+
+@article{grigolini_csf13_intro,
+author="Grigolini, P. and Chialvo, D.R.",
+title="Emergent Critical Brain Dynamics - Editorial",
+journal="Chaos Solit Fract",
+year="2013",
+volume="55",
+number="1-2",
+pages="",
+note=""
+}
+
+%%%%% Grigolini Linear Response and Events
+@ARTICLE{allegrini_2007_linear_resp,
+author={Allegrini, P. and Bologna, M. and Grigolini, P. and West, B.J.},
+title={Fluctuation-dissipation theorem for event-dominated processes},
+journal={Phys. Rev. Lett.},
+year={2007},
+volume={99},
+number={1},
+doi={10.1103/PhysRevLett.99.010603},
+art_number={010603},
+note={DOI: 10.1103/PhysRevLett.99.010603}
+}
+
+@ARTICLE{aquino-grigolini_2007_linear_resp,
+author={Aquino, G. and Grigolini, P. and West, B.J.},
+title={Linear response and Fluctuation-Dissipation Theorem for non-Poissonian renewal processes},
+journal={EPL},
+year={2007},
+volume={80},
+number={1},
+doi={10.1209/0295-5075/80/10002},
+art_number={10002},
+note={DOI: 10.1209/0295-5075/80/10002}
+}
+
+@ARTICLE{barbi-grigolini_2005_linear_resp,
+author={Barbi, F. and Bologna, M. and Grigolini, P.},
+title={Linear response to perturbation of nonexponential renewal processes},
+journal={Phys. Rev. Lett.},
+year={2005},
+volume={95},
+number={22},
+doi={10.1103/PhysRevLett.95.220601},
+art_number={220601},
+note={DOI: 10.1103/PhysRevLett.95.220601}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%% MONTROLL, CTRW, etc...
+
+@ARTICLE{montroll_1964_1,
+author={Montroll, E.W.},
+title={Random Walks on Lattices},
+journal={Proc. Symp. Appl. Math.},
+year={1964},
+volume={16},
+number={},
+pages={193--220},
+publisher = "Amer. Math. Soc.",
+address = "Providence (RI)",
+doi={}
+}
+
+@ARTICLE{montroll_1965_2,
+author={Montroll, E.W. and Weiss, G.H.},
+title={Random walks on lattices. II},
+journal={J. Math. Phys.},
+year={1965},
+volume={6},
+number={2},
+pages={167-181},
+doi={10.1063/1.1704269},
+note={DOI: 10.1063/1.1704269}
+}
+
+@ARTICLE{montroll_1969_3,
+author={Montroll, E.W.},
+title={Random walks on lattices. III. Calculation of first-passage times with application to exciton trapping on photosynthetic units},
+journal={J. Math. Phys.},
+year={1969},
+volume={10},
+number={4},
+pages={753-765},
+doi={10.1063/1.1664902},
+note={DOI: 10.1063/1.1664902}
+}
+
+@ARTICLE{montroll_1973_4,
+author={Montroll, E.W. and Scher, H.},
+title={Random walks on lattices. IV. Continuous-time walks and influence of absorbing boundaries},
+journal={J. Stat. Phys.},
+year={1973},
+volume={9},
+number={2},
+pages={101-135},
+doi={10.1007/BF01016843},
+note={DOI: 10.1007/BF01016843}
+}
+
+%%% MASTER EQUATION
+
+%%% WEISS-RUBIN Review CTRW
+@incollection{weiss_1983_ctrw_review,
+title={Random Walks: Theory and Selected Applications},
+author={Weiss, G.H. and Rubin, R.J.},
+year         = "1983",
+editor       = "Prigogine, I. and Rice, S.A.",
+volume       = "52",
+booktitle     = "Advances in Chemical Physics",
+pages        = "363--506",
+address      = "New York",
+publisher    = "John Wiley and Sons",
+isbn="0-471-86845-0",
+doi = "10.1002/9780470142769.ch5",
+note = "DOI: 10.1002/9780470142769.ch5",
+url = "https://onlinelibrary.wiley.com/doi/10.1002/9780470142769.ch5"
+}
+
+
+%%% LEVY WALK TURBULENCE
+@ARTICLE{shlesinger_1987_ctrw_turb,
+author={Shlesinger, M.F. and West, B.J. and Klafter, J.},
+title={Lévy dynamics of enhanced diffusion: Application to turbulence},
+journal={Phys. Rev. Lett.},
+year={1987},
+volume={58},
+number={11},
+pages={1100-1103},
+doi={10.1103/PhysRevLett.58.1100},
+note={DOI: 10.1103/PhysRevLett.58.1100}
+}
+
+@ARTICLE{klafter_1987_ctrw_anom_diff,
+author={Klafter, J. and Blumen, A. and Shlesinger, M.F.},
+title={Stochastic pathway to anomalous diffusion},
+journal={Phys. Rev. A},
+year={1987},
+volume={35},
+number={7},
+pages={3081--3085},
+doi={10.1103/PhysRevA.35.3081},
+note = {DOI: 10.1103/PhysRevA.35.3081}
+}
+
+@ARTICLE{shlesinger_1974_ctrw_asympt,
+author={Shlesinger, M.F.},
+title={Asymptotic solutions of continuous-time random walks},
+journal={J. Stat. Phys.},
+year={1974},
+volume={10},
+number={5},
+pages={421--434},
+doi={10.1007/BF01008803},
+note={DOI: 10.1007/BF01008803}
+}
+
+
+%%% SCHER and LAX
+@ARTICLE{scher_1973_conduct,
+author={Scher, H. and Lax, M.},
+title={Stochastic transport in a disordered solid. I. Theory},
+journal={Phys. Rev. B},
+year={1973},
+volume={7},
+number={10},
+pages={4491-4502},
+doi={10.1103/PhysRevB.7.4491},
+note={DOI: 10.1103/PhysRevB.7.4491}
+}
+
+@ARTICLE{scher_1973_conduct2,
+author={Scher, H. and Lax, M.},
+title={Stochastic transport in a disordered solid. II. Impurity conduction},
+journal={Phys. Rev. B},
+year={1973},
+volume={7},
+number={10},
+pages={4502-4519},
+doi={10.1103/PhysRevB.7.4502},
+note={DOI: 10.1103/PhysRevB.7.4502}
+}
+
+
+
+
+
+
+% TUNALEY, CTRW, MASTER
+
+@ARTICLE{tunaley_1975_ctrw_asympt,
+author={Tunaley, J.K.E.},
+title={Some properties of the asymptotic solutions of the Montroll-Weiss equation},
+journal={J. Stat. Phys.},
+year={1975},
+volume={12},
+number={1},
+pages={1-10},
+doi={10.1007/BF01024180},
+note={DOI: 10.1007/BF01024180}
+}
+
+@ARTICLE{tunaley_1976_ctrw,
+author={Tunaley, J.K.E.},
+title={Moments of the Montroll-Weiss continuous-time random walk for arbitrary starting time},
+journal={J. Stat. Phys.},
+year={1976},
+volume={14},
+number={5},
+pages={461-463},
+doi={10.1007/BF01040704},
+note={DOI: 10.1007/BF01040704}
+}
+
+@ARTICLE{tunaley_jsp1974_ctrw_asympt,
+author={Tunaley, J.K.E.},
+title={Asymptotic solutions of the continuous-time random walk model of diffusion},
+journal={J. Stat. Phys.},
+year={1974},
+volume={11},
+number={5},
+pages={397-408},
+doi={10.1007/BF01026731},
+note={DOI: 10.1007/BF01026731}
+}
+
+@ARTICLE{tunaley_prl1974_conduct,
+author={Tunaley, J.K.E.},
+title={Theory of ac conductivity based on random walks},
+journal={Phys. Rev. Lett.},
+year={1974},
+volume={33},
+number={17},
+pages={1037-1039},
+doi={10.1103/PhysRevLett.33.1037},
+note={DOI: 10.1103/PhysRevLett.33.1037}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%% APPLICATIONS OF CTRW
+
+%%%% TRANSPORT IN TURBULENCE ^(oltre a noi e
+%%%%% paper su Levy Walk di Shlesinger
+@ARTICLE{dentz_2016_ctrw_turb,
+author={Dentz, M. and Kang, P.K. and Comolli, A. and Le Borgne, T. and Lester, D.R.},
+title={Continuous time random walks for the evolution of Lagrangian velocities},
+journal={Phys. Rev. Fluids},
+year={2016},
+volume={1},
+number={7},
+doi={10.1103/PhysRevFluids.1.074004},
+art_number={074004},
+note={DOI: 10.1103/PhysRevFluids.1.074004}
+}
+
+% Human Mobility MOLTO CITATO
+@ARTICLE{song_2010_ctrw_human_mobil,
+author={Song, C. and Koren, T. and Wang, P. and Barabási, A.-L.},
+title={Modelling the scaling properties of human mobility},
+journal={Nat. Phys.},
+year={2010},
+volume={6},
+number={10},
+pages={818-823},
+doi={10.1038/nphys1760},
+note={DOI: 10.1038/nphys1760}
+}
+
+%%%% HETEROGENEOUS MEDIA, Non-FICKIAN
+@ARTICLE{neuman_2009_ctrw_hetero_media_nonfick,
+author={Neuman, S.P. and Tartakovsky, D.M.},
+title={Perspective on theories of non-Fickian transport in heterogeneous media},
+journal={Adv. Water Resour.},
+year={2009},
+volume={32},
+number={5},
+pages={670--680},
+doi={10.1016/j.advwatres.2008.08.005},
+note={DOI: 10.1016/j.advwatres.2008.08.005}
+}
+
+
+
+%%% NETWORK (parla molto di CTRW, MOLTO CITATO)
+@ARTICLE{masuda_2017_ctrw_network,
+author={Masuda, N. and Porter, M.A. and Lambiotte, R.},
+title={Random walks and diffusion on networks},
+journal={Phys. Rep.},
+year={2017},
+volume={716-717},
+pages={1-58},
+doi={10.1016/j.physrep.2017.07.007},
+note={DOI: 10.1016/j.physrep.2017.07.007}
+}
+
+@ARTICLE{hoffmann_2013_ctrw_temp_net,
+author={Hoffmann, T. and Porter, M.A. and Lambiotte, R.},
+title={Random walks on stochastic temporal networks},
+journal={Understanding Complex Systems},
+year={2013},
+pages={295-313},
+doi={10.1007/978-3-642-36461-7$\mathrm{_}$15},
+note={DOI: 10.1007/978-3-642-36461-7$\mathrm{\_}$15}
+}
+
+%%% Sempre NETWORK; ma si parla di MASTER equation
+@ARTICLE{hoffmann_2012_ctrw_network,
+author={Hoffmann, T. and Porter, M.A. and Lambiotte, R.},
+title={Generalized master equations for non-Poisson dynamics on networks},
+journal={Phys. Rev. E},
+year={2012},
+volume={86},
+number={4},
+doi={10.1103/PhysRevE.86.046102},
+art_number={046102},
+note={DOI: 10.1103/PhysRevE.86.046102}
+}
+
+%%%% TRANSPORT IN BIOLOGICAL CELLS
+@ARTICLE{fox_2021_ctrw_bio_cell,
+author={Fox, Z.R. and Barkai, E. and Krapf, D.},
+title={Aging power spectrum of membrane protein transport and other subordinated random walks},
+journal={Nat. Commun.},
+year={2021},
+volume={12},
+number={1},
+doi={10.1038/s41467-021-26465-8},
+art_number={6162},
+note={DOI: 10.1038/s41467-021-26465-8}
+}
+
+@ARTICLE{hofling_2013_ctrw_bio_cell,
+author={Höfling, F. and Franosch, T.},
+title={Anomalous transport in the crowded world of biological cells},
+journal={Rep. Prog. Phys},
+year={2013},
+volume={76},
+number={4},
+doi={10.1088/0034-4885/76/4/046602},
+art_number={046602},
+note={DOI: 10.1088/0034-4885/76/4/046602}
+}
+
+@ARTICLE{metzler_2014_ctrw_anom_diff_bio_cell,
+author={Metzler, R. and Jeon, J.-H. and Cherstvy, A.G. and Barkai, E.},
+title={Anomalous diffusion models and their properties: Non-stationarity, non-ergodicity, and ageing at the centenary of single particle tracking},
+journal={Phys. Chem. Chem. Phys.},
+year={2014},
+volume={16},
+number={44},
+pages={24128-24164},
+doi={10.1039/c4cp03465a},
+note={DOI: 10.1039/c4cp03465a}
+}
+
+@ARTICLE{bressloff_2013_ctrw_bio_cell,
+author={Bressloff, P.C. and Newby, J.M.},
+title={Stochastic models of intracellular transport},
+journal={Rev. Mod. Phys.},
+year={2013},
+volume={85},
+number={1},
+pages={135-196},
+doi={10.1103/RevModPhys.85.135},
+note={DOI: 10.1103/RevModPhys.85.135}
+}
+
+%%% FORAGING
+@BOOK{viswanathan_2011_ctrw_foraging,
+author={Viswanathan, G.M. and Da Luz, M.G.E. and Raposo, E.P. and Stanley, H.E.},
+title={The physics of foraging: An introduction to random searches and biological encounters},
+publisher="Cambridge University Press",
+address="Cambridge",
+year={2011},
+isbn={9781107006799},
+doi={10.1017/CBO9780511902680},
+note={ISBN: 9781107006799; DOI: 10.1017/CBO9780511902680}
+}
+%pages={1-164},
+
+%%%% POROUS MEDIA
+@BOOK{sahimi_2011_ctrw_porous,
+author={Sahimi, M.},
+title={Flow and Transport in Porous Media and Fractured Rock: From Classical Methods to Modern Approaches},
+edition="2",
+year={2011},
+publisher = {John Wiley \& Sons, Ltd},
+doi={10.1002/9783527636693},
+isbn={9783527636693},
+note={ISBN: 9783527636693; DOI: 10.1002/9783527636693}
+}
+
+%%%% POLLUTION
+@ARTICLE{barati_2021_ctrw_pollution,
+author={Barati Moghaddam, M. and Mazaheri, M. and Mohammad Vali Samani, J.},
+title={Inverse modeling of contaminant transport for pollution source identification in surface and groundwaters: a review},
+journal={Groundwater Sustainable Dev.},
+year={2021},
+volume={15},
+doi={10.1016/j.gsd.2021.100651},
+art_number={100651},
+document_type={Review},
+source={Scopus},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%% REVIEW CTRW, ANOMALOUS DIFFUSION, FRACTIONAL
+
+
+
+@ARTICLE{metzler-klatfter_pr2000_ctrw_fract_review,
+author={Metzler, R. and Klafter, J.},
+title={The random walk's guide to anomalous diffusion: A fractional dynamics approach},
+journal={Phys. Rep.},
+year={2000},
+volume={339},
+number={1},
+pages={1-77},
+doi={10.1016/S0370-1573(00)00070-3},
+note={DOI: 10.1016/S0370-1573(00)00070-3}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% DFA
+
+@ARTICLE{peng_n92,
+author={Peng, C.-K. and Buldyrev, S.V. and Goldberger, A.L. and Havlin, S. and Sciortino, F. and Simons, M. and Stanley, H.E.},
+title={Long-range correlations in nucleotide sequences},
+journal={Nature},
+year={1992},
+volume={356},
+number={6365},
+pages={168-170},
+doi={10.1038/356168a0}
+}
+
+
+@ARTICLE{peng_pre94,
+author={Peng, C.-K. and Buldyrev, S.V. and Havlin, S. and Simons, M. and Stanley, H.E. and Goldberger, A.L.},
+title={Mosaic organization of DNA nucleotides},
+journal={Phys. Rev. E},
+year={1994},
+volume={49},
+number={2},
+pages={1685-1689},
+doi={10.1103/PhysRevE.49.1685},
+document_type={Article},
+}
+%note={cited By 3648},
+
+
+
+
+
+
+
+
+
+
+
+
+%% RENEWAL e POINT PROCESSES, COX BOOKS, etc...
+
+@BOOK{cox_1980_point,
+author={Cox, D.R. and Isham, V.},
+title={Point Processes},
+edition="1",
+year={1980},
+publisher="Chapman and Hall",
+address="",
+isbn="9780412219108",
+note="ISBN: 9780412219108"
+}
+
+@BOOK{cox_1970_renewal,
+author={Cox, D.R.},
+title={Renewal Processes},
+year={1970},
+publisher="Methuen \& Co.",
+address="London",
+isbn=" 0-412-20570-X",
+note="ISBN:  0-412-20570-X; first edition 1962"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% PARADISI, CESARI ET AL., Atmospheric Turbulence, Events and Renewal
+
+@article{paradisi_jpcs2015,
+author={Paradisi, P. and Cesari, R. and Allegrini, P.},
+title={Scaling laws of turbulence intermittency in the atmospheric boundary layer: The role of stability},
+journal={J. Phys.: Conf. Series},
+year={2015},
+volume={633},
+number={1},
+doi={10.1088/1742-6596/633/1/012065},
+art_number={012065}
+}
+
+@article{paradisi_npg12,
+author="Paradisi, P. and Cesari, R. and Donateo, A. and Contini, D. and Allegrini, P.",
+title="Scaling laws of diffusion and time intermittency generated by coherent
+structures in atmospheric turbulence",
+journal="Nonlinear Proc. Geoph.",
+year="2012",
+volume="19",
+number="",
+pages="113--126",
+note="P. Paradisi et al., Corrigendum, Nonlin. Processes Geophys. {\bf 19}, 685 (2012)"
+}
+
+@article{paradisi_romp12,
+author="Paradisi, P. and Cesari, R. and Donateo, A. and Contini, D. and Allegrini, P.",
+title="Diffusion scaling in event-driven random walks:
+an application to turbulence",
+journal="Rep. Math. Phys.",
+year="2012",
+volume="70",
+number="",
+pages="205--220",
+note=""
+}
+
+@article{paradisi_epjst09,
+author="Paradisi, P. and Cesari, R. and Contini, D. and Donateo, A. and Palatella, L.",
+title="Characterizing memory in atmospheric time series:
+an alternative approach based on renewal theory",
+journal="Eur. Phys. J. - Spec. Top.",
+year="2009",
+volume="174",
+number="",
+pages="207--218",
+note=""
+}
+
+
+
+
+% PARADISI ET AL., RENEWAL e ALTRO
+
+@incollection{paradisi_springer2017,
+author="Paradisi, P. AND Allegrini, P.",
+title="Intermittency-Driven Complexity in Signal Processing",
+booktitle="Complexity and Nonlinearity in Cardiovascular Signals",
+editor="Barbieri, Riccardo AND Scilingo, Enzo Pasquale AND Valenza, Gaetano",
+publisher="Springer",
+address="Cham",
+year="2017",
+isbn = "978-3-319-58708-0",
+doi="10.1007/978-3-319-58709-7_6",
+volume="",
+number="",
+pages="161--195",
+month="",
+note=""
+}
+
+@ARTICLE{allegrini_2009,
+author={Allegrini, P. and Menicucci, D. and Bedini, R. and Fronzoni, L. and Gemignani, A. and Grigolini, P. and West, B.J. and Paradisi, P.},
+title={Spontaneous brain activity as a source of ideal 1/f noise},
+journal={Phys. Rev. E},
+year={2009},
+volume={80},
+number={6},
+doi={10.1103/PhysRevE.80.061914},
+art_number={061914},
+note={DOI: 10.1103/PhysRevE.80.061914}
+}
+
+@article{allegrini_csf07,
+author="Allegrini, P. and Barbi, F. and Grigolini, P. and Paradisi, P.",
+title="Aging and renewal events in sporadically modulated systems",
+journal="Chaos Soliton Fract",
+year="2007",
+volume="34",
+number="",
+pages="11-18",
+note=""
+}
+
+
+
+
+@article{paradisi_aipcp05,
+author="Paradisi, P. and Allegrini, P. and Barbi, F. and Bianco, S. and Grigolini, P.",
+title="Renewal, modulation and Blinking Quantum Dots",
+journal="AIP Conf. Proc.",
+year="2005",
+volume="800",
+number="1",
+pages="92-97",
+note=""
+}
+
+@article{bianco_jcp05,
+author="Bianco, S. and Grigolini, P. and Paradisi, P.",
+title="Fluorescence intermittency in blinking quantum dots: renewal or slow modulation ?",
+journal="J. Chem. Phys.",
+year="2005",
+volume="123",
+number="17",
+pages="174704",
+note=""
+}
+
+@article{paradisi_bmcsb15,
+author={Paradisi, P. and Allegrini, P. and Chiarugi, D.},
+title={A renewal model for the emergence of anomalous solute crowding in liposomes},
+journal={BMC Syst. Biol.},
+year={2015},
+volume={9},
+number={3},
+art_number={S7},
+doi={10.1186/1752-0509-9-S3-S7}
+}
+
+@article{paradisi_cejp09,
+author="Paradisi, P. and Cesari, R. and Grigolini, P.",
+title="Superstatistics and renewal critical events",
+journal="Cent. Eur. J. Phys.",
+year="2009",
+volume="7",
+number="",
+pages="421--431",
+note=""
+}
+
+@article{akin_pa06,
+author="Akin, O.C. and Paradisi, P. and Grigolini, P.",
+title="Periodic trend and fluctuations: The case of strong correlation",
+journal="Phys. A",
+year="2006",
+volume="371",
+number="",
+pages="157--170",
+note=""
+}
+
+@article{bianco_cpl07,
+author="Bianco, S. and Grigolini, P. and Paradisi, P.",
+title="A fluctuating environment as a source of periodic modulation",
+journal="Chem. Phys. Lett.",
+year="2007",
+volume="438",
+number="4-6",
+pages="336-340",
+note=""
+}
+
+@article{paradisi_ijbc08,
+author="Paradisi, P. and Grigolini, P. and Bianco, S. and Akin, O.C.",
+title="Renewal aging in non-homogeneous Poisson processes with periodic
+rate modulation",
+journal="Int. J. Bif. Chaos",
+year="2008",
+volume="18",
+number="9",
+pages="2681–-2691"
+}
+
+@article{akin_jsmte09,
+author="Akin, O.C. and Paradisi, P. and Grigolini, P.",
+title="Perturbation-induced emergence of {Poisson-like} behavior in {non-Poisson} systems",
+journal="J. Stat. Mech.: Theory Exp.",
+year="2009",
+pages="P01013",
+doi="doi: 10.1088/1742-5468/2009/01/P01013"
+}
+
+@article{paradisi_csf15_preface,
+author="Paradisi, P. and Kaniadakis, G. and Scarfone, A. M.",
+title="The emergence of self-organization in complex systems - Preface",
+journal="Chaos Soliton Fract",
+year="2015",
+volume="81",
+number="Part B",
+pages="407-11",
+note=""
+}
+
+
+
+
+
+
+
+
+
+% PARADISI ET AL., POISSON NOISE IN COMPLEX INTERMITTENCY
+
+@article{allegrini_pre10,
+author="Allegrini, P. and Menicucci, D. and Bedini, R. and Gemignani, A. and Paradisi, P.",
+title="Complex intermittency blurred by noise: theory and application to neural dynamics",
+journal="Phys. Rev. E",
+year="2010",
+volume="82",
+number="1 Pt 2",
+pages="015103",
+note=""
+}
+
+@article{allegrini_jpcs11,
+author="Allegrini, P. and Paradisi, P. and Menicucci, D. and Bedini, R. and Gemignani, A. and Fronzoni, L.",
+title="Noisy cooperative intermittent processes: from blinking quantum dots to human consciousness",
+journal="J. Phys. Conf. Ser.",
+year="2011",
+volume="306",
+number="1",
+pages="012027",
+note=""
+}
+
+@article{paradisi_csf15_pandora,
+author="Paradisi, P. and Allegrini, P.",
+title="Scaling law of diffusivity generated by a noisy telegraph signal with fractal intermittency",
+journal="Chaos Soliton Fract",
+year="2015",
+volume="81",
+number="Part B",
+pages="451-62"
+
+}
+
+
+
+% PARADISI ET AL, BRAIN
+
+@ARTICLE{allegrini_fp2010,
+author={Allegrini, P. and Paradisi, P. and Menicucci, D. and Gemignani, A.},
+title={Fractal complexity in spontaneous EEG metastable-state transitions: New vistas on integrated neural dynamics},
+journal={Front. Physio.},
+year={2010},
+volume={1},
+doi={10.3389/fphys.2010.000128},
+art_number={128},
+note={DOI: 10.3389/fphys.2010.000128}
+}
+
+@article{paradisi_aipcp13,
+author={Paradisi, P. and Allegrini, P. and Gemignani, A. and Laurino, M. and Menicucci, D. and Piarulli, A.},
+title={Scaling and intermittency of brain events as a manifestation of consciousness},
+journal={AIP Conf. Proc},
+year={2013},
+volume={1510},
+pages={151-161},
+doi={10.1063/1.4776519},
+note = {DOI: 10.1063/1.4776519}
+}
+
+@ARTICLE{allegrini_csf13,
+author={Allegrini, P. and Paradisi, P. and Menicucci, D. and Laurino, M. and Bedini, R. and Piarulli, A. and Gemignani, A.},
+title={Sleep unconsciousness and breakdown of serial critical intermittency: New vistas on the global workspace},
+journal={Chaos Solitons Fract.},
+year={2013},
+volume={55},
+pages={32-43},
+doi={10.1016/j.chaos.2013.05.019},
+document_type={Article},
+}
+
+
+@ARTICLE{allegrini_pre15,
+author={Allegrini, P. and Paradisi, P. and Menicucci, D. and Laurino, M. and Piarulli, A. and Gemignani, A.},
+title={Self-organized dynamical complexity in human wakefulness and sleep: Different critical brain-activity feedback for conscious and unconscious states},
+journal={Phys. Rev. E Stat. Nonlin. Soft Matter Phys},
+year={2015},
+volume={92},
+number={3},
+doi={10.1103/PhysRevE.92.032808},
+art_number={032808},
+document_type={Article},
+}
+
+
+
+
+
+
+
+
+% PARADISI ET AL., FRACTIONAL
+
+@article{paradisi_pa01_fract,
+author="Paradisi, P. and Cesari, R. and Mainardi, F. and Tampieri, F.",
+title="The fractional Fick's law for non-local transport processes",
+journal="Physica A",
+year="2001",
+volume="293",
+number="1-2",
+pages="130-142",
+doi = "10.1016/S0378-4371(00)00491-X",
+note="DOI: 10.1016/S0378-4371(00)00491-X"
+}
+
+@article{paradisi_pceb01,
+author="Paradisi, P. and Cesari, R. and Mainardi, F. and Maurizi, A. and Tampieri, F.",
+title="A generalized Fick's law to describe non-local transport effects",
+journal="Phys. Chem. Earth",
+year="2001",
+volume="26",
+number="4",
+pages="275--279",
+doi="10.1016/S1464-1909(01)00006-5",
+note="DOI: 10.1016/S1464-1909(01)00006-5"
+}
+
+%%%% DA CITARE
+
+@ARTICLE{cesari_2014,
+author={Cesari, R. and Paradisi, P. and Allegrini, P.},
+title={Source identification by a statistical analysis of backward trajectories based on peak pollution events},
+journal={Int. J. Environ. Pollut.},
+year={2014},
+volume={55},
+number={1-4},
+pages={94-103},
+doi={10.1504/ijep.2014.065909},
+document_type={Article},
+}
+
+@ARTICLE{acevedo_2003,
+author={Acevedo, O.C. and Fitzjarrald, D.R.},
+title={In the core of the night - Effects of intermittent mixing on a horizontally heterogeneous surface},
+journal={Boundary-Layer Meteorology},
+year={2003},
+volume={106},
+number={1},
+pages={1-33},
+doi={10.1023/A:1020824109575},
+document_type={Article},
+}
