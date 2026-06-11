@@ -1,12 +1,15 @@
+# src/SpectralDiagnostics.jl
 module SpectralDiagnostics
 
 using LinearAlgebra
+using Statistics
 
 export HighFidelityRecord, process_timestamp_metrics, calculate_adaptive_wave_fraction
 
 struct HighFidelityRecord{T<:AbstractFloat}
     time_idx::Int
-    Ri_f::T
+    Ri_g::T   # Gradient Richardson number (averaged near-surface nodes)
+    Ri_b::T   # Bulk Richardson number (profile-integrated finite difference)
     R_W::T
     F_W::T
     chi_N::T
@@ -24,7 +27,14 @@ end
 function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_raw::Vector{T}, ws, status_str::String; g = 9.81, theta_ref = 265.0, wave_threshold = 0.1) where {T<:AbstractFloat}
     N = ws.N
     D_manifold = N + 1 # Dynamic manifold length target (33)
-    
+
+    # Manifold_Mass includes the physical coordinate Jacobian J_q by construction
+    # (UnifiedManifoldWorkspace: M[m,n] += T_m * T_n * J_q[k] * sin(acos(xi_q[k])) * π/K_q).
+    # Energy inner products are therefore physically consistent without additional correction.
+
+    # Verify spectral partition of unity: psi_M + psi_W + psi_T = 1 for all modes.
+    @assert maximum(abs.(ws.psi_M .+ ws.psi_W .+ ws.psi_T .- 1)) < 1e-10 "Spectral windows violate partition of unity"
+
     # --- PROJECTION ENHANCEMENT: Zero-pad observational slices to full workspace dimensions ---
     c_theta = zeros(T, D_manifold)
     c_u     = zeros(T, D_manifold)
@@ -37,7 +47,9 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
 
     c_θ_W = c_theta .* ws.psi_W; c_θ_T = c_theta .* ws.psi_T
     c_u_W = c_u .* ws.psi_W;     c_u_T = c_u .* ws.psi_T
-    
+
+    # Note: E_W + E_T ≤ E_tot — the mesoscale window (psi_M) is excluded from the
+    # wave/turbulence decomposition by design; partition of unity is still satisfied.
     E_tot = dot(c_theta, ws.Manifold_Mass * c_theta) + dot(c_u, ws.Manifold_Mass * c_u)
     E_W   = dot(c_θ_W, ws.Manifold_Mass * c_θ_W) + dot(c_u_W, ws.Manifold_Mass * c_u_W)
     E_T   = dot(c_θ_T, ws.Manifold_Mass * c_θ_T) + dot(c_u_T, ws.Manifold_Mass * c_u_T)
@@ -45,14 +57,16 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
     R_W = E_T > 1e-9 ? E_W / E_T : 0.0
     F_W = E_tot > 1e-9 ? E_W / E_tot : 0.0
     
+    # χ_N: normalized fourth-moment spectral roughness index.
+    # χ_N = (Σ n⁴ cₙ²) / (N² · Σ n² cₙ²)  ∈ [0, 1]
+    # High values indicate gradient energy concentrated at fine scales (sharp inversions).
     num_chi = 0.0; den_chi = 0.0
     for n in 1:N
-        scale_fact = (n / N)^2
-        grad_energy = scale_fact * c_theta[n+1]^2
-        den_chi += grad_energy
-        if n >= 2; num_chi += scale_fact * ((n - 1) / N)^2 * c_theta[n+1]^2; end
+        cn2 = c_theta[n+1]^2
+        num_chi += Float64(n)^4 * cn2
+        den_chi += Float64(n)^2 * cn2
     end
-    chi_N = den_chi > 1e-9 ? num_chi / den_chi : 0.0
+    chi_N = den_chi > 1e-9 ? num_chi / (Float64(N)^2 * den_chi) : 0.0
 
     entropy = 0.0
     sum_c = sum(c_theta.^2)
@@ -73,26 +87,44 @@ function process_timestamp_metrics(time_idx::Int, c_theta_raw::Vector{T}, c_u_ra
 
     c_θ_loc = c_theta .- c_θ_W
     c_u_loc = c_u .- c_u_W
-    
-    theta_loc_profile = zeros(T, N + 1)
-    u_loc_profile     = zeros(T, N + 1)
-    for i in 1:(N+1)
-        xi_i = ws.xi_target[i]
+
+    # Build Chebyshev evaluation matrix T_eval[i, n+1] = Tₙ(ξᵢ) = cos(n·acos(ξᵢ)).
+    # Single BLAS matrix-vector multiply replaces the O(N²) scalar loop.
+    T_eval = zeros(T, N+1, N+1)
+    for (i, xi_i) in enumerate(ws.xi_target)
+        xi_c = clamp(xi_i, -one(T), one(T))
+        acos_xi = acos(xi_c)
         for n in 0:N
-            theta_loc_profile[i] += c_θ_loc[n+1] * cos(n * acos(xi_i))
-            u_loc_profile[i]     += c_u_loc[n+1] * cos(n * acos(xi_i))
+            T_eval[i, n+1] = cos(T(n) * acos_xi)
         end
     end
+    theta_loc_profile = T_eval * c_θ_loc
+    u_loc_profile     = T_eval * c_u_loc
     
     dtheta_dz_profile = ws.Dz_atm * theta_loc_profile
     du_dz_profile     = ws.Dz_atm * u_loc_profile
-    
-    shear_sq = du_dz_profile[end]^2
-    Ri_f = shear_sq > 1e-6 ? (g / theta_ref) * dtheta_dz_profile[end] / shear_sq : 0.5
+
+    # Gradient Ri: average over last 3 near-surface nodes to suppress Chebyshev endpoint noise.
+    # xi_target[end] = -1 corresponds to the lower physical boundary (z_min).
+    avg_idx = max(1, N-1):(N+1)
+    dtdz_avg  = mean(dtheta_dz_profile[avg_idx])
+    shear_avg = mean(abs2, du_dz_profile[avg_idx]) + 1e-8
+    Ri_g = (g / theta_ref) * dtdz_avg / shear_avg
+
+    # Bulk Ri: finite difference between profile-averaged top and bottom layer means.
+    # xi_target[1] = +1 → z_top; xi_target[end] = -1 → z_bottom.
+    n_avg = max(1, min(3, (N+1) ÷ 4))
+    z_top_idx = 1:n_avg
+    z_bot_idx = (N+2-n_avg):(N+1)
+    dtheta_bulk = mean(theta_loc_profile[z_top_idx]) - mean(theta_loc_profile[z_bot_idx])
+    du_bulk     = mean(u_loc_profile[z_top_idx])     - mean(u_loc_profile[z_bot_idx])
+    dz_bulk     = mean(ws.z_atm[z_top_idx])          - mean(ws.z_atm[z_bot_idx])
+    Ri_b = abs(du_bulk) > 1e-3 ? (g / theta_ref) * dtheta_bulk * dz_bulk / du_bulk^2 : 0.5
 
     return HighFidelityRecord{T}(
         time_idx,
-        Ri_f,
+        Ri_g,
+        Ri_b,
         R_W,
         F_W,
         chi_N,
@@ -111,13 +143,13 @@ end
 function calculate_adaptive_wave_fraction(ws, c_u::AbstractVector, d_eff; alpha_floor::Real = 1.5, wave_threshold::Real = 0.1)
     n_modes = min(length(c_u), length(ws.psi_W))
     if n_modes == 0
-        return (0.0, 0, -1, false, "NoModes")
+        return (0.0, 0, -1, false, "NoModes", 1.0)
     end
 
     modal_energy = abs2.(c_u[1:n_modes])
     e_total = sum(modal_energy)
     if e_total <= eps(Float64)
-        return (0.0, 0, -1, false, "ZeroEnergy")
+        return (0.0, 0, -1, false, "ZeroEnergy", 1.0)
     end
 
     peak_mode = argmax(modal_energy) - 1
@@ -131,12 +163,12 @@ function calculate_adaptive_wave_fraction(ws, c_u::AbstractVector, d_eff; alpha_
     weighted_wave_energy = sum(modal_energy .* psi_w)
     f_w_adaptive = clamp(weighted_wave_energy / (e_total + eps(Float64)), 0.0, 1.0)
 
-    # Keep a minimal adaptive floor for highly compressed modal states.
-    if d_eff < alpha_floor
-        f_w_adaptive = max(f_w_adaptive, 0.30)
-    end
+    # compression_factor: quantifies modal-state collapse without injecting artificial wave signal.
+    # Approaches 1 when D_eff ≈ 1 (single dominant mode), decays to 0 for fully distributed states.
+    # The classifier can combine f_w_adaptive and compression_factor without either being modified.
+    compression_factor = exp(-(d_eff - 1.0))
 
-    return (f_w_adaptive, peak_mode, n_min_eff, in_window, "AdaptiveWaveFractionOK")
+    return (f_w_adaptive, peak_mode, n_min_eff, in_window, "AdaptiveWaveFractionOK", compression_factor)
 end
 
 end

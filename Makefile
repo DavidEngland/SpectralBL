@@ -114,6 +114,8 @@ test:
 # 3. Manuscript Compilation & Assembly Layer (AMS ametsoc2015 Sequence)
 # ==============================================================================
 ms: setup
+	@echo "♻️ Regenerating D_eff diagnostics macros for manuscript consistency..."
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/regenerate_tex_exports.jl
 	@echo "📝 Compiling text manuscript: $(DRAFT_DIR)/$(DOC).tex"
 	cd $(DRAFT_DIR) && pdflatex -synctex=1 -interaction=nonstopmode -file-line-error $(DOC).tex
 	@echo "📚 Parsing ametsoc2014.bst references database..."

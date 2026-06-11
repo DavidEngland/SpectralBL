@@ -172,7 +172,7 @@ function execute_campaign_sweep()
                 metrics = process_timestamp_metrics(t, c_theta, c_u, CAMPAIGN_WORKSPACE, status_with_gate; theta_ref=293.15)
 
                 # --- ADAPTIVE INTERCEPT HOOK ---
-                f_w_adaptive, peak_m, n_min_eff, in_window, _run_log = calculate_adaptive_wave_fraction(
+                f_w_adaptive, peak_m, n_min_eff, in_window, _run_log, compression_factor = calculate_adaptive_wave_fraction(
                     CAMPAIGN_WORKSPACE,
                     c_u,
                     metrics.D_eff;
@@ -192,7 +192,8 @@ function execute_campaign_sweep()
                 row_data = DataFrame(
                     FileDate = fill(parse(Int, file_date), 1),
                     TimeIdx = fill(metrics.time_idx, 1),
-                    Ri_f = fill(metrics.Ri_f, 1),
+                    Ri_g = fill(metrics.Ri_g, 1),
+                    Ri_b = fill(metrics.Ri_b, 1),
                     R_W = fill(metrics.R_W, 1),
                     F_W = fill(f_w_adaptive, 1),
                     chi_N = fill(metrics.chi_N, 1),
@@ -200,6 +201,7 @@ function execute_campaign_sweep()
                     E_total = fill(metrics.E_total, 1),
                     E_wave = fill(metrics.E_total * f_w_adaptive, 1),
                     E_turb = fill(metrics.E_total * (1.0 - f_w_adaptive), 1),
+                    compression_factor = fill(compression_factor, 1),
                     peak_mode = fill(peak_m, 1),
                     wave_window_min = fill(n_min_eff, 1),
                     wave_window_max = fill(metrics.wave_window_max, 1),

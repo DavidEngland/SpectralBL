@@ -246,7 +246,8 @@ function day_display_label(day_suffix::String)
     return length(raw_date) == 6 ? "19$(raw_date[1:2])-$(raw_date[3:4])-$(raw_date[5:6])" : "CASES-99 Run"
 end
 
-function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::String, suffix::String, title_tag::String)
+function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::String, suffix::String, title_tag::String;
+                            ri_plot_min::Float64=-0.25, ri_plot_max::Float64=1.50)
     regime_info = Dict(
         1 => ("Continuous turbulence", :blue),
         2 => ("Wave-dominated", :red),
@@ -270,20 +271,30 @@ function save_tier_plot_set(df::DataFrame, output_dir::String, draft_fig_dir::St
         end
     end
 
+    ri_mask = (df.Ri .>= ri_plot_min) .& (df.Ri .<= ri_plot_max)
+    df_curv = df[ri_mask, :]
+    n_excluded = nrow(df) - nrow(df_curv)
+    if nrow(df_curv) == 0
+        println("! No Ri values within [", @sprintf("%.2f", ri_plot_min), ", ", @sprintf("%.2f", ri_plot_max), "] for '", title_tag, "'. Falling back to full range.")
+        df_curv = df
+    elseif n_excluded > 0
+        println("ℹ Curvature-Stratification plot filtered to Ri_g ∈ [", @sprintf("%.2f", ri_plot_min), ", ", @sprintf("%.2f", ri_plot_max), "] for '", title_tag, "' (excluded ", n_excluded, " outlier rows).")
+    end
+
     p_curv = plot(
         title = "Curvature-Stratification Plane\n[$title_tag]",
         xlabel = L"\chi_N",
         ylabel = L"\mathrm{Ri}_g",
         xformatter = clean_decimal_formatter,
         yformatter = clean_decimal_formatter,
-        legend = :bottomleft,
+        ylims = (ri_plot_min, ri_plot_max),
         left_margin = 14Plots.mm, bottom_margin = 10Plots.mm
     )
     for r in 1:3
-        idx = findall(==(r), df.Regime)
+        idx = findall(==(r), df_curv.Regime)
         if !isempty(idx)
             label, color = regime_info[r]
-            scatter!(p_curv, df.chi_N[idx], df.Ri[idx];
+            scatter!(p_curv, df_curv.chi_N[idx], df_curv.Ri[idx];
                 label = label, color = color, markersize = 4, markerstrokewidth = 0.7, alpha = 0.85)
         end
     end
