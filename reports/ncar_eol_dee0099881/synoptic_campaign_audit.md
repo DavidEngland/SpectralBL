@@ -38,7 +38,17 @@ These diagnostics summarize coefficient recovery quality from sparse tower obser
 
 ---
 
-## 4. Mathematical Orthogonality Matrix
+## 4. Energy Coupling Diagnostics (Sun et al. interaction audit)
+These metrics track the non-additive residual induced by non-commuting spectral windows under the Riemannian mass metric.
+
+| Coupling Diagnostic | Empirical Value (Median [Min, Max]) |
+| :--- | :---: |
+| Mesoscale window energy, $E_{\mathrm{meso}}$ | 0.000 [-0.000, 0.000] |
+| Interaction residual, $E_{\mathrm{int}}$ | 0.000 [-0.000, 0.000] |
+
+---
+
+## 5. Mathematical Orthogonality Matrix
 Active GMM clustering is performed on **[$D_{\mathrm{eff}}$, $F_W$, $\mathrm{Ri}_g$]** after global campaign scaling. This matrix audits broader diagnostic feature independence, including $\chi_N$, to identify potential redundancy in manuscript interpretation.
 
 | Metric Feature Array | $D_{\mathrm{eff}}$ | $F_W$ | $\chi_N$ | $\mathrm{Ri}_g$ |
@@ -52,7 +62,7 @@ Active GMM clustering is performed on **[$D_{\mathrm{eff}}$, $F_W$, $\mathrm{Ri}
 1. **Low Cross-Feature Redundancy:** The correlation between structural profile curvature ($\chi_N$) and localized physical stability ($\mathrm{Ri}_g$) is securely bounded near 0.00. This proves that profile sharpness tracks separate geometric phenomena (like microfront steps) independent of standard local gradients.
 2. **Current Dimensionality Separation Check:** Campaign-mean $D_{\mathrm{eff}}$ values are R1=1.59, R2=1.25, R3=1.16. Interpret these jointly with reconstruction diagnostics before asserting physically distinct regime manifolds.
 
-## 5. Regime-Collar Integrity Check
+## 6. Regime-Collar Integrity Check
 The following diagnostics flag windows where regime $D_{\mathrm{eff}}$ means collapse into near-identical collars.
 - **Warning (Oct 02 - 10):** Regime D_eff means are tightly collared (spread=0.13). This may indicate weak physical regime separation despite 3-cluster assignment.
 - **Warning (Oct 11 - 21):** Regime D_eff means are tightly collared (spread=0.54). This may indicate weak physical regime separation despite 3-cluster assignment.
