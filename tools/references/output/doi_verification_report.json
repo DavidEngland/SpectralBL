@@ -1,1 +1,782 @@
-[]
+[
+  {
+    "cite_key": "Acevedo2016",
+    "doi": "10.3389/feart.2016.00075",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Acevedo2016",
+        "doi": "10.3389/feart.2016.00075",
+        "field": "title",
+        "local_value": "Review of stable boundary layer transitions",
+        "remote_value": "Off Limits: Sulfate below the Sulfate-Methane Transition",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Acevedo2016",
+        "doi": "10.3389/feart.2016.00075",
+        "field": "author",
+        "local_value": "Acevedo, O. C. and others",
+        "remote_value": "Brunner, Benjamin and Arnold, Gail L. and R\u00f8y, Hans and M\u00fcller, Inigo A. and J\u00f8rgensen, Bo B.",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "angelopoulos2021gentle",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Barbano2022",
+    "doi": "10.1007/s10546-021-00678-2",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Boccaletti2006",
+    "doi": "10.1016/j.physrep.2005.10.009",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Boccaletti2006",
+        "doi": "10.1016/j.physrep.2005.10.009",
+        "field": "journal",
+        "local_value": "Phys. Rep.",
+        "remote_value": "Physics Reports",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Boccaletti2006",
+        "doi": "10.1016/j.physrep.2005.10.009",
+        "field": "pages",
+        "local_value": "175-308",
+        "remote_value": "175--308",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Zanin2016",
+    "doi": "10.1016/j.physrep.2016.04.005",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Zanin2016",
+        "doi": "10.1016/j.physrep.2016.04.005",
+        "field": "journal",
+        "local_value": "Phys. Rep.",
+        "remote_value": "Physics Reports",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Zanin2016",
+        "doi": "10.1016/j.physrep.2016.04.005",
+        "field": "pages",
+        "local_value": "1-44",
+        "remote_value": "1--44",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Boyd2001",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Caulfield2021",
+    "doi": "10.1146/annurev-fluid-030121-014412",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Dyer1974",
+    "doi": "10.1007/bf00240838",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Fornberg1996",
+    "doi": "10.1017/cbo9780511626357",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Fortunato2010",
+    "doi": "10.1016/j.physrep.2009.11.002",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Fortunato2010",
+        "doi": "10.1016/j.physrep.2009.11.002",
+        "field": "journal",
+        "local_value": "Phys. Rep.",
+        "remote_value": "Physics Reports",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Fortunato2010",
+        "doi": "10.1016/j.physrep.2009.11.002",
+        "field": "pages",
+        "local_value": "75-174",
+        "remote_value": "75--174",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Garanaik2019",
+    "doi": "10.1017/jfm.2019.142",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Halila2019",
+    "doi": "10.1016/j.ast.2019.05.018",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Halila2019",
+        "doi": "10.1016/j.ast.2019.05.018",
+        "field": "pages",
+        "local_value": "321-336",
+        "remote_value": "321--336",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Halila2019",
+        "doi": "10.1016/j.ast.2019.05.018",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1016/j.ast.2019.05.018",
+        "remote_value": "10.1016/j.ast.2019.05.018",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Halliday2018",
+    "doi": "10.1002/qj.3278",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "H\u00f6gstr\u00f6m1988",
+    "doi": "10.1007/bf00119875",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "H\u00f6gstr\u00f6m1988",
+        "doi": "10.1007/bf00119875",
+        "field": "author",
+        "local_value": "H{\\\"o}gstr{\\\"o}m, Ulf",
+        "remote_value": "H\u00f6gstr\u00f6m, Ulf",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "H\u00f6gstr\u00f6m1988",
+        "doi": "10.1007/bf00119875",
+        "field": "number",
+        "local_value": "1",
+        "remote_value": "1-2",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Holtslag1988",
+    "doi": "10.1175/1520-0450(1988)027",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Huang1998",
+    "doi": "10.1098/rspa.1998.0193",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Huang1998",
+        "doi": "10.1098/rspa.1998.0193",
+        "field": "journal",
+        "local_value": "Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+        "remote_value": "Proceedings of the Royal Society of London. Series A: Mathematical, Physical and Engineering Sciences",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Huang1998",
+        "doi": "10.1098/rspa.1998.0193",
+        "field": "pages",
+        "local_value": "903-995",
+        "remote_value": "903--995",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Kaur2023",
+    "doi": "10.1016/j.apnum.2023.02.013",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Kaur2023",
+        "doi": "10.1016/j.apnum.2023.02.013",
+        "field": "pages",
+        "local_value": "206-234",
+        "remote_value": "206--234",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Kaur2023",
+        "doi": "10.1016/j.apnum.2023.02.013",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1016/j.apnum.2023.02.013",
+        "remote_value": "10.1016/j.apnum.2023.02.013",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Kelley2011",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Lefauve2025",
+    "doi": "10.5802/crphys.196",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Li2016",
+    "doi": "10.1017/jfm.2016.311",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt1999",
+    "doi": "10.1023/a:1001765730198",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "deRosnay2012",
+    "doi": "10.1002/qj.2023",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "deRosnay2012",
+        "doi": "10.1002/qj.2023",
+        "field": "year",
+        "local_value": "2013",
+        "remote_value": "2012",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2013",
+    "doi": "10.1002/qj.2042",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2042",
+        "field": "title",
+        "local_value": "Observations of scale-dependent exchange in the stable boundary layer",
+        "remote_value": "Reply to comments on \u2018The influence of rotational frontogenesis and its associated shearwise vertical motions on the development of an upper\u2010level front\u2019",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2042",
+        "field": "author",
+        "local_value": "Mahrt, L. and Vickers, D. and Sun, J.",
+        "remote_value": "Lang, Andrea A. and Martin, Jonathan E.",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2042",
+        "field": "year",
+        "local_value": "2013",
+        "remote_value": "2012",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2042",
+        "field": "number",
+        "local_value": "674",
+        "remote_value": "670",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Mahrt2013",
+        "doi": "10.1002/qj.2042",
+        "field": "pages",
+        "local_value": "1169--1179",
+        "remote_value": "273--279",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2014",
+    "doi": "10.1146/annurev-fluid-010313-141354",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Mahrt2010",
+    "doi": "10.1007/s10546-009-9463-6",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Mahrt2010",
+        "doi": "10.1007/s10546-009-9463-6",
+        "field": "year",
+        "local_value": "2010",
+        "remote_value": "2009",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "McQuarrie2021",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Nieuwstadt1984",
+    "doi": "10.1175/1520-0469(1984)041",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Obukhov1946",
+    "doi": "10.1007/s10546-007-9159-6",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "1971BoLMe...2....7O",
+    "doi": "10.1007/bf00718085",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "1971BoLMe...2....7O",
+        "doi": "10.1007/bf00718085",
+        "field": "pages",
+        "local_value": "7-29",
+        "remote_value": "7--29",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Paulson1970",
+    "doi": "10.1175/1520-0450(1970)009",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Pellegrino2023",
+    "doi": "10.1016/j.camwa.2023.10.017",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Pellegrino2023",
+        "doi": "10.1016/j.camwa.2023.10.017",
+        "field": "journal",
+        "local_value": "Computers & Mathematics with Applications",
+        "remote_value": "Computers &amp; Mathematics with Applications",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Pellegrino2023",
+        "doi": "10.1016/j.camwa.2023.10.017",
+        "field": "pages",
+        "local_value": "418-433",
+        "remote_value": "418--433",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Pellegrino2023",
+        "doi": "10.1016/j.camwa.2023.10.017",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1016/j.camwa.2023.10.017",
+        "remote_value": "10.1016/j.camwa.2023.10.017",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Poulos2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Rosvall2008",
+    "doi": "10.1073/pnas.0706851105",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Rosvall2008",
+        "doi": "10.1073/pnas.0706851105",
+        "field": "journal",
+        "local_value": "Proceedings of the National Academy of Sciences of the United States of America",
+        "remote_value": "Proceedings of the National Academy of Sciences",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Rosvall2008",
+        "doi": "10.1073/pnas.0706851105",
+        "field": "pages",
+        "local_value": "1118-1123",
+        "remote_value": "1118--1123",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Rousseeuw1987",
+    "doi": "10.1016/0377-0427(87)90125-7",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Rousseeuw1987",
+        "doi": "10.1016/0377-0427(87)90125-7",
+        "field": "pages",
+        "local_value": "53-65",
+        "remote_value": "53--65",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Rousseeuw1987",
+        "doi": "10.1016/0377-0427(87)90125-7",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1016/0377-0427(87)90125-7",
+        "remote_value": "10.1016/0377-0427(87)90125-7",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Sposini2018",
+    "doi": "10.1088/1367-2630/aab696",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Schmid2010",
+    "doi": "10.1017/s0022112010001217",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Schmid2010",
+        "doi": "10.1017/s0022112010001217",
+        "field": "pages",
+        "local_value": "5\u201328",
+        "remote_value": "5--28",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Sun2015",
+    "doi": "10.1002/2015rg000487",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Sun2015",
+        "doi": "10.1002/2015rg000487",
+        "field": "title",
+        "local_value": "Review of wave-turbulence interactions in the stable atmospheric boundary layer",
+        "remote_value": "Review of wave\u2010turbulence interactions in the stable atmospheric boundary layer",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Sun2015",
+        "doi": "10.1002/2015rg000487",
+        "field": "pages",
+        "local_value": "956-993",
+        "remote_value": "956--993",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Sun2015",
+        "doi": "10.1002/2015rg000487",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1002/2015RG000487",
+        "remote_value": "10.1002/2015rg000487",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Narasimha1995",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Kang2014a",
+    "doi": "10.1175/jas-d-13-0182.1",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Terradellas2001",
+    "doi": "10.1016/s0377-0265(01)00069-0",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Terradellas2001",
+        "doi": "10.1016/s0377-0265(01)00069-0",
+        "field": "number",
+        "local_value": "2",
+        "remote_value": "2-4",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Terradellas2001",
+        "doi": "10.1016/s0377-0265(01)00069-0",
+        "field": "pages",
+        "local_value": "225-244",
+        "remote_value": "225--244",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Terradellas2001",
+        "doi": "10.1016/s0377-0265(01)00069-0",
+        "field": "doi",
+        "local_value": "https://doi.org/10.1016/S0377-0265(01)00069-0",
+        "remote_value": "10.1016/s0377-0265(01)00069-0",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Trefethen2000",
+    "doi": "",
+    "status": "no-doi",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Uttal2002",
+    "doi": "10.1175/1520-0477(2002)083",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2006",
+    "doi": "10.1256/qj.05.21",
+    "status": "unresolved",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Webster2008",
+    "doi": "10.1002/asl.172",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Webster2008",
+        "doi": "10.1002/asl.172",
+        "field": "title",
+        "local_value": "A high-resolution modelling case study of a severe weather event over New Zealand",
+        "remote_value": "A high\u2010resolution modelling case study of a severe weather event over New Zealand",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2013",
+    "doi": "10.1002/asl2.439",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Sheridan2010",
+    "doi": "10.1002/met.177",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Wood2014",
+    "doi": "10.1002/qj.2235",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Wood2014",
+        "doi": "10.1002/qj.2235",
+        "field": "title",
+        "local_value": "An inherently mass-conserving semi-implicit semi-Lagrangian discretization of the deep-atmosphere global non-hydrostatic equations",
+        "remote_value": "An inherently mass\u2010conserving semi\u2010implicit semi\u2010Lagrangian discretization of the deep\u2010atmosphere global non\u2010hydrostatic equations",
+        "severity": "warning"
+      },
+      {
+        "cite_key": "Wood2014",
+        "doi": "10.1002/qj.2235",
+        "field": "year",
+        "local_value": "2014",
+        "remote_value": "2013",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Halliday2018",
+    "doi": "10.1002/qj.3278",
+    "status": "verified",
+    "issues": [],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Dipankar2020",
+    "doi": "10.1002/qj.3895",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Dipankar2020",
+        "doi": "10.1002/qj.3895",
+        "field": "title",
+        "local_value": "SINGV: A convective-scale weather forecast model for Singapore",
+        "remote_value": "SINGV: A convective\u2010scale weather forecast model for Singapore",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Coney2024",
+    "doi": "10.1002/qj.4592",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Coney2024",
+        "doi": "10.1002/qj.4592",
+        "field": "year",
+        "local_value": "2024",
+        "remote_value": "2023",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Houtman2025",
+    "doi": "10.1002/qj.4921",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Houtman2025",
+        "doi": "10.1002/qj.4921",
+        "field": "title",
+        "local_value": "Evaluating trapped lee-wave characteristics over the UK and Ireland in convection-permitting model forecasts using satellite imagery",
+        "remote_value": "Evaluating trapped lee\u2010wave characteristics over the UK and Ireland in convection\u2010permitting model forecasts using satellite imagery",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper1996",
+    "doi": "10.1002/qj.49712253211",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Vosper1996",
+        "doi": "10.1002/qj.49712253211",
+        "field": "title",
+        "local_value": "Gravity-wave drag on two mountains",
+        "remote_value": "Gravity\u2010wave drag on two mountains",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Coney2025",
+    "doi": "10.1002/qj.5037",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Coney2025",
+        "doi": "10.1002/qj.5037",
+        "field": "title",
+        "local_value": "A climatology of trapped lee waves over Britain and Ireland obtained using deep learning on high-resolution model output",
+        "remote_value": "A climatology of trapped lee waves over Britain and Ireland obtained using deep learning on high\u2010resolution model output",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  },
+  {
+    "cite_key": "Vosper2003",
+    "doi": "10.1017/s1350482703005085",
+    "status": "conflict",
+    "issues": [
+      {
+        "cite_key": "Vosper2003",
+        "doi": "10.1017/s1350482703005085",
+        "field": "title",
+        "local_value": "Development and testing of a high resolution mountain-wave forecasting system",
+        "remote_value": "Development and testing of a high resolution mountain\u2010wave forecasting system",
+        "severity": "warning"
+      }
+    ],
+    "improved_fields": []
+  }
+]

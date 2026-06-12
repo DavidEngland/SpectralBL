@@ -7,6 +7,7 @@ using .Transforms
 
 export UnifiedManifoldWorkspace, physical_to_computational
 export CoordinateMap, LinearMap, HyperbolicMap, LogarithmicMap, TanhMap, CfdWallMap, CustomMap
+export to_latex
 
 """
     UnifiedManifoldWorkspace(N, z_0m, z_top, alpha_stretch; ...)

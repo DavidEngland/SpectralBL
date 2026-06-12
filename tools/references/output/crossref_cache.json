@@ -2971,6 +2971,2978 @@
     "type": "journal-article",
     "volume": "53"
   },
+  "10.1002/2015rg000487": {
+    "DOI": "10.1002/2015rg000487",
+    "ISSN": [
+      "8755-1209",
+      "1944-9208"
+    ],
+    "URL": "https://doi.org/10.1002/2015rg000487",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Flow in a stably stratified environment is characterized by anisotropic and intermittent turbulence and wavelike motions of varying amplitudes and periods. Understanding turbulence intermittency and wave\u2010turbulence interactions in a stably stratified flow remains a challenging issue in geosciences including planetary atmospheres and oceans. The stable atmospheric boundary layer (SABL) commonly occurs when the ground surface is cooled by longwave radiation emission such as at night over land surfaces, or even daytime over snow and ice surfaces, and when warm air is advected over cold surfaces. Intermittent turbulence intensification in the SABL impacts human activities and weather variability, yet it cannot be generated in state\u2010of\u2010the\u2010art numerical forecast models. This failure is mainly due to a lack of understanding of the physical mechanisms for seemingly random turbulence generation in a stably stratified flow, in which wave\u2010turbulence interaction is a potential mechanism for turbulence intermittency. A workshop on wave\u2010turbulence interactions in the SABL addressed the current understanding and challenges of wave\u2010turbulence interactions and the role of wavelike motions in contributing to anisotropic and intermittent turbulence from the perspectives of theory, observations, and numerical parameterization. There have been a number of reviews on waves, and a few on turbulence in stably stratified flows, but not much on wave\u2010turbulence interactions. This review focuses on the nocturnal SABL; however, the discussions here on intermittent turbulence and wave\u2010turbulence interactions in stably stratified flows underscore important issues in stably stratified geophysical dynamics in general.</jats:p>",
+    "alternative-id": [
+      "10.1002/2015RG000487"
+    ],
+    "archive": [
+      "Portico"
+    ],
+    "author": [
+      {
+        "affiliation": [
+          {
+            "name": "National Center for Atmospheric Research  Boulder Colorado USA"
+          }
+        ],
+        "family": "Sun",
+        "given": "Jielun",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "CJN Research Meteorology  Knoxville Tennessee USA"
+          }
+        ],
+        "family": "Nappo",
+        "given": "Carmen J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "NorthWest Research Associates  Corvallis Oregon USA"
+          }
+        ],
+        "family": "Mahrt",
+        "given": "Larry",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "School of Earth, Atmosphere and Environment, Monash University  Melbourne Victoria Australia"
+          }
+        ],
+        "family": "Belu\u0161i\u0107",
+        "given": "Danijel",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Geophysics, University of Zagreb  Zagreb Croatia"
+          }
+        ],
+        "family": "Grisogono",
+        "given": "Branko",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Meteorology, Pennsylvania State University  University Park Pennsylvania USA"
+          }
+        ],
+        "family": "Stauffer",
+        "given": "David R.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Physics, FACENA Universidad Nacional del Nordeste and IMIT, UMI\u2010IFAECI/CNRS, CONICET  Corrientes Argentina"
+          }
+        ],
+        "family": "Pulido",
+        "given": "Manuel",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Laboratoire des Ecoulements G\u00e9ophysiques et Industriels  Grenoble France"
+          }
+        ],
+        "family": "Staquet",
+        "given": "Chantal",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Naval Research Laboratory  Monterey California USA"
+          }
+        ],
+        "family": "Jiang",
+        "given": "Qingfang",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "National Center for Atmospheric Research and Laboratory for Atmospheric and Space Physics University of Colorado Boulder  Boulder Colorado USA"
+          }
+        ],
+        "family": "Pouquet",
+        "given": "Annick",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-3589-9602",
+        "affiliation": [
+          {
+            "name": "Department of Geophysics and Meteorology, Universidad Complutense de Madrid  Madrid Spain"
+          }
+        ],
+        "authenticated-orcid": false,
+        "family": "Yag\u00fce",
+        "given": "Carlos",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Physical Oceanography, College of Marine Science, University of South Florida  St. Petersburg Florida USA"
+          }
+        ],
+        "family": "Galperin",
+        "given": "Boris",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Geology and Geophysics, Yale University  New Haven Connecticut USA"
+          }
+        ],
+        "family": "Smith",
+        "given": "Ronald B.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "CSIRO Marine and Atmospheric Research  Canberra ACT Australia"
+          }
+        ],
+        "family": "Finnigan",
+        "given": "John J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Geological and Environmental Sciences, California State University  Chico California USA"
+          }
+        ],
+        "family": "Mayor",
+        "given": "Shane D.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "Department of Meteorology, Stockholm University  Stockholm Sweden"
+          }
+        ],
+        "family": "Svensson",
+        "given": "Gunilla",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "NOAA Earth System Research Laboratory/Cooperative Institute for Research in Environmental Sciences University of Colorado Boulder  Boulder Colorado USA"
+          }
+        ],
+        "family": "Grachev",
+        "given": "Andrey A.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "NOAA Earth System Research Laboratory/Cooperative Institute for Research in Environmental Sciences University of Colorado Boulder  Boulder Colorado USA"
+          }
+        ],
+        "family": "Neff",
+        "given": "William D.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Reviews of Geophysics"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2015,
+          7,
+          17
+        ]
+      ],
+      "date-time": "2015-07-17T22:01:17Z",
+      "timestamp": 1437170477000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          9,
+          9
+        ]
+      ],
+      "date-time": "2023-09-09T16:51:16Z",
+      "timestamp": 1694278276000
+    },
+    "funder": [
+      {
+        "DOI": "10.13039/100000001",
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000001",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "National Science Foundation"
+      }
+    ],
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          4
+        ]
+      ],
+      "date-time": "2026-06-04T03:43:34Z",
+      "timestamp": 1780544614074,
+      "version": "3.54.1"
+    },
+    "is-referenced-by-count": 153,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "8755-1209"
+      },
+      {
+        "type": "electronic",
+        "value": "1944-9208"
+      }
+    ],
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          9
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "3",
+      "published-print": {
+        "date-parts": [
+          [
+            2015,
+            9
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "content-version": "vor",
+        "delay-in-days": 3,
+        "start": {
+          "date-parts": [
+            [
+              2015,
+              9,
+              4
+            ]
+          ],
+          "date-time": "2015-09-04T00:00:00Z",
+          "timestamp": 1441324800000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2F2015RG000487",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2F2015RG000487",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/2015RG000487",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://onlinelibrary.wiley.com/doi/full-xml/10.1002/2015RG000487",
+        "content-type": "application/xml",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://api.wiley.com/onlinelibrary/chorus/v1/articles/10.1002%2F2015RG000487",
+        "content-type": "application/pdf",
+        "content-version": "am",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2015RG000487",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "13",
+    "original-title": [],
+    "page": "956-993",
+    "prefix": "10.1029",
+    "published": {
+      "date-parts": [
+        [
+          2015,
+          9
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2015,
+          9,
+          4
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2015,
+          9
+        ]
+      ]
+    },
+    "publisher": "American Geophysical Union (AGU)",
+    "reference": [
+      {
+        "DOI": "10.1103/PhysRevLett.52.2352",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_2_1"
+      },
+      {
+        "DOI": "10.1016/j.asr.2007.03.078",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_3_1"
+      },
+      {
+        "DOI": "10.1002/qj.637",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_4_1"
+      },
+      {
+        "DOI": "10.1080/14685248.2012.702909",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_5_1"
+      },
+      {
+        "DOI": "10.1023/A:1022171009297",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_6_1"
+      },
+      {
+        "DOI": "10.1017/S0954102092000373",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_7_1"
+      },
+      {
+        "article-title": "Parameterizing scalar transfer over snow and ice: A review",
+        "author": "Andreas E.\u00a0L.",
+        "first-page": "417",
+        "journal-title": "J. Hydrol.",
+        "key": "e_1_2_7_8_1",
+        "volume": "3",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1990)029<0224:EOATCS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_9_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1993)032<1901:VHFMFA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_10_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1970)027<0903:TBOAMT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_11_1"
+      },
+      {
+        "author": "Baines P.\u00a0G.",
+        "first-page": "482",
+        "key": "e_1_2_7_12_1",
+        "volume-title": "Topographic Effects in Stratified Flows",
+        "year": "1995"
+      },
+      {
+        "DOI": "10.1175/JAS3905.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_13_1"
+      },
+      {
+        "DOI": "10.1175/2010BAMS2797.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_14_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1980)108<0804:GWFT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_15_1"
+      },
+      {
+        "DOI": "10.1029/2002GL015435",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_16_1"
+      },
+      {
+        "DOI": "10.2478/s11600-007-0045-z",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_17_1"
+      },
+      {
+        "DOI": "10.1023/A:1000812511429",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_18_1"
+      },
+      {
+        "DOI": "10.1002/9783527653218.ch2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_19_1"
+      },
+      {
+        "DOI": "10.1175/JAS3776.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_20_1"
+      },
+      {
+        "author": "Bean B.\u00a0R.",
+        "first-page": "181",
+        "key": "e_1_2_7_21_1",
+        "volume-title": "Statistical Methods and Instrumentation in Geophysics",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1007/s10546-004-2820-6",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_22_1"
+      },
+      {
+        "DOI": "10.1146/annurev-fluid-120710-101036",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_23_1"
+      },
+      {
+        "author": "Beljaars A.",
+        "first-page": "1",
+        "key": "e_1_2_7_24_1",
+        "volume-title": "ECMWF GABLES Workshop on Diurnal Cycles and the Stable Boundary Layer",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1002/qj.606",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_25_1"
+      },
+      {
+        "DOI": "10.1111/j.1600-0870.2008.00328.x",
+        "article-title": "Estimation of length scales from mesoscale networks",
+        "author": "Belu\u0161i\u0107 D.",
+        "doi-asserted-by": "crossref",
+        "first-page": "706",
+        "journal-title": "Tellus",
+        "key": "e_1_2_7_26_1",
+        "volume": "60",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1029/2011JD016987",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_27_1"
+      },
+      {
+        "DOI": "10.5194/amt-7-1825-2014",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_28_1"
+      },
+      {
+        "DOI": "10.1017/S0022112000001154",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_29_1"
+      },
+      {
+        "DOI": "10.1063/1.1369125",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_30_1"
+      },
+      {
+        "DOI": "10.1017/S002211201000282X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_31_1"
+      },
+      {
+        "DOI": "10.1029/RG010i002p00485",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_32_1"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(01)00067-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_33_1"
+      },
+      {
+        "DOI": "10.1256/qj.03.179",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_34_1"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9760-3",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_35_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1965)004<0122:SBFWR>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_36_1"
+      },
+      {
+        "DOI": "10.1017/S0022112067000515",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_37_1"
+      },
+      {
+        "DOI": "10.1002/qj.49709239403",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_38_1"
+      },
+      {
+        "DOI": "10.1256/qj.02.176",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_39_1"
+      },
+      {
+        "DOI": "10.1029/RG016i001p00047",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_40_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1972)029<0850:OTIPIO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_41_1"
+      },
+      {
+        "DOI": "10.1017/CBO9780511605499",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_42_1"
+      },
+      {
+        "DOI": "10.1146/annurev.fluid.010908.165251",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_43_1"
+      },
+      {
+        "DOI": "10.1134/S001546281005011X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_44_1"
+      },
+      {
+        "DOI": "10.5194/amt-5-2095-2012",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_45_1"
+      },
+      {
+        "DOI": "10.1007/BF00117295",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_46_1"
+      },
+      {
+        "DOI": "10.1007/BF02265234",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_47_1"
+      },
+      {
+        "DOI": "10.1007/s10546-010-9519-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_48_1"
+      },
+      {
+        "DOI": "10.1017/jfm.2012.7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_49_1"
+      },
+      {
+        "DOI": "10.1051/0004-6361:20011773",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_50_1"
+      },
+      {
+        "DOI": "10.1115/1.4007909",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_51_1"
+      },
+      {
+        "DOI": "10.1029/95RS00649",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_52_1"
+      },
+      {
+        "DOI": "10.1063/1.1706010",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_53_1"
+      },
+      {
+        "DOI": "10.1063/1.1706011",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_54_1"
+      },
+      {
+        "DOI": "10.1007/BF00221819",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_55_1"
+      },
+      {
+        "DOI": "10.1007/BF00230771",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_56_1"
+      },
+      {
+        "DOI": "10.1007/s00703-009-0349-4",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_57_1"
+      },
+      {
+        "DOI": "10.1175/2007JTECHA969.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_58_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1990)047<2516:MTMAAS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_59_1"
+      },
+      {
+        "DOI": "10.1007/BF00821547",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_60_1"
+      },
+      {
+        "DOI": "10.1017/S002211207400125X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_61_1"
+      },
+      {
+        "DOI": "10.1023/A:1012730306799",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_62_1"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(03)00028-9",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_63_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1984)041<2269:SEOGWP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_64_1"
+      },
+      {
+        "article-title": "Doppler ducting of atmospheric gravity waves",
+        "author": "Chimonas G.",
+        "first-page": "1219",
+        "issue": "1",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "e_1_2_7_65_1",
+        "volume": "91",
+        "year": "1986"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1987)044<0533:ATBW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_66_1"
+      },
+      {
+        "DOI": "10.1029/1999JD900068",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_67_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1989)046<1462:LNWITL>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_68_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1978)035<0805:OSWITA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_69_1"
+      },
+      {
+        "DOI": "10.1038/293046a0",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_70_1"
+      },
+      {
+        "DOI": "10.1017/S0022112005005318",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_71_1"
+      },
+      {
+        "DOI": "10.1017/S0022112008004278",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_72_1"
+      },
+      {
+        "DOI": "10.1017/S0022112096007082",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_73_1"
+      },
+      {
+        "DOI": "10.1063/1.3455432",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_74_1"
+      },
+      {
+        "DOI": "10.1029/97RS00578",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_75_1"
+      },
+      {
+        "DOI": "10.5194/angeo-19-845-2001",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_76_1"
+      },
+      {
+        "DOI": "10.1175/2008MWR2518.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_77_1"
+      },
+      {
+        "DOI": "10.1002/qj.49708335505",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_78_1"
+      },
+      {
+        "DOI": "10.1007/BF00123179",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_79_1"
+      },
+      {
+        "DOI": "10.1007/s00703-003-0030-2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_80_1"
+      },
+      {
+        "DOI": "10.1016/0169-8095(86)90028-1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_81_1"
+      },
+      {
+        "author": "Culf A.\u00a0D.",
+        "first-page": "139",
+        "key": "e_1_2_7_82_1",
+        "volume-title": "Waves and Turbulence in Stably Stratified Flows",
+        "year": "1993"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1974)031<1402:TGGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_83_1"
+      },
+      {
+        "DOI": "10.1023/A:1019974021434",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_84_1"
+      },
+      {
+        "DOI": "10.1175/MWR3329.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_85_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<1287:RPSIIT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_86_1"
+      },
+      {
+        "DOI": "10.1007/BF00120898",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_87_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1995)034<2747:TIOWAP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_88_1"
+      },
+      {
+        "DOI": "10.1016/0012-821X(96)00129-X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_89_1"
+      },
+      {
+        "DOI": "10.1175/JAM2178.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_90_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1999)127<0057:DWUAAO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_91_1"
+      },
+      {
+        "DOI": "10.1126/science.204.4395.832",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_92_1"
+      },
+      {
+        "author": "Ditlevsen P.",
+        "first-page": "349",
+        "key": "e_1_2_7_93_1",
+        "volume-title": "Turbulence and Climate Dynamics",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1063/1.1530159",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_94_1"
+      },
+      {
+        "DOI": "10.1023/A:1000270821161",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_95_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1984)041<2559:AASGOW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_96_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1991)048<0087:ATGSWO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_97_1"
+      },
+      {
+        "DOI": "10.1256/qj.05.140",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_98_1"
+      },
+      {
+        "DOI": "10.1098/rspa.1977.0142",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_99_1"
+      },
+      {
+        "DOI": "10.1017/CBO9780511809064",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_100_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1995)052<4010:DBMWDT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_101_1"
+      },
+      {
+        "DOI": "10.1029/94RS01937",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_102_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1993)050<0785:VROOGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_103_1"
+      },
+      {
+        "DOI": "10.1175/1520-0426(1988)005<0432:AUWPFT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_104_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712353903",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_105_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1993)050<1841:WTDITS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_106_1"
+      },
+      {
+        "DOI": "10.1007/BF00879972",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_107_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1984)041<0661:GWTIIT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_108_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1989)046<0303:ACOGWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_109_1"
+      },
+      {
+        "article-title": "On the transfer of energy in stationary mountain waves",
+        "author": "Eliassen A.",
+        "first-page": "1",
+        "journal-title": "Geofysiske Publikasjoner",
+        "key": "e_1_2_7_110_1",
+        "volume": "22",
+        "year": "1960"
+      },
+      {
+        "DOI": "10.1017/S0022112072000199",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_111_1"
+      },
+      {
+        "DOI": "10.1007/978-90-481-9340-0",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_112_1"
+      },
+      {
+        "DOI": "10.1007/s00704-002-0693-5",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_113_1"
+      },
+      {
+        "DOI": "10.1127/0941-2948/2007/0224",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_114_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1975)103<0217:AOTIGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_115_1"
+      },
+      {
+        "DOI": "10.1175/MWR3297.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_116_1"
+      },
+      {
+        "DOI": "10.1175/2008JAS2517.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_117_1"
+      },
+      {
+        "author": "Etling D.",
+        "first-page": "1",
+        "key": "e_1_2_7_118_1",
+        "volume-title": "Waves and Turbulence in Stably Stratified Flows",
+        "year": "1993"
+      },
+      {
+        "DOI": "10.1175/2007JPO3889.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_119_1"
+      },
+      {
+        "DOI": "10.1063/1.1602076",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_120_1"
+      },
+      {
+        "DOI": "10.1016/0377-0265(95)00422-X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_121_1"
+      },
+      {
+        "DOI": "10.1175/2010BAMS2770.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_122_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1988)045<0486:KETBIG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_123_1"
+      },
+      {
+        "DOI": "10.1023/A:1001756912935",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_124_1"
+      },
+      {
+        "article-title": "Turbulence in plant canopies",
+        "author": "Finnigan J.",
+        "first-page": "519",
+        "journal-title": "Agric. For. Meteorol.",
+        "key": "e_1_2_7_125_1",
+        "volume": "32",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.2478/s11600-008-0034-x",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_126_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1984)041<2409:TIBAIG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_127_1"
+      },
+      {
+        "DOI": "10.1017/S0022112009990589",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_128_1"
+      },
+      {
+        "DOI": "10.1175/1087-3562(2002)006<0001:AOAMGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_129_1"
+      },
+      {
+        "DOI": "10.1029/JD095iD10p16839",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_130_1"
+      },
+      {
+        "DOI": "10.1029/2011JD015895",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_131_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2003)060<2487:TMWTCT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_132_1"
+      },
+      {
+        "DOI": "10.1017/CBO9781139170666",
+        "author": "Frisch U.",
+        "doi-asserted-by": "crossref",
+        "first-page": "296",
+        "key": "e_1_2_7_133_1",
+        "volume-title": "Turbulence: The Legacy of A. N. Kolmogorov",
+        "year": "1995"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1996)053<3173:EABOKB>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_134_1"
+      },
+      {
+        "DOI": "10.1029/2009GL039501",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_135_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1979)036<0012:TEORWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_136_1"
+      },
+      {
+        "DOI": "10.1007/BF00874464",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_137_1"
+      },
+      {
+        "DOI": "10.1029/2001RG000106",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_138_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<2276:VSOGWC>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_139_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1992)049<0681:GWEBGA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_140_1"
+      },
+      {
+        "DOI": "10.1029/2002JD002406",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_141_1"
+      },
+      {
+        "DOI": "10.1029/2011JD015895",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_142_1"
+      },
+      {
+        "DOI": "10.1029/2011JD017179",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_143_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-13-055.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_144_1"
+      },
+      {
+        "DOI": "10.1016/j.advwatres.2012.04.008",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_145_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1984)041<0888:OTEODO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_146_1"
+      },
+      {
+        "DOI": "10.1007/BF00218723",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_147_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1982)039<2450:AAOWTI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_148_1"
+      },
+      {
+        "DOI": "10.1002/qj.807",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_149_1"
+      },
+      {
+        "DOI": "10.1007/978-1-878220-36-3_6",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_150_1"
+      },
+      {
+        "article-title": "Geophysical flows with anisotropic turbulence and dispersive waves: Flows with stable stratification",
+        "author": "Galperin B.",
+        "first-page": "65",
+        "journal-title": "Ocean Dyn.",
+        "key": "e_1_2_7_151_1",
+        "volume": "8",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1002/asl.153",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_152_1"
+      },
+      {
+        "author": "Garratt J.",
+        "first-page": "316",
+        "key": "e_1_2_7_153_1",
+        "volume-title": "The Atmospheric Boundary Layer",
+        "year": "1992"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1983)111<1293:SPAGWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_154_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1975)032<2125:POTITV>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_155_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1994)122<1509:IOSSOP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_156_1"
+      },
+      {
+        "DOI": "10.1002/qj.836",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_157_1"
+      },
+      {
+        "DOI": "10.1098/rspa.1991.0086",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_158_1"
+      },
+      {
+        "DOI": "10.1016/S0924-7963(99)00024-X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_159_1"
+      },
+      {
+        "author": "Gill A.\u00a0E.",
+        "first-page": "662",
+        "key": "e_1_2_7_160_1",
+        "volume-title": "Atmosphere\u2010Ocean Dynamics",
+        "year": "1982"
+      },
+      {
+        "author": "Gossard E.\u00a0E.",
+        "first-page": "456",
+        "key": "e_1_2_7_161_1",
+        "volume-title": "Waves in the Atmosphere: Atmospheric Infrasound and Gravity Waves\u2014Their Generation and Propagation",
+        "year": "1975"
+      },
+      {
+        "DOI": "10.1029/JC075i018p03523",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_162_1"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9771-0",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_163_1"
+      },
+      {
+        "DOI": "10.1029/JC084iC10p06362",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_164_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1994)051<1237:DOWDIT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_165_1"
+      },
+      {
+        "article-title": "A curvature effect on the critical Richardson number",
+        "author": "Grisogono B.",
+        "first-page": "43",
+        "journal-title": "Croatian Meteorol. J.",
+        "key": "e_1_2_7_166_1",
+        "volume": "29",
+        "year": "1994"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1995)034<0941:WDEIAM>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_167_1"
+      },
+      {
+        "DOI": "10.1002/qj.529",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_168_1"
+      },
+      {
+        "DOI": "10.1002/qj.190",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_169_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1999)127<1613:AYCOPD>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_170_1"
+      },
+      {
+        "DOI": "10.1175/2008JAS2885.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_171_1"
+      },
+      {
+        "DOI": "10.1175/1520-0426(2001)018<0376:HRDLFB>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_172_1"
+      },
+      {
+        "DOI": "10.1002/asl.382",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_173_1"
+      },
+      {
+        "DOI": "10.1017/S0022112073002454",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_174_1"
+      },
+      {
+        "DOI": "10.1002/qj.49709942007",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_175_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2561.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_176_1"
+      },
+      {
+        "DOI": "10.1175/1520-0426(1996)013<1001:AGBNFA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_177_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1987)044<0828:OTEOVA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_178_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1990)047<2021:OTCAIT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_179_1"
+      },
+      {
+        "DOI": "10.1017/S0022112067001752",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_180_1"
+      },
+      {
+        "DOI": "10.1146/annurev.fluid.38.050304.092129",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_181_1"
+      },
+      {
+        "DOI": "10.1017/S0022112089001114",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_182_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1969)026<0266:TJSWFG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_183_1"
+      },
+      {
+        "DOI": "10.1029/JB074i006p01321",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_184_1"
+      },
+      {
+        "DOI": "10.1175/2008JAS2710.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_185_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1968)007<0114:ROOBGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_186_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1988)045<1269:GOTBAG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_187_1"
+      },
+      {
+        "DOI": "10.1016/S1364-6826(96)00079-X",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_188_1"
+      },
+      {
+        "DOI": "10.1063/1.33184",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_189_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2576.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_190_1"
+      },
+      {
+        "DOI": "10.1175/BAMS-D-11-00187.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_191_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1975)014<0031:FSOTAG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_192_1"
+      },
+      {
+        "DOI": "10.1175/JAMC\u2010D\u201014\u20100128.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_193_1"
+      },
+      {
+        "DOI": "10.1029/JC092iC05p05287",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_194_1"
+      },
+      {
+        "DOI": "10.1007/BF02265252",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_195_1"
+      },
+      {
+        "DOI": "10.1023/A:1013167228992",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_196_1"
+      },
+      {
+        "DOI": "10.1029/2010GL043017",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_197_1"
+      },
+      {
+        "DOI": "10.1002/qj.49711146908",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_198_1"
+      },
+      {
+        "DOI": "10.1029/2002RS002753",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_199_1"
+      },
+      {
+        "key": "e_1_2_7_200_1",
+        "unstructured": "Jachens E.\u00a0R. andS.\u00a0D.Mayor(2012) Lidar observations of fine\u2010scale atmospheric gravity waves in the nocturnal boundary layer above an orchard canopy paper presented at Poster Presentation S8P\u201005 at the 26th International Laser Radar Conference International Coordination-Group for Laser Atmospheric Studies (ICLAS) and the International Radiation Commission (IRC) Porto Heli Greece 25\u201329 June."
+      },
+      {
+        "author": "Jeffrey A.",
+        "first-page": "204",
+        "key": "e_1_2_7_201_1",
+        "volume-title": "Waves and Stability in Continuous Media",
+        "year": "1989"
+      },
+      {
+        "DOI": "10.1080/14786442508634662",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_202_1"
+      },
+      {
+        "DOI": "10.1175/JAS3640.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_203_1"
+      },
+      {
+        "DOI": "10.1175/MWR-D-11-00056.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_204_1"
+      },
+      {
+        "DOI": "10.1017/S0022112068002119",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_205_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1971)028<0604:TCOMBI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_206_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1972)029<0445:AGWFWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_207_1"
+      },
+      {
+        "DOI": "10.1063/1.4706183",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_208_1"
+      },
+      {
+        "DOI": "10.1002/qj.49709841707",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_209_1"
+      },
+      {
+        "article-title": "Acoustic waves in the turbulent atmosphere: A review",
+        "author": "Kallistratova M.\u00a0A.",
+        "first-page": "1139",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "e_1_2_7_210_1",
+        "volume": "19",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1175/JAS-D-13-0182.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_211_1"
+      },
+      {
+        "DOI": "10.1029/2008GL037146",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_212_1"
+      },
+      {
+        "DOI": "10.1017/jfm.2011.546",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_213_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1975)032<0320:TDOWID>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_214_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1978)035<0078:NSOHMW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_215_1"
+      },
+      {
+        "DOI": "10.1256/qj.03.161",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_216_1"
+      },
+      {
+        "DOI": "10.1080/03091929108229035",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_217_1"
+      },
+      {
+        "DOI": "10.1175/JAS3574.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_218_1"
+      },
+      {
+        "DOI": "10.1175/2007MWR2252.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_219_1"
+      },
+      {
+        "DOI": "10.1175/2009JAMC2059.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_220_1"
+      },
+      {
+        "DOI": "10.1175/MWR-D-10-05081.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_221_1"
+      },
+      {
+        "DOI": "10.1017/S0022112005007524",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_222_1"
+      },
+      {
+        "DOI": "10.1002/qj.49711347603",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_223_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<1248:OTCOGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_224_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<0059:TDEOTG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_225_1"
+      },
+      {
+        "DOI": "10.1175/2008JAMC1787.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_226_1"
+      },
+      {
+        "DOI": "10.1175/2009MWR2878.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_227_1"
+      },
+      {
+        "DOI": "10.1007/s10546-013-9825-y",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_228_1"
+      },
+      {
+        "DOI": "10.1007/978-1-4612-0331-5_5",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_229_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1997)054<2574:GWIAFA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_230_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712454904",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_231_1"
+      },
+      {
+        "DOI": "10.1023/A:1000454030493",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_232_1"
+      },
+      {
+        "DOI": "10.1017/S0022112091003609",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_233_1"
+      },
+      {
+        "DOI": "10.1007/978-1-944970-14-7",
+        "author": "Lenschow D.\u00a0H.\u00a0(Ed.)",
+        "doi-asserted-by": "crossref",
+        "first-page": "269",
+        "key": "e_1_2_7_234_1",
+        "volume-title": "Probing the Atmospheric Boundary Layer",
+        "year": "1986"
+      },
+      {
+        "DOI": "10.1007/BF00119877",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_235_1"
+      },
+      {
+        "author": "Lighthill J.",
+        "first-page": "504",
+        "key": "e_1_2_7_236_1",
+        "volume-title": "Waves in Fluids",
+        "year": "1978"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1974)031<0800:WATITS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_237_1"
+      },
+      {
+        "DOI": "10.1146/annurev.fl.11.010179.001533",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_238_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1988)045<0194:ASOAMS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_239_1"
+      },
+      {
+        "DOI": "10.1017/S0022112005008128",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_240_1"
+      },
+      {
+        "DOI": "10.1029/JC081i009p01561",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_241_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1983)040<0530:IIASFH>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_242_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1976)104<1602:BCAADG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_243_1"
+      },
+      {
+        "DOI": "10.1017/jfm.2012.13",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_244_1"
+      },
+      {
+        "DOI": "10.1111/j.2153-3490.1953.tb01035.x",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_245_1"
+      },
+      {
+        "DOI": "10.5194/acpd-14-10789-2014",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_246_1"
+      },
+      {
+        "DOI": "10.1175/JAS4020.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_247_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712353704",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_248_1"
+      },
+      {
+        "DOI": "10.1007/BF00117978",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_249_1"
+      },
+      {
+        "DOI": "10.1007/BF00121539",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_250_1"
+      },
+      {
+        "DOI": "10.1016/j.atmosenv.2012.01.046",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_251_1"
+      },
+      {
+        "DOI": "10.1175/JTECH-D-12-00255.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_252_1"
+      },
+      {
+        "DOI": "10.1175/JPO-D-11-0108.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_253_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1989)046<0079:IOAT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_254_1"
+      },
+      {
+        "DOI": "10.1007/s10546-007-9244-z",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_255_1"
+      },
+      {
+        "DOI": "10.1007/s10546-008-9336-4",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_256_1"
+      },
+      {
+        "DOI": "10.1002/qj.694",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_257_1"
+      },
+      {
+        "DOI": "10.1016/j.agrformet.2010.01.015",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_258_1"
+      },
+      {
+        "DOI": "10.1175/2010JAMC2560.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_259_1"
+      },
+      {
+        "DOI": "10.1007/s10546-005-9017-5",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_260_1"
+      },
+      {
+        "DOI": "10.1002/qj.348",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_261_1"
+      },
+      {
+        "DOI": "10.1002/qj.1884",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_262_1"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9782-x",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_263_1"
+      },
+      {
+        "DOI": "10.1127/0941-2948/2009/0370",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_264_1"
+      },
+      {
+        "DOI": "10.1175/2010JTECHA1389.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_265_1"
+      },
+      {
+        "DOI": "10.1017/jfm.2012.294",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_266_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<1730:GOGWBJ>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_267_1"
+      },
+      {
+        "DOI": "10.1175/JAS3856.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_268_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2294.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_269_1"
+      },
+      {
+        "DOI": "10.1109/36.45742",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_270_1"
+      },
+      {
+        "DOI": "10.1007/s00703-010-0063-2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_271_1"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9709-6",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_272_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(2001)040<1331:TDVWFF>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_273_1"
+      },
+      {
+        "article-title": "Raman\u2010shifted eye\u2010safe aerosol lidar",
+        "author": "Mayor S.\u00a0D.",
+        "first-page": "3915",
+        "journal-title": "Atmos. Ocean. Phys.",
+        "key": "e_1_2_7_274_1",
+        "volume": "43",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1175/JTECH-D-11-00225.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_275_1"
+      },
+      {
+        "key": "e_1_2_7_276_1",
+        "unstructured": "Mayor S.\u00a0D. E.\u00a0R.Jachens andT.\u00a0N.Randall(2012b) Lidar observations of fine\u2010scale gravity waves in the nocturnal boundary layer above an orchard canopy paper presented 16th International Symposium for the Advancement of Boundary\u2010Layer Remote Sensing (ISARS) CIRES Univ. of Colo. and NOAA Earth System Res. Lab. Boulder 5\u20138 June."
+      },
+      {
+        "DOI": "10.1029/JC082i009p01397",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_277_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1987)044<1775:TEOOEG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_278_1"
+      },
+      {
+        "DOI": "10.1017/S0022112081001626",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_279_1"
+      },
+      {
+        "article-title": "Potential\u2010vorticity inversion and the wave\u2010turbulence jigsaw: Some recent clarifications",
+        "author": "McIntyre M.\u00a0E.",
+        "first-page": "47",
+        "issue": "15",
+        "journal-title": "Adv. Geophys.",
+        "key": "e_1_2_7_280_1",
+        "volume": "15",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1017/S0022112090002038",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_281_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1982)039<1658:ANOVFI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_282_1"
+      },
+      {
+        "DOI": "10.1175/1520-0426(1998)015<0849:AVIRWP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_283_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2359.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_284_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-11-070.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_285_1"
+      },
+      {
+        "DOI": "10.1029/RG020i004p00851",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_286_1"
+      },
+      {
+        "DOI": "10.1029/JC084iC10p06315",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_287_1"
+      },
+      {
+        "DOI": "10.1017/S0022112076002735",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_288_1"
+      },
+      {
+        "DOI": "10.1017/S0022112064001252",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_289_1"
+      },
+      {
+        "DOI": "10.1007/978-94-017-1325-2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_290_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1996)053<1724:UODTIA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_291_1"
+      },
+      {
+        "DOI": "10.1175/JAS-3289.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_292_1"
+      },
+      {
+        "DOI": "10.1029/RG024i003p00493",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_293_1"
+      },
+      {
+        "author": "Munk W.",
+        "first-page": "264",
+        "key": "e_1_2_7_294_1",
+        "volume-title": "Evolution of Physical Oceanography",
+        "year": "1981"
+      },
+      {
+        "DOI": "10.1127/0941-2948/2005/0067",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_295_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1992)049<1075:WEBTGS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_296_1"
+      },
+      {
+        "DOI": "10.1175/BAMS-D-12-00235.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_297_1"
+      },
+      {
+        "author": "Nappo C.\u00a0J.",
+        "key": "e_1_2_7_298_1",
+        "volume-title": "An Introduction to Atmospheric Gravity Waves",
+        "year": "2012"
+      },
+      {
+        "author": "Nappo C.\u00a0J.",
+        "key": "e_1_2_7_299_1",
+        "volume-title": "18th Symposium on Boundary Layer and Turbulence",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1016/j.atmosenv.2004.02.019",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_300_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1993)032<0081:TCOGWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_301_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1992)049<0101:SOMVOG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_302_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1990)029<0783:SOGWAS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_303_1"
+      },
+      {
+        "DOI": "10.1007/978-3-642-15942-8",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_304_1"
+      },
+      {
+        "DOI": "10.1007/978-1-944970-14-7_13",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_305_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2003)060<0016:SFIITS>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_306_1"
+      },
+      {
+        "DOI": "10.1175/2010MWR3292.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_307_1"
+      },
+      {
+        "article-title": "A model of turbulent transfer and dynamics of turbulence in a stratified shear\u2010flow",
+        "author": "Ostrovsky L.",
+        "first-page": "1031",
+        "issue": "10",
+        "journal-title": "Izvestiya Akademii Nauk Sssr Fizika Atmosfery I Okeana",
+        "key": "e_1_2_7_308_1",
+        "volume": "23",
+        "year": "1987"
+      },
+      {
+        "DOI": "10.1175/1520-0485(1996)026<0398:ESOTIW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_309_1"
+      },
+      {
+        "DOI": "10.1007/BF02265225",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_310_1"
+      },
+      {
+        "DOI": "10.5194/npg-8-313-2001",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_311_1"
+      },
+      {
+        "DOI": "10.1007/978-94-007-0360-5_5",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_312_1"
+      },
+      {
+        "DOI": "10.1002/qj.49711247406",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_313_1"
+      },
+      {
+        "DOI": "10.1175/2010BAMS2614.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_314_1"
+      },
+      {
+        "DOI": "10.1029/2002GL015783",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_315_1"
+      },
+      {
+        "DOI": "10.1175/2008JTECHA1128.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_316_1"
+      },
+      {
+        "DOI": "10.1007/s10546-011-9652-y",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_317_1"
+      },
+      {
+        "DOI": "10.1175/2008JTECHA988.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_318_1"
+      },
+      {
+        "DOI": "10.1002/2012RG000419",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_319_1"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1991)030<0145:NVW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_320_1"
+      },
+      {
+        "DOI": "10.1017/S0022112003004051",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_321_1"
+      },
+      {
+        "DOI": "10.1103/PhysRevLett.111.234501",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_322_1"
+      },
+      {
+        "DOI": "10.1023/A:1019246513260",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_323_1"
+      },
+      {
+        "DOI": "10.1002/qj.272",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_324_1"
+      },
+      {
+        "DOI": "10.1256/qj.04.116",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_325_1"
+      },
+      {
+        "DOI": "10.1175/2008JCLI2006.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_326_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1993)050<3277:OOAMDG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_327_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1997)054<1308:OSAAON>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_328_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1999)056<2986:DTGWCB>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_329_1"
+      },
+      {
+        "author": "Randall T.\u00a0N.",
+        "key": "e_1_2_7_330_1",
+        "volume-title": "20th Symposium on Boundary Layers and Turbulence",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1023/B:BOUN.0000010998.10262.e2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_331_1"
+      },
+      {
+        "DOI": "10.1007/BF00120941",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_332_1"
+      },
+      {
+        "author": "Rayleigh J.\u00a0W.\u00a0S.",
+        "key": "e_1_2_7_333_1",
+        "volume-title": "The Theory of Sound",
+        "year": "1945"
+      },
+      {
+        "DOI": "10.1007/BF02188324",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_334_1"
+      },
+      {
+        "DOI": "10.1002/qj.49711448206",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_335_1"
+      },
+      {
+        "DOI": "10.1007/BF00708859",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_336_1"
+      },
+      {
+        "DOI": "10.1023/A:1000555504268",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_337_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2000)057<0511:ACSOIG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_338_1"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(01)00070-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_339_1"
+      },
+      {
+        "DOI": "10.1016/j.dynatmoce.2003.09.001",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_340_1"
+      },
+      {
+        "DOI": "10.1175/JTECH-D-12-00176.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_341_1"
+      },
+      {
+        "DOI": "10.1256/qj.03.24",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_342_1"
+      },
+      {
+        "DOI": "10.2478/s11600-012-0042-8",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_343_1"
+      },
+      {
+        "DOI": "10.1146/annurev.fluid.32.1.613",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_344_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2455.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_345_1"
+      },
+      {
+        "DOI": "10.1002/qj.2441",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_346_1"
+      },
+      {
+        "article-title": "Internal gravity waves in the lower atmosphere and sources of their generation (review)",
+        "author": "Romanova N.",
+        "first-page": "151",
+        "journal-title": "Atmos. Ocean. Phys.",
+        "key": "e_1_2_7_347_1",
+        "volume": "31",
+        "year": "1995"
+      },
+      {
+        "DOI": "10.1103/PhysRevE.89.043002",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_348_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1983)040<0509:IIASFH>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_349_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1983)040<0521:IIASFH>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_350_1"
+      },
+      {
+        "DOI": "10.1007/BF01330059",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_351_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1993)050<2116:SWITA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_352_1"
+      },
+      {
+        "author": "Rottman J.\u00a0W.",
+        "key": "e_1_2_7_353_1",
+        "volume-title": "Environmental Stratified Flows, Environ. Fluid Mech.",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1999)056<2796:VAPVIM>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_354_1"
+      },
+      {
+        "DOI": "10.2151/jmsj.2013-201",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_355_1"
+      },
+      {
+        "DOI": "10.1029/94JA02808",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_356_1"
+      },
+      {
+        "author": "Samah A.\u00a0A.",
+        "first-page": "185",
+        "key": "e_1_2_7_357_1",
+        "volume-title": "Waves and Turbulence in Stably Stratified Flows",
+        "year": "1993"
+      },
+      {
+        "DOI": "10.1029/95JD00198",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_358_1"
+      },
+      {
+        "DOI": "10.1029/97JD02308",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_359_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2003)60<1024:BEIPVD>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_360_1"
+      },
+      {
+        "DOI": "10.2151/jmsj.80.939",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_361_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2003)060<0667:AASNGW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_362_1"
+      },
+      {
+        "DOI": "10.1175/MWR-D-11-00061.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_363_1"
+      },
+      {
+        "DOI": "10.5194/npg-3-236-1996",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_364_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712454905",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_365_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712152504",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_366_1"
+      },
+      {
+        "DOI": "10.1175/2009JAS3200.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_367_1"
+      },
+      {
+        "author": "Simpson J.\u00a0E.",
+        "first-page": "244",
+        "key": "e_1_2_7_368_1",
+        "volume-title": "Gravity Currents in the Environment and the Laboratory",
+        "year": "1997"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<0507:TGOLWB>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_369_1"
+      },
+      {
+        "DOI": "10.1016/S0065-2687(08)60052-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_370_1"
+      },
+      {
+        "author": "Smith R.\u00a0B.",
+        "key": "e_1_2_7_371_1",
+        "volume-title": "Environmental Stratified Flows",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1175/JAS3836.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_372_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1995)052<0436:PWFBMI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_373_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2002)059<2073:MWOMBI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_374_1"
+      },
+      {
+        "DOI": "10.1175/JAS3631.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_375_1"
+      },
+      {
+        "DOI": "10.1002/qj.103",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_376_1"
+      },
+      {
+        "DOI": "10.1016/0012-8252(88)90069-4",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_377_1"
+      },
+      {
+        "DOI": "10.1017/S0022112091002756",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_378_1"
+      },
+      {
+        "DOI": "10.1023/A:1019910622806",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_379_1"
+      },
+      {
+        "DOI": "10.1007/s10546-014-9942-2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_380_1"
+      },
+      {
+        "author": "Sorbjan Z.",
+        "first-page": "317",
+        "key": "e_1_2_7_381_1",
+        "volume-title": "Structure of the Atmospheric Boundary Layer",
+        "year": "1989"
+      },
+      {
+        "DOI": "10.1007/s10546-008-9310-1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_382_1"
+      },
+      {
+        "DOI": "10.1029/1999GL900270",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_383_1"
+      },
+      {
+        "DOI": "10.1007/s10712-003-1280-8",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_384_1"
+      },
+      {
+        "DOI": "10.1146/annurev.fluid.34.090601.130953",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_385_1"
+      },
+      {
+        "DOI": "10.1201/b13691-33",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_386_1"
+      },
+      {
+        "key": "e_1_2_7_387_1",
+        "unstructured": "Stauffer D.\u00a0R. B.Gaudet N.Seaman L.\u00a0M.\u00a0J.\u00a0C.Wyngaard andS.Richardson(2009) Sub\u2010kilometer numerical predictions in the nocturnal stable boundary layer paper presented at 23rd Conference on Weather Analysis and Forecasting/19th Conference on Numerical Weather Prediction Am. Meteorol. Soc. Omaha Nebr. 1\u20135 June."
+      },
+      {
+        "DOI": "10.1175/2008JAMC1816.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_388_1"
+      },
+      {
+        "DOI": "10.2478/s11600-009-0028-3",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_389_1"
+      },
+      {
+        "DOI": "10.1029/RS004i012p01269",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_390_1"
+      },
+      {
+        "DOI": "10.1175/2010JAS3495.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_391_1"
+      },
+      {
+        "DOI": "10.1017/S0022112000002706",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_392_1"
+      },
+      {
+        "DOI": "10.5194/npg-15-607-2008",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_393_1"
+      },
+      {
+        "key": "e_1_2_7_394_1",
+        "unstructured": "Suarez A. andD.Stauffer(2014) Effects of nonstationary wave structures on rotor development and evolution paper presented at 16th Annual Conference on Mountain Meteorology Am. Meteorol. Soc. San Diego Calif. 18\u201322 Aug."
+      },
+      {
+        "key": "e_1_2_7_395_1",
+        "unstructured": "Suarez A. D.Stauffer andB.Gaudet(2014) Forecast sensitivity of waves and submeso motions to initialization strategy and PBL physics in the stable boundary layer paper presented at 16th Annual Conference on Mountain Meteorology Am. Meteorol. Soc. San Diego Calif. 18\u201322 Aug."
+      },
+      {
+        "author": "Sukoriansky S.",
+        "key": "e_1_2_7_396_1",
+        "volume-title": "Marine Turbulence: Theories, Observations, and Models. Results of the CARTUM Project",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1098/rsta.2012.0212",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_397_1"
+      },
+      {
+        "DOI": "10.1063/1.2009010",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_398_1"
+      },
+      {
+        "DOI": "10.5194/npg-13-9-2006",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_399_1"
+      },
+      {
+        "DOI": "10.1029/2009GL038632",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_400_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-10-05010.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_401_1"
+      },
+      {
+        "DOI": "10.1175/JAMC-D-10-05006.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_402_1"
+      },
+      {
+        "DOI": "10.1023/A:1019969131774",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_403_1"
+      },
+      {
+        "DOI": "10.1023/A:1026097926169",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_404_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-11-082.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_405_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-12-0233.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_406_1"
+      },
+      {
+        "DOI": "10.1175/JAS\u2010D\u201014\u20100129.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_407_1"
+      },
+      {
+        "DOI": "10.1017/CBO9780511780318",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_408_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1994)051<3261:IGWGAH>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_409_1"
+      },
+      {
+        "DOI": "10.1007/s10546-011-9611-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_410_1"
+      },
+      {
+        "DOI": "10.1002/qj.2357",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_411_1"
+      },
+      {
+        "DOI": "10.1175/2009JAS3065.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_412_1"
+      },
+      {
+        "DOI": "10.1175/2007JAS2577.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_413_1"
+      },
+      {
+        "DOI": "10.1002/qj.2008",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_414_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1976)033<1660:FTAITD>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_415_1"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(01)00069-0",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_416_1"
+      },
+      {
+        "DOI": "10.1007/s10546-004-1293-y",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_417_1"
+      },
+      {
+        "DOI": "10.1007/s10546-011-9672-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_418_1"
+      },
+      {
+        "DOI": "10.5194/amtd-4-5529-2011",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_419_1"
+      },
+      {
+        "DOI": "10.1098/rsta.1977.0112",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_420_1"
+      },
+      {
+        "DOI": "10.1029/JC092iC05p05231",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_421_1"
+      },
+      {
+        "DOI": "10.1002/qj.200212858307",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_422_1"
+      },
+      {
+        "DOI": "10.1017/S0022112095000644",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_423_1"
+      },
+      {
+        "DOI": "10.1007/s10546-009-9354-x",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_424_1"
+      },
+      {
+        "DOI": "10.1175/2008JAS2729.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_425_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(2000)128<2423:TLCOAM>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_426_1"
+      },
+      {
+        "DOI": "10.1017/S0022112005006798",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_427_1"
+      },
+      {
+        "DOI": "10.1017/CBO9780511608827",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_428_1"
+      },
+      {
+        "DOI": "10.1002/qj.2004",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_429_1"
+      },
+      {
+        "DOI": "10.1175/2008JTECHA1114.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_430_1"
+      },
+      {
+        "article-title": "Turbulence in katabatic flow. Does it resemble turbulence in stable boundary layers over flat surfaces?",
+        "author": "Avoird E.",
+        "first-page": "39",
+        "journal-title": "Boundary Layer Meteorol.",
+        "key": "e_1_2_7_431_1",
+        "volume": "92",
+        "year": "1999"
+      },
+      {
+        "DOI": "10.1016/j.agrformet.2011.02.012",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_432_1"
+      },
+      {
+        "DOI": "10.1146/annurev-fluid-011212-140730",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_433_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1970)098<0220:TDSOLW>2.3.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_434_1"
+      },
+      {
+        "article-title": "Study of the surface pressure fluctuations generated by waves and turbulence in the nocturnal boundary layer during SABLES2006 field campaign",
+        "author": "Viana S.",
+        "first-page": "55",
+        "journal-title": "Fisica de la Tierra",
+        "key": "e_1_2_7_435_1",
+        "volume": "19",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1007/s10546-009-9420-4",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_436_1"
+      },
+      {
+        "DOI": "10.1175/2010JAS3508.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_437_1"
+      },
+      {
+        "DOI": "10.2478/s11600-011-0072-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_438_1"
+      },
+      {
+        "DOI": "10.1007/s10546-005-9003-y",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_439_1"
+      },
+      {
+        "DOI": "10.5194/npg-15-915-2008",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_440_1"
+      },
+      {
+        "DOI": "10.1002/qj.101",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_441_1"
+      },
+      {
+        "DOI": "10.1007/s10546-008-9272-3",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_442_1"
+      },
+      {
+        "DOI": "10.1017/S0022112099005133",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_443_1"
+      },
+      {
+        "DOI": "10.1017/S0022112008001912",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_444_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1990)047<0101:NEOAUP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_445_1"
+      },
+      {
+        "DOI": "10.1002/jgrd.50514",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_446_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1996)053<3213:OTPADO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_447_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1982)039<1698:NTOGWM>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_448_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1990)047<2211:SAUSOG>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_449_1"
+      },
+      {
+        "author": "Wendoloski E.",
+        "key": "e_1_2_7_450_1",
+        "volume-title": "16th Annual Conference on Mountain Meteorology",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1063/1.33187",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_451_1"
+      },
+      {
+        "article-title": "Raman lidar system for the measurement of water vapor and aerosols in the Earth's atmosphere",
+        "author": "Whiteman D.",
+        "first-page": "3068",
+        "issue": "16",
+        "journal-title": "Atmos. Optics",
+        "key": "e_1_2_7_452_1",
+        "volume": "31",
+        "year": "1992"
+      },
+      {
+        "author": "Whitham G.\u00a0B.",
+        "first-page": "636",
+        "key": "e_1_2_7_453_1",
+        "volume-title": "Linear and Nonlinear Waves",
+        "year": "1974"
+      },
+      {
+        "DOI": "10.1007/BF00120940",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_454_1"
+      },
+      {
+        "DOI": "10.1017/S0022112094004465",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_455_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712757303",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_456_1"
+      },
+      {
+        "DOI": "10.1175/2009JAS3285.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_457_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2004)061<1816:TNMITT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_458_1"
+      },
+      {
+        "DOI": "10.1007/BF00713298",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_459_1"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(01)00068-9",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_460_1"
+      },
+      {
+        "DOI": "10.5194/npg-13-185-2006",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_461_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1983)040<0091:SONDFB>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_462_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1975)032<2309:ASOTWA>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_463_1"
+      },
+      {
+        "DOI": "10.1007/BF00119419",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_464_1"
+      },
+      {
+        "DOI": "10.1139/p67-157",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_465_1"
+      },
+      {
+        "DOI": "10.1007/978-3-642-50052-7",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_466_1"
+      },
+      {
+        "DOI": "10.1175/JAS-D-13-02.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_467_1"
+      },
+      {
+        "DOI": "10.1023/A:1020376832738",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_468_1"
+      },
+      {
+        "DOI": "10.1007/s10546-007-9187-4",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_469_1"
+      },
+      {
+        "DOI": "10.1007/s10546-007-9189-2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_470_1"
+      },
+      {
+        "DOI": "10.1002/qj.264",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_471_1"
+      },
+      {
+        "DOI": "10.1007/s10546-009-9424-0",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_472_1"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9768-8",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_7_473_1"
+      }
+    ],
+    "reference-count": 472,
+    "references-count": 472,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015RG000487"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Reviews of Geophysics"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Review of wave\u2010turbulence interactions in the stable atmospheric boundary layer"
+    ],
+    "type": "journal-article",
+    "volume": "53"
+  },
   "10.1002/asl.172": {
     "DOI": "10.1002/asl.172",
     "ISSN": [
@@ -4665,6 +7637,289 @@
     "subtitle": [],
     "title": [
       "A simplified Extended Kalman Filter for the global operational soil moisture analysis at ECMWF"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1002/crossmark_policy",
+    "volume": "139"
+  },
+  "10.1002/qj.2042": {
+    "DOI": "10.1002/qj.2042",
+    "ISSN": [
+      "0035-9009",
+      "1477-870X"
+    ],
+    "URL": "https://doi.org/10.1002/qj.2042",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Schultz (2012) proposes that our previous arguments regarding the initiation of along\u2010flow geostrophic cold air advection during the upper frontogenesis process are incomplete. The core of his criticism, and the motivation for his call to include additional diagnostic calculations, hinges upon the assertion that the vertical vorticity can rotate isentropes relative to isohypses. In this response we derive an expression for the rate of change of \u2207<jats:italic>\u03d5</jats:italic> that demonstrates that vorticity rotates \u2207<jats:italic>\u03b8</jats:italic> and \u2207<jats:italic>\u03d5</jats:italic> equally, in accord with our original statement to that effect. The derived expression also provides motivation to propose a revision of our previous conceptual model, highlighting the role of deformation instead of vorticity in the differential rotation of \u2207<jats:italic>\u03b8</jats:italic> relative to \u2207<jats:italic>\u03d5</jats:italic> that can contribute to the initiation of along\u2010flow geostrophic temperature advection. Finally, we present a four\u2010year synoptic\u2010climatology suggesting that upper frontogenesis over central North America is, in fact, biased toward environments characterized by northwesterly flow. Copyright \u00a9 2012 Royal Meteorological Society</jats:p>",
+    "alternative-id": [
+      "10.1002/qj.2042"
+    ],
+    "archive": [
+      "Portico"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Publication History",
+          "name": "publication_history"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 0,
+        "value": "2012-03-09"
+      },
+      {
+        "group": {
+          "label": "Publication History",
+          "name": "publication_history"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 1,
+        "value": "2012-08-23"
+      },
+      {
+        "group": {
+          "label": "Publication History",
+          "name": "publication_history"
+        },
+        "label": "Published",
+        "name": "published",
+        "order": 2,
+        "value": "2012-10-30"
+      }
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Lang",
+        "given": "Andrea A.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [],
+        "family": "Martin",
+        "given": "Jonathan E.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Quarterly Journal of the Royal Meteorological Society"
+    ],
+    "content-domain": {
+      "crossmark-restriction": true,
+      "domain": [
+        "rmets.onlinelibrary.wiley.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2012,
+          10,
+          30
+        ]
+      ],
+      "date-time": "2012-10-30T12:11:18Z",
+      "timestamp": 1351599078000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          10,
+          28
+        ]
+      ],
+      "date-time": "2023-10-28T18:59:19Z",
+      "timestamp": 1698519559000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          3,
+          2
+        ]
+      ],
+      "date-time": "2026-03-02T23:56:51Z",
+      "timestamp": 1772495811649,
+      "version": "3.50.1"
+    },
+    "is-referenced-by-count": 5,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0035-9009"
+      },
+      {
+        "type": "electronic",
+        "value": "1477-870X"
+      }
+    ],
+    "issue": "670",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          10,
+          30
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "670",
+      "published-print": {
+        "date-parts": [
+          [
+            2013,
+            1
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2012,
+              10,
+              30
+            ]
+          ],
+          "date-time": "2012-10-30T00:00:00Z",
+          "timestamp": 1351555200000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fqj.2042",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1002/qj.2042",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "311",
+    "original-title": [],
+    "page": "273-279",
+    "prefix": "10.1002",
+    "published": {
+      "date-parts": [
+        [
+          2012,
+          10,
+          30
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2012,
+          10,
+          30
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2013,
+          1
+        ]
+      ]
+    },
+    "publisher": "Wiley",
+    "reference": [
+      {
+        "DOI": "10.1175/JAS-D-11-050.1",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_2_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1988)116<0762:AGOPFF>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_3_1"
+      },
+      {
+        "DOI": "10.1002/qj.551",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_4_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1999)127<2404:TSROGV>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_5_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(1984)112<1577:SAAUCO>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_6_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1994)051<3373:AAOFIN>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_7_1"
+      },
+      {
+        "article-title": "Comment on \u2018The influence of rotational frontogenesis and its associated shearwise vertical motion on the development of an upper\u2010level front\u2019 by A. A. Lang and J. E. Martin (January 2010, 136: 239\u2013252).",
+        "author": "Schultz DM.",
+        "journal-title": "Q. J. R. Meteorol. Soc.",
+        "key": "e_1_2_5_8_1",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1002/qj.49712555910",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_9_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(2002)130<2593:ULFAWT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_5_10_1"
+      }
+    ],
+    "reference-count": 9,
+    "references-count": 9,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.2042"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Quart J Royal Meteoro Soc"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Reply to comments on \u2018The influence of rotational frontogenesis and its associated shearwise vertical motions on the development of an upper\u2010level front\u2019"
     ],
     "type": "journal-article",
     "update-policy": "https://doi.org/10.1002/crossmark_policy",
@@ -9971,6 +13226,936 @@
     "volume": "7"
   },
   "10.1007/BF00718085": {
+    "DOI": "10.1007/bf00718085",
+    "ISSN": [
+      "0006-8314",
+      "1573-1472"
+    ],
+    "URL": "https://doi.org/10.1007/bf00718085",
+    "alternative-id": [
+      "BF00718085"
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Obukhov",
+        "given": "A. M.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [
+      "Boundary-Layer Meteorology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2004,
+          11,
+          30
+        ]
+      ],
+      "date-time": "2004-11-30T11:09:39Z",
+      "timestamp": 1101812979000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          5
+        ]
+      ],
+      "date-time": "2019-04-05T06:51:46Z",
+      "timestamp": 1554447106000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          5
+        ]
+      ],
+      "date-time": "2026-05-05T05:45:21Z",
+      "timestamp": 1777959921081,
+      "version": "3.51.4"
+    },
+    "is-referenced-by-count": 360,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0006-8314"
+      },
+      {
+        "type": "electronic",
+        "value": "1573-1472"
+      }
+    ],
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          1971
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "1",
+      "published-print": {
+        "date-parts": [
+          [
+            1971
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              1971,
+              1,
+              1
+            ]
+          ],
+          "date-time": "1971-01-01T00:00:00Z",
+          "timestamp": 31536000000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00718085.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/article/10.1007/BF00718085/fulltext.html",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00718085",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "7-29",
+    "prefix": "10.1007",
+    "published": {
+      "date-parts": [
+        [
+          1971
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          1971
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "author": "D. Brunt",
+        "key": "CR1",
+        "unstructured": "Brunt, D.: 1941,Physical and Dynamical Meteorology, Cambridge University Press, London.",
+        "volume-title": "Physical and Dynamical Meteorology",
+        "year": "1941"
+      },
+      {
+        "key": "CR2",
+        "unstructured": "Goldstein, S.: 1938,Modern Developments in Fluid Dynamics, Vol.2, Oxford University Press."
+      },
+      {
+        "key": "CR3",
+        "unstructured": "Keller, L. V.: 1930, ?Theory of Convection and Turbulence?,Trudy Glavn. Geofis. Observ. (Works of Main Geophys. Observ.), No. 4."
+      },
+      {
+        "key": "CR4",
+        "unstructured": "Sverdrup, H. U.: 1936, ?Austausch und Stabilit\u00e4t in der untersten Luftschicht?,Meteorolog. Z. 53."
+      },
+      {
+        "key": "CR5",
+        "unstructured": "Velikanov, M. A. (Ed.): 1936,A Collection of Russian Translations of Classical Papers on Turbulence, ONTI Publishing House."
+      }
+    ],
+    "reference-count": 5,
+    "references-count": 5,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "http://link.springer.com/10.1007/BF00718085"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Boundary-Layer Meteorol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Turbulence in an atmosphere with a non-uniform temperature"
+    ],
+    "type": "journal-article",
+    "volume": "2"
+  },
+  "10.1007/bf00119875": {
+    "DOI": "10.1007/bf00119875",
+    "ISSN": [
+      "0006-8314",
+      "1573-1472"
+    ],
+    "URL": "https://doi.org/10.1007/bf00119875",
+    "alternative-id": [
+      "BF00119875"
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "H\u00f6gstr\u00f6m",
+        "given": "Ulf",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [
+      "Boundary-Layer Meteorology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2004,
+          10,
+          31
+        ]
+      ],
+      "date-time": "2004-10-31T02:26:55Z",
+      "timestamp": 1099189615000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2020,
+          4,
+          3
+        ]
+      ],
+      "date-time": "2020-04-03T16:19:45Z",
+      "timestamp": 1585930785000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          29
+        ]
+      ],
+      "date-time": "2026-05-29T16:05:44Z",
+      "timestamp": 1780070744836,
+      "version": "3.54.0"
+    },
+    "is-referenced-by-count": 666,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0006-8314"
+      },
+      {
+        "type": "electronic",
+        "value": "1573-1472"
+      }
+    ],
+    "issue": "1-2",
+    "issued": {
+      "date-parts": [
+        [
+          1988,
+          1
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "1-2",
+      "published-print": {
+        "date-parts": [
+          [
+            1988,
+            1
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              1988,
+              1,
+              1
+            ]
+          ],
+          "date-time": "1988-01-01T00:00:00Z",
+          "timestamp": 567993600000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00119875.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/article/10.1007/BF00119875/fulltext.html",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00119875",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "55-78",
+    "prefix": "10.1007",
+    "published": {
+      "date-parts": [
+        [
+          1988,
+          1
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          1988,
+          1
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1007/BF00122096",
+        "author": "D. D. Baldocchi",
+        "doi-asserted-by": "crossref",
+        "first-page": "43",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR1",
+        "unstructured": "Baldocchi, D. D., Verma, S. B., and Rosenberg, N. J.: 1983, \u2018Characteristics of Air Flow Above and Within Soybean Canopies\u2019, Boundary-Layer Meteorol. 25, 43\u201354.",
+        "volume": "25",
+        "year": "1983"
+      },
+      {
+        "key": "BF00119875_CR2",
+        "unstructured": "Bergstr\u00f6m, H. and H\u00f6gstr\u00f6m, U.: 1978, \u2018Calibration of a Three Axial Fiber Film System for Meteorological Turbulence Measurements\u2019, Dantec Information, submitted."
+      },
+      {
+        "DOI": "10.1175/1520-0469(1971)028<0181:FPRITA>2.0.CO;2",
+        "author": "J. A. Businger",
+        "doi-asserted-by": "crossref",
+        "first-page": "181",
+        "journal-title": "J. Atm. Sci.",
+        "key": "BF00119875_CR3",
+        "unstructured": "Businger, J. A., Wyngaard, J. C., Izumi, Y., and Bradley, E. F.: 1971, \u2018Flux-Profile Relationships in the Atmospheric Surface Layer\u2019, J. Atm. Sci. 28, 181\u2013189.",
+        "volume": "28",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1007/BF00240838",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "363",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR4",
+        "unstructured": "Dyer, A. J.: 1974, \u2018A Review of Flux-Profile Relationships\u2019, Boundary-Layer Meteorol. 7, 363\u2013372.",
+        "volume": "7",
+        "year": "1974"
+      },
+      {
+        "DOI": "10.1007/BF00128053",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "3",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR5",
+        "unstructured": "Dyer, A. J. and Bradley, E. F.: 1982, \u2018An Alternative Analysis of Flux-Gradient Relationships at the 1976 ITCE\u2019, Boundary-Layer Meteorol. 22, 3\u201319.",
+        "volume": "22",
+        "year": "1982"
+      },
+      {
+        "DOI": "10.1002/qj.49709641012",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "715",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "BF00119875_CR6",
+        "unstructured": "Dyer, A. J. and Hicks, B. B.: 1970, \u2018Flux-Gradient Relationships in the Constant Flux Layer\u2019, Quart. J. Roy. Meteorol. Soc. 96, 715\u2013721.",
+        "volume": "96",
+        "year": "1970"
+      },
+      {
+        "DOI": "10.1007/BF00121667",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "181",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR7",
+        "unstructured": "Dyer, A. J., Garratt, J. R., Francey, R. J., Mc Ilroy, I. C., Bacon, N. E., Hyson, P., Bradley, E. F., Denmead, O. T., Tsvang, L. R., Volkov, Y. A., Koprov, B. M., Elagina, L. G., Sahashi, K., Monji, N., Hanafusa, T., Tsukamoto, O., Frenzen, P., Hicks, B. B., Wesley, M., Miyake, M., and Shaw, W.: 1982, \u2018An International Turbulence Comparison Experiment (ITCE 1976)\u2019, Boundary-Layer Meteorol. 24, 181\u2013209.",
+        "volume": "24",
+        "year": "1982"
+      },
+      {
+        "DOI": "10.1007/BF00122097",
+        "author": "Th. Foken",
+        "doi-asserted-by": "crossref",
+        "first-page": "55",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR8",
+        "unstructured": "Foken, Th. and Skeib, G.: 1983, \u2018Profile Measurements in the Atmospheric Near-Surface Layer and the Use of Suitable Universal Functions for the Determination of the Turbulent Energy Exchange\u2019, Boundary-Layer Meteorol. 25, 55\u201362.",
+        "volume": "25",
+        "year": "1983"
+      },
+      {
+        "DOI": "10.1017/S0022112078001251",
+        "author": "M. M. Gibson",
+        "doi-asserted-by": "crossref",
+        "first-page": "491",
+        "journal-title": "J. Fluid Mech.",
+        "key": "BF00119875_CR9",
+        "unstructured": "Gibson, M. M. and Launder, B. E.: 1978, \u2018Ground Effects on Pressure Fluctuations in the Atmospheric Boundary Layer\u2019, J. Fluid Mech. 86, 491\u2013511.",
+        "volume": "86",
+        "year": "1978"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1982)021<1838:ACEOTA>2.0.CO;2",
+        "author": "U. H\u00f6gstr\u00f6m",
+        "doi-asserted-by": "crossref",
+        "first-page": "1838",
+        "journal-title": "J. Appl. Meteorol.",
+        "key": "BF00119875_CR10",
+        "unstructured": "H\u00f6gstr\u00f6m, U.: 1982, \u2018A Critical Evaluation of the Aerodynamical Error of a Turbulence Instrument\u2019, J. Appl. Meteorol. 21, 1838\u20131844.",
+        "volume": "21",
+        "year": "1982"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1985)042<0263:VKCIAB>2.0.CO;2",
+        "author": "U. H\u00f6gstr\u00f6m",
+        "doi-asserted-by": "crossref",
+        "first-page": "263",
+        "journal-title": "J. Atm. Sci.",
+        "key": "BF00119875_CR11",
+        "unstructured": "H\u00f6gstr\u00f6m, U.: 1985, \u2018Von K\u00e1rm\u00e1n's Constant in Atmospheric Boundary Layer Flow: Re-evaluated\u2019, J. Atm. Sci. 42, 263\u2013270.",
+        "volume": "42",
+        "year": "1985"
+      },
+      {
+        "author": "B. M. Koprov",
+        "first-page": "178",
+        "journal-title": "Izv. Atmospheric and Oceanic Physics",
+        "key": "BF00119875_CR12",
+        "unstructured": "Koprov, B. M. and Sokolov, D. Yu.: 1973, \u2018Spatial Correlation Functions of Velocity and Temperature Components in the Surface Layer of the Atmosphere\u2019, Izv. Atmospheric and Oceanic Physics 9, 178\u2013182 (English translation pp. 95\u201398).",
+        "volume": "9",
+        "year": "1973"
+      },
+      {
+        "author": "J. L. Lumley",
+        "key": "BF00119875_CR13",
+        "unstructured": "Lumley, J. L. and Panofsky, H. A.: 1964, The Structure of Atmospheric Turbulence, Interscience, New York, 239 pp.",
+        "volume-title": "The Structure of Atmospheric Turbulence",
+        "year": "1964"
+      },
+      {
+        "DOI": "10.1007/BF00121804",
+        "author": "S. Nicholls",
+        "doi-asserted-by": "crossref",
+        "first-page": "121",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR14",
+        "unstructured": "Nicholls, S. and Smith, F. B.: 1982, \u2018On the Definition of the Flux of Sensible Heat\u2019, Boundary-Layer Meteorol. 24, 121\u2013127.",
+        "volume": "24",
+        "year": "1982"
+      },
+      {
+        "DOI": "10.1063/1.863452",
+        "author": "L. P. Purtell",
+        "doi-asserted-by": "crossref",
+        "first-page": "802",
+        "journal-title": "Phys. Fluids",
+        "key": "BF00119875_CR15",
+        "unstructured": "Purtell, L. P., Klebanoff, P. S., and Buckley, F. T.: 1981, \u2018Turbulent Boundary Layer Flow at Low Reynolds Number\u2019, Phys. Fluids 24, 802\u2013811.",
+        "volume": "24",
+        "year": "1981"
+      },
+      {
+        "author": "K. R. Rasmussen",
+        "first-page": "27",
+        "journal-title": "Disa Information",
+        "key": "BF00119875_CR16",
+        "unstructured": "Rasmussen, K. R., Larsen, S. E., and J\u00f6rgensen, F. E.: 1981, \u2018Study of Flow Deformation Around Wind-Vane Mounted Three-Dimensional Hot-Wire Probes\u2019, Disa Information, 26, 27\u201334.",
+        "volume": "26",
+        "year": "1981"
+      },
+      {
+        "key": "BF00119875_CR17",
+        "unstructured": "Slob, W. H.: 1978, \u2018The Accuracy of Aspiration Thermometers\u2019, KNMI Scientific Report W.R. 78-1, De Bilt, 26 pp."
+      },
+      {
+        "DOI": "10.1175/1520-0426(1987)004<0668:IOSCOM>2.0.CO;2",
+        "doi-asserted-by": "crossref",
+        "key": "BF00119875_CR18",
+        "unstructured": "Smedman, A. S. and Lundin, K.: 1986, \u2018Influence of Sensor Configuration on Measurements of Dry and Wet Bulb Temperature Fluctuations\u2019, J. Atm. and Oceanic Tech., submitted."
+      },
+      {
+        "DOI": "10.1175/1520-0469(1973)030<0234:TLWP>2.0.CO;2",
+        "author": "H. Tennekes",
+        "doi-asserted-by": "crossref",
+        "first-page": "234",
+        "journal-title": "J. Atm. Sci.",
+        "key": "BF00119875_CR19",
+        "unstructured": "Tennekes, H.: 1973, \u2018The Logarithmic Wind Profile\u2019, J. Atm. Sci. 30, 234\u2013238.",
+        "volume": "30",
+        "year": "1973"
+      },
+      {
+        "DOI": "10.1002/qj.49709741404",
+        "author": "A. S. Thom",
+        "doi-asserted-by": "crossref",
+        "first-page": "414",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "BF00119875_CR20",
+        "unstructured": "Thom, A. S.: 1971, \u2018Momentum Absorption by Vegetation\u2019, Quart. J. Roy. Meteorol. Soc. 97, 414\u2013428.",
+        "volume": "97",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1002/qj.49709640708",
+        "author": "E. Webb",
+        "doi-asserted-by": "crossref",
+        "first-page": "67",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "BF00119875_CR21",
+        "unstructured": "Webb, E.: 1970, \u2018Profile Relationships: The Lon-Linear Range and Extension to Strong Stability\u2019, Quart. J. Roy. Meteorol. Soc. 96, 67\u201390.",
+        "volume": "96",
+        "year": "1970"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1981)020<0784:TEOPIF>2.0.CO;2",
+        "author": "J. C. Wyngaard",
+        "doi-asserted-by": "crossref",
+        "first-page": "784",
+        "journal-title": "J. Appl. Meteorol.",
+        "key": "BF00119875_CR22",
+        "unstructured": "Wyngaard, J. C.: 1981, \u2018The Effects of Probe-Induced Flow Distortion on Atmospheric Turbulence Measurements\u2019, J. Appl. Meteorol. 20, 784\u2013794.",
+        "volume": "20",
+        "year": "1981"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1971)028<1171:LFCSAT>2.0.CO;2",
+        "author": "J. C. Wyngaard",
+        "doi-asserted-by": "crossref",
+        "first-page": "1171",
+        "journal-title": "J. Atm. Sci.",
+        "key": "BF00119875_CR23",
+        "unstructured": "Wyngaard, J. C., Cot\u00e9, O. R., and Izumi, Y.: 1971, \u2018Local Free Convection, Similarity and the Budgets of Shear Stress and Heat Flux\u2019, J. Atm. Sci. 28, 1171\u20131182.",
+        "volume": "28",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1007/BF00221826",
+        "author": "A. M. Yaglom",
+        "doi-asserted-by": "crossref",
+        "first-page": "89",
+        "journal-title": "Boundary-Layer Meteorol.",
+        "key": "BF00119875_CR24",
+        "unstructured": "Yaglom, A. M.: 1977, \u2018Comments on Wind and Temperature Flux-Profile Relationships\u2019, Boundary-Layer Meteorol. 11, 89\u2013102.",
+        "volume": "11",
+        "year": "1977"
+      },
+      {
+        "author": "S. S. Zilitinkevich",
+        "first-page": "294",
+        "journal-title": "Izv. Atmospheric and Oceanic Physics",
+        "key": "BF00119875_CR25",
+        "unstructured": "Zilitinkevich, S. S. and Chalikov, D. V.: 1968, \u2018Determining the Universal Wind-Velocity and Temperature Profiles in the Atmospheric Boundary Layer\u2019, Izv. Atmospheric and Oceanic Physics 4, 294\u2013302 (English version: pp. 165\u2013170).",
+        "volume": "4",
+        "year": "1968"
+      }
+    ],
+    "reference-count": 25,
+    "references-count": 25,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "http://link.springer.com/10.1007/BF00119875"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Boundary-Layer Meteorol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Non-dimensional wind and temperature profiles in the atmospheric surface layer: A re-evaluation"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "42"
+  },
+  "10.1007/bf00240838": {
+    "DOI": "10.1007/bf00240838",
+    "ISSN": [
+      "0006-8314",
+      "1573-1472"
+    ],
+    "URL": "https://doi.org/10.1007/bf00240838",
+    "alternative-id": [
+      "BF00240838"
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Dyer",
+        "given": "A. J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [
+      "Boundary-Layer Meteorology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2004,
+          11,
+          18
+        ]
+      ],
+      "date-time": "2004-11-18T07:43:37Z",
+      "timestamp": 1100763817000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          3
+        ]
+      ],
+      "date-time": "2019-04-03T10:44:07Z",
+      "timestamp": 1554288247000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          10
+        ]
+      ],
+      "date-time": "2026-06-10T21:54:48Z",
+      "timestamp": 1781128488657,
+      "version": "3.54.1"
+    },
+    "is-referenced-by-count": 1324,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0006-8314"
+      },
+      {
+        "type": "electronic",
+        "value": "1573-1472"
+      }
+    ],
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          1974,
+          11
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "3",
+      "published-print": {
+        "date-parts": [
+          [
+            1974,
+            11
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              1974,
+              11,
+              1
+            ]
+          ],
+          "date-time": "1974-11-01T00:00:00Z",
+          "timestamp": 152496000000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00240838.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/article/10.1007/BF00240838/fulltext.html",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://link.springer.com/content/pdf/10.1007/BF00240838",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "363-372",
+    "prefix": "10.1007",
+    "published": {
+      "date-parts": [
+        [
+          1974,
+          11
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          1974,
+          11
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1007/BF02265234",
+        "author": "N. E. Busch",
+        "doi-asserted-by": "crossref",
+        "first-page": "213",
+        "journal-title": "Boundary-Layer. Meteorol.",
+        "key": "CR1",
+        "unstructured": "Busch, N. E.: 1973, The Surface Boundary Layer, Boundary-Layer. Meteorol. 4, 213?240.",
+        "volume": "4",
+        "year": "1973"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1971)028<0181:FPRITA>2.0.CO;2",
+        "author": "J. A. Businger",
+        "doi-asserted-by": "crossref",
+        "first-page": "181",
+        "journal-title": "J. Atmospheric Sci.",
+        "key": "CR2",
+        "unstructured": "Businger, J. A., Wyngaard, J. C., Izumi, I., and Bradley, E. F.: 1971, Flux-Profile Relationships in the Atmospheric Surface Layer, J. Atmospheric Sci. 28, 181?189.",
+        "volume": "28",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1002/qj.49709138704",
+        "author": "T. V. Crawford",
+        "doi-asserted-by": "crossref",
+        "first-page": "18",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR3",
+        "unstructured": "Crawford, T. V.: 1965, Moisture Transfer in Free and Forced Convection, Quart. J. Roy. Meteorol. Soc. 91, 18?27.",
+        "volume": "91",
+        "year": "1965"
+      },
+      {
+        "DOI": "10.1002/qj.49709339809",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "501",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR4",
+        "unstructured": "Dyer, A. J.: 1967, The Turbulent Transport of Heat, and Water Vapour in on Unstable Atmosphere, Quart. J. Roy. Meteorol. Soc. 93, 501?508.",
+        "volume": "93",
+        "year": "1967"
+      },
+      {
+        "DOI": "10.1002/qj.49709641012",
+        "author": "A. J. Dyer",
+        "doi-asserted-by": "crossref",
+        "first-page": "715",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR5",
+        "unstructured": "Dyer, A. J. and Hicks, B. B.: 1970, Flux-Gradient Relationships in the Constant Flux Layer, Quart. J. Roy. Meteorol. Soc. 96, 715?721.",
+        "volume": "96",
+        "year": "1970"
+      },
+      {
+        "author": "J. L. Lumley",
+        "key": "CR6",
+        "unstructured": "Lumley, J. L. and Panofsky, H.: 1964, The Structure of Atmospheric Turbulence, Interscience Publishers, New York.",
+        "volume-title": "The Structure of Atmospheric Turbulence",
+        "year": "1964"
+      },
+      {
+        "author": "A. S. Monin",
+        "first-page": "151",
+        "journal-title": "Akad. Nauk. S.S.S.R. Trud. Geofiz. Inst.",
+        "key": "CR7",
+        "unstructured": "Monin, A. S. and Obukhov, A. M.: 1954 Basic Regularity in Turbulent Mixing in the Surface Layer of the Atmosphere, Akad. Nauk. S.S.S.R. Trud. Geofiz. Inst. 24, 151.",
+        "volume": "24",
+        "year": "1954"
+      },
+      {
+        "author": "A. S. Monin",
+        "key": "CR8",
+        "unstructured": "Monin, A. S. and Yaglom, A. M.: 1971, Statistical Fluid Mechanics, Mechanics of Turbulence, MIT Press, Cambridge.",
+        "volume-title": "Statistical Fluid Mechanics, Mechanics of Turbulence",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1002/qj.49709038402",
+        "author": "W. C. Swinbank",
+        "doi-asserted-by": "crossref",
+        "first-page": "119",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR9",
+        "unstructured": "Swinbank, W. C.: 1964, The Exponential Wind-Profile, Quart. J. Roy. Meteorol. Soc. 90, 119?135.",
+        "volume": "90",
+        "year": "1964"
+      },
+      {
+        "DOI": "10.1002/qj.49709440203",
+        "author": "W. C. Swinbank",
+        "doi-asserted-by": "crossref",
+        "first-page": "460",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR10",
+        "unstructured": "Swinbank, W. C.: 1968, A Comparison Between Predictions of Dimensional Analysis for the Constant Flux Layer and Observations in Unstable Conditions, Quart. J. Roy. Meteorol. Soc. 94, 460?467.",
+        "volume": "94",
+        "year": "1968"
+      },
+      {
+        "DOI": "10.1002/qj.49709339808",
+        "author": "W. G. Swinbank",
+        "doi-asserted-by": "crossref",
+        "first-page": "494",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR11",
+        "unstructured": "Swinbank, W. G. and Dyer, A. J.: 1967, An Experimental Study in Micrometeorology, Quart. J. Roy. Meteorol. Soc. 93, 494?500.",
+        "volume": "93",
+        "year": "1967"
+      },
+      {
+        "DOI": "10.1002/qj.49709640708",
+        "author": "E. K. Webb",
+        "doi-asserted-by": "crossref",
+        "first-page": "67",
+        "journal-title": "Quart. J. Roy. Meteorol. Soc.",
+        "key": "CR12",
+        "unstructured": "Webb, E. K.: 1970, Profile Relationships: the Log-Linear Range, and Extension to Strong Stability, Quart. J. Roy. Meteorol. Soc. 96, 67?90.",
+        "volume": "96",
+        "year": "1970"
+      }
+    ],
+    "reference-count": 12,
+    "references-count": 12,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "http://link.springer.com/10.1007/BF00240838"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Boundary-Layer Meteorol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "A review of flux-profile relationships"
+    ],
+    "type": "journal-article",
+    "volume": "7"
+  },
+  "10.1007/bf00718085": {
     "DOI": "10.1007/bf00718085",
     "ISSN": [
       "0006-8314",
@@ -30951,6 +35136,437 @@
     "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
     "volume": "635"
   },
+  "10.1016/s0377-0265(01)00069-0": {
+    "DOI": "10.1016/s0377-0265(01)00069-0",
+    "ISSN": [
+      "0377-0265"
+    ],
+    "URL": "https://doi.org/10.1016/s0377-0265(01)00069-0",
+    "alternative-id": [
+      "S0377026501000690"
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Terradellas",
+        "given": "E.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [],
+        "family": "Morales",
+        "given": "G.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Cuxart",
+        "given": "J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Yag\u00fce",
+        "given": "C.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Dynamics of Atmospheres and Oceans"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2002,
+          7,
+          25
+        ]
+      ],
+      "date-time": "2002-07-25T16:35:06Z",
+      "timestamp": 1027614906000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2021,
+          5,
+          8
+        ]
+      ],
+      "date-time": "2021-05-08T16:22:45Z",
+      "timestamp": 1620490965000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          2,
+          14
+        ]
+      ],
+      "date-time": "2026-02-14T04:40:36Z",
+      "timestamp": 1771044036831,
+      "version": "3.50.1"
+    },
+    "is-referenced-by-count": 49,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0377-0265"
+      }
+    ],
+    "issue": "2-4",
+    "issued": {
+      "date-parts": [
+        [
+          2001,
+          10
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "2-4",
+      "published-print": {
+        "date-parts": [
+          [
+            2001,
+            10
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "https://www.elsevier.com/tdm/userlicense/1.0/",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2001,
+              10,
+              1
+            ]
+          ],
+          "date-time": "2001-10-01T00:00:00Z",
+          "timestamp": 1001894400000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:S0377026501000690?httpAccept=text/xml",
+        "content-type": "text/xml",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:S0377026501000690?httpAccept=text/plain",
+        "content-type": "text/plain",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      }
+    ],
+    "member": "78",
+    "original-title": [],
+    "page": "225-244",
+    "prefix": "10.1016",
+    "published": {
+      "date-parts": [
+        [
+          2001,
+          10
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2001,
+          10
+        ]
+      ]
+    },
+    "publisher": "Elsevier BV",
+    "reference": [
+      {
+        "key": "10.1016/S0377-0265(01)00069-0_BIB1",
+        "unstructured": "Cartwright, 1990. Fourier Methods for Mathematicians, Scientists and Engineers. Ellis Horwood, New York."
+      },
+      {
+        "DOI": "10.1023/A:1002609509707",
+        "article-title": "Stable boundary layer experiment in Spain (SABLES-98): a report",
+        "author": "Cuxart",
+        "doi-asserted-by": "crossref",
+        "first-page": "337",
+        "journal-title": "Bound.-Layer Meteorol.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB2",
+        "volume": "96",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1137/1.9781611970104",
+        "doi-asserted-by": "crossref",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB3",
+        "unstructured": "Daubechies, I., 1991. Ten Lectures on Wavelets. CBMS Lecture Notes Series. SIAM, Philadelphia."
+      },
+      {
+        "DOI": "10.1146/annurev.fl.24.010192.002143",
+        "article-title": "Wavelet transforms and their applications to turbulence",
+        "author": "Farge",
+        "doi-asserted-by": "crossref",
+        "first-page": "395",
+        "journal-title": "Ann. Rev. Fluid Mech.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB4",
+        "volume": "24",
+        "year": "1992"
+      },
+      {
+        "DOI": "10.1256/smsqj.46907",
+        "article-title": "Some observations of turbulence structure in stable layers",
+        "author": "Hunt",
+        "doi-asserted-by": "crossref",
+        "first-page": "793",
+        "journal-title": "Q. J. R. Meteorol. Soc.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB5",
+        "volume": "III",
+        "year": "1985"
+      },
+      {
+        "DOI": "10.1017/S0022112070000605",
+        "article-title": "The mechanics of an organized wave in turbulent shear flow",
+        "author": "Hussain",
+        "doi-asserted-by": "crossref",
+        "first-page": "241",
+        "journal-title": "J. Fluid Mech.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB6",
+        "volume": "41",
+        "year": "1970"
+      },
+      {
+        "DOI": "10.1093/oso/9780195062397.001.0001",
+        "doi-asserted-by": "crossref",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB7",
+        "unstructured": "Kaimal, J.C., Finnigan, J.J., 1994. Atmospheric Boundary Layer Flows. Oxford University Press, New York."
+      },
+      {
+        "DOI": "10.1175/1520-0442(1998)011<2258:TFVOEA>2.0.CO;2",
+        "article-title": "Time\u2013frequency variability of ENSO and stochastic simulations",
+        "author": "Kestin",
+        "doi-asserted-by": "crossref",
+        "first-page": "2258",
+        "journal-title": "J. Climate",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB8",
+        "volume": "11",
+        "year": "1998"
+      },
+      {
+        "DOI": "10.1175/1520-0477(1995)076<2391:CSDUWT>2.0.CO;2",
+        "article-title": "Climate signal detection using wavelet transform. How to make a time series sing",
+        "author": "Lau",
+        "doi-asserted-by": "crossref",
+        "first-page": "2391",
+        "journal-title": "Bull. Am. Med. Soc.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB9",
+        "volume": "76",
+        "year": "1995"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1985)042<2333:VSATIT>2.0.CO;2",
+        "article-title": "Vertical structure and turbulence in the very stable boundary layer",
+        "author": "Mahrt",
+        "doi-asserted-by": "crossref",
+        "first-page": "2333",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB10",
+        "volume": "42",
+        "year": "1985"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1989)046<0079:IOAT>2.0.CO;2",
+        "article-title": "Intermittency of atmospheric turbulence",
+        "author": "Mahrt",
+        "doi-asserted-by": "crossref",
+        "first-page": "79",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB11",
+        "volume": "46",
+        "year": "1989"
+      },
+      {
+        "DOI": "10.1023/A:1001765727956",
+        "article-title": "Stratified atmospheric boundary layers",
+        "author": "Mahrt",
+        "doi-asserted-by": "crossref",
+        "first-page": "375",
+        "journal-title": "Bound.-Layer Meteorol.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB12",
+        "volume": "90",
+        "year": "1999"
+      },
+      {
+        "DOI": "10.1016/B978-012466606-1/50008-8",
+        "doi-asserted-by": "crossref",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB13",
+        "unstructured": "Mallat, S., 1998. A Wavelet Tour of Signal Processing. Academic Press, Cambridge."
+      },
+      {
+        "DOI": "10.1175/1520-0493(1993)121<2858:AITWAI>2.0.CO;2",
+        "article-title": "An introduction to wavelet analysis in oceanography and meteorology: with application to the dispersion of Yanai waves",
+        "author": "Meyers",
+        "doi-asserted-by": "crossref",
+        "first-page": "2858",
+        "journal-title": "Mon. Wea. Rev.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB14",
+        "volume": "121",
+        "year": "1993"
+      },
+      {
+        "key": "10.1016/S0377-0265(01)00069-0_BIB15",
+        "unstructured": "Monin, A.S., Yaglom, A.M., 1971. Statistical Fluid Mechanics Mechanics of Turbulence. MIT Press, Cambridge, MA."
+      },
+      {
+        "article-title": "Studies of internal gravity waves at halley base, antarctica, using wind observations",
+        "author": "Rees",
+        "first-page": "939",
+        "journal-title": "Q. J. R. Meteorol. Soc.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB16",
+        "volume": "114",
+        "year": "1988"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2000)057<0511:ACSOIG>2.0.CO;2",
+        "article-title": "A climatological study of internal gravity waves in the atmospheric boundary layer overlying the brunt ice shelf, Antarctica",
+        "author": "Rees",
+        "doi-asserted-by": "crossref",
+        "first-page": "511",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB17",
+        "volume": "57",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1007/BF00116064",
+        "article-title": "Observation of a multi-level turbulence structure in a very stable atmospheric boundary level",
+        "author": "Smedman",
+        "doi-asserted-by": "crossref",
+        "first-page": "230",
+        "journal-title": "Bound.-Layer Meteorol.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB18",
+        "volume": "44",
+        "year": "1988"
+      },
+      {
+        "DOI": "10.1007/978-94-009-3027-8",
+        "doi-asserted-by": "crossref",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB19",
+        "unstructured": "Stull, R.B., 1988. An Introduction to Boundary Layer Meteorology. Kluwer Academic Publishers, Boston."
+      },
+      {
+        "DOI": "10.1007/BF00120074",
+        "article-title": "The local effect of intermittency in the inertial subrange energy spectrum of the atmospheric surface layer",
+        "author": "Szilagyi",
+        "doi-asserted-by": "crossref",
+        "first-page": "35",
+        "journal-title": "Bound.-Layer Meteorol.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB20",
+        "volume": "79",
+        "year": "1996"
+      },
+      {
+        "article-title": "A practical guide to wavelet analysis",
+        "author": "Torrence",
+        "first-page": "1",
+        "journal-title": "Bull. Am. Med. Soc.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB21",
+        "volume": "79",
+        "year": "1998"
+      },
+      {
+        "DOI": "10.1175/1520-0442(1996)009<1586:TSOTSO>2.0.CO;2",
+        "article-title": "Temporal structure of the southern oscillation as revealed by waveform and wavelet analysis",
+        "author": "Wang",
+        "doi-asserted-by": "crossref",
+        "first-page": "1586",
+        "journal-title": "J. Climate",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB22",
+        "volume": "9",
+        "year": "1996"
+      },
+      {
+        "DOI": "10.1007/BF00713298",
+        "article-title": "The influence of stratification on heat and momentum turbulent transfer in Antarctica",
+        "author": "Yag\u00fce",
+        "doi-asserted-by": "crossref",
+        "first-page": "123",
+        "journal-title": "Bound.-Layer Meteorol.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB23",
+        "volume": "69",
+        "year": "1994"
+      },
+      {
+        "DOI": "10.1016/1352-2310(94)90274-7",
+        "article-title": "Eddy transfer processes in the atmospheric boundary layer",
+        "author": "Yag\u00fce",
+        "doi-asserted-by": "crossref",
+        "first-page": "1275",
+        "journal-title": "Atmos. Environ.",
+        "key": "10.1016/S0377-0265(01)00069-0_BIB24",
+        "volume": "28",
+        "year": "1994"
+      }
+    ],
+    "reference-count": 24,
+    "references-count": 24,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0377026501000690"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Dynamics of Atmospheres and Oceans"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Wavelet methods: application to the study of the stable atmospheric boundary layer under non-stationary conditions"
+    ],
+    "type": "journal-article",
+    "volume": "34"
+  },
   "10.1017/CBO9780511626357": {
     "DOI": "10.1017/cbo9780511626357",
     "ISBN": [
@@ -31783,6 +36399,160 @@
     "type": "journal-article",
     "update-policy": "https://doi.org/10.1002/crossmark_policy",
     "volume": "10"
+  },
+  "10.1017/cbo9780511626357": {
+    "DOI": "10.1017/cbo9780511626357",
+    "ISBN": [
+      "9780521495820",
+      "9780521645645",
+      "9780511626357"
+    ],
+    "URL": "https://doi.org/10.1017/cbo9780511626357",
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Fornberg",
+        "given": "Bengt",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2009,
+          12,
+          24
+        ]
+      ],
+      "date-time": "2009-12-24T09:36:44Z",
+      "timestamp": 1261647404000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2019,
+          11,
+          29
+        ]
+      ],
+      "date-time": "2019-11-29T07:30:56Z",
+      "timestamp": 1575012656000
+    },
+    "edition-number": "1",
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          5,
+          8
+        ]
+      ],
+      "date-time": "2026-05-08T22:15:35Z",
+      "timestamp": 1778278535926,
+      "version": "3.51.4"
+    },
+    "is-referenced-by-count": 580,
+    "isbn-type": [
+      {
+        "type": "print",
+        "value": "9780521495820"
+      },
+      {
+        "type": "print",
+        "value": "9780521645645"
+      },
+      {
+        "type": "electronic",
+        "value": "9780511626357"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1996,
+          1,
+          26
+        ]
+      ]
+    },
+    "license": [
+      {
+        "URL": "https://www.cambridge.org/core/terms",
+        "content-version": "unspecified",
+        "delay-in-days": 5060,
+        "start": {
+          "date-parts": [
+            [
+              2009,
+              12,
+              3
+            ]
+          ],
+          "date-time": "2009-12-03T00:00:00Z",
+          "timestamp": 1259798400000
+        }
+      }
+    ],
+    "member": "56",
+    "original-title": [],
+    "prefix": "10.1017",
+    "published": {
+      "date-parts": [
+        [
+          1996,
+          1,
+          26
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2009,
+          12,
+          3
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          1996,
+          1,
+          26
+        ]
+      ]
+    },
+    "publisher": "Cambridge University Press",
+    "reference-count": 0,
+    "references-count": 0,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://www.cambridge.org/core/product/identifier/9780511626357/type/book"
+      }
+    },
+    "score": 1,
+    "short-container-title": [],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "A Practical Guide to Pseudospectral Methods"
+    ],
+    "type": "monograph"
   },
   "10.1017/jfm.2016.311": {
     "DOI": "10.1017/jfm.2016.311",
@@ -32920,6 +37690,354 @@
     ],
     "type": "journal-article",
     "volume": "656"
+  },
+  "10.1017/s1350482703005085": {
+    "DOI": "10.1017/s1350482703005085",
+    "ISSN": [
+      "1350-4827",
+      "1469-8080"
+    ],
+    "URL": "https://doi.org/10.1017/s1350482703005085",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>A three\u2010dimensional numerical model for mountain waves is described and validated against radiosonde observations over the Isle of Arran, south\u2010west Scotland. The model is based on the Boussinesq equations of motion linearised about a background profile of wind, potential temperature and density. The equations are discretised using finite\u2010difference approximations and the time dependence is retained. Solutions are then computed by integrating forward the equations in time until a stationary mountain\u2010wave field is obtained. Data from radiosondes, launched during fieldwork on Arran during February and March 2000, are used to represent the background flow and model simulations of the wave field are compared directly with fluctuations in the ascent rates of the balloons. On average, the model reproduces the observed maximum peak\u2010to\u2010peak vertical velocity to within about 0.6 ms<jats:sup>\u22121</jats:sup>. In many cases the accuracy of the simulations is even better than this: the model vertical velocity along the path of the radiosondes agree well with fluctuations in the balloon ascent rate. The sensitivity of the model results to the wave \u2018launching height\u2019 is discussed. The model was also used to provide forecasts of wave activity during the field campaign. In this case, rather than using radiosonde data to represent the background flow, data were extracted from a global forecast model. The accuracy of these forecasts is examined and the viability of using such a model to provide routine operational high\u2010resolution mountain\u2010wave forecasts for specific sites is discussed. Copyright \u00a9 2003 Royal Meteorological Society</jats:p>",
+    "alternative-id": [
+      "10.1017/S1350482703005085"
+    ],
+    "archive": [
+      "Portico"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Publication History",
+          "name": "publication_history"
+        },
+        "label": "Published",
+        "name": "published",
+        "order": 2,
+        "value": "2006-12-29"
+      }
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Vosper",
+        "given": "Simon",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [
+      "Meteorological Applications"
+    ],
+    "content-domain": {
+      "crossmark-restriction": true,
+      "domain": [
+        "rmets.onlinelibrary.wiley.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2003,
+          3,
+          17
+        ]
+      ],
+      "date-time": "2003-03-17T11:55:35Z",
+      "timestamp": 1047902135000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          11,
+          21
+        ]
+      ],
+      "date-time": "2023-11-21T01:39:12Z",
+      "timestamp": 1700530752000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          4,
+          6
+        ]
+      ],
+      "date-time": "2026-04-06T06:06:11Z",
+      "timestamp": 1775455571423,
+      "version": "3.50.1"
+    },
+    "is-referenced-by-count": 22,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1350-4827"
+      },
+      {
+        "type": "electronic",
+        "value": "1469-8080"
+      }
+    ],
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2003,
+          3
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "1",
+      "published-print": {
+        "date-parts": [
+          [
+            2003,
+            3
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor",
+        "content-version": "vor",
+        "delay-in-days": 1399,
+        "start": {
+          "date-parts": [
+            [
+              2006,
+              12,
+              29
+            ]
+          ],
+          "date-time": "2006-12-29T00:00:00Z",
+          "timestamp": 1167350400000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1017%2FS1350482703005085",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1017/S1350482703005085",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "311",
+    "original-title": [],
+    "page": "75-86",
+    "prefix": "10.1002",
+    "published": {
+      "date-parts": [
+        [
+          2003,
+          3
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2006,
+          12,
+          29
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2003,
+          3
+        ]
+      ]
+    },
+    "publisher": "Wiley",
+    "reference": [
+      {
+        "DOI": "10.1175/1520-0434(1994)009<0241:AAFFMW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_2_1"
+      },
+      {
+        "DOI": "10.1017/S0022112067000515",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_3_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712757108",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_4_1"
+      },
+      {
+        "DOI": "10.1256/003590002320373247",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_5_1"
+      },
+      {
+        "article-title": "A simplified calculation of maximum vertical velocities in mountain lee waves",
+        "author": "Casswell S. A.",
+        "first-page": "68",
+        "journal-title": "Meteorol. Mag.",
+        "key": "e_1_2_1_6_1",
+        "volume": "95",
+        "year": "1966"
+      },
+      {
+        "DOI": "10.1017/S0022112098002833",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_7_1"
+      },
+      {
+        "DOI": "10.1017/S1350482798000802",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_8_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(2002)059<0186:TDOMWI>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_9_1"
+      },
+      {
+        "DOI": "10.1175/1520-0493(2000)128<0901:AIOMPW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_10_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1975)032<0320:TDOWID>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_11_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712656909",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_12_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1998)055<1429:AMSONT>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_13_1"
+      },
+      {
+        "key": "e_1_2_1_14_1",
+        "unstructured": "Ohlmann K.(2001)Breaking new ground: How I flew 2 463 km.Sailplane and Gliding February\u2013March 40\u201345."
+      },
+      {
+        "key": "e_1_2_1_15_1",
+        "unstructured": "Rees J. M.(1988)Studies of internal gravity waves in the stably stratified troposphere. PhD thesis University of Leeds."
+      },
+      {
+        "DOI": "10.1002/qj.49708636905",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_16_1"
+      },
+      {
+        "DOI": "10.1002/qj.49708837805",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_17_1"
+      },
+      {
+        "DOI": "10.1002/qj.49707532308",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_18_1"
+      },
+      {
+        "DOI": "10.1017/S1350482797000340",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_19_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712454905",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_20_1"
+      },
+      {
+        "DOI": "10.1002/qj.49711951102",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_21_1"
+      },
+      {
+        "DOI": "10.1002/qj.49712555920",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_22_1"
+      },
+      {
+        "DOI": "10.1111/j.2153-3490.1980.tb00962.x",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_23_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1985)042<2597:OSDW>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_24_1"
+      },
+      {
+        "DOI": "10.1175/1520-0469(1988)045<3889:LTOSFP>2.0.CO;2",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_25_1"
+      },
+      {
+        "article-title": "Gravity\u2010wave drag on two mountains",
+        "author": "Vosper S. B.",
+        "first-page": "30",
+        "journal-title": "Q. J. R. Meteorol. Soc.",
+        "key": "e_1_2_1_26_1",
+        "volume": "907",
+        "year": "1996"
+      },
+      {
+        "DOI": "10.1002/qj.49712253404",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_27_1"
+      },
+      {
+        "DOI": "10.1256/00359000260498851",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_28_1"
+      },
+      {
+        "DOI": "10.1029/1999JD900054",
+        "doi-asserted-by": "publisher",
+        "key": "e_1_2_1_29_1"
+      }
+    ],
+    "reference-count": 28,
+    "references-count": 28,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://rmets.onlinelibrary.wiley.com/doi/10.1017/S1350482703005085"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Meteorological Applications"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Development and testing of a high resolution mountain\u2010wave forecasting system"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1002/crossmark_policy",
+    "volume": "10"
   },
   "10.1063/1.3599701": {
     "DOI": "10.1063/1.3599701",
@@ -38554,6 +43672,662 @@
     "volume": "83"
   },
   "10.1175/JAS-D-13-0182.1": {
+    "DOI": "10.1175/jas-d-13-0182.1",
+    "ISSN": [
+      "0022-4928",
+      "1520-0469"
+    ],
+    "URL": "https://doi.org/10.1175/jas-d-13-0182.1",
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Time series are characterized by a myriad of different shapes and structures. A number of events that appear in atmospheric time series result from as yet unidentified physical mechanisms. This is particularly the case for stable boundary layers, where the usual statistical turbulence approaches do not work well and increasing evidence relates the bulk of their dynamics to generally unknown individual events.</jats:p>\n               <jats:p>This study explores the possibility of extracting and classifying events from time series without previous knowledge of their generating mechanisms. The goal is to group large numbers of events in a useful way that will open a pathway for the detailed study of their characteristics, and help to gain understanding of events with previously unknown origin. A two-step method is developed that extracts events from background fluctuations and groups dynamically similar events into clusters. The method is tested on artificial time series with different levels of complexity and on atmospheric turbulence time series. The results indicate that the method successfully recognizes and classifies various events of unknown origin and even distinguishes different physical characteristics based only on a single-variable time series. The method is simple and highly flexible, and it does not assume any knowledge about the shape geometries, amplitudes, or underlying physical mechanisms. Therefore, with proper modifications, it can be applied to time series from a wider range of research areas.</jats:p>",
+    "author": [
+      {
+        "affiliation": [
+          {
+            "name": "School of Mathematical Sciences, Monash University, Melbourne, Victoria, Australia"
+          }
+        ],
+        "family": "Kang",
+        "given": "Yanfei",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "School of Mathematical Sciences, Monash University, Melbourne, Victoria, Australia"
+          }
+        ],
+        "family": "Belu\u0161i\u0107",
+        "given": "Danijel",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [
+          {
+            "name": "School of Mathematical Sciences, Monash University, Melbourne, Victoria, Australia"
+          }
+        ],
+        "family": "Smith-Miles",
+        "given": "Kate",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      }
+    ],
+    "container-title": [
+      "Journal of the Atmospheric Sciences"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": []
+    },
+    "created": {
+      "date-parts": [
+        [
+          2013,
+          11,
+          8
+        ]
+      ],
+      "date-time": "2013-11-08T20:56:35Z",
+      "timestamp": 1383944195000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          7
+        ]
+      ],
+      "date-time": "2020-12-07T20:58:05Z",
+      "timestamp": 1607374685000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          2,
+          14
+        ]
+      ],
+      "date-time": "2026-02-14T21:32:14Z",
+      "timestamp": 1771104734187,
+      "version": "3.50.1"
+    },
+    "is-referenced-by-count": 32,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "0022-4928"
+      },
+      {
+        "type": "electronic",
+        "value": "1520-0469"
+      }
+    ],
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          2,
+          27
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "3",
+      "published-print": {
+        "date-parts": [
+          [
+            2014,
+            3,
+            1
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "link": [
+      {
+        "URL": "http://journals.ametsoc.org/jas/article-pdf/71/3/1090/3646647/jas-d-13-0182_1.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "http://journals.ametsoc.org/jas/article-pdf/71/3/1090/3646647/jas-d-13-0182_1.pdf",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "12",
+    "original-title": [],
+    "page": "1090-1104",
+    "prefix": "10.1175",
+    "published": {
+      "date-parts": [
+        [
+          2014,
+          2,
+          27
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2014,
+          2,
+          27
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2014,
+          3,
+          1
+        ]
+      ]
+    },
+    "publisher": "American Meteorological Society",
+    "reference": [
+      {
+        "DOI": "10.1175/1520-0469(1979)036<0099:TRITAS>2.0.CO;2",
+        "article-title": "Temperature ramps in the atmospheric surface layer",
+        "author": "Antonia",
+        "doi-asserted-by": "crossref",
+        "first-page": "99",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "2020061202062428800_bib1",
+        "volume": "36",
+        "year": "1979"
+      },
+      {
+        "DOI": "10.1175/2010BAMS2797.1",
+        "article-title": "The nature, theory, and modeling of atmospheric planetary boundary layers",
+        "author": "Baklanov",
+        "doi-asserted-by": "crossref",
+        "first-page": "123",
+        "journal-title": "Bull. Amer. Meteor. Soc.",
+        "key": "2020061202062428800_bib2",
+        "volume": "92",
+        "year": "2011"
+      },
+      {
+        "author": "Banerjee",
+        "key": "2020061202062428800_bib3",
+        "year": "1993"
+      },
+      {
+        "DOI": "10.1007/s10546-007-9190-9",
+        "article-title": "Long-term study of coherent structures in the atmospheric surface layer",
+        "author": "Barthlott",
+        "doi-asserted-by": "crossref",
+        "first-page": "1",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib4",
+        "volume": "125",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1029/2011JD016987",
+        "article-title": "Is geometry more universal than physics in atmospheric boundary layer flow?",
+        "author": "Belu\u0161i\u0107",
+        "doi-asserted-by": "crossref",
+        "first-page": "D09115",
+        "journal-title": "J. Geophys. Res.",
+        "key": "2020061202062428800_bib5",
+        "volume": "117",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1175/JAMC-D-12-0306.1",
+        "article-title": "Wind regimes associated with a mountain gap at the northeastern Adriatic coast",
+        "author": "Belu\u0161i\u0107",
+        "doi-asserted-by": "crossref",
+        "first-page": "2089",
+        "journal-title": "J. Appl. Meteor. Climatol.",
+        "key": "2020061202062428800_bib6",
+        "volume": "52",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1016/S0377-0265(01)00067-7",
+        "article-title": "Turbulence statistics of a Kelvin\u2013Helmholtz billow event observed in the night-time boundary layer during the Cooperative Atmosphere\u2013Surface Exchange Study field program",
+        "author": "Blumen",
+        "doi-asserted-by": "crossref",
+        "first-page": "189",
+        "journal-title": "Dyn. Atmos. Oceans",
+        "key": "2020061202062428800_bib7",
+        "volume": "34",
+        "year": "2001"
+      },
+      {
+        "DOI": "10.1590/S0103-97332009000100002",
+        "article-title": "Comparisons between two wavelet functions in extracting coherent structures from solar wind time series",
+        "author": "Bolzan",
+        "doi-asserted-by": "crossref",
+        "first-page": "12",
+        "journal-title": "Braz. J. Phys.",
+        "key": "2020061202062428800_bib8",
+        "volume": "39",
+        "year": "2009"
+      },
+      {
+        "DOI": "10.1080/01621459.1970.10481180",
+        "article-title": "Distribution of residual autocorrelations in autoregressive-integrated moving average time series models",
+        "author": "Box",
+        "doi-asserted-by": "crossref",
+        "first-page": "1509",
+        "journal-title": "J. Amer. Stat. Assoc.",
+        "key": "2020061202062428800_bib9",
+        "volume": "65",
+        "year": "1970"
+      },
+      {
+        "DOI": "10.1098/rsta.2007.2118",
+        "article-title": "Searching chaos and coherent structures in the atmospheric turbulence above the Amazon forest",
+        "author": "Campanharo",
+        "doi-asserted-by": "crossref",
+        "first-page": "579",
+        "journal-title": "Philos. Trans. Roy. Soc",
+        "key": "2020061202062428800_bib10",
+        "volume": "A366",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1023/A:1022162030155",
+        "article-title": "Coherent structures detected in atmospheric boundary-layer turbulence using wavelet transforms at Huaihe River Basin, China",
+        "author": "Chen",
+        "doi-asserted-by": "crossref",
+        "first-page": "429",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib11",
+        "volume": "107",
+        "year": "2003"
+      },
+      {
+        "DOI": "10.1023/A:1000342918158",
+        "article-title": "Coherent eddies and temperature structure functions for three contrasting surfaces. Part II: Renewal model for sensible heat flux",
+        "author": "Chen",
+        "doi-asserted-by": "crossref",
+        "first-page": "125",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib12",
+        "volume": "84",
+        "year": "1997"
+      },
+      {
+        "DOI": "10.1175/JAS-D-12-0213.1",
+        "article-title": "Detecting signal from data with noise: Theory and applications",
+        "author": "Chen",
+        "doi-asserted-by": "crossref",
+        "first-page": "1489\u20131504",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "2020061202062428800_bib13",
+        "volume": "70",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.5194/npg-15-567-2008",
+        "article-title": "Analysis of phase coherence in fully developed atmospheric turbulence: Amazon forest canopy",
+        "author": "Chian",
+        "doi-asserted-by": "crossref",
+        "first-page": "567",
+        "journal-title": "Nonlinear Processes Geophys.",
+        "key": "2020061202062428800_bib14",
+        "volume": "15",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1007/BF00705459",
+        "article-title": "Detection of turbulent coherent motions in a forest canopy Part II: Time-scales and conditional averages",
+        "author": "Collineau",
+        "doi-asserted-by": "crossref",
+        "first-page": "49",
+        "issue": "1\u20132",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib15",
+        "volume": "66",
+        "year": "1993"
+      },
+      {
+        "author": "Dahlhaus",
+        "key": "2020061202062428800_bib16",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1175/BAMS-84-3-353",
+        "article-title": "Tracking hurricanes",
+        "author": "Elsner",
+        "doi-asserted-by": "crossref",
+        "first-page": "353",
+        "journal-title": "Bull. Amer. Meteor. Soc.",
+        "key": "2020061202062428800_bib17",
+        "volume": "84",
+        "year": "2003"
+      },
+      {
+        "author": "Enders",
+        "key": "2020061202062428800_bib18",
+        "year": "2003"
+      },
+      {
+        "author": "Fu",
+        "first-page": "26",
+        "key": "2020061202062428800_bib19",
+        "year": "2001"
+      },
+      {
+        "DOI": "10.1029/2000RG000092",
+        "article-title": "Advanced spectral methods for climatic time series",
+        "author": "Ghil",
+        "doi-asserted-by": "crossref",
+        "first-page": "1003",
+        "journal-title": "Rev. Geophys.",
+        "key": "2020061202062428800_bib20",
+        "volume": "40",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1016/S0167-6105(00)00048-9",
+        "article-title": "Coherent structure detection using wavelet analysis in long time-series",
+        "author": "Gilliam",
+        "doi-asserted-by": "crossref",
+        "first-page": "183",
+        "journal-title": "J. Wind Eng. Ind. Aerodyn.",
+        "key": "2020061202062428800_bib21",
+        "volume": "88",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1175/JAM2512.1",
+        "article-title": "On the analysis of atmospheric and climatic time series",
+        "author": "Gluhovsky",
+        "doi-asserted-by": "crossref",
+        "first-page": "1125",
+        "journal-title": "J. Appl. Meteor. Climatol.",
+        "key": "2020061202062428800_bib22",
+        "volume": "46",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1175/BAMS-D-11-00187.1",
+        "article-title": "Stable atmospheric boundary layers and diurnal cycles\u2014Challenges for weather and climate models",
+        "author": "Holtslag",
+        "doi-asserted-by": "crossref",
+        "first-page": "1691",
+        "journal-title": "Bull. Amer. Meteor. Soc.",
+        "key": "2020061202062428800_bib23",
+        "year": "2013"
+      },
+      {
+        "author": "Keogh",
+        "first-page": "102",
+        "key": "2020061202062428800_bib24",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1007/s10115-004-0172-7",
+        "article-title": "Clustering of time-series subsequences is meaningless: Implications for previous and future research",
+        "author": "Keogh",
+        "doi-asserted-by": "crossref",
+        "first-page": "154",
+        "journal-title": "Knowl. Inf. Syst.",
+        "key": "2020061202062428800_bib25",
+        "volume": "8",
+        "year": "2005"
+      },
+      {
+        "author": "Kuznetsov",
+        "key": "2020061202062428800_bib26",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1175/2010JAMC2560.1",
+        "article-title": "Surface wind direction variability",
+        "author": "Mahrt",
+        "doi-asserted-by": "crossref",
+        "first-page": "144",
+        "journal-title": "J. Appl. Meteor. Climatol.",
+        "key": "2020061202062428800_bib27",
+        "volume": "50",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1175/BAMS-D-12-00235.1",
+        "article-title": "Determining wave\u2013turbulence interactions in the stable boundary layer",
+        "author": "Nappo",
+        "doi-asserted-by": "crossref",
+        "journal-title": "Bull. Amer. Meteor. Soc.",
+        "key": "2020061202062428800_bib28",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1016/0165-1889(88)90043-7",
+        "article-title": "Trends and random walks in macroeconomic time series: Further evidence from a new approach",
+        "author": "Perron",
+        "doi-asserted-by": "crossref",
+        "first-page": "297",
+        "journal-title": "J. Econ. Dyn. Control",
+        "key": "2020061202062428800_bib29",
+        "volume": "12",
+        "year": "1988"
+      },
+      {
+        "DOI": "10.1175/2009JCLI2777.1",
+        "article-title": "Objective classification of tropical mesoscale convective systems",
+        "author": "Pope",
+        "doi-asserted-by": "crossref",
+        "first-page": "5797",
+        "journal-title": "J. Climate",
+        "key": "2020061202062428800_bib30",
+        "volume": "22",
+        "year": "2009"
+      },
+      {
+        "DOI": "10.1175/1520-0477(2002)083<0555:CACIOT>2.3.CO;2",
+        "article-title": "CASES-99: A comprehensive investigation of the stable nocturnal boundary layer",
+        "author": "Poulos",
+        "doi-asserted-by": "crossref",
+        "first-page": "555",
+        "journal-title": "Bull. Amer. Meteor. Soc.",
+        "key": "2020061202062428800_bib31",
+        "volume": "83",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1016/0167-2789(92)90100-2",
+        "article-title": "Distinguishing between low-dimensional dynamics and randomness in measured time series",
+        "author": "Provenzale",
+        "doi-asserted-by": "crossref",
+        "first-page": "31",
+        "issue": "1\u20134",
+        "journal-title": "Physica D",
+        "key": "2020061202062428800_bib32",
+        "volume": "58",
+        "year": "1992"
+      },
+      {
+        "key": "2020061202062428800_bib33",
+        "unstructured": "R Core Team, 2013: R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, 3551 pp."
+      },
+      {
+        "DOI": "10.1007/s10546-012-9708-7",
+        "article-title": "Techniques for the eduction of coherent structures from flow measurements in the atmospheric boundary layer",
+        "author": "Segalini",
+        "doi-asserted-by": "crossref",
+        "first-page": "433",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib34",
+        "volume": "143",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9742-5",
+        "article-title": "Structure function analysis of two-scale scalar ramps. Part I: Theory and modelling",
+        "author": "Shapland",
+        "doi-asserted-by": "crossref",
+        "first-page": "5",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib35",
+        "volume": "145",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1007/s10546-012-9740-7",
+        "article-title": "Structure function analysis of two-scale scalar ramps. Part II: Ramp characteristics and surface renewal flux estimation",
+        "author": "Shapland",
+        "doi-asserted-by": "crossref",
+        "first-page": "27",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib36",
+        "volume": "145",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1175/JAS-D-11-082.1",
+        "article-title": "Turbulence regimes and turbulence intermittency in the stable boundary layer during CASES-99",
+        "author": "Sun",
+        "doi-asserted-by": "crossref",
+        "first-page": "338",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "2020061202062428800_bib37",
+        "volume": "69",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1007/s00704-004-0093-0",
+        "article-title": "Detection of long-term coherent exchange over spruce forest using wavelet analysis",
+        "author": "Thomas",
+        "doi-asserted-by": "crossref",
+        "first-page": "91",
+        "journal-title": "Theor. Appl. Climatol.",
+        "key": "2020061202062428800_bib38",
+        "volume": "80",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1007/s10546-006-9087-z",
+        "article-title": "Organised motion in a tall spruce canopy: Temporal scales, structure spacing and terrain effects",
+        "author": "Thomas",
+        "doi-asserted-by": "crossref",
+        "first-page": "123",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib39",
+        "volume": "122",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1007/s10546-005-9038-0",
+        "article-title": "Analysis of low-frequency turbulence above tall vegetation using a Doppler sodar",
+        "author": "Thomas",
+        "doi-asserted-by": "crossref",
+        "first-page": "563",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib40",
+        "volume": "119",
+        "year": "2006"
+      },
+      {
+        "author": "Tsay",
+        "key": "2020061202062428800_bib41",
+        "year": "2005"
+      },
+      {
+        "author": "von Storch",
+        "key": "2020061202062428800_bib42",
+        "year": "1999"
+      },
+      {
+        "DOI": "10.1007/s10618-005-0039-x",
+        "article-title": "Characteristic-based clustering for time series data",
+        "author": "Wang",
+        "doi-asserted-by": "crossref",
+        "first-page": "335",
+        "journal-title": "Data Min. Knowl. Discovery",
+        "key": "2020061202062428800_bib43",
+        "volume": "13",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1175/1520-0450(1995)034<1133:ACSFWF>2.0.CO;2",
+        "article-title": "Automated classification scheme for wind fields",
+        "author": "Weber",
+        "doi-asserted-by": "crossref",
+        "first-page": "1133",
+        "journal-title": "J. Appl. Meteor.",
+        "key": "2020061202062428800_bib44",
+        "volume": "34",
+        "year": "1995"
+      },
+      {
+        "article-title": "Large-scale eddies in the unstably stratified atmospheric surface layer. Part I: Velocity and temperature structure",
+        "author": "Wilczak",
+        "first-page": "3537\u20133550",
+        "journal-title": "J. Atmos. Sci.",
+        "key": "2020061202062428800_bib45",
+        "volume": "41",
+        "year": "1984"
+      },
+      {
+        "DOI": "10.1007/BF02042933",
+        "article-title": "The composite shape and structure of coherent eddies in the convective boundary layer",
+        "author": "Williams",
+        "doi-asserted-by": "crossref",
+        "first-page": "213",
+        "journal-title": "Bound.-Layer Meteor.",
+        "key": "2020061202062428800_bib46",
+        "volume": "61",
+        "year": "1992"
+      },
+      {
+        "author": "Williams",
+        "key": "2020061202062428800_bib47",
+        "year": "2011"
+      }
+    ],
+    "reference-count": 47,
+    "references-count": 47,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://journals.ametsoc.org/doi/10.1175/JAS-D-13-0182.1"
+      }
+    },
+    "score": 1,
+    "short-container-title": [],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Detecting and Classifying Events in Noisy Time Series"
+    ],
+    "type": "journal-article",
+    "volume": "71"
+  },
+  "10.1175/jas-d-13-0182.1": {
     "DOI": "10.1175/jas-d-13-0182.1",
     "ISSN": [
       "0022-4928",

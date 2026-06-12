@@ -60,3 +60,25 @@ end
     @test -1.0 <= ξ <= 1.0
     @test J1 > 0.0
 end
+
+@testset "to_latex dispatch" begin
+    lm = LinearMap(0.0, 1000.0)
+    lm_doc = to_latex(lm)
+    @test occursin("Uniform Linear Coordinate Transformation", lm_doc)
+    @test occursin("\\mathcal{F}(z)", lm_doc)
+    @test !occursin("\$\$", lm_doc)
+
+    hm = HyperbolicMap(0.0, 1000.0, 3.0)
+    hm_doc = to_latex(hm)
+    @test occursin("Clustered Hyperbolic Stretched Grid Transformation", hm_doc)
+    @test occursin("\\alpha = 3.0", hm_doc)
+
+    tm = TanhMap(0.5, 50.0, 2.3)
+    tm_doc = to_latex(tm)
+    @test occursin("Symmetric Hyperbolic Tangent Transformation", tm_doc)
+    @test occursin("2.3", tm_doc)
+
+    custom = CustomMap(x -> x, x -> x, _ -> 1.0, _ -> 0.0)
+    custom_doc = to_latex(custom)
+    @test occursin("Arbitrary Numerical Transformation Layer", custom_doc)
+end

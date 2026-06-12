@@ -6,7 +6,7 @@ using LinearAlgebra
 export CoordinateMap, LinearMap, HyperbolicMap, LogarithmicMap, TanhMap, CfdWallMap, CustomMap,
        forward, inverse, dzdξ, d2zdξ2, dξdz, d2ξdz2, is_valid,
     profile_transform, JacobianStack, evaluate_jacobian_stack,
-    map_name, map_parameter_pairs, describe_map
+    map_name, map_parameter_pairs, describe_map, to_latex
 
 abstract type CoordinateMap end
 
@@ -206,6 +206,139 @@ function describe_map(m::CoordinateMap)
         map_type = map_name(m),
         parameters = map_parameter_pairs(m),
     )
+end
+
+"""
+    to_latex(m::CoordinateMap) -> String
+
+Generates a clean, pure LaTeX section string detailing the active analytical
+coordinate mapping and derivative metric relations.
+"""
+function to_latex end
+
+function to_latex(m::CoordinateMap)
+    params = map_parameter_pairs(m)
+    param_rows = isempty(params) ? "(none)" : join(["\\texttt{" * p.first * "} = " * p.second for p in params], ", ")
+    return """
+\\subsection{Coordinate Transformation (\\texttt{$(map_name(m))})}
+The active map type is \\texttt{$(map_name(m))}. Runtime parameter values are:
+\\begin{equation}
+    $(param_rows)
+\\end{equation}
+
+\\begin{equation}
+    \\frac{d\\xi}{dz} = \\left(\\frac{dz}{d\\xi}\\right)^{-1}, \\quad
+    \\frac{d^2\\xi}{dz^2} = -\\frac{\\frac{d^2 z}{d\\xi^2}}{\\left(\\frac{dz}{d\\xi}\\right)^3}
+\\end{equation}
+"""
+end
+
+function to_latex(m::LinearMap)
+    return """
+\\subsection{Uniform Linear Coordinate Transformation (\\texttt{LinearMap})}
+To map the physical field domain \$z \\in [z_{\\min}, z_{\\max}]\$ onto the computational coordinate domain \$\\xi \\in [-1, 1]\$, a linear affine map is used.
+
+\\begin{equation}
+    \\xi = \\mathcal{F}(z) = 2\\left( \\frac{z - z_{\\min}}{z_{\\max} - z_{\\min}} \\right) - 1
+\\end{equation}
+\\begin{equation}
+    z = \\mathcal{G}(\\xi) = z_{\\min} + \\frac{(\\xi + 1)(z_{\\max} - z_{\\min})}{2}
+\\end{equation}
+\\begin{equation}
+    \\frac{dz}{d\\xi} = \\frac{z_{\\max} - z_{\\min}}{2}, \\quad \\frac{d^2z}{d\\xi^2} = 0
+\\end{equation}
+"""
+end
+
+function to_latex(m::HyperbolicMap)
+    L = m.zmax - m.zmin
+    return """
+\\subsection{Clustered Hyperbolic Stretched Grid Transformation (\\texttt{HyperbolicMap})}
+To concentrate node density near sharp stable inversions, a hyperbolic stretch with \$\\alpha = $(m.alpha)\$ is used.
+
+\\begin{equation}
+    \\xi = \\mathcal{F}(z) = \\frac{2(2 + \\alpha)(z - z_{\\min})}{2L + \\alpha(z - z_{\\min})} - 1
+\\end{equation}
+where \$L = z_{\\max} - z_{\\min} = $(L)\\,\\mathrm{m}\$.
+\\begin{equation}
+    z = \\mathcal{G}(\\xi) = z_{\\min} + \\frac{2L(\\xi + 1)}{2(2 + \\alpha) - \\alpha(\\xi + 1)}
+\\end{equation}
+\\begin{equation}
+    \\frac{dz}{d\\xi} = \\frac{4L(2 + \\alpha)}{\\left[2(2 + \\alpha) - \\alpha(\\xi + 1)\\right]^2}
+\\end{equation}
+\\begin{equation}
+    \\frac{d^2z}{d\\xi^2} = \\frac{8L\\alpha(2 + \\alpha)}{\\left[2(2 + \\alpha) - \\alpha(\\xi + 1)\\right]^3}
+\\end{equation}
+"""
+end
+
+function to_latex(m::LogarithmicMap)
+    return """
+\\subsection{Surface Layer Monin-Obukhov Logarithmic Mapping (\\texttt{LogarithmicMap})}
+To capture fine-scale near-surface interactions, a logarithmic transform is applied.
+
+\\begin{equation}
+    \\xi = \\mathcal{F}(z) = \\frac{2 \\ln(z / z_{\\min})}{\\ln(z_{\\max}/z_{\\min})} - 1
+\\end{equation}
+\\begin{equation}
+    z = \\mathcal{G}(\\xi) = z_{\\min} \\exp\\left( \\frac{\\xi + 1}{2} \\ln\\left(\\frac{z_{\\max}}{z_{\\min}}\\right) \\right)
+\\end{equation}
+\\begin{equation}
+    \\frac{dz}{d\\xi} = \\frac{1}{2} \\ln\\left(\\frac{z_{\\max}}{z_{\\min}}\\right) \\cdot z(\\xi), \\quad
+    \\frac{d^2z}{d\\xi^2} = \\frac{1}{4} \\left[\\ln\\left(\\frac{z_{\\max}}{z_{\\min}}\\right)\\right]^2 \\cdot z(\\xi)
+\\end{equation}
+"""
+end
+
+function to_latex(m::TanhMap)
+    zc = (m.zmax + m.zmin) / 2.0
+    L = m.zmax - m.zmin
+    return """
+\\subsection{Symmetric Hyperbolic Tangent Transformation (\\texttt{TanhMap})}
+For centered shear-layer transitions, a symmetric hyperbolic tangent map with \$\\alpha = $(m.α)\$ is applied.
+The geometric midpoint is \$z_c = $(zc)\\,\\mathrm{m}\$ and the span is \$L = $(L)\\,\\mathrm{m}\$.
+
+\\begin{equation}
+    \\xi = \\mathcal{F}(z) = \\frac{1}{\\alpha} \\operatorname{atanh}\\left( \\frac{2(z - z_c)\\tanh(\\alpha)}{L} \\right)
+\\end{equation}
+\\begin{equation}
+    z = \\mathcal{G}(\\xi) = z_c + \\frac{L}{2} \\frac{\\tanh(\\alpha \\xi)}{\\tanh(\\alpha)}
+\\end{equation}
+\\begin{equation}
+    \\frac{dz}{d\\xi} = \\frac{L}{2} \\left( \\frac{\\alpha}{\\tanh(\\alpha)} \\right) \\operatorname{sech}^2(\\alpha \\xi)
+\\end{equation}
+\\begin{equation}
+    \\frac{d^2z}{d\\xi^2} = -L \\left( \\frac{\\alpha^2}{\\tanh(\\alpha)} \\right) \\operatorname{sech}^2(\\alpha \\xi)\\tanh(\\alpha \\xi)
+\\end{equation}
+"""
+end
+
+function to_latex(m::CfdWallMap)
+    return """
+\\subsection{Asymmetric Wall-Bounded Grid Layering (\\texttt{CfdWallMap})}
+To concentrate resolution near the canopy-wall interface while preserving upper-domain coverage, a wall-bounded map with \$z_{\\text{top}} = $(m.ztop)\\,\\mathrm{m}\$ and \$\\delta = $(m.δ)\$ is used.
+
+\\begin{equation}
+    \\xi = \\mathcal{F}(z) = 1 - \\frac{2}{\\delta} \\operatorname{atanh}\\left( \\left(1 - \\frac{z}{z_{\\text{top}}}\\right) \\tanh(\\delta) \\right)
+\\end{equation}
+\\begin{equation}
+    z = \\mathcal{G}(\\xi) = z_{\\text{top}} \\left( 1 - \\frac{\\tanh\\left(\\frac{1}{2}\\delta(1 - \\xi)\\right)}{\\tanh(\\delta)} \\right)
+\\end{equation}
+\\begin{equation}
+    \\frac{dz}{d\\xi} = z_{\\text{top}} \\left( \\frac{\\delta}{2\\tanh(\\delta)} \\right) \\operatorname{sech}^2\\left(\\frac{\\delta(1 - \\xi)}{2}\\right)
+\\end{equation}
+\\begin{equation}
+    \\frac{d^2z}{d\\xi^2} = -z_{\\text{top}} \\left( \\frac{\\delta^2}{2\\tanh(\\delta)} \\right) \\operatorname{sech}^2\\left(\\frac{\\delta(1 - \\xi)}{2}\\right) \\tanh\\left(\\frac{\\delta(1 - \\xi)}{2}\\right)
+\\end{equation}
+"""
+end
+
+function to_latex(m::CustomMap)
+    return """
+\\subsection{Arbitrary Numerical Transformation Layer (\\texttt{CustomMap})}
+An arbitrary user-defined metric map has been instantiated. Forward mapping,
+inverse coordinates, and metric Jacobians are evaluated by custom function backends.
+"""
 end
 
 # ===== UTILITY FUNCTIONS & STACK COMPOSITION =====
