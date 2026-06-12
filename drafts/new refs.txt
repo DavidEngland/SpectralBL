@@ -1,13 +1,3 @@
-/filter Open `drafts/sections/methods.tex` and `drafts/sections/intro.tex`.
-Inject sentences using the Sposini (2018) 'Brownian yet non-Gaussian' paradigm to explain our profile variance distributions.
-Link the non-stationary event detection approaches of Kang et al. (2014a) and Narasimha (1995) to defend why our state estimator targets structural profile deformations ('events') rather than continuous local gradients.
-Cite Sun et al. (2015) and Mahrt (2010) to frame our non-orthogonal Interaction Residual spikes as physical submesoscale wave-turbulence interactions rather than system noise.
-
-Glean and update drafts/**/*.tex files with references as see fit.
-
-Update and standarize drafts/references.bib based upon these BibTex items in "drafts/new refs.txt".
-
-
 @article{greenwade93,
     author  = "George D. Greenwade",
     title   = "The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN})",
