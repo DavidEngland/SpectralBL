@@ -1,0 +1,59 @@
+==================================================================
+NETCDF FILE METADATA SNAPSHOT FOR PIPELINE CONFIGURATION
+SOURCE FILE: /Users/davidengland/Documents/GitHub/SpectralBL/data/gabs3/gabls3_scm_cabauw_obs_v33.nc
+==================================================================
+
+Dimensions:
+  time = 144
+  nv = 2
+  day_in_time_interval = 2
+  zf = 38
+  zt = 38
+  zs = 8
+  zh = 5
+
+Variables present:
+  time, date, valid_dates, time_bnds, cc, hpbl, ldw, lup, qdw, qup, tsk, tsk1, g, shf, lhf, ustar, t2m, q2m, f10m, d10m, v10m, u10m, zf, zt, f, d, u, v, tv, t, th, q, ugeo, vgeo, zs, ts, zh, uw, vw, uwabs, wt
+
+Variable metadata:
+  cc | dims=time | size=144 | units=frac
+  d | dims=zf,time | size=38x144 | units=o
+  d10m | dims=time | size=144 | units=degree
+  date | dims=time | size=144 | units=yyyymmdd
+  f | dims=zf,time | size=38x144 | units=m/s
+  f10m | dims=time | size=144 | units=m s-1
+  g | dims=time | size=144 | units=W/m2
+  hpbl | dims=time | size=144 | units=m
+  ldw | dims=time | size=144 | units=W/m2
+  lhf | dims=time | size=144 | units=W/m2
+  lup | dims=time | size=144 | units=W m-2
+  q | dims=zf,time | size=38x144 | units=kg/kg
+  q2m | dims=time | size=144 | units=kg/kg
+  qdw | dims=time | size=144 | units=W m-2
+  qup | dims=time | size=144 | units=W m-2
+  shf | dims=time | size=144 | units=W/m2
+  t | dims=zf,time | size=38x144 | units=K
+  t2m | dims=time | size=144 | units=K
+  th | dims=zf,time | size=38x144 | units=K
+  time | dims=time | size=144 | units=hours since 2006-07-01 00:00:00 0:00
+  time_bnds | dims=nv,time | size=2x144 | units=
+  ts | dims=zs,time | size=8x144 | units=m
+  tsk | dims=time | size=144 | units=K
+  tsk1 | dims=time | size=144 | units=oC
+  tv | dims=zt,time | size=38x144 | units=K
+  u | dims=zf,time | size=38x144 | units=m/s
+  u10m | dims=time | size=144 | units=m s-1
+  ugeo | dims=zf,time | size=38x144 | units=m/s
+  ustar | dims=time | size=144 | units=m s-1
+  uw | dims=zh,time | size=5x144 | units=m2/s2
+  uwabs | dims=zh,time | size=5x144 | units=m2/s2
+  v | dims=zf,time | size=38x144 | units=m/s
+  v10m | dims=time | size=144 | units=m s-1
+  valid_dates | dims=day_in_time_interval | size=2 | units=
+  vgeo | dims=zf,time | size=38x144 | units=m/s
+  vw | dims=zh,time | size=5x144 | units=m2/s2
+  wt | dims=zh,time | size=5x144 | units=Km/s
+  zf | dims=zf,time | size=38x144 | units=m
+  zh | dims=zh,time | size=5x144 | units=m
+  zs | dims=zs,time | size=8x144 | units=
+  zt | dims=zt,time | size=38x144 | units=m

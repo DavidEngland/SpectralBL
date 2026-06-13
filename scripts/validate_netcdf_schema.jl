@@ -8,13 +8,23 @@ function validate_and_dump_schema(nc_path::String, output_txt_path::String)
     open(output_txt_path, "w") do io
         Dataset(nc_path, "r") do ds
             println(io, "==================================================================")
-            println(io, "CASES-99 NETCDF FILE METADATA SNAPSHOT FOR PIPELINE CONFIGURATION")
+            println(io, "NETCDF FILE METADATA SNAPSHOT FOR PIPELINE CONFIGURATION")
+            println(io, "SOURCE FILE: ", nc_path)
             println(io, "==================================================================")
-            println(io, "Variables present:\n  ", join(keys(ds), ", "), "\n")
-            for var_name in ["height", "theta", "u", "v"]
-                if haskey(ds, var_name)
-                    println(io, "Variable '$var_name' Info -> Size: ", size(ds[var_name]))
-                end
+            println(io, "\nDimensions:")
+            for (dim_name, dim_size) in ds.dim
+                println(io, "  ", dim_name, " = ", dim_size)
+            end
+
+            println(io, "\nVariables present:\n  ", join(keys(ds), ", "), "\n")
+
+            println(io, "Variable metadata:")
+            for var_name in sort!(String.(collect(keys(ds))))
+                var = ds[var_name]
+                dims = join(dimnames(var), ",")
+                sz = join(size(var), "x")
+                units = haskey(var.attrib, "units") ? string(var.attrib["units"]) : ""
+                println(io, "  ", var_name, " | dims=", dims, " | size=", sz, " | units=", units)
             end
         end
     end

@@ -7,6 +7,8 @@ ROOT_DIR     := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 DATA_DIR     := $(ROOT_DIR)/data
 REPORT_DIR   := $(ROOT_DIR)/reports/ncar_eol_dee0099881
 SCHEMA_DEF   := $(DATA_DIR)/cases99_netcdf_schema.txt
+GABLS3_NC    := $(DATA_DIR)/gabs3/gabls3_scm_cabauw_obs_v33.nc
+GABLS3_SCHEMA_DEF := $(DATA_DIR)/gabs3/gabls3_netcdf_schema.txt
 
 # Manuscript Paths
 DRAFT_DIR    := $(ROOT_DIR)/drafts
@@ -32,7 +34,7 @@ ALL_NC_FILES := $(wildcard $(DATA_DIR)/ncar_eol_dee0099881/cases.9910*.nc)
 CAMPAIGN_DAYS := $(sort $(patsubst $(DATA_DIR)/ncar_eol_dee0099881/cases.%.nc,%,$(ALL_NC_FILES)))
 
 # Declare all symbolic, execution-only macro endpoints safely
-.PHONY: all full validate run report transform-report attractor-figure wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts purge-generated verify-manuscript $(CAMPAIGN_DAYS)
+.PHONY: all full validate run report transform-report attractor-figure wave_test universal_wave_test quicktest clean setup test run-all-parallel ms clear_ms_artifacts purge-generated verify-manuscript gabls3-validate gabls3-run gabls3-predict gabls3-plots gabls3 $(CAMPAIGN_DAYS)
 
 # Default target orchestrates the entire localized lifecycle with forced sequencing
 all: setup
@@ -74,6 +76,25 @@ validate:
 run:
 	@echo "🚀 Executing manifold transformations on: $(notdir $(INPUT_NC))"
 	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunCampaignPipeline.jl $(INPUT_NC)
+
+gabls3-validate:
+	@echo "🔍 Validating schema for GABLS3 target file: $(notdir $(GABLS3_NC))"
+	julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/validate_netcdf_schema.jl $(GABLS3_NC) $(GABLS3_SCHEMA_DEF)
+
+gabls3-run:
+	@echo "🚀 Executing GABLS3 LES manifold pipeline on: $(notdir $(GABLS3_NC))"
+	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/RunGabLS3Pipeline.jl $(GABLS3_NC) $(DATA_DIR)/trajectory_gabls3.csv
+
+gabls3-predict:
+	@echo "🧠 Training weighted GABLS3 predictive baseline from trajectory features..."
+	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/GabLS3PredictiveBaseline.jl
+
+gabls3-plots:
+	@echo "📈 Generating GABLS3 diagnostic plots via CairoMakie..."
+	JULIA_LOAD_PATH="$(ROOT_DIR)/src:@:@v#.#" julia --project="$(ROOT_DIR)" $(ROOT_DIR)/scripts/PlotGabLS3Diagnostics.jl
+
+gabls3: setup gabls3-validate gabls3-run gabls3-predict gabls3-plots
+	@echo "✓ GABLS3 ingestion, diagnostics, and predictive baseline run complete."
 
 report:
 	@echo "📊 Compiling diagnostic summaries for window identifier: $(DAY_SUFFIX)"
