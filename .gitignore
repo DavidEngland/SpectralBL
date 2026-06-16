@@ -25,6 +25,9 @@ Thumbs.db
 
 # 4. Reference Utilities & Execution Scripts
 # scripts/
+drafts/
+refKit/
+reports/
 
 # 5. Continuous Integration / Test Artifacts
 # Protects against local run output leaks
@@ -58,3 +61,4 @@ test/tmp/
 # 7. Explicit Tracking Passes
 # Explicitly force tracking of generated manuscript assets and compiled PDFs
 !*.pdf
+!*.md
