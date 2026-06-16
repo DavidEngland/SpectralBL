@@ -1,0 +1,127 @@
+\section{Theoretical Extensions and Model Interfacing}
+\label{sec:extensions}
+
+\subsection{Physical Linking to the Ozmidov Buoyancy Scale}
+\label{sec:extensions:ozmidov}
+
+Within our Riemannian manifold space, the active spectral degrees of freedom correspond directly to the physical capability of the boundary layer to sustain multi-scale cascade structures. Let $\Delta z_{\mathrm{local}} = J(\xi) \Delta \xi$ represent the local spatial grid resolution at height $z$. We state that the effective modal dimension undergoes an informational collapse when the buoyancy forces constrain the physical eddy size below the structural features resolvable by the discrete basis. 
+
+Multi-scale cascade processes scale directly with the active spectrum. The upper spectral boundary $n \approx D_{\mathrm{eff}}$ tracks an effective cutoff wavenumber $k_{\max} \sim D_{\mathrm{eff}} / z_{\max}$. By invoking an isotropic mapping where the minimum allowable physical grid spacing matches the local Ozmidov limit ($\Delta z_{\mathrm{local}} \sim L_O$), we derive a direct scaling relationship between the information-theoretic metric and the underlying stratified fluid mechanics:
+\begin{equation}
+D_{\mathrm{eff}} \propto \left( \frac{\epsilon}{N_b^3} \right)^{\!-1/2} \cdot \left( \frac{z_{\max} - z_{\min}}{\alpha_s^2 - 1} \right),
+\label{eq:d_eff_ozmidov_scaling}
+\end{equation}
+where the Ozmidov scale $L_O = \sqrt{\epsilon / N_b^3}$ defines the maximum vertical eddy diameter sustainable in a stably stratified fluid, with $\epsilon$ representing the local turbulent dissipation rate and $N_b = \sqrt{(g/\theta_{\mathrm{ref}}) (\partial \theta / \partial z)}$ the Brunt--Väisälä buoyancy frequency. Note that $(\epsilon / N_b^3)^{-1/2} = L_O^{-1}$ carries dimensions of $[\mathrm{L}]^{-1}$, which is exactly cancelled by the physical height scale $(z_{\max} - z_{\min})/(\alpha_s^2 - 1) \sim [\mathrm{L}]$, confirming that $D_{\mathrm{eff}}$ remains dimensionless as required for an information-theoretic metric.
+
+When $L_O \rightarrow \infty$ (the unstratified neutral limit), the physical restriction lifts, allowing $D_{\mathrm{eff}}$ to populate the maximum data-supported rank ($r_{\mathrm{eff}}$). In this regime, buoyancy no longer constrains the vertical eddy spectrum, and the broad, isotropic inertial-range eddies characteristic of neutral or convective shear-driven turbulence spread energy across the full available spectral support, consistent with the high-dimensional projections observed in Regime~1 of the CASES-99 analysis. Conversely, during highly stable gravity-wave saturation events where $\epsilon \rightarrow 0$ and $N_b$ peaks, $L_O$ drops below the grid's generative threshold, forcing $D_{\mathrm{eff}} \rightarrow [2, 4]$. This scaling links the information entropy directly to the physical state of turbulence and mixing efficiency highlighted by \citet{Garanaik2019}.
+
+\subsection{The Virtual Tower Operator (\texorpdfstring{$\mathcal{P}_{\mathrm{VT}}$}{PVT}): Coordinate-Agnostic Manifold Interfacing}
+\label{sec:extensions:virtual_tower}
+
+A persistent barrier to validating numerical weather prediction (NWP) models, laboratory experiments, or high-resolution simulations against real-world tower observations is the fundamental grid-topology mismatch. Global atmospheric systems represent vertical structures via discrete, terrain-following hydrostatic pressure coordinates ($\eta$), while laboratory flows use fixed Cartesian or cylindrical grids, and remote sensing instruments operate in spherical range--azimuth--elevation coordinates. Direct interpolation onto any single coordinate frame introduces biases and numerical diffusion.
+
+To bridge this structural divide universally, we introduce a generalized, metric-consistent \emph{Virtual Tower Interfacing Operator}, $\mathcal{P}_{\mathrm{VT}}$, that executes coordinate-free projection from an arbitrary, unstructured observational manifold directly onto the continuous polynomial workspace $\xi \in [-1, 1]$.
+
+\subsubsection{Generalized Formulation and the Abstract Design Matrix}
+\label{sec:extensions:p_vt_math}
+
+Let $\Omega \subset \mathbb{R}^d$ represent a physical atmospheric, laboratory, or simulation domain described by an arbitrary, user-defined coordinate system. We define an arbitrary observational ingestion stream as an unstructured set of $M$ scattered measurements:
+\begin{equation}
+\mathcal{D}_{\mathrm{obs}} = \left\{ \left(\mathbf{x}_i, \Phi_i\right) \right\}_{i=1}^M, \quad \mathbf{x}_i \in \Omega,
+\label{eq:scattered_data_set}
+\end{equation}
+where $\mathbf{x}_i$ is the physical space position vector of the $i$-th observation, and $\Phi_i$ is the target field scalar.
+
+The coordinate-agnostic projection pipeline proceeds through a three-stage mathematical transformation:
+
+\paragraph{Stage 1: The Coordinate Normalization Vector Map ($\mathcal{T}$)}
+We construct a specialized geometric transformation operator $\mathcal{T}: \Omega \rightarrow [-1, 1]$ that maps any arbitrary spatial position vector $\mathbf{x}_i$ onto the bounded, one-dimensional computational coordinate $\xi_i$. Because $\Omega$ may be multi-dimensional (e.g., a 3D NWP column or a scanning LiDAR sweep volume), $\mathcal{T}$ acts as a vertical extraction and normalization map: it isolates the vertical component of each observation position and normalizes it into the Chebyshev domain, discarding horizontal displacement that has no representation in the 1D spectral basis. The operator is configured to isolate the vertical structure relative to the instrument's sensing orientation:
+\begin{equation}
+\xi_i = \mathcal{T}(\mathbf{x}_i).
+\label{eq:generalized_tau_map}
+\end{equation}
+
+Depending on the underlying physical ingestion target, $\mathcal{T}$ alters its internal coordinate parsing vector:
+\begin{itemize}
+\item \textbf{Physical Meteorological Towers (1D Vertical Mast):} The position vector reduces to the scalar elevation ($\mathbf{x}_i = [z_i]$), and the mapping applies the analytical inverse of the hyperbolic stretching function defined in Eq.~(\ref{eq:inverse_stretch}).
+\item \textbf{Scanning Doppler LiDAR (3D Range--Azimuth--Elevation Sweeps):} The position vector is tracked in local spherical coordinates ($\mathbf{x}_i = [r_i, \theta_i, \phi_i]$), where $r_i$ is the range gate, $\theta_i$ is the azimuth angle, and $\phi_i$ is the elevation angle. The transformation computes the true physical height relative to the lens center ($z_i = r_i \sin \phi_i + z_{\mathrm{lidar}}$) and maps $z_i \rightarrow \xi_i$ via Eq.~(\ref{eq:inverse_stretch}).
+\item \textbf{Numerical Weather Prediction Models (Discrete Hydrostatic Cells):} The position vector tracks the time-varying physical altitude of the model's terrain-following coordinates ($\mathbf{x}_i = [x_{s,i}, y_{s,i}, \eta_i(t)]$), mapping the instantaneous layer elevation $\mathbf{z}(\eta_i) \rightarrow \xi_i$.
+\end{itemize}
+
+\paragraph{Stage 2: Construction of the Unstructured Evaluation Operator ($\mathbf{B}$)}
+Once the scattered physical coordinates are projected onto the uniform computational domain, we construct the rectangular evaluation design matrix $\mathbf{B} \in \mathbb{R}^{M \times (N+1)}$. Each row of the operator evaluates the chosen high-order Chebyshev basis functions at the mapped coordinates:
+\begin{equation}
+B_{ij} = T_{j-1}(\xi_i) = T_{j-1}\left(\mathcal{T}(\mathbf{x}_i)\right).
+\label{eq:b_matrix_unstructured}
+\end{equation}
+Crucially, because the rows of $\mathbf{B}$ depend exclusively on the normalized manifold coordinate $\xi_i \in [-1, 1]$, the underlying physical coordinate system of the raw instrument or mesh is entirely abstracted away. The design matrix acts as a universal mathematical interface, rendering all downstream matrix arithmetic completely independent of the original data layout.
+
+\paragraph{Stage 3: Regularized Manifold-Weighted Galerkin Projection}
+Reconstructing continuous profiles from scattered data streams requires protecting the spectral solution against numerical overfitting and localized data clustering, which would otherwise trigger unphysical Gibbs oscillations. We define an optimization problem that minimizes the weighted residual while penalizing high-frequency spectral curvature:
+\begin{equation}
+\mathbf{c} = \arg\min_{\mathbf{\hat{c}}} \left( \left\| \mathbf{B}\mathbf{\hat{c}} - \mathbf{\Phi} \right\|_{\mathbf{W}}^2 + \gamma \, \mathbf{\hat{c}}^{T} \mathbf{M} \mathbf{\hat{c}} \right),
+\label{eq:regularized_least_squares}
+\end{equation}
+where $\mathbf{\Phi} = [\Phi_1, \Phi_2, \dots, \Phi_M]^{T}$ is the observation vector, $\mathbf{W} \in \mathbb{R}^{M \times M}$ is a diagonal weighting matrix mapping hardware-specific measurement variances or range-gate attenuation profiles, $\gamma$ is the regularization scalar, and $\mathbf{M}$ is the metric-weighted mass matrix derived via Gauss--Lobatto quadrature (Eq.~\ref{eq:mass_matrix_quad}).
+Here, the $\arg\min$ operator denotes the coefficient vector itself (not merely the minimum objective value): it returns the unique manifold coordinate state whose weighted residual-plus-regularization functional is smallest under the imposed geometry.
+
+Taking the gradient with respect to $\mathbf{\hat{c}}$ and equating to zero yields the closed-form, coordinate-agnostic algebraic state estimator:
+\begin{equation}
+\mathbf{c} = \left( \mathbf{B}^{T} \mathbf{W} \mathbf{B} + \gamma \mathbf{M} \right)^{-1} \mathbf{B}^{T} \mathbf{W} \mathbf{\Phi}.
+\label{eq:p_vt_closed_form}
+\end{equation}
+
+In the standard CASES-99 application the measurement geometry is well-conditioned and the thin-SVD architecture (Eq.~\ref{eq:thin_svd}) provides intrinsic regularization via dynamic rank truncation; consequently $\gamma = 0$ is used throughout. For general scattered-data or overdetermined configurations, $\gamma$ should be selected via L-curve analysis or generalized cross-validation to balance data fidelity against spectral smoothness.
+
+\subsubsection{Universal Ingestion Adapter: DNS, CFD, and PIV Laboratory Scaling}
+\label{sec:extensions:cfd_ingest}
+
+From a computational fluid dynamics (CFD) and laboratory validation perspective, the coordinate-free abstraction of Eq.~(\ref{eq:p_vt_closed_form}) allows high-fidelity numerical or experimental duct datasets to be piped straight into the boundary layer diagnostic pipeline. In stably stratified laboratory configurations—such as the Stratified Inclined Duct (SID) experiments reviewed by \citet{Lefauve2025}—flow properties are mapped using dense Particle Image Velocimetry (PIV) pixel matrices or resolved over high-resolution Direct Numerical Simulation (DNS) grids.
+
+Standard comparison workflows require interpolating these precise datasets onto an arbitrary regular grid, introducing numerical diffusion. The $\mathcal{P}_{\mathrm{VT}}$ operator bypasses this step entirely by treating the unstructured DNS mesh vertices or experimental PIV laser interrogation points as direct inputs to the design matrix $\mathbf{B}$.
+
+To accommodate the enclosed symmetric geometry of laboratory channels or pipe flows, the asymmetrical atmospheric stretching function of Eq.~(\ref{eq:forward_stretch}) is replaced by a symmetric tangent-hyperbolic ($\tanh$) coordinate mapping function:
+\begin{equation}
+z(\xi) = \frac{H}{2} \left[ 1 + \frac{\tanh(\delta \xi)}{\tanh(\delta)} \right], \quad \xi \in [-1, 1],
+\label{eq:lab_symmetric_stretch}
+\end{equation}
+where $H$ is the total channel height, and $\delta$ is the user-defined wall-clustering parameter. The corresponding analytical Jacobian automatically updates the metric-weighted mass matrix $\mathbf{M}$:
+\begin{equation}
+J(\xi) = \frac{dz}{d\xi} = \frac{H \delta}{2 \tanh(\delta)} \operatorname{sech}^2(\delta \xi).
+\label{eq:jacobian_lab_symmetric}
+\end{equation}
+
+Because the downstream GMM clustering algorithms and scale-partitioning masks (Eq.~\ref{eq:partition_scales_def}) interface exclusively with the abstracted spectral coefficients $\mathbf{c}$, this single modification to the mapping Jacobian allows the software toolkit to transition effortlessly between real-world boundary layer meteorology and controlled laboratory fluid mechanics.
+
+\subsubsection{Preservation of Mathematical Invariance Across Data Densities}
+\label{sec:extensions:invariance}
+
+A critical requirement of geophysical state estimation is that the extracted information-theoretic signatures must remain invariant to the sampling density $M$. If the calculated effective modal dimension ($D_{\mathrm{eff}}$) scaled artifactually with the number of operational sensors, it would fail as an objective physical diagnostic tool.
+
+The $\mathcal{P}_{\mathrm{VT}}$ framework guarantees this mathematical invariance across scale transitions because the Singular Value Decomposition (SVD) projection step isolates the dominant singular spectrum ($s_1, s_2, \dots, s_8$) relative to a dynamic noise floor $\tau$ (Eq.~\ref{eq:dynamic_tolerance}). Increasing the spatial sampling density from $M = 8$ (a standard atmospheric tower mast) to $M = 1000$ (a vertically pointing Doppler LiDAR beam or a dense DNS profile line) places tighter, highly overdetermined mathematical constraints on the underlying Chebyshev coefficients without changing the physical volume integration defined by the mass matrix $\mathbf{M}$.
+
+Consequently, if the underlying physical boundary layer collapses into a strongly stratified, gravity-wave dominated state, the energy distribution within the spectral coefficient vector $\mathbf{c}$ remains tightly constrained to the lowest-order modes. The Shannon entropy calculation (Eq.~\ref{eq:d_eff_def}) will converge cleanly to a low-rank value in the regenerated CASES-99 range (roughly $D_{\mathrm{eff}} \approx 1.1$--$1.7$), completely independent of whether the field was captured by a handful of physical instruments or an intensive laser array. This topological invariance proves that the extracted features isolate true physical properties of the stratified flow, establishing a robust framework for multi-instrument geophysical validation.
+
+\subsection{Spectral Anti-Aliasing Filter and Forward-Predictive Implementation}
+\label{sec:extensions:antialiasing}
+
+While the thin SVD projection architecture (Section~\ref{sec:methods:svd}) isolates valid diagnostic fields from historical measurements, extending this manifold into forward-predictive models requires controlling non-linear spectral energy accumulation. When computing advective terms ($\mathbf{u} \cdot \nabla \mathbf{u}$) or buoyant interactions within a non-linear governing system, high-frequency energy modes can shift past the maximum basis cut-off $N$. If unaddressed, this energy reflects into lower wavenumbers, causing severe numerical instability and unphysical energy accumulation (aliasing).
+
+To secure physical and numerical stability in forward implementations, we construct a metric-consistent $2/3$-rule spectral anti-aliasing filter. We define a smooth spectral cut-off boundary $n_{\mathrm{crit}} = \lfloor \frac{2}{3} N \rfloor$. For our $N=32$ configuration, $n_{\mathrm{crit}} = 21$. We construct a diagonal filtering matrix $\mathbf{F} \in \mathbb{R}^{(N+1) \times (N+1)}$ utilizing a high-order exponential filter function:
+\begin{equation}
+F_{nn} = \begin{cases}
+1.0, & \text{if } n \le n_{\mathrm{crit}} \\
+\exp\left( -\sigma \left( \frac{n - n_{\mathrm{crit}}}{N - n_{\mathrm{crit}}} \right)^{\! 2\mu} \right), & \text{if } n > n_{\mathrm{crit}}
+\end{cases}
+\label{eq:exponential_filter}
+\end{equation}
+where $\sigma = 36.8$ controls the dissipation magnitude at the terminal mode $N$ ($F_{NN} \approx 2.22 \times 10^{-16} \approx \epsilon_{\mathrm{mach}}$), and $\mu = 3$ is the order parameter determining the filter's sharpness. This value is selected so that the exponential taper drives the highest retained mode to machine-precision amplitude, suppressing unresolved-grid reflections without damping physically energetic wave-band modes.
+
+This formulation yields a high-order filter that leaves the large-scale mesoscale and gravity-wave bands ($\psi_M, \psi_W$) unaltered while smoothing out components near the numerical grid limit. When stepping the boundary layer forward in time, the updated spectral coefficient vector $\mathbf{c}^{k+1}$ is explicitly filtered at each substep:
+\begin{equation}
+\mathbf{c}^{k+1}_{\mathrm{filtered}} = \mathbf{F} \cdot \left( \mathbf{c}^k + \Delta t \, \mathbf{\mathcal{R}}(\mathbf{c}^k) \right),
+\label{eq:filtered_time_step}
+\end{equation}
+where $\mathbf{\mathcal{R}}(\mathbf{c}^k) \in \mathbb{R}^{N+1}$ represents the discrete residual operator of the Navier--Stokes system under the stretched coordinate mapping. This step prevents artificial energy inflation and ensures that the low-rank states isolated by the GMM remain robust across integration windows.
+
+% ============================================================================

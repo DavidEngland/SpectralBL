@@ -1,0 +1,141 @@
+% drafts/sections/methods.tex
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Unified Manifold Workspace and Coordinate Mapping}
+\label{sec:methods:manifold}
+
+\IfFileExists{sections/generated/params.tex}{\input{sections/generated/params.tex}}{}
+
+The manuscript methods narrative for the active coordinate transform is generated during the diagnostics pipeline run to keep equations and runtime map parameters synchronized with the executed configuration.
+
+\IfFileExists{sections/generated/transformations_section.tex}{\input{sections/generated/transformations_section.tex}}{}
+
+The active map metadata table is also generated from runtime state and included below for reproducibility.
+
+\IfFileExists{sections/generated/table_transform_config.tex}{\input{sections/generated/table_transform_config.tex}}{}
+
+
+\subsection{Thin SVD-Truncated Matrix Projection Architecture}
+\label{sec:methods:svd}
+
+Reconstructing high-fidelity continuous profiles from a highly constrained, sparse array of vertical observations ($M = \TowerObservationLevels$ physical tower levels) onto an $N=\SpectralOrder$ order spectral expansion requires resolving an inherently rank-deficient linear inverse problem. Evaluating the basis functions at the fixed instrument elevations yields the rectangular evaluation design matrix $\mathbf{H} \in \mathbb{R}^{M \times (N+1)}$:
+\begin{equation}
+H_{ij} = T_{j-1}(\xi(z_i))
+\label{eq:h_matrix_def}
+\end{equation}
+
+To minimize computational overhead while guaranteeing protection against numerical over-fitting, we reject classic normal equations or unconstrained Tikhonov diagonal dampening. Instead, we compute an economy-size, thin Singular Value Decomposition (SVD) of the rectangular operator:
+\begin{equation}
+\mathbf{H} = \mathbf{U}_r \mathbf{S}_r \mathbf{V}_r^T
+\label{eq:thin_svd}
+\end{equation}
+where $\mathbf{U}_r \in \mathbb{R}^{M \times M}$ and $\mathbf{V}_r \in \mathbb{R}^{(N+1) \times M}$ retain strictly orthogonal column components, and $\mathbf{S}_r = \operatorname{diag}(s_1, s_2, \ldots, s_M)$ holds the ordered singular spectrum. This thin variant restricts matrix multiplications exclusively to the data-constrained subspace, eliminating the numerical costs associated with tracking unresolvable high-frequency spectral components.
+
+To isolate valid physical modes from background precision noise without introducing hardcoded scaling artifacts during intense thermal modifications, we enforce a dynamic truncation tolerance criterion $\tau$:
+\begin{equation}
+\tau = \max(M, N+1) \cdot s_1 \cdot \epsilon_{\mathrm{mach}}
+\label{eq:dynamic_tolerance}
+\end{equation}
+where $\epsilon_{\mathrm{mach}} \approx 2.22 \times 10^{-16}$. The effective operational rank is bounded strictly by $r_{\mathrm{eff}} = \#\{s_i > \tau\}$. The optimized, noise-filtered spectral coefficient vector $\mathbf{c} \in \mathbb{R}^{N+1}$ is computed directly via projection onto the right-singular basis:
+\begin{equation}
+\mathbf{c} = \sum_{i=1}^{r_{\mathrm{eff}}} \frac{\mathbf{u}_i^T \mathbf{a}_{\mathrm{obs}}}{s_i} \mathbf{v}_i
+\label{eq:svd_reconstruction}
+\end{equation}
+Projections are guaranteed to lie entirely within the data-validated coordinate workspace, automatically forcing unconstrained higher-order spectral modes cleanly to zero.
+
+This rank-truncated representation is paired with event-oriented interpretation: we track localized structural deformations in reconstructed profiles as state transitions, following non-stationary event-detection logic \citep{Kang2014a} and the turbulence-events viewpoint of \citet{Narasimha1995}, rather than assuming that continuous gradient metrics alone provide sufficient state identification.
+
+\subsubsection{Representation Invariance vs. Estimator Uncertainty}
+The manifold state definition is coordinate-agnostic with respect to sensor hardware topology: for any admissible tower geometry, the reconstruction is posed in the same basis and metric space, and the diagnostics ($D_{\mathrm{eff}}$, $F_W$, $\chi_N$) retain the same mathematical interpretation. However, \emph{estimation uncertainty is not geometry-agnostic}. Let measurement perturbations satisfy $\mathbf{a}_{\mathrm{obs}} \mapsto \mathbf{a}_{\mathrm{obs}} + \delta \mathbf{a}$. In the truncated subspace, coefficient perturbations scale as
+\begin{equation}
+\delta \mathbf{c} \approx \mathbf{V}_r \mathbf{S}_r^{-1} \mathbf{U}_r^T \, \delta \mathbf{a}
+\label{eq:svd_uncertainty_map}
+\end{equation}
+so that $\|\delta \mathbf{c}\|_2 \le s_{r_{\mathrm{eff}}}^{-1}\|\delta \mathbf{a}\|_2$. When these mapped perturbations are projected onto physical spatial gradients via the Riemannian differentiation operator $\mathbf{D}_z = \mathbf{J}^{-1}\mathbf{D}_{\xi}$, the spatial distribution of uncertainty is non-uniformly modulated across the column:
+\begin{equation}
+\|\delta \mathbf{D}_z \mathbf{\phi}\|_2 \le \|\mathbf{J}^{-1}\|_2 \, \|\mathbf{D}_{\xi} \mathbf{V}_r \mathbf{S}_r^{-1} \mathbf{U}_r^T\|_2 \, \|\delta \mathbf{a}\|_2
+\end{equation}
+Sparse vertical gaps or clustered level placement steepen singular-value decay (smaller $s_{r_{\mathrm{eff}}}$), amplifying uncertainty in the recovered gradients---particularly near regions where the local Jacobian scale factor $J(\xi)$ compresses physical node distributions.
+
+For homoscedastic observational noise with covariance $\mathbf{\Sigma}_a = \sigma_a^2\mathbf{I}$, first-order propagation yields
+\begin{equation}
+\mathbf{\Sigma}_c \approx \sigma_a^2\, \mathbf{V}_r\, \mathbf{S}_r^{-2}\, \mathbf{V}_r^T
+\label{eq:svd_covariance}
+\end{equation}
+which makes explicit that uncertainty concentration is controlled by the inverse-squared singular spectrum. Accordingly, cross-platform comparisons should treat manifold coordinates as transferable state variables while reporting geometry-conditioned confidence via $(r_{\mathrm{eff}}, s_{r_{\mathrm{eff}}}, \kappa)$ and associated uncertainty envelopes.
+
+
+\subsection{Smooth Scale Partitioning and Energy Non-Conservation Caveat}
+\label{sec:methods:partition}
+
+To separate multi-scale structures without inducing non-local Gibbs ringing or artificial step discontinuities, we deploy a partition-of-unity windowing framework. The global flow field is decomposed into mean synoptic ($\psi_M$), internal gravity wave ($\psi_W$), and micro-turbulent residual ($\psi_T$) scales using coupled hyperbolic tangent transition channels evaluated over physical height $z$:
+\begin{equation}
+\begin{aligned}
+  \psi_T(z) &= \frac{1}{2}\left[1 - \tanh\left(\frac{z - z_{\mathrm{surf}}}{\Delta_z}\right)\right], \\
+  \psi_M(z) &= \frac{1}{2}\left[1 + \tanh\left(\frac{z - z_{\mathrm{top}}}{\Delta_z}\right)\right], \\
+  \psi_W(z) &= 1 - \psi_M(z) - \psi_T(z)
+\end{aligned}
+\label{eq:partition_scales_def}
+\end{equation}
+where the physical transition anchors are structurally mapped to the observation window bounds. By design, the partition operators sum identically to unity across the physical column:
+\begin{equation}
+\psi_M(z) + \psi_W(z) + \psi_T(z) = 1 \quad \forall z \in [z_{\min}, z_{\max}]
+\label{eq:partition_unity}
+\end{equation}
+
+Crucially, because these smooth coordinate windows are not projections onto orthogonal eigenvectors of the metric mass matrix $\mathbf{M}$, \emph{global physical energy content is not strictly additive across the partitioned sub-domains}. In discrete form, the windowed physical profiles are $\mathbf{a}^{(j)} = \operatorname{diag}(\psi_j(z_i))\mathbf{a}$ for $j\in\{M,W,T\}$, and their corresponding spectral coefficients are recovered by the same inverse map used for the full field. The cross-product metrics therefore do not vanish identically:
+\begin{equation}
+\langle \mathbf{c}, \mathbf{M} \mathbf{c} \rangle = \sum_{j \in \{M,W,T\}} \langle \mathbf{c}^{(j)}, \mathbf{M} \mathbf{c}^{(j)} \rangle + \sum_{j \neq k} \langle \mathbf{c}^{(j)}, \mathbf{M} \mathbf{c}^{(k)} \rangle
+\label{eq:energy_overlap}
+\end{equation}
+The off-diagonal cross-terms $\langle \mathbf{c}^{(j)}, \mathbf{M} \mathbf{c}^{(k)} \rangle \neq 0$ physically represent overlapping scale support within the boundary layer transitions. While this cross-term behavior accurately mirrors the coupled wave-turbulence interaction concepts emphasized by \citet{Sun2015}, and is consistent with observed solitary-event and microfront dynamics in very stable flows \citep{Mahrt2010}, total energy balance estimates derived via this windowing scheme must explicitly track these non-orthogonal interaction components rather than assuming direct linear superposition.
+
+These non-vanishing terms are not residual numerical noise: they are the mathematically explicit channels through which wave-support and turbulent-support subspaces exchange energy during regime transition intervals. Operationally, neglecting the off-diagonal block in Eq.~(\ref{eq:energy_overlap}) biases partition diagnostics toward false additivity and suppresses the coupled interaction regions that dominate intermittent shear states.
+In implementation, spikes in the diagnosed Interaction Residual are therefore interpreted as physically meaningful submesoscale coupling events (wave--turbulence exchange episodes) rather than as stochastic solver noise \citep{Sun2015, Mahrt2010}.
+
+
+\subsection{Information-Theoretic Diagnostic Features}
+\label{sec:methods:diagnostics}
+
+\subsubsection{Effective Modal Dimension (\texorpdfstring{$D_{\mathrm{eff}}$}{Deff}) with Minimum Energy Filtering}
+
+We compute the effective modal dimension $D_{\mathrm{eff}}$ as the exponential of the spectral Shannon entropy, converting a raw information metric into an interpretable value representing the number of actively participating, equiprobable spectral modes:
+\begin{equation}
+D_{\mathrm{eff}} = \exp\left( -\sum_{n=0}^{N} p_n \log p_n \right)
+\label{eq:d_eff_def}
+\end{equation}
+where $p_n = c_n^2 / \sum_m c_m^2$ is the normalized energy in mode $n$, applying the standard information-theoretic convention that $p_n \log p_n \to 0$ when $p_n \to 0$.
+
+Because $D_{\mathrm{eff}}$ operates as a scale-invariant shape diagnostic, a quiescent profile under weak background conditions could mathematically register an artificially inflated modal dimension due to numerical precision variations. To prevent low-amplitude instrumental noise from triggering false high-dimensional turbulence classifications, we introduce a regularized minimum energy masking operator before computing the spectral probabilities:
+\begin{equation}
+c_n^2 \leftarrow \begin{cases}
+c_n^2, & \text{if } \sum_{m=0}^{N} c_m^2 \ge \mathcal{E}_{\text{floor}} \\
+0, & \text{otherwise}
+\end{cases}
+\label{eq:energy_floor}
+\end{equation}
+where the threshold floor is defined dynamically based on historical instrument variance limits, fixed at $\mathcal{E}_{\text{floor}} = 10^{-4} \cdot \max_{t} \left(\|\mathbf{a}_{\mathrm{obs}}\|^2\right)$. This restriction forces highly quiescent, laminar configurations cleanly down to $D_{\mathrm{eff}} \to 1.0$.
+
+\subsubsection{Wave Energy Fraction (\texorpdfstring{$F_W$}{FW}) and Spectral Curvature (\texorpdfstring{$\chi_N$}{ChiN})}
+
+The wave energy fraction isolates metric-weighted energy in the wave band relative to total energy:
+\begin{equation}
+F_W = \frac{\langle \mathbf{c}^{(W)}, \mathbf{M} \mathbf{c}^{(W)} \rangle}{\langle \mathbf{c}, \mathbf{M} \mathbf{c} \rangle}
+\label{eq:f_w}
+\end{equation}
+
+Spectral curvature ($\chi_N$) measures the concentration of gradient energy in high-frequency modes, providing a normalized fourth-moment proxy for structural profile sharpness:
+\begin{equation}
+\chi_N = N^{-2} \left( \frac{\sum_{n=1}^{N} n^4 c_n^2}{\sum_{n=1}^{N} n^2 c_n^2} \right)
+\label{eq:chi_n}
+\end{equation}
+
+\subsubsection{Dual-Sided Spectral Coupling of \texorpdfstring{$D_{\mathrm{eff}}$}{Deff} and \texorpdfstring{$\chi_N$}{ChiN}}
+The expected negative coupling between $D_{\mathrm{eff}}$ and $\chi_N$ follows directly from the structure of Eqs.~(\ref{eq:d_eff_def}) and (\ref{eq:chi_n}): the two diagnostics encode complementary limits of the same modal energy distribution. $D_{\mathrm{eff}}$ increases as modal probabilities flatten across many active modes, while $\chi_N$ amplifies high-order tail occupancy through the $n^4$ numerator relative to the bulk gradient-energy scale in the $n^2$ denominator.
+
+In quiescent or weakly forced intervals, modal support collapses toward low-order coefficients, driving $D_{\mathrm{eff}} \to 1$. In that limit, the denominator $\sum n^2 c_n^2$ can remain small, so even weak residual high-order content is strongly magnified by the $n^4$ weighting and $\chi_N$ can rise. During fully developed, broadband mixing, energy spreads across many modes, increasing $D_{\mathrm{eff}}$ while simultaneously normalizing the curvature ratio through a larger gradient-energy denominator, which tends to reduce or stabilize $\chi_N$.
+
+This dual-sided response is advantageous for state classification because the feature pair is physically coupled but not redundant. In the two-dimensional diagnostic space $(D_{\mathrm{eff}}, \chi_N)$, laminar or wave-dominated states occupy a high-$\chi_N$/low-$D_{\mathrm{eff}}$ sector, intermittent transitions align along an oblique intermediate manifold, and continuously turbulent states cluster toward low-$\chi_N$/high-$D_{\mathrm{eff}}$. Consequently, mixture-model clustering is expected to recover a diagonally structured covariance aligned with the laminar-to-turbulent transition pathway rather than axis-aligned degeneracy.
+
+For stability diagnostics, $\mathrm{Ri}_g$ remains the primary manifold-coordinate reference because it uses resolved near-surface gradients from the reconstructed profiles. In parallel, we track the bulk Richardson number $\mathrm{Ri}_b$ as a supplemental finite-difference diagnostic over top-minus-bottom layer means to provide a geometry-aware bridge to tower-layer formulations.

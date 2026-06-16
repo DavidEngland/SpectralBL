@@ -1,0 +1,32 @@
+\section{Data: CASES-99 Stable Window}
+\label{sec:data}
+
+The Cooperative Atmosphere--Surface Exchange Study--1999 (CASES-99) field observational program took place from 1 October to 31 October 1999, centered near Leon, Kansas ($37.69^\circ\text{N}$, $97.64^\circ\text{W}$) \citep{Poulos2002}. The terrain at the Leon site consists of gently rolling grassland with sparse trees, a displacement height $d \approx \SI{0.1}{\meter}$, and an aerodynamic roughness length $z_0 \approx \SI{0.01}{\meter}$.
+
+\subsection{Main Tower Array and Hardware-Specific Quality Assurance}
+We use data from the main CASES-99 tower array, which hosted a central \SI{55}{\meter} to \SI{60}{\meter} main mast instrumented across eight distinct vertical levels: 1.5, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, and \SI{55.0}{\meter}. To reconstruct a continuous vertical timeline without introducing instrument-induced artifacting into the pseudospectral projection, the data ingestion engine applies a multi-brand hardware quality gate to the \SI{20}{\hertz} resampled sonic anemometer streams. Let $\mathbf{u}_z(t)$ denote the raw velocity vector at a given instrument height $z$. The quality-control operator $\mathcal{Q}$ isolates instrument status metrics across the distinct anemometer types distributed along the mast:
+\begin{equation}
+\mathcal{Q}\left(\mathbf{u}_z(t)\right) =
+\begin{cases}
+\mathbf{NaN}, & \text{if } z \in \{1.5, 5, 30, 50\}\,\si{\meter} \text{ and } \mathtt{diag}_z \neq 0 \\
+\mathbf{NaN}, & \text{if } z \in \{10, 20, 40, 55\}\,\si{\meter} \text{ and } \mathtt{usamples}_z < 10 \\
+\mathbf{u}_z(t), & \text{otherwise}
+\end{cases}
+\end{equation}
+where $\mathtt{diag}_z$ represents the bit-field diagnostic flag native to the Campbell Scientific CSAT3 sonic anemometers, used primarily to intercept transducer blockage from dew or nocturnal frost formation. Conversely, $\mathtt{usamples}_z$ monitors the internal sub-sampling density (out of a nominal \SI{200}{\hertz} base rate averaged down to \SI{20}{\hertz}) for the Applied Technologies, Inc. (ATI) sonic anemometers. Sub-sampling drops below the threshold ($\mathtt{usamples}_z < 10$) indicate intermittent data frame dropouts induced by high-frequency sub-mesoscale shear bursts. Independent temperature cross-checks are maintained via collocated Omega Type-E thermocouples across all eight evaluation tiers.
+
+\subsection{Analysis Window: October 22--31 Stable Period}
+
+We focus on the intensive observation period (IOP) from 22--31 October 1999, which was characterized by strong radiative cooling and high-amplitude stable inversions. This 10-day window provides consistent dry conditions (dew-point depression $> \SI{15}{\kelvin}$) minimizing latent heat effects, weak large-scale subsidence ($\sim \SI{2}{\kelvin\per\day}$ synoptic cooling) allowing fine-scale stable dynamics to dominate, and strong, coherent gravity-wave activity documented across multiple independent diagnostic tracking systems \citep{Poulos2002}. The analysis encompasses \emph{1440 10-minute-averaged profiles} ($n_t = 144$ hours) with zero missing values at the eight tower levels after QA filtering.
+
+\subsection{Data Quality Assurance and Verification Metrics}
+
+Raw time series profiles were subjected to threshold rejection ($\theta < \SI{260}{\kelvin}$, $u > \SI{25}{\meter\per\second}$), vertical monotonicity verification ($\partial \theta / \partial z > -\SI{0.01}{\kelvin\per\meter}$), and rank-sufficiency checking. The full campaign pool contains 6218 candidate profiles before QA, and this quality screening pipeline retained 1386 valid profiles ($96.3\%$ of the raw analysis subset).
+
+To mathematically justify the use of a Gaussian Mixture Model (GMM) for multi-regime classification without necessitating a prior, information-lossy Principal Component Analysis (PCA) projection, we mapped the global linear dependence of the feature array. Table~\ref{tab:corr-matrix} summarizes the regenerated Pearson correlation profile across the full campaign footprint.
+
+\IfFileExists{sections/generated/table_corr_matrix.tex}{\input{sections/generated/table_corr_matrix.tex}}{}
+
+The empirical correlation bounds show that $D_{\mathrm{eff}}$ and $\chi_N$ are strongly anti-correlated, so $\chi_N$ is best treated as a supporting roughness descriptor rather than an orthogonal control variable. The bulk stability metric $\mathrm{Ri}_b$ remains weakly coupled to the manifold diagnostics, which is consistent with using it as the manuscript-facing stability label.
+
+% ============================================================================

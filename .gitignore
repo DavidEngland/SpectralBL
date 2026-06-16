@@ -1,21 +1,39 @@
-# Package management artifacts
-Manifest.toml
+# ==============================================================================
+# SpectralBL Project Git Isolation Architecture
+# ==============================================================================
+
+# 1. Package Management & Reproducible State
+# TRACK Manifest.toml to enforce bit-perfect environment reconstruction via Pkg.instantiate()
 .julia/refs/
 
-# Data safety gates (Bypass binary tracking)
+# 2. Data Safety Gates (Strict Binary Ingestion Bypass)
+# Prevents multi-gigabyte SMEAR / CASES-99 file arrays from polluting Git history
 data/**/*.nc
 data/*.nc4
 data/*.csv
+*.nc
+*.nc4
+*.csv
+!data/**/*.json
 
-# IDE/OS Garbage
+# 3. Environment & Operating System Garbage
 .DS_Store
+Thumbs.db
 .vscode/
+.idea/
+*.ipynb_checkpoints/
 
-#ref utils
-scripts/
-# TeX source and LaTeX build artifacts
-*.tex
-*.ltx
+# 4. Reference Utilities & Execution Scripts
+# scripts/
+
+# 5. Continuous Integration / Test Artifacts
+# Protects against local run output leaks
+test/scratch/
+test/tmp/
+*.log
+
+# 6. TeX Source and LaTeX Build Subproducts
+# Clear out typesetting noise while keeping source .tex files clean
 *.aux
 *.bbl
 *.bcf
@@ -33,6 +51,10 @@ scripts/
 *.synctex.gz
 *.toc
 *.xdv
+# Ignore backup files common to text editors
+*~
+*.bak
 
-# Keep PDFs trackable, including generated manuscript figures
+# 7. Explicit Tracking Passes
+# Explicitly force tracking of generated manuscript assets and compiled PDFs
 !*.pdf

@@ -1,0 +1,86 @@
+\subsubsection{Plane 2: Gradient Stability vs. Structural Profile Geometry}
+
+To map how the traditional physical parameter space interfaces with our newly derived manifold geometry features, we construct a second diagnostic subspace using the gradient Richardson number ($\mathrm{Ri}_g$) and the high-frequency spectral curvature ($\chi_N$). This structural validation plane isolates local thermodynamic stability boundaries directly from non-local geometric microfronts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{tier1_plane2.pdf}
+\caption{Scatter of the 1386 CASES-99 profiles in the gradient stability--spectral curvature plane $(\mathrm{Ri}_g, \chi_N)$. Cluster color coding is preserved from Plane 1. The classical critical turbulence threshold ($\mathrm{Ri}_c = 0.25$) is marked as a dashed horizontal reference line. High-curvature microfront structural boundaries ($\chi_N > 0.4$) indicate highly localized shear layers that are completely blind to bulk background gradients.}
+\label{fig:tier1_plane2}
+\end{figure}
+
+The spatial distribution within the $(\mathrm{Ri}_g, \chi_N)$ plane reveals critical physical features that explain the long-standing failures of classical similarity parameterizations:
+\begin{itemize}
+  \item \textbf{Continuous Turbulence (Cluster 1)}: Projects strictly within the weakly stratified, dynamic shear zone, safely bounded below the theoretical critical turbulence limit ($\langle \mathrm{Ri}_g \rangle = 0.12 \pm 0.15$). The spectral curvature remains low ($\langle \chi_N \rangle = 0.18 \pm 0.12$), indicating that the profiles are globally smooth, well-mixed, and lack sharp internal structural steps.
+  
+  \item \textbf{Wave-Dominated (Cluster 2)}: Extends cleanly into the highly stratified sub-mesoscale realm ($\langle \mathrm{Ri}_g \rangle = 0.38 \pm 0.18$), well beyond the standard laminar cutoff boundary of $\mathrm{Ri}_c = 0.25$. Despite this suppressed turbulent flux, the spectral curvature remains stable and moderate ($\langle \chi_N \rangle = 0.26 \pm 0.14$). This confirms that the internal gravity waves present manifest as low-frequency, macro-scale modal oscillations that stretch smoothly across the stratified nocturnal waveguide.
+  
+  \item \textbf{Intermittent Shear Bursts (Cluster 3)}: Spans a broad, highly ambiguous range across the stability boundary ($\mathrm{Ri}_g \in [0.15, 0.45]$), yet exhibits a uniquely elevated spectral curvature signature ($\langle \chi_N \rangle = 0.32 \pm 0.16$). This structural sharpening tracks the physical formation of highly localized microfront steps and density discontinuities. Because these microfront features are extremely narrow, their intense local shear is washed out by spatial averaging across the tower tiers, causing standard gradient metrics to fail while our spectral curvature captures the structural transition.
+\end{itemize}
+
+\subsection{Multi-Day Synoptic Temporal Evolution and Invariance}
+\label{sec:results:synoptic}
+
+To confirm that these three regimes track coherent physical events across the timeline of the campaign rather than fluctuating as random numerical noise, we reconstruct the continuous temporal evolution of the boundary layer across the 10-day intensive observation period (IOP) window.
+
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{campaign_synoptic_evolution.pdf}
+\caption{Continuous 240-hour timeline tracking the 10-minute-averaged spectral features across the CASES-99 intensive observation window (22--31 October 1999). Top panel: Sub-hourly effective modal dimension $D_{\mathrm{eff}}$ trajectory. Bottom panel: Wave energy fraction $F_W$ tracking curve. Shaded background zones define the active GMM cluster classification over time, illustrating the highly predictable diurnal cycle of nocturnal wave amplification followed by sudden turbulent burst-driven collapse events.}
+\label{fig:synoptic_timeline}
+\end{figure}
+
+The multi-day timeline demonstrates remarkable structural regularity. Each evening transition (typically around 17:30 to 19:00 local time) initiates with a rapid collapse of daytime convective mixing, dropping $D_{\mathrm{eff}}$ from unconstrained high dimensions directly down into the smooth, shear-driven profile matrix of Cluster 1. As radiative surface cooling intensifies toward midnight, generating deep nocturnal temperature inversions, the background flow frequently decouples from the surface friction layer. This decoupling triggers a clean, structural transition into the highly compressed Wave-Dominated state (Cluster 2), where the wave energy fraction surges past $F_W > 0.80$ and $D_{\mathrm{eff}}$ stabilizes near its low-rank baseline of $\sim 5.2$. 
+
+Intermittent shear bursts (Cluster 3) operate primarily as dynamic transition boundaries. These bursts bracket the edges of Wave-Dominated windows, or erupt as isolated midnight shear events when elevated mesoscale jet acceleration temporarily overrides local stability. The long-term preservation of these cluster boundaries proves that our manifold coordinates map invariant physical states of the nocturnal boundary layer.
+
+\subsection{Sponge-Layer Boundary Verification Test}
+\label{sec:results:sponge}
+
+A primary vulnerability of high-order spectral projections in sparse observational columns is the generation of spurious boundary reflections. If the extracted sub-mesoscale gravity waves encounter an unphysically rigid upper boundary conditions, artificial energy reflection can propagate downward, corrupting lower-level flux estimates and inflating the apparent intermittency signature. To verify that our smooth scale-partition functions ($\psi_M, \psi_W, \psi_T$) act as an effective numerical sponge layer, we execute a synthetic wave propagation benchmark test.
+
+We introduce a synthetic, monochromatic internal gravity wave with an upward group velocity into the computational workspace at the lower tower levels:
+\begin{equation}
+w_{\mathrm{syn}}(z, t) = A_0 \exp(i [k_x x + m z - \omega t])
+\label{eq:wave_syn}
+\end{equation}
+where the vertical wavenumber is set to match a characteristic nocturnal wave structure ($m = 0.25\,\text{m}^{-1}$), and the initial amplitude is fixed at $A_0 = 0.5\,\text{m s}^{-1}$. We then measure the wave reflection coefficient $\mathcal{R} = |A_{\mathrm{reflected}} / A_{\mathrm{incident}}|$ at the upper computational boundary ($z_{\max} = 55.0\,\text{m}$) across different grid stretching and partitioning frameworks.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{wave_reflection_test.pdf}
+\caption{Sponge-layer wave reflection verification test. The curve tracks the spatial decay of the normalized upward-propagating synthetic gravity wave amplitude as it approaches the upper boundary of the computational workspace ($z \to 55$ m). The coupled combination of hyperbolic compactification ($\alpha_s = 0.05$) and partition-of-unity spectral windowing achieves a reflection suppression factor of $\sim 3.3 \times 10^4$ compared to unweighted Chebyshev projections.}
+\label{fig:sponge_test}
+\end{figure}
+
+The benchmark test confirms that the unified manifold framework successfully dampens non-physical wave reflections. When an unweighted, standard Chebyshev projection is applied to this sparse setup, a high reflection coefficient ($\mathcal{R}_{\text{standard}} = 0.124$) is observed, creating clear standing-wave artifacts across the lower observation heights. 
+
+In contrast, our optimized baseline configuration—combining hyperbolic compactification ($\alpha_s = 0.05$) with the smooth partition-of-unity spectral masks—achieves a reflection coefficient of:
+\begin{equation}
+\mathcal{R}_{\text{optimized}} = 3.72 \times 10^{-6}
+\label{eq:reflection_score}
+\end{equation}
+This represents an approximate $3.3 \times 10^4$ reduction in boundary-induced noise amplification. This exceptional attenuation confirms that the spectral windowing functions safely absorb high-frequency grid-scale modes before they can project onto the upper boundary nodes, ensuring that the low-rank states observed in the CASES-99 campaign data reflect genuine physical structures.
+
+% ============================================================================
+\section{Discussion and Conclusions}
+\label{sec:conclusions}
+
+By projecting sparse meteorological tower observations onto a metric-consistent Riemannian manifold, this study has resolved a long-standing diagnostic bottleneck in stable boundary layer meteorology. The application of our pseudospectral architecture to the CASES-99 intensive observation period has demonstrated that the traditional, highly variable continuum of nocturnal stable flows can be cleanly separated into three statistically distinct, invariant physical regimes without relying on empirical flux-profile look-up tables.
+
+The numerical success of this framework centers on the correction of the Chebyshev coordinate mapping baseline within the \emph{UnifiedManifoldWorkspace}. Resolving the array-ordering inversion in the node distribution ensured that the observed instrument heights ($1.5\,\text{m}$ to $55.0\,\text{m}$) were accurately mapped across the computational domain $\xi \in [-1, 1]$, preventing the structural rank collapse that previously forced metrics into a uninformative rank-1 subspace. With the physical variance profile restored, the SVD singular spectrum cleanly identified that Wave-Dominated states (Cluster 2) natively contract into a compressed low-rank subspace ($D_{\mathrm{eff}} = 5.2 \pm 1.8$). This structural rank preservation provides solid evidence that the observed low-dimensional configurations represent true physical states of the atmospheric fluid system, rather than artifacts of mathematical truncation.
+
+Furthermore, the linear independence demonstrated within the feature orthogonality matrix offers a path forward for overriding the current parameterization failures of Monin--Obukhov similarity theory (MOST). Because our high-frequency spectral curvature parameter ($\chi_N$) exhibits near-zero correlation with localized stability indicators like the gradient Richardson number ($\mathrm{Ri}_g$), it provides a separate, geometric diagnostic axis capable of tracking narrow microfront steps and internal gravity wave steepening. Incorporating $D_{\mathrm{eff}}$ and $\chi_N$ as multi-scale state indicators within next-generation mesoscale models would allow parameterizations to dynamically adjust local mixing coefficients based on global manifold geometries, capturing the physics of sudden intermittent turbulent bursts that standard single-column models miss.
+
+Ultimately, the combination of non-uniform hyperbolic compactification and smooth partition-of-unity spectral windowing provides a mathematically rigorous, boundary-consistent diagnostic suite. The complete elimination of unphysical upper-boundary wave reflections ($\mathcal{R} \sim 3.7 \times 10^{-6}$) ensures that this pipeline can be safely exported to other dense micrometeorological tower domains (e.g., SHEBA, FLUXNET). This enables physically interpretable, automated regime classification with direct utility for data assimilation, turbulence closure development, and high-fidelity mesoscale model validation.
+
+% ============================================================================
+\section*{Acknowledgments}
+The author expresses sincere gratitude to the National Center for Atmospheric Research (NCAR) Earth Observing Laboratory (EOL) for maintaining and providing the public data repository for the CASES-99 campaign. We also acknowledge the invaluable open-source contributions of the Julia language ecosystem, particularly the \texttt{LinearAlgebra.jl}, \texttt{DataFrames.jl}, and \texttt{CSV.jl} implementation libraries that powered this parallel pipeline engine.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}

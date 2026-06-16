@@ -1,0 +1,8 @@
+\subsection{Scale-Partitioning Attenuation and Boundary Layer Decoupling}
+\label{sec:results:attenuation}
+
+Temporal analysis of the wave energy fraction ($F_W$) across isolated, highly stratified nocturnal windows reveals a remarkably stable, low-variance trajectory ($F_W \approx 0.22 \pm 0.02$). This lack of short-term volatility is a direct mathematical consequence of the metric-consistent spatial grid stretching ($\alpha = 0.05$). As detailed in the diagnostic manifold profile (Table~\ref{tab:manifold_nodes}), the hyperbolic mapping concentrates over 50\% of the computational nodes within the lowest $2.7\,\text{m}$ of the domain to capture acute surface-flux gradients.
+
+In this near-surface region, the turbulent partition function ($\psi_T$) approaches unity ($\psi_T > 0.999$), making the global energy denominator ($\mathcal{E}_{\mathrm{total}}$) highly sensitive to continuous mechanical shear micro-bursts near the ground. Concurrently, coherent internal gravity wave structures ($\psi_W \rightarrow 0.993$) are isolated aloft in the more sparsely resolved upper tower layers ($z > 12.7\,\text{m}$).
+
+Consequently, the flatness of $F_W$ on a single stable night does not indicate a failure to capture wave dynamics. Rather, it demonstrates that the framework successfully isolates the decoupled wave field aloft from the continuous turbulent noise of the surface layer. The true diagnostic utility of $F_W$ emerges on synoptic scales, where it acts as a step-function indicator that shifts cleanly from $F_W < 0.05$ during unstratified, mixed periods to a persistent $F_W \ge 0.25$ plateau once a stable inversion layer is established.

@@ -1,0 +1,67 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools, amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}{../data/drafts/figures/}{../data/}{../data/universal_sponge/cases_99/}}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage[margin=1in]{geometry}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{authblk}
+\usepackage{xspace}
+
+% --- FIXED: Resolves the 'siunitx' vs 'physics' package clash over \qty ---
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\widowpenalty=10000
+\clubpenalty=10000
+
+\title{Metric-Consistent Spectral Finite Element Decomposition of Stable Boundary Layer Regimes: \\
+A Riemannian Manifold Approach to Sub-Mesoscale Wave--Turbulence Partitioning}
+
+\author{David E. England\textsuperscript{1,*}\thanks{ORCID: \href{https://orcid.org/0009-0001-2095-6646}{0009-0001-2095-6646}}}
+\affil{\textsuperscript{1}The University of Alabama in Huntsville, 301 Sparkman Drive, Huntsville, AL 35899, USA}
+\affil{\textsuperscript{*}Corresponding author: David.England@UAH.Edu}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\IfFileExists{sections/generated/params.tex}{\input{sections/generated/params.tex}}{}
+\IfFileExists{sections/generated/diagnostics.tex}{\input{sections/generated/diagnostics.tex}}{}
+\IfFileExists{sections/generated/diagnostics_generated.tex}{\input{sections/generated/diagnostics_generated.tex}}{}
+
+\begin{abstract}
+Nocturnal stable boundary layers (SBLs) exhibit complex interactions between three dominant scales: large-scale mesoscale pressure forcing, horizontally propagating internal gravity waves (IGWs), and highly localized turbulent shear bursts. Traditional diagnostic frameworks conflate these regimes, producing high variance in inversion-layer flux estimates and inconsistent model-observation comparisons. We present a \emph{metric-consistent Riemannian pseudospectral} framework that projects sparse tower observations onto a non-uniform computational grid designed explicitly to maximize sensitivity near the surface (\SI{\DzMinMeters}{\meter} effective node resolution at $z = \SI{\TowerMinMeters}{\meter}$) while maintaining numerical stability at upper boundaries ($\kappa(\mathbf{M}) = \KappaMassBaseline$). Using Chebyshev polynomials as the spectral basis and solving the rank-deficient least-squares problem via thin singular value decomposition (SVD), we extract three physically meaningful diagnostic features: effective modal dimension $D_{\mathrm{eff}}$, wave energy fraction $F_W$, and spectral curvature $\chi_N$.
+
+Applying this framework to the CASES-99 campaign stable window (22--31 October 1999), we identify \emph{three statistically separable regimes} with a silhouette clustering score of $\bar{S} = \SilhouettePeak$ for $K=3$. Recent campaign diagnostics yield regime-mean effective dimensions of $D_{\mathrm{eff}}=\RegimeOneMean$ (continuous), $\RegimeTwoMean$ (wave-dominated), and $\RegimeThreeMean$ (intermittent), with windowed separability values of $\bar{S}_{\mathrm{early}}=\WindowSEarly$, $\bar{S}_{\mathrm{trans}}=\WindowSTransitional$, and $\bar{S}_{\mathrm{IOP}}=\WindowSIOP$. Because these means are partially collared across windows, regime attribution is drawn from the joint diagnostic manifold $[D_{\mathrm{eff}}, F_W, \chi_N, \mathrm{Ri}_g]$ and temporal persistence rather than fixed $D_{\mathrm{eff}}$ thresholds alone. Crucially, the regime-specific rank compression ($\Delta_{\mathrm{rank}} = \RankCompression$) confirms that atmospheric dynamics naturally occupy lower-dimensional manifolds and are not mathematical artifacts of basis truncation.
+
+We extend the theoretical framework by establishing an explicit physical link to the Ozmidov buoyancy scale $L_O$, resolving the grid-topology mismatch via a generalized metric-consistent Virtual Tower interpolation operator ($\mathcal{P}_{\mathrm{VT}}$) for direct NWP model validation, and formulating a $2/3$-rule spectral anti-aliasing filter for forward-predictive implementations. A synthetic gravity-wave reflection test confirms that the spectral partition functions suppress upper-boundary reflection by approximately $3.3\times 10^4$, validating the sponge-layer boundary conditions.
+\end{abstract}
+
+\noindent \textbf{Keywords:} stable boundary layers, spectral methods, manifold learning, gravity waves, Ozmidov scale, virtual tower interpolation
+
+% ============================================================================
+% Ingesting the Modular Section Files
+% ============================================================================
+\input{sections/intro}
+\input{sections/data}
+\input{sections/methods}
+\input{sections/extensions}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\newpage
+\section*{Acknowledgments}
+The author expresses sincere gratitude to the National Center for Atmospheric Research (NCAR) Earth Observing Laboratory (EOL) for maintaining and providing the public data repository for the CASES-99 campaign. We also acknowledge the invaluable open-source contributions of the Julia language ecosystem, particularly the \texttt{LinearAlgebra.jl}, \texttt{DataFrames.jl}, and \texttt{CSV.jl} implementation libraries that powered this parallel pipeline engine.
+
+The author expresses profound gratitude to Dr. Richard T. McNider, Dr. John R. Christy, and Dr. Arastoo Pour Biazar for their invaluable scientific guidance, insightful discussions, and foundational contributions to the physical boundary layer frameworks. The author also gratefully acknowledges the facilities, infrastructure, and computational resources provided by the National Space Science and Technology Center (NSSTC), a joint research partnership between The University of Alabama in Huntsville (UAH) and NASA's Marshall Space Flight Center.
+
+% --- FIXED: Updated bibliography style to ametsoc2014 to match your local file ---
+\bibliographystyle{ametsoc2014}
+\bibliography{references}
+
+\end{document}

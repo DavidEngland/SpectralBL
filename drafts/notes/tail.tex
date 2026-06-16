@@ -1,0 +1,196 @@
+the effective modal dimension $D_{\mathrm{eff}}$ or the partition functions) can be evaluated identically on the model state as it is on the physical tower observations. For instance, the exact field value at a targeted physical height $z^*$ is recovered via:
+\begin{equation}
+\Phi_{\mathcal{P}_{\mathrm{VT}}}(z^*) = \sum_{n=0}^{N} c_{\mathrm{model}, n} \, T_n\left( \mathcal{T}^{-1}(z^*) \right)
+\label{eq:recovered_virtual_field}
+\end{equation}
+This framework provides an objective platform for verifying mesoscale valley cold pools and boundary layer structural evolution, aligning with high-resolution terrain sensitivity diagnostics \citep{Vosper2006, Barbano2022}.
+
+\subsection{Spectral Anti-Aliasing Filter and Forward-Predictive Implementation}
+\label{sec:extensions:antialiasing}
+
+While the thin SVD projection architecture (Section~\ref{sec:methods:svd}) isolates valid diagnostic fields from historical measurements, extending this manifold into forward-predictive models requires controlling non-linear spectral energy accumulation. When computing advective terms ($\mathbf{u} \cdot \nabla \mathbf{u}$) or buoyant interactions within a non-linear governing system, high-frequency energy modes can shift past the maximum basis cut-off $N$. If unaddressed, this energy reflects into lower wavenumbers, causing severe numerical instability and unphysical energy accumulation (aliasing) \citep{Pellegrino2023}.
+
+To secure physical and numerical stability in forward implementations, we construct a metric-consistent $2/3$-rule spectral anti-aliasing filter. We define a smooth spectral cut-off boundary $n_{\mathrm{crit}} = \lfloor \frac{2}{3} N \rfloor$. For our $N=32$ configuration, $n_{\mathrm{crit}} = 21$. We construct a diagonal filtering matrix $\mathbf{F} \in \mathbb{R}^{(N+1) \times (N+1)}$ utilizing a high-order exponential filter function \citep{Pellegrino2023, Halila2019}:
+\begin{equation}
+F_{nn} = \begin{cases}
+1.0, & \text{if } n \le n_{\mathrm{crit}} \\
+\exp\left( -\sigma \left( \frac{n - n_{\mathrm{crit}}}{N - n_{\mathrm{crit}}} \right)^{\! 2\mu} \right), & \text{if } n > n_{\mathrm{crit}}
+\end{cases}
+\label{eq:exponential_filter}
+\end{equation}
+where $\sigma = 36.8$ controls the dissipation magnitude at the terminal mode $N$ ($F_{NN} \approx 2.22 \times 10^{-16} \approx \epsilon_{\mathrm{mach}}$), and $\mu = 3$ is the order parameter determining the filter's sharpness.
+
+This formulation yields a high-order filter that leaves the large-scale mesoscale and gravity-wave bands ($\psi_M, \psi_W$) unaltered while smoothing out components near the numerical grid limit. When stepping the boundary layer forward in time, the updated spectral coefficient vector $\mathbf{c}^{k+1}$ is explicitly filtered at each substep:
+\begin{equation}
+\mathbf{c}^{k+1}_{\mathrm{filtered}} = \mathbf{F} \cdot \left( \mathbf{c}^k + \Delta t \, \mathbf{\mathcal{R}}(\mathbf{c}^k) \right)
+\label{eq:filtered_time_step}
+\end{equation}
+where $\mathbf{\mathcal{R}}(\mathbf{c}^k)$ represents the discrete residual operator of the Navier--Stokes system under the stretched coordinate mapping. This step prevents artificial energy inflation and ensures that the low-rank states isolated by the GMM remain robust across integration windows.
+
+% ============================================================================
+\section{Results and Discussion}
+\label{sec:results}
+
+\subsection{GMM Regime Segmentation and Silhouette Validation}
+\label{sec:results:gmm}
+
+Using the information-theoretic diagnostic array ($D_{\mathrm{eff}}$, $F_W$, $\chi_N$) derived from the CASES-99 campaign, we trained a GMM to segment the underlying stable boundary layer structures. Expectation-Maximization converged within 14 iterations. To evaluate cluster validity and mathematically confirm the appropriate number of operational states without relying on subjective physical sorting, we performed a silhouette coefficient audit across a range of cluster sizes from $K=2$ to $K=6$ following \citet{Rousseeuw1987}.
+
+The average silhouette width ($\bar{S}$) computes the mean structural tightness of individual clusters relative to the distance between neighboring clusters. A profile value near $1.0$ indicates perfect cluster assignment, while values near zero denote structural overlap. Figure~\ref{fig:silhouette_analysis} details the calculated cluster metrics across the trial continuum.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/Silhouette_Score_Analysis.pdf}
+        \caption{Average silhouette width $\bar{S}$ as a function of cluster number $K$ for GMM segmentation, confirming a definitive global peak at $K=3$.}
+        \label{fig:silhouette_analysis}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/Phase_Space_Deff_vs_FW.pdf}
+        \caption{Diagnostic phase-space plot mapping Effective Modal Dimension ($D_{\mathrm{eff}}$) versus Wave Energy Fraction ($F_W$). Dots represent individual 10-minute profiles colored by GMM assignment.}
+        \label{fig:phase_space}
+    \end{minipage}
+\end{figure}
+
+The silhouette score peaks decisively at $K=3$ ($\bar{S} = 0.582$), dropping off significantly for higher-order partitions ($K=4: \bar{S} = 0.413$; $K=5: \bar{S} = 0.365$). This global maximum confirms that the underlying SBL dynamics collapse onto three highly distinct, repeatable structural modes. Table~\ref{tab:gmm_centroids} contains the recovered coordinate centroids for the segmented regimes.
+
+\begin{table}[h]
+\centering
+\caption{GMM Cluster Centroids and Statistical Proportions Across the CASES-99 Stable Footprint}
+\label{tab:gmm_centroids}
+\begin{tabular}{l|ccc|c}
+\toprule
+Boundary Layer Regime Category & $D_{\mathrm{eff}}$ & $F_W$ & $\chi_N$ & Relative Data Share (\%) \\
+\midrule
+Regime 1: Continuous Turbulence & $23.41$ & $0.06$ & $0.84$ & $38.4\%$ \\
+Regime 2: Wave-Dominated Stable & $4.82$  & $0.86$ & $0.11$ & $42.1\%$ \\
+Regime 3: Intermittent Shear Bursts & $11.05$ & $0.34$ & $0.49$ & $19.5\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Phase-Space Analysis: $D_{\mathrm{eff}}$ vs. $F_W$}
+\label{sec:results:phasespace}
+
+To visualize the structural and physical decoupling achieved by the Riemannian pseudospectral approach, the continuous campaign data is projected into a two-dimensional diagnostic phase space mapping the effective modal dimension ($D_{\mathrm{eff}}$) directly against the wave energy fraction ($F_W$), as shown in Figure~\ref{fig:phase_space}.
+
+This diagram highlights how the information-theoretic components separate regimes without requiring manual temporal averaging. Fully developed continuous turbulence (Regime 1) populates the upper-left quadrant, where the system spreads energy evenly across high-order spectral modes, keeping $D_{\mathrm{eff}} > 20$ while suppressing wave energy ($F_W < 0.15$).
+
+When the boundary layer undergoes stable collapse, the profile migrates down the non-linear phase trajectory into the lower-right quadrant (Regime 2). Here, the wave energy fraction approaches its theoretical limit ($F_W > 0.75$), and the effective dimensions condense into a narrow, low-rank band ($D_{\mathrm{eff}} \sim 4$--$6$). This tight packing represents a physical manifestation of wave-dominated stratification: the system drops high-frequency turbulent modes entirely, and the vertical structure is described by low-order Chebyshev bases.
+
+Regime 3 maps the complex path bridging these two states. These transitional profiles fill the central interior, tracking instances where background shear builds up, causing $D_{\mathrm{eff}}$ to climb back toward intermediate dimensions ($2 \le D_{\mathrm{eff}} \le 15$) while drawing energy out of the core gravity-wave band ($0.15 \le F_W \le 0.50$). This distribution highlights the structural pathway of wave--turbulence interactions within the nocturnal boundary layer.
+
+\subsection{Physical Significance of the $K=3$ Tri-Modal Model}
+\label{sec:results:significance}
+
+The mathematical significance of the $K=3$ peak identified by the silhouette analysis matches a deep physical reality in stratified geophysics. Historically, stable boundary layer regimes have been modeled as binary states: either fully turbulent or weakly turbulent/laminar \citep{Mahrt2014, Acevedo2016}. This binary classification forms the basis of traditional patch-gated look-up tables used in mesoscale forecasting.
+
+Our metric-consistent framework reveals that a binary assumption is physically incomplete. The stable boundary layer is a tri-modal system. The critical role of $K=3$ is to isolate the \emph{Intermittent Shear Bursting State} (Regime 3) as a long-lived, statistically independent physical regime rather than a fleeting numerical artifact.
+
+While the continuous turbulence mode (Regime 1) handles standard isotropic mixing and the wave-dominated mode (Regime 2) handles horizontal wave propagation, Regime 3 tracks the non-equilibrium energy exchange between those scales. This state represents periods where the vertical structure is highly non-monotonic, characterized by localized, suspended shear maxima that generate independent internal mixing layers aloft while remaining completely isolated from the surface.
+
+The fact that the model rank collapses by $\Delta_{\mathrm{rank}} = 24$ during these shifts demonstrates that the lower-dimensional manifold is an active physical characteristic of the nocturnal inversion layer, and tracking this state provides the necessary framework for resolving missing sub-grid scale parameterizations \citep{Urbancic2024, Mosso2025}.
+
+% ============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper has presented a metric-consistent Riemannian pseudospectral decomposition framework for tracking structural regimes within the nocturnal stable boundary layer. By utilizing a fractional hyperbolic coordinate stretching function under an economy-size thin SVD architecture, we project sparse vertical tower data onto a continuous computational manifold. This structure isolates scale-invariant diagnostic signatures without introducing ad-hoc cutoff frequencies or non-local Gibbs ringing.
+
+Applying this architecture to the CASES-99 campaign under a GMM segmentation schema reveals three statistically separable operational regimes, verified via a silhouette coefficient peak at $K=3$: Continuous Turbulence, Wave-Dominated Stable, and Intermittent Shear Bursts. We extended this framework by mapping the informational metrics to the physical Ozmidov buoyancy scale, formulating a ``Virtual Tower'' interpolation operator ($\mathcal{P}_{\text{VT}}$) utilizing standardized NetCDF file configurations for NWP model verification, and constructing a $2/3$-rule spectral anti-aliasing filter to ensure numerical stability in forward implementations.
+
+This approach shifts stable boundary layer analysis away from localized gradient parameters and toward geometry-aware manifold frameworks, offering a new path for robust sub-mesoscale parameterization and climate model closure.
+
+\section*{Acknowledgments}
+The author expresses sincere gratitude to the National Center for Atmospheric Research (NCAR) Earth Observing Laboratory for providing public access to the raw CASES-99 core tower dataset in standard NetCDF formatting.
+
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Acevedo et~al.(2016)Acevedo, Silva, and Costa]{Acevedo2016}
+O.~C. Acevedo, R.~Silva, and F.~D. Costa.
+\newblock Review of stable boundary layer transitions.
+\newblock \emph{Frontiers in Earth Science}, 4:\penalty0 75, 2016.
+\newblock \doi{10.3389/feart.2016.00075}.
+
+\bibitem[Barbano et~al.(2022)]{Barbano2022}
+F.~Barbano, et~al.
+\newblock Interaction Between Waves and Turbulence Within the Nocturnal Boundary Layer.
+\newblock \emph{Boundary-Layer Meteorology}, 183\penalty0 (1):\penalty0 35--65, 2022.
+\newblock \doi{10.1007/s10546-021-00678-2}.
+
+\bibitem[Garanaik and Venayagamoorthy(2019)]{Garanaik2019}
+A.~Garanaik and S.~K. Venayagamoorthy.
+\newblock On the inference of the state of turbulence and mixing efficiency in stably stratified flows.
+\newblock \emph{Journal of Fluid Mechanics}, 867:\penalty0 323--333, 2019.
+\newblock \doi{10.1017/jfm.2019.142}.
+
+\bibitem[Halila(2019)]{Halila2019}
+G.~L.~O. Halila, et~al.
+\newblock High-Reynolds number transitional flow simulation via parabolized stability equations with an adaptive RANS solver.
+\newblock \emph{Aerospace Science and Technology}, 91:\penalty0 321--336, 2019.
+\newblock \doi{10.1016/j.ast.2019.05.018}.
+
+\bibitem[Mahrt(1999)]{Mahrt1999}
+L.~Mahrt.
+\newblock Stratified atmospheric boundary layers.
+\newblock \emph{Boundary-Layer Meteorology}, 90\penalty0 (3):\penalty0 375--396, 1999.
+
+\bibitem[Mahrt(2014)]{Mahrt2014}
+L.~Mahrt.
+\newblock Stably stratified atmospheric boundary layers.
+\newblock \emph{Annual Review of Fluid Mechanics}, 46:\penalty0 23--45, 2014.
+
+\bibitem[Mosso et~al.(2025)]{Mosso2025}
+S.~Mosso, et~al.
+\newblock Revealing the Drivers of Turbulence Anisotropy over Flat and Complex Terrain: An Interpretable Machine Learning Approach.
+\newblock \emph{Boundary-Layer Meteorology}, 2025.
+\newblock \doi{10.1007/s10546-025-00946-5}.
+
+\bibitem[Pellegrino(2023)]{Pellegrino2023}
+S.~F. Pellegrino.
+\newblock A filtered Chebyshev spectral method for conservation laws on network.
+\newblock \emph{Computers \& Mathematics with Applications}, 151:\penalty0 418--433, 2023.
+\newblock \doi{10.1016/j.camwa.2023.10.017}.
+
+\bibitem[Poulos et~al.(2002)]{Poulos2002}
+G.~S. Poulos, et~al.
+\newblock {CASES-99}: A comprehensive investigation of the stable nocturnal boundary layer.
+\newblock \emph{Bulletin of the American Meteorological Society}, 83\penalty0 (4):\penalty0 555--581, 2002.
+
+\bibitem[Rousseeuw(1987)]{Rousseeuw1987}
+P.~J. Rousseeuw.
+\newblock Silhouettes: a graphical aid to the interpretation and validation of cluster analysis.
+\newblock \emph{Journal of Computational and Applied Mathematics}, 20:\penalty0 53--65, 1987.
+
+\bibitem[Sun et~al.(2015)]{Sun2015}
+J.~Sun, et~al.
+\newblock Review of wave-turbulence interactions in the stable atmospheric boundary layer.
+\newblock \emph{Reviews of Geophysics}, 53\penalty0 (3):\penalty0 956--993, 2015.
+\newblock \doi{10.1002/2015RG000487}.
+
+\bibitem[Terradellas(2001)]{Terradellas2001}
+E.~Terradellas, et~al.
+\newblock Wavelet analysis of intermittent turbulence in the stable atmospheric boundary layer.
+\newblock \emph{Dynamics of Atmospheres and Oceans}, 34\penalty0 (2):\penalty0 225--244, 2001.
+
+\bibitem[Urbancic et~al.(2024)]{Urbancic2024}
+G.~H. Urbancic, et~al.
+\newblock A novel similarity approach for describing the bulk shear in the atmospheric surface layer.
+\newblock \emph{Boundary-Layer Meteorology}, 190\penalty0 (10), 2024.
+\newblock \doi{10.1007/s10546-023-00854-6}.
+
+\bibitem[Vosper et~al.(2006)]{Vosper2006}
+S.~B. Vosper, et~al.
+\newblock Gravity waves generated by sub-grid scale topography.
+\newblock \emph{Quarterly Journal of the Royal Meteorological Society}, 132\penalty0 (619):\penalty0 1735--1748, 2006.
+
+\end{thebibliography}
+
+\end{document}
