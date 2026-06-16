@@ -7,6 +7,8 @@ include("../scripts/DiagnosticsBaseline.jl")
 using .AtmosphericDataPipeline
 using .DiagnosticsBaseline
 
+include("test_smear_fetch.jl")
+
 function create_dummy_netcdf(values::Vector{Float64}, varname::String)
     path = tempname() * ".nc"
 
