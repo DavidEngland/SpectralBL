@@ -8,6 +8,7 @@ using .AtmosphericDataPipeline
 using .DiagnosticsBaseline
 
 include("test_smear_fetch.jl")
+include("test_mesh_projection.jl")
 
 function create_dummy_netcdf(values::Vector{Float64}, varname::String)
     path = tempname() * ".nc"
