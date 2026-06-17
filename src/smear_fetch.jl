@@ -11,6 +11,8 @@ const SMARTSMEAR_HEIGHTS = Float32[16.8, 33.6, 67.2, 125.0]
 const SMARTSMEAR_FILL_VALUE = Float32(-9999.0)
 const GRAVITY = 9.80665f0
 const R_D = 287.05f0
+const P_0 = 1000.0f0
+const R_CP = 0.286f0
 
 function _finite_float32(value)
     if ismissing(value)
@@ -21,7 +23,7 @@ function _finite_float32(value)
 end
 
 function _group_value(gdf::AbstractDataFrame, variable_name::AbstractString)
-    if !(:tablevariable in names(gdf)) || !(:value in names(gdf))
+    if !(:tablevariable in propertynames(gdf)) || !(:value in propertynames(gdf))
         return NaN32
     end
 
@@ -36,8 +38,13 @@ function _hydrostatic_pressure_profile(p_station::Float32, heights::AbstractVect
     return Float32[p_station * exp(-(GRAVITY * Float32(z)) / (R_D * temp_ref)) for z in heights]
 end
 
-function _cf_fill_values(array::AbstractArray{Float32})
-    return replace(array, NaN32 => SMARTSMEAR_FILL_VALUE)
+function _cf_fill_values!(array::AbstractArray{Float32})
+    @inbounds for i in eachindex(array)
+        if isnan(array[i])
+            array[i] = SMARTSMEAR_FILL_VALUE
+        end
+    end
+    return array
 end
 
 """
@@ -127,9 +134,6 @@ function process_and_save_profiles(raw_df::DataFrame)
     pot_temp   = fill(NaN32, num_heights, num_times)
     pressure_profile = fill(NaN32, num_heights, num_times)
 
-    p_0 = 1000.0f0  # Standard reference pressure (hPa)
-    R_Cp = 0.286f0 # Poisson constant for dry air
-
     println("Computing potential temperature corrections and mapping NaNs...")
     for t in 1:num_times
         row = df_wide[t, :]
@@ -140,26 +144,24 @@ function process_and_save_profiles(raw_df::DataFrame)
         wind_speed[3, t] = row.WS672
         wind_speed[4, t] = row.WS125
 
-        # Extract temperatures in Kelvin
-        tk1 = row.T168 + 273.15f0
-        tk2 = row.T336 + 273.15f0
-        tk3 = row.T672 + 273.15f0
-        tk4 = row.T125 + 273.15f0
-
-        if any(isnan, (tk1, tk2, tk3, tk4))
-            continue
-        end
+        # Extract temperatures in Kelvin and preserve missing levels as NaNs.
+        temp_profile = Float32[row.T168, row.T336, row.T672, row.T125] .+ 273.15f0
 
         # Use a height-aware hydrostatic pressure profile so θ remains thermodynamically consistent.
         p_station = isnan(row.P_surf) ? 1013.25f0 : row.P_surf
-        temp_profile = Float32[tk1, tk2, tk3, tk4]
         p_profile = _hydrostatic_pressure_profile(p_station, heights, temp_profile)
         pressure_profile[:, t] .= p_profile
 
         for i in 1:num_heights
-            pot_temp[i, t] = temp_profile[i] * (p_0 / p_profile[i])^R_Cp
+            if isfinite(temp_profile[i])
+                pot_temp[i, t] = temp_profile[i] * (P_0 / p_profile[i])^R_CP
+            end
         end
     end
+
+    _cf_fill_values!(wind_speed)
+    _cf_fill_values!(pot_temp)
+    _cf_fill_values!(pressure_profile)
 
     # 5. Build NetCDF Storage
     filename = "smear_ii_processed_profiles.nc"
@@ -181,17 +183,17 @@ function process_and_save_profiles(raw_df::DataFrame)
         time_var.attrib["units"] = "seconds since 1970-01-01 00:00:00"
 
         wind_var = defVar(ds, "wind_speed", Float32, ("height", "time"); fillvalue=SMARTSMEAR_FILL_VALUE)
-        wind_var[:] = _cf_fill_values(wind_speed)
+        wind_var[:] = wind_speed
         wind_var.attrib["units"] = "m s-1"
         wind_var.attrib["standard_name"] = "wind_speed"
 
         theta_var = defVar(ds, "potential_temperature", Float32, ("height", "time"); fillvalue=SMARTSMEAR_FILL_VALUE)
-        theta_var[:] = _cf_fill_values(pot_temp)
+        theta_var[:] = pot_temp
         theta_var.attrib["units"] = "K"
         theta_var.attrib["standard_name"] = "air_potential_temperature"
 
         pressure_var = defVar(ds, "air_pressure", Float32, ("height", "time"); fillvalue=SMARTSMEAR_FILL_VALUE)
-        pressure_var[:] = _cf_fill_values(pressure_profile)
+        pressure_var[:] = pressure_profile
         pressure_var.attrib["units"] = "hPa"
         pressure_var.attrib["standard_name"] = "air_pressure"
 
