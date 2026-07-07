@@ -10,9 +10,9 @@ This table tracks the structural degradation of cluster separability ($\overline
 
 | Analysis Period Matrix Block | Mean Separability ($\overline{S}$) | Continuous Share (%) | Intermittent Share (%) | Wave-Dominated Share (%) | Physical Boundary Layer State |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Early Window (Oct 02 - 10)** | 0.528 | 14.7% | 62.2% | 23.1% | Weak inversion; surface layer fully mixed |
-| **Transitional (Oct 11 - 21)** | 0.491 | 28.9% | 53.6% | 17.4% | Intermittent radiative decoupling events |
-| **IOP Plateau (Oct 22 - 31)** | 0.513 | 28.2% | 49.0% | 22.8% | Deep nocturnal inversions; stable waveguide |
+| **Early Window (Oct 02 - 10)** | 0.501 | 16.0% | 67.3% | 16.7% | Weak inversion; surface layer fully mixed |
+| **Transitional (Oct 11 - 21)** | 0.503 | 24.9% | 55.6% | 19.5% | Intermittent radiative decoupling events |
+| **IOP Plateau (Oct 22 - 31)** | 0.510 | 26.1% | 52.4% | 21.5% | Deep nocturnal inversions; stable waveguide |
 
 ---
 
@@ -21,9 +21,9 @@ This table evaluates the mean and standard deviation of the **Effective Modal Di
 
 | Campaign Epoch Window | Regime 1: Continuous Turbulence | Regime 2: Wave-Dominated | Regime 3: Intermittent Bursts |
 | :--- | :---: | :---: | :---: |
-| **Oct 02 - Oct 10** | 1.28 $\pm$ 0.25 | 1.24 $\pm$ 0.14 | 1.16 $\pm$ 0.30 |
-| **Oct 11 - Oct 21** | 1.68 $\pm$ 0.48 | 1.28 $\pm$ 0.15 | 1.14 $\pm$ 0.16 |
-| **Oct 22 - Oct 31** | 1.61 $\pm$ 0.62 | 1.24 $\pm$ 0.11 | 1.17 $\pm$ 0.16 |
+| **Oct 02 - Oct 10** | 1.28 $\pm$ 0.25 | 1.25 $\pm$ 0.17 | 1.16 $\pm$ 0.28 |
+| **Oct 11 - Oct 21** | 1.71 $\pm$ 0.52 | 1.33 $\pm$ 0.15 | 1.14 $\pm$ 0.16 |
+| **Oct 22 - Oct 31** | 1.61 $\pm$ 0.65 | 1.28 $\pm$ 0.14 | 1.17 $\pm$ 0.15 |
 
 ---
 
@@ -43,8 +43,8 @@ These metrics track the non-additive residual induced by non-commuting spectral 
 
 | Coupling Diagnostic | Empirical Value (Median [Min, Max]) |
 | :--- | :---: |
-| Mesoscale window energy, $E_{\mathrm{meso}}$ | 3.782 [0.094, 28.567] |
-| Interaction residual, $E_{\mathrm{int}}$ | 254.831 [4.035, 12847.311] |
+| Mesoscale window energy, $E_{\mathrm{meso}}$ | 3.868 [0.094, 9314.934] |
+| Interaction residual, $E_{\mathrm{int}}$ | 258.624 [4.035, 2823995.832] |
 
 ---
 
@@ -53,17 +53,17 @@ Active GMM clustering is performed on **[D_eff, F_W, Ri_b]** after global campai
 
 | Metric Feature Array | D_eff | F_W | chi_N | Ri_b |
 | :--- | :---: | :---: | :---: | :---: |
-| **D_eff** | 1.00 | 0.15 | -0.89 | 0.02 |
-| **F_W** | 0.15 | 1.00 | -0.16 | -0.03 |
-| **chi_N** | -0.89 | -0.16 | 1.00 | -0.03 |
-| **Ri_b** | 0.02 | -0.03 | -0.03 | 1.00 |
+| **D_eff** | 1.00 | 0.42 | -0.93 | 0.01 |
+| **F_W** | 0.42 | 1.00 | -0.38 | -0.03 |
+| **chi_N** | -0.93 | -0.38 | 1.00 | -0.03 |
+| **Ri_b** | 0.01 | -0.03 | -0.03 | 1.00 |
 
 ### Crucial Methodological Takeaways for Paper Text:
-1. **Redundancy Is Real:** The correlation between structural profile curvature (chi_N) and the low-rank manifold metric (D_eff) is strongly negative at -0.89. That is useful, but it means chi_N should be treated as a supporting roughness descriptor rather than an independent axis.
-2. **Bulk Stability Is Supplemental:** Campaign-mean D_eff values are R1=1.58, R2=1.25, R3=1.16. The bulk Richardson number remains comparatively weakly coupled to these diagnostics, so it is best used as the manuscript-facing stability label rather than the main separator.
+1. **Redundancy Is Real:** The correlation between structural profile curvature (chi_N) and the low-rank manifold metric (D_eff) is strongly negative at -0.93. That is useful, but it means chi_N should be treated as a supporting roughness descriptor rather than an independent axis.
+2. **Bulk Stability Is Supplemental:** Campaign-mean D_eff values are R1=1.62, R2=1.29, R3=1.24. The bulk Richardson number remains comparatively weakly coupled to these diagnostics, so it is best used as the manuscript-facing stability label rather than the main separator.
 
 ## 6. Regime-Collar Integrity Check
 The following diagnostics flag windows where regime $D_{\mathrm{eff}}$ means collapse into near-identical collars.
 - **Warning (Oct 02 - 10):** Regime D_eff means are tightly collared (spread=0.12). This may indicate weak physical regime separation despite 3-cluster assignment.
-- **Warning (Oct 11 - 21):** Regime D_eff means are tightly collared (spread=0.54). This may indicate weak physical regime separation despite 3-cluster assignment.
-- **Warning (Oct 22 - 31):** Regime D_eff means are tightly collared (spread=0.43). This may indicate weak physical regime separation despite 3-cluster assignment.
+- **Warning (Oct 11 - 21):** Regime D_eff means are tightly collared (spread=0.57). This may indicate weak physical regime separation despite 3-cluster assignment.
+- **Warning (Oct 22 - 31):** Regime D_eff means are tightly collared (spread=0.44). This may indicate weak physical regime separation despite 3-cluster assignment.

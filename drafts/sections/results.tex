@@ -40,7 +40,7 @@ Evaluating the rank metrics across the distinct GMM-identified clusters revealed
   \item \textbf{Intermittent Shear (Cluster 3)}: Transitional states occupy an intermediate rank band between the continuous and wave-dominated limits.
 \end{itemize}
 
-This rank compression ($\Delta_{\mathrm{rank}} = \RankCompression$ relative to the full spectral basis dimension $N+1=\GridNodes$, rather than the sensor count $M$) provides quantitative proof that wave-dominated stable layers natively occupy a compressed lower-dimensional manifold. This confirms that low-rank behavior is an intrinsic structural property of the physical fluid system and not an artifact of arbitrary basis function truncation.
+This rank compression ($\Delta_{\mathrm{rank}} = \RankCompression$ relative to the full spectral basis dimension $N+1=\GridNodes$, rather than the sensor count $M$) is consistent with wave-dominated stable layers evolving in a compressed reduced-order neighborhood. The result supports interpreting low-rank behavior as a physically meaningful structural signature while avoiding a strict proof claim about the parent infinite-dimensional dynamics.
 
 \IfFileExists{sections/generated/table_rank_profile.tex}{\input{sections/generated/table_rank_profile.tex}}{}
 
@@ -51,12 +51,14 @@ Table~\ref{tab:gmm-centroids} contains the recovered coordinate centroids for th
 
 \IfFileExists{sections/generated/table_gmm_centroids.tex}{\input{sections/generated/table_gmm_centroids.tex}}{}
 
+\noindent\textit{Note.} Regime boundaries and centroid values are inferred from empirical spectral-distribution characteristics and are presented as consistent with reduced-order slow-manifold dynamics, rather than as an analytical derivation from the primitive operator.
+
 To visualize the structural and physical decoupling achieved by the Riemannian pseudospectral approach, the continuous campaign data is projected into a two-dimensional diagnostic phase space mapping the effective modal dimension ($D_{\mathrm{eff}}$) directly against the wave energy fraction ($F_W$), as shown in Figure~\ref{fig:phase_space}.
 
 \begin{figure}[htbp]
     \centering
   \includegraphics[width=0.78\linewidth]{tier1_plane1.pdf}
-  \caption{Diagnostic phase-space plot mapping Effective Modal Dimension ($D_{\mathrm{eff}}$) versus Wave Energy Fraction ($F_W$). Points represent individual 10-minute profiles and show the three-regime separation between continuous turbulence, wave-dominated states, and intermittent shear transitions.}
+  \caption{Diagnostic phase-space plot mapping Effective Modal Dimension proxy ($D_{\mathrm{eff}}$) versus Wave Energy Fraction ($F_W$). Points represent individual 10-minute profiles and show the three-regime separation between continuous turbulence, wave-dominated states, and intermittent shear transitions. Here $D_{\mathrm{eff}}$ is treated as an empirical proxy for state-space contraction; local increases are interpreted as relaxation of normal-hyperbolicity-like behavior near fold-proximal intervals.}
     \label{fig:phase_space}
 \end{figure}
 
@@ -76,7 +78,7 @@ To directly visualize the geometric compression measured by $D_{\mathrm{eff}}$, 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\linewidth]{attractor_collapse_physical_vs_spectral.pdf}
-\caption{Composite attractor diagnostic comparing (a) trajectory evolution in physical tower-state coordinates, (b) trajectory evolution in Chebyshev coefficient coordinates, (c) sampled $D_{\mathrm{eff}}$ compression trace, and (d) mapped regime envelope in $(D_{\mathrm{eff}}, F_W)$ space. The coefficient-space trajectory exhibits geometric collapse relative to physical-space spread, consistent with low-dimensional manifold occupancy during wave-dominated intervals.}
+\caption{Composite attractor diagnostic comparing (a) trajectory evolution in physical tower-state coordinates, (b) trajectory evolution in Chebyshev coefficient coordinates, (c) sampled $D_{\mathrm{eff}}$ compression trace, and (d) mapped regime envelope in $(D_{\mathrm{eff}}, F_W)$ space. The coefficient-space trajectory exhibits geometric collapse relative to physical-space spread, consistent with reduced-order manifold occupancy during wave-dominated intervals.}
 \label{fig:attractor_collapse}
 \end{figure}
 
@@ -105,11 +107,11 @@ To confirm that these three regimes track coherent physical events across the ti
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\linewidth]{campaign_synoptic_evolution.pdf}
-\caption{Continuous 240-hour timeline of synoptic regime diagnostics across the CASES-99 intensive observation window (22--31 October 1999). Top panel: stacked bars show the daily share of Continuous Turbulence, Wave-Dominated, and Intermittent regimes, with the overlaid secondary-axis curve tracking the mean silhouette separability coefficient ($\bar{S}$). Bottom panel: daily median coupling energetics, reported as meso-scale and interaction energy components ($E_{\mathrm{meso}}$, $E_{\mathrm{interaction}}$), quantify day-to-day variability in wave--turbulence exchange strength.}
+\caption{Continuous 240-hour timeline of synoptic regime diagnostics across the CASES-99 intensive observation window (22--31 October 1999). Top panel: stacked bars show the daily share of Continuous Turbulence, Wave-Dominated, and Intermittent regimes, with the overlaid secondary-axis curve tracking the mean silhouette separability coefficient ($\bar{S}$). Bottom panel: daily median coupling energetics, reported as meso-scale and interaction energy components ($E_{\mathrm{meso}}$, $E_{\mathrm{interaction}}$), quantify day-to-day variability in wave--turbulence exchange strength. In this context, $D_{\mathrm{eff}}(t)$ is interpreted as an empirical contraction proxy, not as the exact dimension of an invariant manifold.}
 \label{fig:synoptic_timeline}
 \end{figure}
 
-  The multi-day timeline demonstrates remarkable structural regularity. Each evening transition (typically around 17:30 to 19:00 local time) initiates with a rapid collapse of daytime convective mixing, dropping $D_{\mathrm{eff}}$ from its daytime value directly into the smooth, shear-driven profile matrix of Cluster 1. As radiative surface cooling intensifies toward midnight, generating deep nocturnal temperature inversions, the background flow frequently decouples from the surface friction layer. This decoupling triggers a clean, structural transition into the highly compressed Wave-Dominated state (Cluster 2), where the wave energy fraction surges past $F_W > 0.80$ and $D_{\mathrm{eff}}$ stabilizes near its low-rank baseline around the Regime 2 centroid value in Table~\ref{tab:gmm-centroids}. The long-term preservation of these cluster boundaries proves that our manifold coordinates map invariant physical states of the nocturnal boundary layer.
+  The multi-day timeline demonstrates remarkable structural regularity. Each evening transition (typically around 17:30 to 19:00 local time) initiates with a rapid collapse of daytime convective mixing, dropping $D_{\mathrm{eff}}$ from its daytime value directly into the smooth, shear-driven profile matrix of Cluster 1. As radiative surface cooling intensifies toward midnight, generating deep nocturnal temperature inversions, the background flow frequently decouples from the surface friction layer. This decoupling triggers a clean, structural transition into the highly compressed Wave-Dominated state (Cluster 2), where the wave energy fraction surges past $F_W > 0.80$ and $D_{\mathrm{eff}}$ stabilizes near its low-rank baseline around the Regime 2 centroid value in Table~\ref{tab:gmm-centroids}. The long-term preservation of these cluster boundaries indicates that our manifold coordinates capture persistent physical state organization in the nocturnal boundary layer over the analyzed window.
 
 \subsection{Sponge-Layer Boundary Verification Test}
 \label{sec:results:sponge}
@@ -130,6 +132,6 @@ where the vertical wavenumber $m = \SI{0.25}{\per\meter}$ is derived directly fr
 \label{fig:sponge_test}
 \end{figure}
 
-The benchmark test confirms that the unified manifold framework successfully dampens non-physical wave reflections. When an unweighted, standard Chebyshev projection is applied to this sparse setup, a high reflection coefficient ($\mathcal{R}_{\text{standard}} = 0.124$) is observed, creating clear standing-wave artifacts across the lower observation heights. In contrast, our optimized baseline configuration---combining hyperbolic compactification ($\alpha_s = \alphaStretchBaseline$) with the smooth partition-of-unity spectral masks---achieves an exceptional reflection coefficient of $\mathcal{R}_{\text{optimized}} = 3.72 \times 10^{-6}$, representing an approximate $3.3 \times 10^4$ reduction in boundary-induced noise amplification. This exceptional attenuation confirms that the spectral windowing functions safely absorb high-frequency grid-scale modes before they can project onto the upper boundary nodes, ensuring that the low-rank states observed in the CASES-99 campaign data reflect genuine physical structures.
+The benchmark test shows that the unified manifold framework strongly damps non-physical wave reflections. When an unweighted, standard Chebyshev projection is applied to this sparse setup, a high reflection coefficient ($\mathcal{R}_{\text{standard}} = 0.124$) is observed, creating clear standing-wave artifacts across the lower observation heights. In contrast, our optimized baseline configuration---combining hyperbolic compactification ($\alpha_s = \alphaStretchBaseline$) with the smooth partition-of-unity spectral masks---achieves a reflection coefficient of $\mathcal{R}_{\text{optimized}} = 3.72 \times 10^{-6}$, representing an approximate $3.3 \times 10^4$ reduction in boundary-induced noise amplification. This attenuation is consistent with spectral windowing functions absorbing high-frequency grid-scale modes before they project onto upper boundary nodes, supporting interpretation of the low-rank states as physically organized rather than boundary-artifact dominated.
 
 % ============================================================================

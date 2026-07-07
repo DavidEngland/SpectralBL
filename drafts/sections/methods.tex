@@ -15,6 +15,21 @@ The active map metadata table is also generated from runtime state and included 
 
 \IfFileExists{sections/generated/table_transform_config.tex}{\input{sections/generated/table_transform_config.tex}}{}
 
+\subsection{Scale Separation and Reduced-Order Representation}
+\label{sec:methods:scale_separation}
+
+To avoid conflating empirical model behavior with claims about the full infinite-dimensional atmospheric operator, we explicitly introduce a reduced-order fast/slow representation motivated by observed SBL time scales. We define a fast turbulence-adjustment scale
+\begin{equation}
+\tau_t \sim \frac{\ell}{u_*},
+\end{equation}
+where $\ell$ is a local mixing-length scale and $u_*$ is friction velocity, and a slow mesoscale forcing scale $\tau_m$ associated with radiative cooling, geostrophic modulation, and low-level-jet evolution. In strongly stable windows these scales are typically separated, with $\tau_t \sim 10^{1}$--$10^{2}\,\mathrm{s}$ and $\tau_m \sim 10^{4}$--$10^{5}\,\mathrm{s}$.
+
+We therefore use the dimensionless ordering parameter
+\begin{equation}
+\epsilon = \frac{\tau_t}{\tau_m}, \qquad \epsilon \ll 1,
+\end{equation}
+as a modeling guide for reduced-state interpretation. This manuscript does not claim that the full Boussinesq/Navier--Stokes system has been rigorously transformed into a singularly perturbed normal form; rather, we use this scale separation to justify a reduced-order diagnostic representation for the observed trajectory geometry.
+
 
 \subsection{Thin SVD-Truncated Matrix Projection Architecture}
 \label{sec:methods:svd}
@@ -100,7 +115,7 @@ In implementation, spikes in the diagnosed Interaction Residual are therefore in
 
 \subsubsection{Effective Modal Dimension (\texorpdfstring{$D_{\mathrm{eff}}$}{Deff}) with Minimum Energy Filtering}
 
-We compute the effective modal dimension $D_{\mathrm{eff}}$ as the exponential of the spectral Shannon entropy, converting a raw information metric into an interpretable value representing the number of actively participating, equiprobable spectral modes:
+We compute the effective modal diagnostic $D_{\mathrm{eff}}$ as the exponential of the spectral Shannon entropy, converting a raw information metric into an interpretable proxy for the number of actively participating, equiprobable spectral modes:
 \begin{equation}
 D_{\mathrm{eff}} = \exp\left( -\sum_{n=0}^{N} p_n \log p_n \right)
 \label{eq:d_eff_def}
@@ -116,6 +131,8 @@ c_n^2, & \text{if } \sum_{m=0}^{N} c_m^2 \ge \mathcal{E}_{\text{floor}} \\
 \label{eq:energy_floor}
 \end{equation}
 where the threshold floor is defined dynamically based on historical instrument variance limits, fixed at $\mathcal{E}_{\text{floor}} = 10^{-4} \cdot \max_{t} \left(\|\mathbf{a}_{\mathrm{obs}}\|^2\right)$. This restriction forces highly quiescent, laminar configurations cleanly down to $D_{\mathrm{eff}} \to 1.0$.
+
+In the reduced-order interpretation, low $D_{\mathrm{eff}}$ is consistent with strong contraction toward a wave-dominated neighborhood, while transient inflation of $D_{\mathrm{eff}}$ is interpreted as a proxy for local relaxation of restoring rates near fold-proximal trajectories. We treat this as an empirical indicator of distance from normal-hyperbolicity-like behavior in the reduced chart, not as a direct measurement of manifold dimension.
 
 \subsubsection{Wave Energy Fraction (\texorpdfstring{$F_W$}{FW}) and Spectral Curvature (\texorpdfstring{$\chi_N$}{ChiN})}
 

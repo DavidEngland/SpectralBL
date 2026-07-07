@@ -133,7 +133,8 @@ function clean_diagnostics_frame(df::DataFrame)
     end
 
     if file_key !== nothing
-        out[!, :FileDate] = Int64.(round.([_to_float(v) for v in df[valid, file_key]]))
+        file_vals = [_to_float(v) for v in df[valid, file_key]]
+        out[!, :FileDate] = [isfinite(v) ? Int64(round(v)) : missing for v in file_vals]
     end
 
     if status_key !== nothing

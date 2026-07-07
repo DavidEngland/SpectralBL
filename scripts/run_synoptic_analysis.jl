@@ -45,7 +45,7 @@ else
     for shard in shard_files
         df = CSV.read(shard, DataFrame)
         if !isempty(df)
-            append!(master_df, df)
+            append!(master_df, df; cols = :union, promote = true)
         end
     end
     if isempty(master_df)
@@ -270,9 +270,44 @@ function execute_synoptic_analysis(trajectory_csv::String, output_report_path::S
     clean_df[!, :Regime] = remap_clusters_to_physical(gmm_labels, clean_df.D_eff, clean_df.F_W)
 
     # 2b. Segment Campaign Windows to isolate the IOP (Intensive Observational Period)
-    w1 = filter(row -> hasproperty(row, :FileDate) && 991002 <= row.FileDate <= 991010, clean_df)
-    w2 = filter(row -> hasproperty(row, :FileDate) && 991011 <= row.FileDate <= 991021, clean_df)
-    w3 = filter(row -> hasproperty(row, :FileDate) && 991022 <= row.FileDate <= 991031, clean_df)
+    function coerce_file_date(v)
+        if ismissing(v)
+            return missing
+        elseif v isa Integer
+            return Int(v)
+        elseif v isa AbstractFloat
+            return isfinite(v) ? Int(round(v)) : missing
+        elseif v isa AbstractString
+            m = match(r"\d{6}", v)
+            d = m === nothing ? nothing : tryparse(Int, m.match)
+            return d === nothing ? missing : d
+        elseif v isa AbstractVector
+            for vi in v
+                d = coerce_file_date(vi)
+                if !ismissing(d)
+                    return d
+                end
+            end
+            return missing
+        else
+            return missing
+        end
+    end
+
+    clean_df[!, :FileDateNorm] = coerce_file_date.(clean_df.FileDate)
+
+    w1 = filter(row -> begin
+        d = hasproperty(row, :FileDateNorm) ? row.FileDateNorm : missing
+        !ismissing(d) && 991002 <= d <= 991010
+    end, clean_df)
+    w2 = filter(row -> begin
+        d = hasproperty(row, :FileDateNorm) ? row.FileDateNorm : missing
+        !ismissing(d) && 991011 <= d <= 991021
+    end, clean_df)
+    w3 = filter(row -> begin
+        d = hasproperty(row, :FileDateNorm) ? row.FileDateNorm : missing
+        !ismissing(d) && 991022 <= d <= 991031
+    end, clean_df)
 
     # 3. Calculate Core Table Metrics: Multi-Window Separability & Regime Distribution
     function get_window_stats(w_df)
@@ -408,18 +443,18 @@ function execute_synoptic_analysis(trajectory_csv::String, output_report_path::S
         "R3 Std" => [r3_s1, r3_s2, r3_s3]
     )
     export_table(rank_profile_df, joinpath(generated_dir, "table_rank_profile.tex");
-        caption="Effective modal dimension summary by campaign epoch and regime.",
+        caption=raw"Effective modal proxy ($D_{\mathrm{eff}}$) summary by campaign epoch and regime.",
         label="tab:rank_profile", digits=2)
 
     gmm_centroids_df = DataFrame(
         "Boundary Layer Regime Category" => ["Regime 1: Continuous Turbulence", "Regime 2: Wave-Dominated Stable", "Regime 3: Intermittent Shear Bursts"],
-        raw"$D_{\mathrm{eff}}$" => [r1_all, r2_all, r3_all],
+        "Proxy Dimension (D_eff)" => [r1_all, r2_all, r3_all],
         raw"$F_W$" => [mean(filter(row -> row.Regime == 1, clean_df).F_W), mean(filter(row -> row.Regime == 2, clean_df).F_W), mean(filter(row -> row.Regime == 3, clean_df).F_W)],
         raw"$\chi_N$" => [mean(filter(row -> row.Regime == 1, clean_df).chi_N), mean(filter(row -> row.Regime == 2, clean_df).chi_N), mean(filter(row -> row.Regime == 3, clean_df).chi_N)],
         "Relative Data Share (%)" => [regime_share(clean_df, 1), regime_share(clean_df, 2), regime_share(clean_df, 3)]
     )
     export_table(gmm_centroids_df, joinpath(generated_dir, "table_gmm_centroids.tex");
-        caption="GMM Cluster Centroids and Statistical Proportions Across the CASES-99 Stable Footprint",
+        caption="GMM Cluster Centroids and Statistical Proportions Across the CASES-99 Stable Footprint (proxy diagnostics)",
         label="tab:gmm_centroids", digits=2)
 
     ri_label_math = ri_col == :Ri_b ? raw"$Ri_b$" : (ri_col == :Ri_g ? raw"$Ri_g$" : raw"$Ri_f$")
@@ -486,10 +521,10 @@ function execute_synoptic_analysis(trajectory_csv::String, output_report_path::S
     # 6. Generate Multi-Day Synoptic Validation Figures
     println("📈 Rendering multi-day validation visualization suite...")
 
-    days = sort(unique(clean_df.FileDate))
+    days = sort!(collect(skipmissing(unique(clean_df.FileDateNorm))))
     r1_days, r2_days, r3_days = Float64[], Float64[], Float64[]
     for d in days
-        day_sub = filter(row -> row.FileDate == d, clean_df)
+        day_sub = filter(row -> !ismissing(row.FileDateNorm) && row.FileDateNorm == d, clean_df)
         t_d = max(1, nrow(day_sub))
         push!(r1_days, count(==(1), day_sub.Regime) / t_d * 100)
         push!(r2_days, count(==(2), day_sub.Regime) / t_d * 100)
@@ -527,7 +562,7 @@ function execute_synoptic_analysis(trajectory_csv::String, output_report_path::S
     function daily_median_series(df_daily::DataFrame, days_sorted, col_name::String)
         series = Float64[]
         for d in days_sorted
-            day_sub = filter(row -> row.FileDate == d, df_daily)
+            day_sub = filter(row -> !ismissing(row.FileDateNorm) && row.FileDateNorm == d, df_daily)
             day_colkeys = Dict(string(k) => k for k in names(day_sub))
             vals = haskey(day_colkeys, col_name) ? begin
                 col = day_sub[!, day_colkeys[col_name]]
